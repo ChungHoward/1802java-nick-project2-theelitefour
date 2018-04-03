@@ -9,7 +9,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Teambuilder',  icon: 'view_quilt', class: '' }, // Testing icon change
-    { path: 'user-profile', title: 'Pokemon Box',  icon: 'grid_on', class: '' },
+    { path: 'register', title: 'Pokemon Box',  icon: 'grid_on', class: '' },
     { path: 'table-list', title: 'Core Coverage',  icon: 'repeat_one', class: '' },
     { path: 'typography', title: 'Defensive Coverage',  icon: 'view_list', class: '' },
     { path: 'icons', title: 'Offensive Coverage',  icon: 'view_stream', class: '' },

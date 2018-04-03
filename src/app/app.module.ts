@@ -9,8 +9,8 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TeambuilderComponent } from './teambuilder/teambuilder.component';
+import { RegisterComponent } from './register/register.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
@@ -21,8 +21,8 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UserProfileComponent,
+    TeambuilderComponent,
+    RegisterComponent,
     TableListComponent,
     TypographyComponent,
     IconsComponent,
@@ -36,7 +36,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     FormsModule,
     HttpModule,
     ComponentsModule,
-RouterModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],
