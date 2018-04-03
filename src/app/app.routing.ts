@@ -3,7 +3,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeambuilderComponent } from './teambuilder/teambuilder.component';
 import { RegisterComponent } from './register/register.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
@@ -13,7 +13,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'teambuilder', component: TeambuilderComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'table-list', component: TableListComponent },
   { path: 'typography', component: TypographyComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'maps', component: MapsComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'upgrade', component: UpgradeComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: 'teambuilder', pathMatch: 'full' }
 ];
 
 @NgModule({

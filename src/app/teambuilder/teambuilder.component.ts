@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-teambuilder',
+  templateUrl: './teambuilder.component.html',
+  styleUrls: ['./teambuilder.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class TeambuilderComponent implements OnInit {
 
   constructor() { }
   startAnimationForLineChart(chart) {
@@ -111,7 +111,6 @@ export class DashboardComponent implements OnInit {
 
     // start animation for the Completed Tasks Chart - Line Chart
     this.startAnimationForLineChart(completedTasksChart);
-
 
 
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */

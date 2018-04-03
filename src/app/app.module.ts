@@ -9,7 +9,7 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeambuilderComponent } from './teambuilder/teambuilder.component';
 import { RegisterComponent } from './register/register.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
@@ -21,7 +21,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    TeambuilderComponent,
     RegisterComponent,
     TableListComponent,
     TypographyComponent,
