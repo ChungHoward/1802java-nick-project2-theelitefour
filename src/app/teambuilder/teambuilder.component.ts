@@ -22,6 +22,7 @@ export class TeambuilderComponent implements OnInit {
   attack5: Array<string>;
   attack6: Array<string>;
 
+  none: string;
   electric: string;
   grass: string;
   psychic: string;
@@ -47,6 +48,7 @@ export class TeambuilderComponent implements OnInit {
     this.attack5 = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
     this.attack6 = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
 
+    this.none = '../assets/img/types/none.png';
     this.electric = '../assets/img/types/electric.png';
     this.grass = '../assets/img/types/grass.png';
     this.psychic = '../assets/img/types/psychic.png';
