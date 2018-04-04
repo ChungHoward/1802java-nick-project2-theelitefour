@@ -48,7 +48,7 @@ target/
 /.recommenders/
 
 # dependencies
-/node_modules
+**/node_modules
 
 # IDEs and editors
 .c9/
@@ -78,3 +78,5 @@ testem.log
 
 # System Files
 Thumbs.db
+#Hibernate 
+hibernate.cfg.xml
