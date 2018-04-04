@@ -45,3 +45,6 @@ target/
 #Mac
 .DS_Store
 /.recommenders/
+
+#Hibernate 
+hibernate.cfg.xml
