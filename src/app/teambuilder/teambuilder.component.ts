@@ -22,6 +22,7 @@ export class TeambuilderComponent implements OnInit {
   attack5: Array<string>;
   attack6: Array<string>;
 
+  none: string;
   electric: string;
   grass: string;
   psychic: string;
@@ -31,6 +32,8 @@ export class TeambuilderComponent implements OnInit {
   normal: string;
   ghost: string;
   poison: string;
+
+  expandOrCollapse: boolean;
 
   constructor() {
     this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
@@ -47,6 +50,7 @@ export class TeambuilderComponent implements OnInit {
     this.attack5 = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
     this.attack6 = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
 
+    this.none = '../assets/img/types/none.png';
     this.electric = '../assets/img/types/electric.png';
     this.grass = '../assets/img/types/grass.png';
     this.psychic = '../assets/img/types/psychic.png';
@@ -56,6 +60,12 @@ export class TeambuilderComponent implements OnInit {
     this.normal = '../assets/img/types/normal.png';
     this.ghost = '../assets/img/types/ghost.png';
     this.poison = '../assets/img/types/poison.png';
+
+    this.expandOrCollapse = false;
+  }
+
+  toggleCollapse() {
+    this.expandOrCollapse = !this.expandOrCollapse;
   }
 
   startAnimationForLineChart(chart) {

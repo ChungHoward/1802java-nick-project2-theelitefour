@@ -8,6 +8,9 @@
   width: 48px;
   height: 16px;
 }
+.card-content {
+  text-align: left;
+}
 ul {
   list-style-type: none;
   padding-left: 0;
