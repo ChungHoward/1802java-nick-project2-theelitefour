@@ -1,6 +1,11 @@
 <div class="main-content">
 
   <div class="container-fluid">
+
+    <button class="btn btn-light" (click)="toggleCollapse()">
+      <i class="material-icons">dashboard</i>
+      {{ expandOrCollapse ? 'Collapse' : 'Expand' }}
+    </button>
     <div class="row">
       <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
@@ -13,7 +18,7 @@
             <h4 class="title">Jolteon</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack1">{{ atk }}</li>
               </ul>
@@ -32,7 +37,7 @@
             <h4 class="title">Exeggutor</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack2">{{ atk }}</li>
               </ul>
@@ -51,7 +56,7 @@
             <h4 class="title">Moltres</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack3">{{ atk }}</li>
               </ul>
@@ -71,7 +76,7 @@
             <h4 class="title">Slowbro</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack4">{{ atk }}</li>
               </ul>
@@ -91,7 +96,7 @@
             <h4 class="title">Chansey</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack5">{{ atk }}</li>
               </ul>
@@ -111,7 +116,7 @@
             <h4 class="title">Gengar</h4>
           </div>
           <div class="card-footer">
-            <div class="stats">
+            <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of attack6">{{ atk }}</li>
               </ul>

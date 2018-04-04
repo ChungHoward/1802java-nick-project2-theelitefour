@@ -33,6 +33,8 @@ export class TeambuilderComponent implements OnInit {
   ghost: string;
   poison: string;
 
+  expandOrCollapse: boolean;
+
   constructor() {
     this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
     this.sprite2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
@@ -58,6 +60,12 @@ export class TeambuilderComponent implements OnInit {
     this.normal = '../assets/img/types/normal.png';
     this.ghost = '../assets/img/types/ghost.png';
     this.poison = '../assets/img/types/poison.png';
+
+    this.expandOrCollapse = false;
+  }
+
+  toggleCollapse() {
+    this.expandOrCollapse = !this.expandOrCollapse;
   }
 
   startAnimationForLineChart(chart) {
