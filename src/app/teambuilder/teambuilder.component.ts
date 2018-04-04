@@ -8,7 +8,56 @@ import * as Chartist from 'chartist';
 })
 export class TeambuilderComponent implements OnInit {
 
-  constructor() { }
+  sprite1: string;
+  sprite2: string;
+  sprite3: string;
+  sprite4: string;
+  sprite5: string;
+  sprite6: string;
+
+  attack1: Array<string>;
+  attack2: Array<string>;
+  attack3: Array<string>;
+  attack4: Array<string>;
+  attack5: Array<string>;
+  attack6: Array<string>;
+
+  electric: string;
+  grass: string;
+  psychic: string;
+  fire: string;
+  flying: string;
+  water: string;
+  normal: string;
+  ghost: string;
+  poison: string;
+
+  constructor() {
+    this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.sprite2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
+    this.sprite3 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
+    this.sprite4 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
+    this.sprite5 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
+    this.sprite6 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
+
+    this.attack1 = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.attack2 = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
+    this.attack3 = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
+    this.attack4 = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
+    this.attack5 = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
+    this.attack6 = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
+
+    this.electric = '../assets/img/types/electric.png';
+    this.grass = '../assets/img/types/grass.png';
+    this.psychic = '../assets/img/types/psychic.png';
+    this.fire = '../assets/img/types/fire.png';
+    this.flying = '../assets/img/types/flying.png';
+    this.water = '../assets/img/types/water.png';
+    this.normal = '../assets/img/types/normal.png';
+    this.ghost = '../assets/img/types/ghost.png';
+    this.poison = '../assets/img/types/poison.png';
+  }
+
   startAnimationForLineChart(chart) {
     let seq: any, delays: any, durations: any;
     seq = 0;
@@ -42,6 +91,7 @@ export class TeambuilderComponent implements OnInit {
 
     seq = 0;
   };
+
   startAnimationForBarChart(chart) {
     let seq2: any, delays2: any, durations2: any;
 
@@ -65,6 +115,7 @@ export class TeambuilderComponent implements OnInit {
 
     seq2 = 0;
   };
+
   ngOnInit() {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
@@ -116,10 +167,9 @@ export class TeambuilderComponent implements OnInit {
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
     const dataEmailsSubscriptionChart = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
       series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
+        [99, 87, 61, 121, 121, 103]
       ]
     };
     const optionsEmailsSubscriptionChart = {
@@ -127,7 +177,7 @@ export class TeambuilderComponent implements OnInit {
         showGrid: false
       },
       low: 0,
-      high: 1000,
+      high: 200,
       chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
     };
     const responsiveOptions: any[] = [
