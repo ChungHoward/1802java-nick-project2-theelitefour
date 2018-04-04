@@ -48,3 +48,6 @@ target/
 
 #Hibernate 
 hibernate.cfg.xml
+
+#node modules
+**/node_modules
