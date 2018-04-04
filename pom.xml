@@ -3,6 +3,6 @@
   <groupId>com.revature</groupId>
   <artifactId>BillsPC</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
   <name>BillsPC</name>
+  <packaging>war</packaging>
 </project>
