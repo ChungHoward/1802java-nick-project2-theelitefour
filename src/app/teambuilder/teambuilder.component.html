@@ -2,130 +2,116 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" data-background-color="orange">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png" alt="" />
+            <img src="{{sprite1}}" alt=""/>
           </div>
           <div class="card-content">
-            <p class="category">Electric</p>
+            <img src="{{electric}}" alt="electric" class="type" />
             <h4 class="title">Jolteon</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Thunderbolt</li>
-                <li>Pin Missile</li>
-                <li>Thunder Wave</li>
-                <li>Double Kick</li>
+                <li *ngFor="let atk of attack1">{{ atk }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" data-background-color="green">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png" alt="" />
+            <img src="sprite2" alt="" />
           </div>
           <div class="card-content">
-            <p class="category">Grass Psychic</p>
+            <img src="{{grass}}" alt="grass" class="type" />
+            <img src="{{psychic}}" alt="psychic" class="type" />
             <h4 class="title">Exeggutor</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Sleep Powder</li>
-                <li>Reflect</li>
-                <li>Psychic</li>
-                <li>Explosion</li>
+                <li *ngFor="let atk of attack2">{{ atk }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" data-background-color="red">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png" alt="" />
+            <img src="sprite3" alt="" />
           </div>
           <div class="card-content">
-            <p class="category">Fire Flying</p>
+            <img src="{{fire}}" alt="fire" class="type" />
+            <img src="{{flying}}" alt="flying" class="type" />
             <h4 class="title">Moltres</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Agility</li>
-                <li>Fire Spin</li>
-                <li>Fire Blast</li>
-                <li>Hyper Beam</li>
+                <li *ngFor="let atk of attack3">{{ atk }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" data-background-color="blue">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png" alt="" />
+            <img src="sprite4" alt="" />
           </div>
           <div class="card-content">
-            <p class="category">Water Psychic</p>
+            <img src="{{water}}" alt="water" class="type" />
+            <img src="{{psychic}}" alt="psychic" class="type" />
             <h4 class="title">Slowbro</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Amnesia</li>
-                <li>Surf</li>
-                <li>Psychic</li>
-                <li>Reflect</li>
+                <li *ngFor="let atk of attack4">{{ atk }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" [style.backgroundColor]="'pink'">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png" alt="" />
+            <img src="sprite5" alt="" />
           </div>
           <div class="card-content">
-            <p class="category">Normal</p>
+            <img src="{{normal}}" alt="normal" class="type" />
             <h4 class="title">Chansey</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Thunderbolt</li>
-                <li>Ice Beam</li>
-                <li>Counter</li>
-                <li>Softboiled</li>
+                <li *ngFor="let atk of attack5">{{ atk }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-xl-2 col-lg-4 col-sm-6">
+      <div class="col-lg-2 col-md-4 col-xs-6">
         <div class="card card-stats">
           <div class="card-header" data-background-color="purple">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="" />
+            <img src="sprite6" alt="" />
           </div>
           <div class="card-content">
-            <p class="category">Ghost Poison</p>
+            <img src="{{ghost}}" alt="ghost" class="type" />
+            <img src="{{poison}}" alt="poison" class="type" />
             <h4 class="title">Gengar</h4>
           </div>
           <div class="card-footer">
             <div class="stats">
               <ul>
-                <li>Thunderbolt</li>
-                <li>Mega Drain</li>
-                <li>Confuse Ray</li>
-                <li>Explosion</li>
+                <li *ngFor="let atk of attack6">{{ atk }}</li>
               </ul>
             </div>
           </div>
