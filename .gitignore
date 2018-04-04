@@ -47,9 +47,6 @@ target/
 .DS_Store
 /.recommenders/
 
-# dependencies
-**/node_modules
-
 # IDEs and editors
 .c9/
 *.launch
@@ -80,3 +77,6 @@ testem.log
 Thumbs.db
 #Hibernate 
 hibernate.cfg.xml
+
+#node modules
+**/node_modules
