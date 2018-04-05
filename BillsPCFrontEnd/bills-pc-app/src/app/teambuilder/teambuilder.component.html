@@ -124,10 +124,11 @@
           <div class="card-title">
             <form class="row poke-search" role="search">
               <div class="form-group form-black is-empty col-sm-10 col-xl-10">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Filter by name">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                  placeholder="Filter by name">
                 <span class="material-input"></span>
               </div>
-              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+              <button type="submit" class="btn btn-primary btn-round btn-just-icon">
                 <i class="material-icons">search</i>
                 <div class="ripple-container"></div>
               </button>
@@ -149,56 +150,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Bulbasaur</td>
+                <tr *ngFor="let pkmn of favTeam | pkmnFilter: searchInput; let i = index">
+                  <td>{{ pkmn.name }}</td>
                   <td>
-                    <img src="{{ grass }}" class="type">
-                    <img src="{{ poison }}" class="type">
+                    <img src="{{ pkmn.types[0] }}" class="type">
+                    <img src="{{ pkmn.types[1] }}" class="type">
                   </td>
-                  <td>45</td>
-                  <td>49</td>
-                  <td>49</td>
-                  <td>65</td>
-                  <td>65</td>
-                  <td>45</td>
-                </tr>
-                <tr>
-                  <td>Ivysaur</td>
-                  <td>
-                    <img src="{{ grass }}" class="type">
-                    <img src="{{ poison }}" class="type">
-                  </td>
-                  <td>60</td>
-                  <td>62</td>
-                  <td>63</td>
-                  <td>80</td>
-                  <td>80</td>
-                  <td>60</td>
-                </tr>
-                <tr>
-                  <td>Venusaur</td>
-                  <td>
-                    <img src="{{ grass }}" class="type">
-                    <img src="{{ poison }}" class="type">
-                  </td>
-                  <td>80</td>
-                  <td>82</td>
-                  <td>83</td>
-                  <td>100</td>
-                  <td>100</td>
-                  <td>80</td>
-                </tr>
-                <tr>
-                  <td>Charmander</td>
-                  <td>
-                    <img src="{{ fire }}" class="type">
-                  </td>
-                  <td>39</td>
-                  <td>52</td>
-                  <td>43</td>
-                  <td>50</td>
-                  <td>50</td>
-                  <td>65</td>
+                  <td *ngFor="let stat of pkmn.stats">{{ stat }}</td>
                 </tr>
               </tbody>
             </table>
