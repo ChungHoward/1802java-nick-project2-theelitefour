@@ -58,6 +58,7 @@ target/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+**/.code-workspace
 
 # misc
 /.sass-cache
@@ -72,9 +73,6 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
-
-# VSCODE
-*.workspace
 
 # System Files
 Thumbs.db
