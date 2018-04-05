@@ -1,12 +1,12 @@
-export interface Pokemon {
-  name: string;
-  types: Array<string>;
-  stats: Array<number>;
-  moveset: Array<string>;
-  sprite_url: string;
+export class Pokemon {
+  public name: string;
+  public types: Array<string>;
+  public stats: Array<number>;
+  public moveset: Array<string>;
+  public sprite_url: string;
 }
 
-interface PokeAPI {
+export interface PokeAPI {
   id: number;
   name: string;
   types: Array<Type>; // use Type.slot (1 or 2) && Type.type.name (fire, grass, etc)

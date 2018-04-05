@@ -1,5 +1,12 @@
+.main-content .container-fluid {
+  padding-right: 0px;
+}
 .row {
   width:100%;
+}
+.btn-secondary {
+  margin-top: -10px;
+  margin-left: calc(100% - 200px);
 }
 .stats {
   width:100%;

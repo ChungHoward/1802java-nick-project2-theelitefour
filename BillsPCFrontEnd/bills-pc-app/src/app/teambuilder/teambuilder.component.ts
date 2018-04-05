@@ -34,78 +34,92 @@ export class TeambuilderComponent implements OnInit {
   attack6: Array<string>;
 
   none: string;
-  electric: string;
-  grass: string;
-  psychic: string;
-  fire: string;
-  flying: string;
-  water: string;
   normal: string;
-  ghost: string;
+  grass: string;
+  fire: string;
+  water: string;
+  electric: string;
+  ice: string;
+  bug: string;
   poison: string;
+  ground: string;
+  rock: string;
+  fight: string;
+  flying: string;
+  psychic: string;
+  ghost: string;
+  dragon: string;
 
   expandOrCollapse: boolean;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string;
   myStyle: any;
+  searchInput: string;
 
   constructor() {
+    /* Initialize all the types, perhaps consider exporting them */
+    this.none = 'assets/img/types/none.png';
+    this.normal = 'assets/img/types/normal.png';
+    this.grass = 'assets/img/types/grass.png';
+    this.fire = 'assets/img/types/fire.png';
+    this.water = 'assets/img/types/water.png';
+    this.electric = 'assets/img/types/electric.png';
+    this.ice = 'assets/img/types/ice.png';
+    this.bug = 'assets/img/types/bug.png';
+    this.poison = 'assets/img/types/poison.png';
+    this.ground = 'assets/img/types/ground.png';
+    this.rock = 'assets/img/types/rock.png';
+    this.fight = 'assets/img/types/fight.png';
+    this.flying = 'assets/img/types/flying.png';
+    this.psychic = 'assets/img/types/psychic.png';
+    this.ghost = 'assets/img/types/ghost.png';
+    this.dragon = 'assets/img/types/dragon.png';
+
     /* Display your team on page load */
+    this.pkmn1 = new Pokemon();
+    this.pkmn2 = new Pokemon();
+    this.pkmn3 = new Pokemon();
+    this.pkmn4 = new Pokemon();
+    this.pkmn5 = new Pokemon();
+    this.pkmn6 = new Pokemon();
     this.pkmn1.name = 'Jolteon';
     this.pkmn1.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn1.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn1.types = [this.electric, this.none];
     this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
     this.pkmn2.name = 'Exeggutor';
-    this.pkmn2.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn2.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
-    this.pkmn2.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.pkmn3.name = 'Jolteon';
-    this.pkmn3.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn3.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
-    this.pkmn3.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.pkmn4.name = 'Jolteon';
-    this.pkmn4.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn4.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
-    this.pkmn4.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.pkmn5.name = 'Jolteon';
-    this.pkmn5.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn5.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
-    this.pkmn5.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.pkmn6.name = 'Jolteon';
-    this.pkmn6.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn6.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
-    this.pkmn6.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn2.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
+    this.pkmn2.types = [this.grass, this.psychic];
+    this.pkmn2.moveset = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
+    this.pkmn3.name = 'Moltres';
+    this.pkmn3.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
+    this.pkmn3.types = [this.fire, this.flying];
+    this.pkmn3.moveset = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
+    this.pkmn4.name = 'Slowbro';
+    this.pkmn4.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
+    this.pkmn4.types = [this.water, this.psychic];
+    this.pkmn4.moveset = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
+    this.pkmn5.name = 'Chansey';
+    this.pkmn5.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
+    this.pkmn5.types = [this.normal, this.none];
+    this.pkmn5.moveset = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
+    this.pkmn6.name = 'Gengar';
+    this.pkmn6.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
+    this.pkmn6.types = [this.ghost, this.poison];
+    this.pkmn6.moveset = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
+    this.favTeam = new Array<Pokemon>();
     this.favTeam.push(this.pkmn1);
+    this.favTeam.push(this.pkmn2);
+    this.favTeam.push(this.pkmn3);
+    this.favTeam.push(this.pkmn4);
+    this.favTeam.push(this.pkmn5);
+    this.favTeam.push(this.pkmn6);
 
-    this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.sprite2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
-    this.sprite3 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
-    this.sprite4 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
-    this.sprite5 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
-    this.sprite6 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
-    this.attack1 = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.attack2 = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
-    this.attack3 = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
-    this.attack4 = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
-    this.attack5 = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
-    this.attack6 = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
-
-    this.none = 'assets/img/types/none.png';
-    this.electric = 'assets/img/types/electric.png';
-    this.grass = 'assets/img/types/grass.png';
-    this.psychic = 'assets/img/types/psychic.png';
-    this.fire = 'assets/img/types/fire.png';
-    this.flying = 'assets/img/types/flying.png';
-    this.water = 'assets/img/types/water.png';
-    this.normal = 'assets/img/types/normal.png';
-    this.ghost = 'assets/img/types/ghost.png';
-    this.poison = 'assets/img/types/poison.png';
-
+    // by default our attacks are collapsed
     this.expandOrCollapse = false;
 
+    // this will be used as a placeholder image before searching for a pokemon
     this.questionSprite = 'assets/img/question.png';
-    this.myStyle = {'background-color': 'white'};
   }
 
   toggleCollapse() {
@@ -223,7 +237,7 @@ export class TeambuilderComponent implements OnInit {
     const dataEmailsSubscriptionChart = {
       labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
       series: [
-        [99, 87, 61, 121, 121, 103]
+        [250, 5, 5, 105, 105, 50]
       ]
     };
     const optionsEmailsSubscriptionChart = {
