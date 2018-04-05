@@ -54,6 +54,7 @@ export class TeambuilderComponent implements OnInit {
     this.jolteon.name = 'Jolteon';
     this.jolteon.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
     this.jolteon.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.jolteon.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
 
     this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
     this.sprite2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
