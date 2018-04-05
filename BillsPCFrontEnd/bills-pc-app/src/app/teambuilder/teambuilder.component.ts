@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Filter } from 'app/pipe/filter.pipe';
+import { Pokemon } from 'app/pokemon';
 import * as Chartist from 'chartist';
 
 @Component({
@@ -7,6 +9,15 @@ import * as Chartist from 'chartist';
   styleUrls: ['./teambuilder.component.css']
 })
 export class TeambuilderComponent implements OnInit {
+
+  /* These variables are for the team display at the top of the page */
+  favTeam: Array<Pokemon>;
+  pkmn1: Pokemon;
+  pkmn2: Pokemon;
+  pkmn3: Pokemon;
+  pkmn4: Pokemon;
+  pkmn5: Pokemon;
+  pkmn6: Pokemon;
 
   sprite1: string;
   sprite2: string;
@@ -35,14 +46,44 @@ export class TeambuilderComponent implements OnInit {
 
   expandOrCollapse: boolean;
 
+  /* These variables are for the Detailed Pokemon View/Search */
+  questionSprite: string;
+  myStyle: any;
+
   constructor() {
+    /* Display your team on page load */
+    this.pkmn1.name = 'Jolteon';
+    this.pkmn1.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn1.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn2.name = 'Exeggutor';
+    this.pkmn2.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn2.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn2.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn3.name = 'Jolteon';
+    this.pkmn3.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn3.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn3.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn4.name = 'Jolteon';
+    this.pkmn4.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn4.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn4.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn5.name = 'Jolteon';
+    this.pkmn5.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn5.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn5.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.pkmn6.name = 'Jolteon';
+    this.pkmn6.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+    this.pkmn6.types = ['assets/img/types/electric.png', 'assets/img/types/none.png'];
+    this.pkmn6.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
+    this.favTeam.push(this.pkmn1);
+
     this.sprite1 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
     this.sprite2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
     this.sprite3 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
     this.sprite4 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
     this.sprite5 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
     this.sprite6 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
-
     this.attack1 = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
     this.attack2 = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
     this.attack3 = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
@@ -62,6 +103,9 @@ export class TeambuilderComponent implements OnInit {
     this.poison = 'assets/img/types/poison.png';
 
     this.expandOrCollapse = false;
+
+    this.questionSprite = 'assets/img/question.png';
+    this.myStyle = {'background-color': 'white'};
   }
 
   toggleCollapse() {

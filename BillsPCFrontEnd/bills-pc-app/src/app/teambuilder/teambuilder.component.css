@@ -1,17 +1,34 @@
 .row {
-    width:100%;
-  }
-  .stats {
-    width:100%;
-  }
-  .type {
-    width: 48px;
-    height: 16px;
-  }
-  .card-content {
-    text-align: left;
-  }
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
+  width:100%;
+}
+.stats {
+  width:100%;
+}
+.type {
+  width: 48px;
+  height: 16px;
+}
+.sprite {
+  width: 96px;
+  height: 96px;
+}
+.card-content {
+  text-align: left;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.main-content {
+  margin-top: 50px;
+}
+::placeholder { 
+    color: black;
+    opacity: 1;
+}
+.poke-search {
+  float: right;
+}
+.pkmn-table {
+  max-height: 600px;
+}

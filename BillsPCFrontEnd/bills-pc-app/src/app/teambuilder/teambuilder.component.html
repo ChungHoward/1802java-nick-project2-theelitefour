@@ -129,92 +129,134 @@
     <div class="row">
 
       <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header" data-background-color="orange">
-            <h4 class="title">Employees Stats</h4>
-            <p class="category">New employees on 15th September, 2016</p>
+        <div class="card card-stats container-fluid">
+          <div class="card-header card-chart" data-background-color="pink">
+            <div class="ct-chart" id="emailsSubscriptionChart"></div>
           </div>
-          <div class="card-content table-responsive">
-            <table class="table table-hover">
-              <thead class="text-warning">
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Dakota Rice</td>
-                  <td>$36,738</td>
-                  <td>Niger</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Minerva Hooper</td>
-                  <td>$23,789</td>
-                  <td>Curaçao</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Sage Rodriguez</td>
-                  <td>$56,142</td>
-                  <td>Netherlands</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Philip Chaney</td>
-                  <td>$38,735</td>
-                  <td>Korea, South</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="card-content">
+            <img class="sprite" src="{{sprite5}}" alt="" />
+            <img src="{{normal}}" alt="normal" class="type" />
+            <img src="{{none}}" alt="none" class="type" />
+            <h4 class="title">Chansey</h4>
+          </div>
+          <div class="card-footer">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                    <th>Country</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Dakota Rice</td>
+                    <td>$36,738</td>
+                    <td>Niger</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Minerva Hooper</td>
+                    <td>$23,789</td>
+                    <td>Curaçao</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Sage Rodriguez</td>
+                    <td>$56,142</td>
+                    <td>Netherlands</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Philip Chaney</td>
+                    <td>$38,735</td>
+                    <td>Korea, South</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </div>
 
       <div class="col-lg-6 col-md-12">
         <div class="card">
-          <div class="card-header" data-background-color="orange">
-            <h4 class="title">Employees Stats</h4>
-            <p class="category">New employees on 15th September, 2016</p>
+          <div class="card-title">
+            <form class="row poke-search" role="search">
+              <div class="form-group form-black is-empty col-sm-10 col-xl-10">
+                <input [(ngModel)]="id" type="text" class="form-control" placeholder="Filter by name">
+                <span class="material-input"></span>
+              </div>
+              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </form>
           </div>
-          <div class="card-content table-responsive">
+
+          <div class="card-content table-responsive pkmn-table">
             <table class="table table-hover">
               <thead class="text-warning">
                 <tr>
-                  <th>ID</th>
                   <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
+                  <th>Type</th>
+                  <th>HP</th>
+                  <th>Atk</th>
+                  <th>Def</th>
+                  <th>Satk</th>
+                  <th>Sdef</th>
+                  <th>Spe</th>
+                  <th>BST</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Dakota Rice</td>
-                  <td>$36,738</td>
-                  <td>Niger</td>
+                  <td>Bulbasaur</td>
+                  <td>Grass Poison</td>
+                  <td>45</td>
+                  <td>49</td>
+                  <td>49</td>
+                  <td>65</td>
+                  <td>65</td>
+                  <td>45</td>
+                  <td>253</td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Minerva Hooper</td>
-                  <td>$23,789</td>
-                  <td>Curaçao</td>
+                  <td>Ivysaur</td>
+                  <td>Grass Poison</td>
+                  <td>60</td>
+                  <td>62</td>
+                  <td>63</td>
+                  <td>80</td>
+                  <td>80</td>
+                  <td>60</td>
+                  <td>325</td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>Sage Rodriguez</td>
-                  <td>$56,142</td>
-                  <td>Netherlands</td>
+                  <td>Venusaur</td>
+                  <td>Grass Poison</td>
+                  <td>80</td>
+                  <td>82</td>
+                  <td>83</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>80</td>
+                  <td>425</td>
                 </tr>
                 <tr>
-                  <td>4</td>
-                  <td>Philip Chaney</td>
-                  <td>$38,735</td>
-                  <td>Korea, South</td>
+                  <td>Charmander</td>
+                  <td>Fire</td>
+                  <td>39</td>
+                  <td>52</td>
+                  <td>43</td>
+                  <td>50</td>
+                  <td>50</td>
+                  <td>65</td>
+                  <td>249</td>
                 </tr>
               </tbody>
             </table>
