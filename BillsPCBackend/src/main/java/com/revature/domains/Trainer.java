@@ -1,4 +1,4 @@
-package com.revature.domains;
+8package com.revature.domains;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 @Entity
 @Table(name="TRAINER")
 public class Trainer {
+	
 	
 	@Id
 	@Column(name="TRAINER_ID")
