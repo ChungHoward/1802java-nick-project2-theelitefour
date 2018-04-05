@@ -73,6 +73,9 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
+# VSCODE
+*.workspace
+
 # System Files
 Thumbs.db
 #Hibernate 
