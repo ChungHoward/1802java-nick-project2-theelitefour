@@ -1,44 +1,47 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+# .git/info/exclude
 
-# compiled output
-/dist
-/dist-server
-/tmp
-/out-tsc
+**/pull_request_template.md
+**/issue_template.md
+**/target/
+**/bin/
+**/META-INF/**
 
-# dependencies
-/node_modules
+#Eclipse
+**/.metadata
+**/.project
+**/.settings/
+**/.classpath
+**/.recommenders/**
+**/Servers
+**/.springBeans
+**/*.properties
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# Maven
+log/
+target/
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+#Intellij
+.idea/
+*.iml
+*.iws
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+#Package Files
+*.war
+*.jar
 
-# e2e
-/e2e/*.js
-/e2e/*.map
+#IDEA
+**/.idea/
+**/*.iml
 
-# System Files
+#AngularJS
+**/.tern-project
+
+#Mac
 .DS_Store
-Thumbs.db
+/.recommenders/
