@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PokemonService } from '../services/pokemon.service';
-import { Pokemon } from '../pokemon';
+import { PokeAPI } from '../pokemon';
 
 @Component({
   selector: 'app-pokemon',
@@ -12,7 +12,7 @@ import { Pokemon } from '../pokemon';
 export class PokemonComponent implements OnInit {
 
   id: string;
-  myPokemon: Pokemon;
+  myPokemon: PokeAPI;
 
   constructor(private pokeService: PokemonService) { }
 

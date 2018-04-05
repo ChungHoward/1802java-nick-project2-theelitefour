@@ -1,124 +1,28 @@
 <div class="main-content">
 
   <div class="container-fluid">
-
-    <button class="btn btn-light" (click)="toggleCollapse()">
+    <!-- This button reveals or hides the attacks on your favTeam -->
+    <button class="btn btn-secondary" (click)="toggleCollapse()">
       <i class="material-icons">dashboard</i>
-      {{ expandOrCollapse ? 'Collapse' : 'Expand' }}
+      {{ expandOrCollapse ? 'Hide moves' : 'Show moves' }}
     </button>
+
     <div class="row">
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
+      <!-- Loop through and print every Pokemon in favTeam -->
+      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+        <div class="card">
           <div class="card-header" data-background-color="orange">
-            <img src="{{sprite1}}" alt="" />
+            <img src="{{ favTeam[i].sprite_url }}" alt="" />
           </div>
           <div class="card-content">
-            <img src="{{none}}" alt="none" class="type" />
-            <img src="{{electric}}" alt="electric" class="type" />
-            <h4 class="title">Jolteon</h4>
+            <img src="{{ favTeam[i].types[0] }}" alt="" class="type" />
+            <img src="{{ favTeam[i].types[1] }}" alt="" class="type" />
+            <h4 class="title">{{ favTeam[i].name }}</h4>
           </div>
           <div class="card-footer">
             <div class="stats" *ngIf="expandOrCollapse">
               <ul>
-                <li *ngFor="let atk of attack1">{{ atk }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="green">
-            <img src="{{sprite2}}" alt="" />
-          </div>
-          <div class="card-content">
-            <img src="{{grass}}" alt="grass" class="type" />
-            <img src="{{psychic}}" alt="psychic" class="type" />
-            <h4 class="title">Exeggutor</h4>
-          </div>
-          <div class="card-footer">
-            <div class="stats" *ngIf="expandOrCollapse">
-              <ul>
-                <li *ngFor="let atk of attack2">{{ atk }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="red">
-            <img src="{{sprite3}}" alt="" />
-          </div>
-          <div class="card-content">
-            <img src="{{fire}}" alt="fire" class="type" />
-            <img src="{{flying}}" alt="flying" class="type" />
-            <h4 class="title">Moltres</h4>
-          </div>
-          <div class="card-footer">
-            <div class="stats" *ngIf="expandOrCollapse">
-              <ul>
-                <li *ngFor="let atk of attack3">{{ atk }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="blue">
-            <img src="{{sprite4}}" alt="" />
-          </div>
-          <div class="card-content">
-            <img src="{{water}}" alt="water" class="type" />
-            <img src="{{psychic}}" alt="psychic" class="type" />
-            <h4 class="title">Slowbro</h4>
-          </div>
-          <div class="card-footer">
-            <div class="stats" *ngIf="expandOrCollapse">
-              <ul>
-                <li *ngFor="let atk of attack4">{{ atk }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
-          <div class="card-header" [style.backgroundColor]="'pink'">
-            <img src="{{sprite5}}" alt="" />
-          </div>
-          <div class="card-content">
-            <img src="{{none}}" alt="none" class="type" />
-            <img src="{{normal}}" alt="normal" class="type" />
-            <h4 class="title">Chansey</h4>
-          </div>
-          <div class="card-footer">
-            <div class="stats" *ngIf="expandOrCollapse">
-              <ul>
-                <li *ngFor="let atk of attack5">{{ atk }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-4 col-xs-6">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="purple">
-            <img src="{{sprite6}}" alt="" />
-          </div>
-          <div class="card-content">
-            <img src="{{ghost}}" alt="ghost" class="type" />
-            <img src="{{poison}}" alt="poison" class="type" />
-            <h4 class="title">Gengar</h4>
-          </div>
-          <div class="card-footer">
-            <div class="stats" *ngIf="expandOrCollapse">
-              <ul>
-                <li *ngFor="let atk of attack6">{{ atk }}</li>
+                <li *ngFor="let atk of favTeam[i].moveset">{{ atk }}</li>
               </ul>
             </div>
           </div>
@@ -128,52 +32,84 @@
 
     <div class="row">
 
-      <div class="col-lg-6 col-md-12">
+      <div class="col-lg-7 col-md-12">
         <div class="card card-stats container-fluid">
-          <div class="card-header card-chart" data-background-color="pink">
+          <div class="card-header card-chart" data-background-color="red">
             <div class="ct-chart" id="emailsSubscriptionChart"></div>
           </div>
           <div class="card-content">
-            <img class="sprite" src="{{sprite5}}" alt="" />
-            <img src="{{normal}}" alt="normal" class="type" />
-            <img src="{{none}}" alt="none" class="type" />
-            <h4 class="title">Chansey</h4>
+            <img class="sprite" src="{{ favTeam[4].sprite_url }}" alt="" />
+            <br/>
+            <img src="{{ favTeam[4].types[0] }}" alt="normal" class="type" />
+            <img src="{{ favTeam[4].types[1] }}" alt="none" class="type" />
+            <h4 class="title">{{ favTeam[4].name }}</h4>
           </div>
           <div class="card-footer">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead class="text-warning">
                   <tr>
-                    <th>ID</th>
                     <th>Name</th>
-                    <th>Salary</th>
-                    <th>Country</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Power</th>
+                    <th>Acc</th>
+                    <th>PP</th>
+                    <th>Effect</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>Dakota Rice</td>
-                    <td>$36,738</td>
-                    <td>Niger</td>
+                    <td>{{ favTeam[4].moveset[0] }}</td>
+                    <td>
+                      <img src="{{ electric }}" class="type">
+                    </td>
+                    <td>Special</td>
+                    <td>95</td>
+                    <td>100%</td>
+                    <td>16</td>
+                    <td>
+                      <small>10% paralysis chance.</small>
+                    </td>
                   </tr>
                   <tr>
-                    <td>2</td>
-                    <td>Minerva Hooper</td>
-                    <td>$23,789</td>
-                    <td>Curaçao</td>
+                    <td>Ice Beam</td>
+                    <td>
+                      <img src="{{ ice }}" class="type">
+                    </td>
+                    <td>Special</td>
+                    <td>95</td>
+                    <td>100%</td>
+                    <td>16</td>
+                    <td>
+                      <small>10% freeze chance.</small>
+                    </td>
                   </tr>
                   <tr>
-                    <td>3</td>
-                    <td>Sage Rodriguez</td>
-                    <td>$56,142</td>
-                    <td>Netherlands</td>
+                    <td>Counter</td>
+                    <td>
+                      <img src="{{ fight }}" class="type">
+                    </td>
+                    <td>Physical</td>
+                    <td>--</td>
+                    <td>100%</td>
+                    <td>32</td>
+                    <td>
+                      <small>If hit by normal or fighting type attack, returns double damage.</small>
+                    </td>
                   </tr>
                   <tr>
-                    <td>4</td>
-                    <td>Philip Chaney</td>
-                    <td>$38,735</td>
-                    <td>Korea, South</td>
+                    <td>Softboiled</td>
+                    <td>
+                      <img src="{{ normal }}" class="type">
+                    </td>
+                    <td>Status</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>16</td>
+                    <td>
+                      <small>Heals self by 50% of max HP.</small>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -183,12 +119,12 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-12">
+      <div class="col-lg-5 col-md-12">
         <div class="card">
           <div class="card-title">
             <form class="row poke-search" role="search">
               <div class="form-group form-black is-empty col-sm-10 col-xl-10">
-                <input [(ngModel)]="id" type="text" class="form-control" placeholder="Filter by name">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Filter by name">
                 <span class="material-input"></span>
               </div>
               <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -210,116 +146,65 @@
                   <th>Satk</th>
                   <th>Sdef</th>
                   <th>Spe</th>
-                  <th>BST</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Bulbasaur</td>
-                  <td>Grass Poison</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
                   <td>45</td>
                   <td>49</td>
                   <td>49</td>
                   <td>65</td>
                   <td>65</td>
                   <td>45</td>
-                  <td>253</td>
                 </tr>
                 <tr>
                   <td>Ivysaur</td>
-                  <td>Grass Poison</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
                   <td>60</td>
                   <td>62</td>
                   <td>63</td>
                   <td>80</td>
                   <td>80</td>
                   <td>60</td>
-                  <td>325</td>
                 </tr>
                 <tr>
                   <td>Venusaur</td>
-                  <td>Grass Poison</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
                   <td>80</td>
                   <td>82</td>
                   <td>83</td>
                   <td>100</td>
                   <td>100</td>
                   <td>80</td>
-                  <td>425</td>
                 </tr>
                 <tr>
                   <td>Charmander</td>
-                  <td>Fire</td>
+                  <td>
+                    <img src="{{ fire }}" class="type">
+                  </td>
                   <td>39</td>
                   <td>52</td>
                   <td>43</td>
                   <td>50</td>
                   <td>50</td>
                   <td>65</td>
-                  <td>249</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-header card-chart" data-background-color="green">
-              <div class="ct-chart" id="dailySalesChart"></div>
-            </div>
-            <div class="card-content">
-              <h4 class="title">Daily Sales</h4>
-              <p class="category">
-                <span class="text-success">
-                  <i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> updated 4 minutes ago
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-header card-chart" data-background-color="orange">
-              <div class="ct-chart" id="emailsSubscriptionChart"></div>
-            </div>
-            <div class="card-content">
-              <h4 class="title">Email Subscriptions</h4>
-              <p class="category">Last Campaign Performance</p>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-header card-chart" data-background-color="red">
-              <div class="ct-chart" id="completedTasksChart"></div>
-            </div>
-            <div class="card-content">
-              <h4 class="title">Completed Tasks</h4>
-              <p class="category">Last Campaign Performance</p>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
