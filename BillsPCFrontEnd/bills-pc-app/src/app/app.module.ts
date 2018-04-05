@@ -13,6 +13,7 @@ import { Filter } from './pipe/filter.pipe';
 
 import { TeambuilderComponent } from './teambuilder/teambuilder.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
@@ -26,6 +27,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     AppComponent,
     TeambuilderComponent,
     RegisterComponent,
+    LoginComponent,
     TableListComponent,
     TypographyComponent,
     IconsComponent,
