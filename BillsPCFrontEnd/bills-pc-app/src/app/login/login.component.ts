@@ -8,16 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   username: string;
-  email: string;
   password: string;
-  cpassword: string;
 
   submitted: boolean;
-  passwordMatch: boolean;
 
   constructor() {
     this.submitted = false;
-    this.passwordMatch = false;
   }
 
   onSubmit() {
@@ -36,15 +32,7 @@ export class LoginComponent implements OnInit {
     // send request to /login with fields, username, password, email
     xhr.open('POST', '/login', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send('username=' + this.username + '&password=' + this.password + '&email=' + this.email);
-  }
-
-  matchPassword() {
-    if (this.password === this.cpassword) {
-      this.passwordMatch = true;
-    } else {
-      this.passwordMatch = false;
-    }
+    xhr.send('username=' + this.username + '&password=' + this.password);
   }
 
   ngOnInit() { }
