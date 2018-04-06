@@ -6,6 +6,8 @@
 }
 .row {
   width:100%;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .stats {
   width:100%;
@@ -35,6 +37,8 @@ ul {
 .sprite {
   width: 96px;
   height: 96px;
+  padding: 0px;
+  margin: 0px;
 }
 /* Improve readability. Default is orange on white background. */
 
@@ -61,3 +65,6 @@ td input {
 }
 .material-icons.md-18 { font-size: 18px; }
 .ta-center { text-align: center; }
+.no-padding {
+  padding: 0px;
+}

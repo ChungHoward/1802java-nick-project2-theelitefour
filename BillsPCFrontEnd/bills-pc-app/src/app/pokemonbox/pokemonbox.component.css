@@ -5,7 +5,7 @@
   padding-bottom: 0px;
 }
 .row {
-  width:100%;
+  width: 100%;
 }
 /* Native image sizes */
 .type {
@@ -35,4 +35,16 @@ td input {
   max-height: 600px;
 }
 .material-icons.md-18 { font-size: 18px; }
+.ta-left { text-align: left; }
 .ta-center { text-align: center; }
+.ta-right { text-align: right; }
+a i {
+  display: inline;
+}
+.nav-link {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.nav {
+  margin: 0px
+}

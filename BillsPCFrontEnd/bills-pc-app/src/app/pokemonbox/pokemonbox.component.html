@@ -1,74 +1,30 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      
+
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header" data-background-color="red">
-            <h4 class="title">Simple Table</h4>
-            <p class="category">Here is a subtitle for this table</p>
+            <ul class="nav nav-pills row">
+              <li class="nav-item ta-center col-lg-7 col-md-5">
+                <a class="nav-link" role="button" (click)="favoriteTeam(newTeamName)">
+                  <i class="material-icons">star</i> Favorite
+                </a>
+              </li>
+              <li class="col-md-1"></li>
+              <li class="nav-item ta-center float-right col-lg-4 col-md-5">
+                <a class="nav-link" role="button" (click)="saveTeam(newTeamName)">
+                  <i class="material-icons">save</i> Save
+                </a>
+              </li>
+            </ul>
           </div>
-          <div class="card-content table-responsive">
-            <table class="table">
-              <thead class="text-danger">
-                <tr>
-                  <th>Name</th>
-                  <th>Country</th>
-                  <th>City</th>
-                  <th>Salary</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Dakota Rice</td>
-                  <td>Niger</td>
-                  <td>Oud-Turnhout</td>
-                  <td class="text-danger">$36,738</td>
-                </tr>
-                <tr>
-                  <td>Minerva Hooper</td>
-                  <td>Curaçao</td>
-                  <td>Sinaai-Waas</td>
-                  <td class="text-danger">$23,789</td>
-                </tr>
-                <tr>
-                  <td>Sage Rodriguez</td>
-                  <td>Netherlands</td>
-                  <td>Baileux</td>
-                  <td class="text-danger">$56,142</td>
-                </tr>
-                <tr>
-                  <td>Philip Chaney</td>
-                  <td>Korea, South</td>
-                  <td>Overland Park</td>
-                  <td class="text-danger">$38,735</td>
-                </tr>
-                <tr>
-                  <td>Doris Greene</td>
-                  <td>Malawi</td>
-                  <td>Feldkirchen in Kärnten</td>
-                  <td class="text-danger">$63,542</td>
-                </tr>
-                <tr>
-                  <td>Mason Porter</td>
-                  <td>Chile</td>
-                  <td>Gloucester</td>
-                  <td class="text-danger">$78,615</td>
-                </tr>
-              </tbody>
-            </table>
 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
           <div class="card-content">
             <form class="row poke-search" role="search">
               <div class="form-group col-sm-12 col-xl-12">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
-                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <input [(ngModel)]="newTeamName" name="newTeamName" type="text" class="form-control" 
+                  placeholder="Team Name" [(value)]="Untitled">
                 <span class="material-input"></span>
               </div>
             </form>
@@ -80,10 +36,54 @@
                 <thead class="text-warning">
                   <tr>
                     <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
-                      {{ col | titlecase }}<br/>
-                      <i class="material-icons md-18" role="button" 
-                        (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
-                      </th>
+                      {{ col | titlecase }}
+                      <br/>
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
+                    <td class="ta-center">
+                      <img src="{{ pkmn.types[0] }}" class="type">
+                      <img src="{{ pkmn.types[1] }}" class="type">
+                    </td>
+                    <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Simple Table</h4>
+            <p class="category">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-content">
+            <form class="row poke-search" role="search">
+              <div class="form-group col-sm-12 col-xl-12">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <span class="material-input"></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
+                      {{ col | titlecase }}
+                      <br/>
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>

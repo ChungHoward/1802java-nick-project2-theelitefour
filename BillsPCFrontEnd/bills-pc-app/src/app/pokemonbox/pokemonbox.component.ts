@@ -18,7 +18,6 @@ export class PokemonBoxComponent implements OnInit {
   types: TypeService;
 
   /* These variables are for the Detailed Pokemon View/Search */
-  questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
   pkmnTableColNames: Array<string>;
   colSortIcons: Array<string>;
   sortBy: string;
@@ -32,9 +31,6 @@ export class PokemonBoxComponent implements OnInit {
     /* Assign my favTeam using teamService */
     this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
-
-    // this can be used as a placeholder image before searching for a pokemon
-    this.questionSprite = 'assets/img/question.png';
 
     this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
     this.colSortIcons = [ // The icon underneath each pkmnTableColNames

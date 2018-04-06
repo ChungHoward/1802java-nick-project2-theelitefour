@@ -35,15 +35,19 @@
           <div class="card-header card-chart" data-background-color="purple">
             <div class="ct-chart" id="pokemonStatChart"></div>
           </div>
+          <div class="card-header" data-background-color="red">
+            Critical Rate <br/>
+            {{ selectedPkmn.stats[5] * 100 / 512 | number:'2.1-2'}} %
+          </div>
 
-          <div class="card-content ta-center">
-            <img class="sprite" src="{{ selectedPkmn.sprite_url }}" alt="" />
-            <br/>
-            <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
-            <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
-            <h4 class="title">{{ selectedPkmn.name }}</h4>
-            <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
-            <p>{{ selPkmnMoves }}</p>
+          <div class="card-content ta-center row">
+            <div class="no-padding col-lg-3 col-md-3">
+              <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
+              <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
+              <h4 class="title">{{ selectedPkmn.name }}</h4>
+              <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
+            </div>
+            <img class="sprite col-lg-3 col-md-3" src="{{ selectedPkmn.sprite_url }}" alt="" />
           </div>
 
           <div class="card-footer">
@@ -169,7 +173,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </div>
