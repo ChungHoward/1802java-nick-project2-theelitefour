@@ -1,0 +1,17 @@
+.logo {
+  width: 200px;
+}
+.sidebar-wrapper {
+  width: 222px;
+}
+.nav-container {
+  width: 220px;
+}
+li {
+  width: 210px;
+}
+li a {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 200px;
+}

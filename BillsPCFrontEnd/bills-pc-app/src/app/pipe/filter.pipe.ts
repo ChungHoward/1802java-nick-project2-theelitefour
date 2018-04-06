@@ -1,22 +1,31 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Pokemon } from '../pokemon';
 
 @Pipe({
-    name: 'filter'
+  name: 'pkmnFilter'
 })
 export class Filter implements PipeTransform {
 
-    transform(stringList: string[], searchText: string): string[] {
+  transform(pkmnList: Pokemon[], searchText: string): Pokemon[] {
 
-        if (!stringList) {
-            return [];
-        }
-
-        searchText = searchText.toLowerCase();
-
-        return stringList.filter( movie => {
-            let search: boolean;
-            search = movie.toLowerCase().includes(searchText);
-            return search;
-        });
+    if (!pkmnList) {
+      return [];
     }
+
+    if (!searchText) {
+      return pkmnList;
+    }
+
+    searchText = searchText.toLowerCase();
+
+    const newList = new Array<Pokemon>();
+
+    pkmnList.forEach(pkmn => {
+      if (pkmn.name.toLowerCase().includes(searchText)) {
+        newList.push(pkmn);
+      }
+    });
+
+    return newList;
+  }
 }
