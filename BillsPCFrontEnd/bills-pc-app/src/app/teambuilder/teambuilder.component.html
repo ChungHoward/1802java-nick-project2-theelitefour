@@ -9,7 +9,7 @@
 
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
-      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index" (click)="selectPokemon(pkmn)">
         <div class="card">
           <div class="card-header" data-background-color="orange">
             <img src="{{ favTeam[i].sprite_url }}" alt="" />
@@ -37,12 +37,12 @@
           <div class="card-header card-chart" data-background-color="purple">
             <div class="ct-chart" id="emailsSubscriptionChart"></div>
           </div>
-          <div class="card-content">
-            <img class="sprite" src="{{ favTeam[4].sprite_url }}" alt="" />
+          <div class="card-content ta-center">
+            <img class="sprite" src="{{ selectedPkmn.sprite_url }}" alt="" />
             <br/>
-            <img src="{{ favTeam[4].types[0] }}" alt="normal" class="type" />
-            <img src="{{ favTeam[4].types[1] }}" alt="none" class="type" />
-            <h4 class="title">{{ favTeam[4].name }}</h4>
+            <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
+            <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
+            <h4 class="title">{{ selectedPkmn.name }}</h4>
           </div>
           <div class="card-footer">
             <div class="table-responsive">
@@ -60,7 +60,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{ favTeam[4].moveset[0] }}</td>
+                    <td>{{ selectedPkmn.moveset[0] }}</td>
                     <td>
                       <img src="{{ electric }}" class="type">
                     </td>
@@ -73,7 +73,7 @@
                     <td>10% paralysis chance.</td>
                   </tr>
                   <tr>
-                    <td>Ice Beam</td>
+                    <td>{{ selectedPkmn.moveset[1] }}</td>
                     <td>
                       <img src="{{ ice }}" class="type">
                     </td>
@@ -86,7 +86,7 @@
                     <td>10% freeze chance.</td>
                   </tr>
                   <tr>
-                    <td>Counter</td>
+                    <td>{{ selectedPkmn.moveset[2] }}</td>
                     <td>
                       <img src="{{ fight }}" class="type">
                     </td>
@@ -99,7 +99,7 @@
                     <td>If hit by normal or fighting type attack, returns double damage.</td>
                   </tr>
                   <tr>
-                    <td>Softboiled</td>
+                    <td>{{ selectedPkmn.moveset[3] }}</td>
                     <td>
                       <img src="{{ normal }}" class="type">
                     </td>

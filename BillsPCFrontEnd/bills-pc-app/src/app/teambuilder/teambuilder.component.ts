@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
 import { Pokemon } from 'app/pokemon';
 import { Filter } from 'app/pipe/filter.pipe';
@@ -12,7 +12,6 @@ import * as Chartist from 'chartist';
 })
 export class TeambuilderComponent implements OnInit {
 
-  /* These variables are for the team display at the top of the page */
   favTeam: Array<Pokemon>;
   pkmn1: Pokemon;
   pkmn2: Pokemon;
@@ -20,6 +19,7 @@ export class TeambuilderComponent implements OnInit {
   pkmn4: Pokemon;
   pkmn5: Pokemon;
   pkmn6: Pokemon;
+  selectedPkmn: Pokemon;
 
   none: string;
   normal: string;
@@ -107,6 +107,8 @@ export class TeambuilderComponent implements OnInit {
     this.favTeam.push(this.pkmn5);
     this.favTeam.push(this.pkmn6);
 
+    this.selectedPkmn = this.pkmn1;
+
     // by default our attacks are collapsed
     this.expandOrCollapse = false;
 
@@ -151,6 +153,10 @@ export class TeambuilderComponent implements OnInit {
     }
     this.sortBy = this.pkmnTableColNames[i];
     alert(this.sortBy);
+  }
+
+  selectPokemon(pkmn: Pokemon) {
+    this.selectedPkmn = pkmn;
   }
 
   intitializeTypeImages() {
@@ -236,60 +242,11 @@ export class TeambuilderComponent implements OnInit {
   };
 
   ngOnInit() {
-    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
-    const dataDailySalesChart: any = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-      series: [
-        [12, 17, 7, 17, 23, 18, 38]
-      ]
-    };
-
-    const optionsDailySalesChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
-    };
-
-    const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-    this.startAnimationForLineChart(dailySalesChart);
-
-
-    /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-    const dataCompletedTasksChart: any = {
-      labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
-      series: [
-        [230, 750, 450, 300, 280, 240, 200, 190]
-      ]
-    };
-
-    const optionsCompletedTasksChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-    };
-
-    const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-    // start animation for the Completed Tasks Chart - Line Chart
-    this.startAnimationForLineChart(completedTasksChart);
-
-
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
     const dataEmailsSubscriptionChart = {
       labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
-      series: [
-        [250, 5, 5, 105, 105, 50]
-      ]
+      series: [ this.selectedPkmn.stats ]
     };
     const optionsEmailsSubscriptionChart = {
       axisX: {

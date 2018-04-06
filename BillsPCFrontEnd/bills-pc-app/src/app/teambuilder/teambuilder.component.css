@@ -8,6 +8,10 @@
   margin-top: -10px;
   margin-left: calc(100% - 200px);
 }
+.card {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .stats {
   width:100%;
 }
