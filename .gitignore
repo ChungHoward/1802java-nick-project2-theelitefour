@@ -43,9 +43,39 @@ target/
 **/.tern-project
 
 #Mac
+#
 .DS_Store
 /.recommenders/
 
+# IDEs and editors
+.c9/
+*.launch
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+**/.code-workspace
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+Thumbs.db
 #Hibernate 
 hibernate.cfg.xml
 

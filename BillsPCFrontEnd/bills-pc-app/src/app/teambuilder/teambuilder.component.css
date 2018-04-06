@@ -1,0 +1,41 @@
+.main-content .container-fluid {
+  padding-right: 0px;
+}
+.row {
+  width:100%;
+}
+.btn-secondary {
+  margin-top: -10px;
+  margin-left: calc(100% - 200px);
+}
+.stats {
+  width:100%;
+}
+.type {
+  width: 48px;
+  height: 16px;
+}
+.sprite {
+  width: 96px;
+  height: 96px;
+}
+.card-content {
+  text-align: left;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.main-content {
+  margin-top: 50px;
+}
+::placeholder { 
+    color: black;
+    opacity: 1;
+}
+.poke-search {
+  float: right;
+}
+.pkmn-table {
+  max-height: 600px;
+}

@@ -1,0 +1,210 @@
+<div class="main-content">
+
+  <div class="container-fluid">
+    <!-- This button reveals or hides the attacks on your favTeam -->
+    <button class="btn btn-secondary" (click)="toggleCollapse()">
+      <i class="material-icons">dashboard</i>
+      {{ expandOrCollapse ? 'Hide moves' : 'Show moves' }}
+    </button>
+
+    <div class="row">
+      <!-- Loop through and print every Pokemon in favTeam -->
+      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+        <div class="card">
+          <div class="card-header" data-background-color="orange">
+            <img src="{{ favTeam[i].sprite_url }}" alt="" />
+          </div>
+          <div class="card-content">
+            <img src="{{ favTeam[i].types[0] }}" alt="" class="type" />
+            <img src="{{ favTeam[i].types[1] }}" alt="" class="type" />
+            <h4 class="title">{{ favTeam[i].name }}</h4>
+          </div>
+          <div class="card-footer">
+            <div class="stats" *ngIf="expandOrCollapse">
+              <ul>
+                <li *ngFor="let atk of favTeam[i].moveset">{{ atk }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-7 col-md-12">
+        <div class="card card-stats container-fluid">
+          <div class="card-header card-chart" data-background-color="purple">
+            <div class="ct-chart" id="emailsSubscriptionChart"></div>
+          </div>
+          <div class="card-content">
+            <img class="sprite" src="{{ favTeam[4].sprite_url }}" alt="" />
+            <br/>
+            <img src="{{ favTeam[4].types[0] }}" alt="normal" class="type" />
+            <img src="{{ favTeam[4].types[1] }}" alt="none" class="type" />
+            <h4 class="title">{{ favTeam[4].name }}</h4>
+          </div>
+          <div class="card-footer">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Power</th>
+                    <th>Acc</th>
+                    <th>PP</th>
+                    <th>Effect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ favTeam[4].moveset[0] }}</td>
+                    <td>
+                      <img src="{{ electric }}" class="type">
+                    </td>
+                    <td>Special</td>
+                    <td>95</td>
+                    <td>100%</td>
+                    <td>16</td>
+                    <td>
+                      <small>10% paralysis chance.</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ice Beam</td>
+                    <td>
+                      <img src="{{ ice }}" class="type">
+                    </td>
+                    <td>Special</td>
+                    <td>95</td>
+                    <td>100%</td>
+                    <td>16</td>
+                    <td>
+                      <small>10% freeze chance.</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Counter</td>
+                    <td>
+                      <img src="{{ fight }}" class="type">
+                    </td>
+                    <td>Physical</td>
+                    <td>--</td>
+                    <td>100%</td>
+                    <td>32</td>
+                    <td>
+                      <small>If hit by normal or fighting type attack, returns double damage.</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Softboiled</td>
+                    <td>
+                      <img src="{{ normal }}" class="type">
+                    </td>
+                    <td>Status</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>16</td>
+                    <td>
+                      <small>Heals self by 50% of max HP.</small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-12">
+        <div class="card">
+          <div class="card-title">
+            <form class="row poke-search" role="search">
+              <div class="form-group form-black is-empty col-sm-10 col-xl-10">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Filter by name">
+                <span class="material-input"></span>
+              </div>
+              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </form>
+          </div>
+
+          <div class="card-content table-responsive pkmn-table">
+            <table class="table table-hover">
+              <thead class="text-warning">
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>HP</th>
+                  <th>Atk</th>
+                  <th>Def</th>
+                  <th>Satk</th>
+                  <th>Sdef</th>
+                  <th>Spe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Bulbasaur</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
+                  <td>45</td>
+                  <td>49</td>
+                  <td>49</td>
+                  <td>65</td>
+                  <td>65</td>
+                  <td>45</td>
+                </tr>
+                <tr>
+                  <td>Ivysaur</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
+                  <td>60</td>
+                  <td>62</td>
+                  <td>63</td>
+                  <td>80</td>
+                  <td>80</td>
+                  <td>60</td>
+                </tr>
+                <tr>
+                  <td>Venusaur</td>
+                  <td>
+                    <img src="{{ grass }}" class="type">
+                    <img src="{{ poison }}" class="type">
+                  </td>
+                  <td>80</td>
+                  <td>82</td>
+                  <td>83</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>Charmander</td>
+                  <td>
+                    <img src="{{ fire }}" class="type">
+                  </td>
+                  <td>39</td>
+                  <td>52</td>
+                  <td>43</td>
+                  <td>50</td>
+                  <td>50</td>
+                  <td>65</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
