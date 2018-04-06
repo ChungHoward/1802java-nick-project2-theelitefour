@@ -1,3 +1,4 @@
+/* Layout */
 .main-content {
   margin-top: 50px;
   padding-right: 0px;
@@ -9,14 +10,7 @@
 .stats {
   width:100%;
 }
-.type {
-  width: 48px;
-  height: 16px;
-}
-.sprite {
-  width: 96px;
-  height: 96px;
-}
+/* Card styling */
 .card {
   box-shadow: 0px 2px 8px #BBBBBB;
   margin: 18px 0px;
@@ -28,14 +22,26 @@
   padding-left: 0px;
   padding-right: 0px;
 }
+/* Removes bullets and the padding that would normally be for the bullets */
 ul {
   list-style-type: none;
   padding-left: 0;
 }
-::placeholder { 
-    color: black;
-    opacity: 1;
+/* Native image sizes */
+.type {
+  width: 48px;
+  height: 16px;
 }
+.sprite {
+  width: 96px;
+  height: 96px;
+}
+/* Improve readability. Default is orange on white background. */
+
+th {
+  color: #111111;
+}
+/* Squeeze more space out of our tables */
 table {
   font-size: 12px;
 }
@@ -52,9 +58,6 @@ td input {
 .pkmn-table {
   width: 100%;
   max-height: 600px;
-}
-th {
-  color: #111111;
 }
 .material-icons.md-18 { font-size: 18px; }
 .ta-center { text-align: center; }
