@@ -1,25 +1,23 @@
 <div class="main-content">
-
   <div class="container-fluid">
-    <!-- This button reveals or hides the attacks on your favTeam -->
-    <button class="btn btn-secondary" (click)="toggleCollapse()">
-      <i class="material-icons">dashboard</i>
-      {{ expandOrCollapse ? 'Hide moves' : 'Show moves' }}
-    </button>
 
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
-      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index" (click)="selectPokemon(pkmn)">
+      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
         <div class="card">
-          <div class="card-header" data-background-color="orange">
+          <div class="card-header" data-background-color="orange" 
+            (click)="selectPokemon(pkmn)" role="button">
             <img src="{{ favTeam[i].sprite_url }}" alt="" />
           </div>
-          <div class="card-content">
+          <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
             <img src="{{ favTeam[i].types[0] }}" alt="" class="type" />
             <img src="{{ favTeam[i].types[1] }}" alt="" class="type" />
             <h4 class="title">{{ favTeam[i].name }}</h4>
           </div>
-          <div class="card-footer">
+          <div class="card-footer ta-center">
+            <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
+              {{ collapse }}
+            </i>
             <div class="stats" *ngIf="expandOrCollapse">
               <ul>
                 <li *ngFor="let atk of favTeam[i].moveset">{{ atk }}</li>
@@ -60,7 +58,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{ selectedPkmn.moveset[0] }}</td>
+                    <td>
+                      <input type="text" [(value)]="selectedPkmn.moveset[0]" list="canLearn" name="move">
+                    </td>
                     <td>
                       <img src="{{ electric }}" class="type">
                     </td>
@@ -73,7 +73,9 @@
                     <td>10% paralysis chance.</td>
                   </tr>
                   <tr>
-                    <td>{{ selectedPkmn.moveset[1] }}</td>
+                    <td>
+                      <input type="text" [(value)]="selectedPkmn.moveset[1]">
+                    </td>
                     <td>
                       <img src="{{ ice }}" class="type">
                     </td>
@@ -86,7 +88,9 @@
                     <td>10% freeze chance.</td>
                   </tr>
                   <tr>
-                    <td>{{ selectedPkmn.moveset[2] }}</td>
+                    <td>
+                      <input type="text" [(value)]="selectedPkmn.moveset[2]">
+                    </td>
                     <td>
                       <img src="{{ fight }}" class="type">
                     </td>
@@ -99,7 +103,9 @@
                     <td>If hit by normal or fighting type attack, returns double damage.</td>
                   </tr>
                   <tr>
-                    <td>{{ selectedPkmn.moveset[3] }}</td>
+                    <td>
+                      <input type="text" [(value)]="selectedPkmn.moveset[3]">
+                    </td>
                     <td>
                       <img src="{{ normal }}" class="type">
                     </td>
@@ -121,7 +127,6 @@
 
       <div class="col-lg-5 col-md-12">
         <div class="card">
-          <div class="card-title">
             <form class="row poke-search" role="search">
               <div class="form-group form-black is-empty col-sm-10 col-xl-10">
                 <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
@@ -133,29 +138,32 @@
                 <div class="ripple-container"></div>
               </button>
             </form>
+          <div class="card-content">
           </div>
 
-          <div class="card-content table-responsive pkmn-table">
-            <table class="table table-hover">
-              <thead class="text-warning">
-                <tr>
-                  <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
-                    {{ col | titlecase }}<br/>
-                    <i class="material-icons md-18" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
-                    </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let pkmn of ((favTeam | pkmnSort:sortBy:ascending) | pkmnFilter: searchInput); let i = index">
-                  <td class="ta-center">{{ pkmn.name }}</td>
-                  <td class="ta-center">
-                    <img src="{{ pkmn.types[0] }}" class="type">
-                    <img src="{{ pkmn.types[1] }}" class="type">
-                  </td>
-                  <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="card-footer">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
+                      {{ col | titlecase }}<br/>
+                      <i class="material-icons md-18" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                      </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort:sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
+                    <td class="ta-center">
+                      <img src="{{ pkmn.types[0] }}" class="type">
+                      <img src="{{ pkmn.types[1] }}" class="type">
+                    </td>
+                    <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
