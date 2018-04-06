@@ -1,7 +1,8 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
+      
+      <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header" data-background-color="red">
             <h4 class="title">Simple Table</h4>
@@ -61,71 +62,47 @@
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="card card-plain">
-          <div class="card-header" data-background-color="red">
-            <h4 class="title">Table on Plain Background</h4>
-            <p class="category">Here is a subtitle for this table</p>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-content">
+            <form class="row poke-search" role="search">
+              <div class="form-group col-sm-12 col-xl-12">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <span class="material-input"></span>
+              </div>
+            </form>
           </div>
-          <div class="card-content table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
-                  <th>City</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Dakota Rice</td>
-                  <td>$36,738</td>
-                  <td>Niger</td>
-                  <td>Oud-Turnhout</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Minerva Hooper</td>
-                  <td>$23,789</td>
-                  <td>Curaçao</td>
-                  <td>Sinaai-Waas</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Sage Rodriguez</td>
-                  <td>$56,142</td>
-                  <td>Netherlands</td>
-                  <td>Baileux</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Philip Chaney</td>
-                  <td>$38,735</td>
-                  <td>Korea, South</td>
-                  <td>Overland Park</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Doris Greene</td>
-                  <td>$63,542</td>
-                  <td>Malawi</td>
-                  <td>Feldkirchen in Kärnten</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Mason Porter</td>
-                  <td>$78,615</td>
-                  <td>Chile</td>
-                  <td>Gloucester</td>
-                </tr>
-              </tbody>
-            </table>
+
+          <div class="card-footer">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
+                      {{ col | titlecase }}<br/>
+                      <i class="material-icons md-18" role="button" 
+                        (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                      </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
+                    <td class="ta-center">
+                      <img src="{{ pkmn.types[0] }}" class="type">
+                      <img src="{{ pkmn.types[1] }}" class="type">
+                    </td>
+                    <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -23,6 +23,12 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 
+// Services
+import { LoggingService } from './services/logging.service';
+import { MoveService } from './services/move.service';
+import { TeamService } from './services/team.service';
+import { TypeService } from './services/type.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +54,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     RouterModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoggingService, MoveService, TeamService, TypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

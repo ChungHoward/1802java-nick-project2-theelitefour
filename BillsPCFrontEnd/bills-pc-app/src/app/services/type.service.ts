@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class Types {
+export class TypeService {
   readonly none = 'assets/img/types/none.png';
   readonly normal = 'assets/img/types/normal.png';
   readonly grass = 'assets/img/types/grass.png';

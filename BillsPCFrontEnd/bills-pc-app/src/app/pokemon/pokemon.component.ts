@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PokemonService } from '../services/pokemon.service';
-import { Types } from '../services/type.service';
+import { TypeService } from '../services/type.service';
 import { PokeAPI } from '../pokemon';
 
 declare interface Pokemon {
@@ -14,8 +13,7 @@ declare interface Pokemon {
 @Component({
   selector: 'app-pokemon',
   templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.css'],
-  providers: [PokemonService]
+  styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
 
@@ -23,11 +21,10 @@ export class PokemonComponent implements OnInit {
   myPokemon: PokeAPI;
   pkmn: Pokemon;
   favTeam: Array<Pokemon>;
-  pokeService: PokemonService;
-  types: Types;
+  types: TypeService;
 
   constructor() {
-    this.types = new Types();
+    this.types = new TypeService();
 
     this.pkmn = {
       name: 'Jolteon', types: [this.types.electric, this.types.none],  stats: [65, 65, 60, 110, 110, 130],
@@ -65,38 +62,6 @@ export class PokemonComponent implements OnInit {
       sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png'
     };
     this.favTeam.push(this.pkmn);
-    /*
-    this.favTeam = [
-      {
-        name: 'Jolteon', types: [types.electric, types.none],  stats: [65, 65, 60, 110, 110, 130],
-        moveset: ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png'
-      }, {
-        name: 'Exeggutor', types: [types.grass, types.psychic],  stats: [95, 95, 85, 125, 125, 55],
-        moveset: ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png'
-      }, {
-        name: 'Moltres', types: [types.fire, types.flying],  stats: [90, 100, 90, 125, 125, 90],
-        moveset: ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png'
-      }, {
-        name: 'Slowbro', types: [types.water, types.psychic],  stats: [65, 75, 110, 80, 80, 30],
-        moveset: ['Amnesia', 'Surf', 'Psychic', 'Reflect'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png'
-      }, {
-        name: 'Chansey', types: [types.normal, types.none],  stats: [250, 5, 5, 105, 105, 50],
-        moveset: ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png'
-      }, {
-        name: 'Gengar', types: [types.ghost, types.poison],  stats: [60, 65, 60, 130, 130, 110],
-        moveset: ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'],
-        sprite_url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png'
-      }
-    ];*/
-  }
-
-  getPokemon() {
-    this.pokeService.getPokemon(String(this.id)).subscribe(data => this.myPokemon = data);
   }
 
   ngOnInit() { }

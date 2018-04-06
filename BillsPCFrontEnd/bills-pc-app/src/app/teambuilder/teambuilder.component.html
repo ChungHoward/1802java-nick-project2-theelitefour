@@ -43,6 +43,7 @@
             <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
             <h4 class="title">{{ selectedPkmn.name }}</h4>
             <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
+            <p>{{ selPkmnMoves }}</p>
           </div>
 
           <div class="card-footer">
@@ -65,10 +66,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[0]" list="canLearn" name="move">
                     </td>
                     <td>
-                      <img src="{{ electric }}" class="type">
+                      <img src="{{ types.electric }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ special }}" class="type">
+                      <img src="{{ types.special }}" class="type">
                     </td>
                     <td>95</td>
                     <td>100%</td>
@@ -80,10 +81,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[1]">
                     </td>
                     <td>
-                      <img src="{{ ice }}" class="type">
+                      <img src="{{ types.ice }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ special }}" class="type">
+                      <img src="{{ types.special }}" class="type">
                     </td>
                     <td>95</td>
                     <td>100%</td>
@@ -95,10 +96,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[2]">
                     </td>
                     <td>
-                      <img src="{{ fight }}" class="type">
+                      <img src="{{ types.fight }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ physical }}" class="type">
+                      <img src="{{ types.physical }}" class="type">
                     </td>
                     <td>--</td>
                     <td>100%</td>
@@ -110,10 +111,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[3]">
                     </td>
                     <td>
-                      <img src="{{ normal }}" class="type">
+                      <img src="{{ types.normal }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ status }}" class="type">
+                      <img src="{{ types.status }}" class="type">
                     </td>
                     <td>--</td>
                     <td>--</td>
@@ -168,6 +169,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
