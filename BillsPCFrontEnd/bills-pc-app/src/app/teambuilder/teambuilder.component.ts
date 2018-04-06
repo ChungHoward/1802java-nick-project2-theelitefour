@@ -175,7 +175,14 @@ export class TeambuilderComponent implements OnInit {
   ngOnInit() {
     /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
     const dataPokemonStatChart = {
-      labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
+      labels: [
+        this.selectedPkmn.stats[0] + '\nHP',
+        this.selectedPkmn.stats[1] + '\nAtk',
+        this.selectedPkmn.stats[2] + '\nDef',
+        this.selectedPkmn.stats[3] + '\nSatk',
+        this.selectedPkmn.stats[4] + '\nSdef',
+        this.selectedPkmn.stats[5] + '\nSpe'
+      ],
       series: [ this.selectedPkmn.stats ]
     };
     const optionsPokemonStatChart = {
