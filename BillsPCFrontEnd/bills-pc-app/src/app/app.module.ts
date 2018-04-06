@@ -15,7 +15,7 @@ import { Sort } from 'app/pipe/sort.pipe';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { TeambuilderComponent } from './teambuilder/teambuilder.component';
-import { PokemonBoxComponent } from './pokemon-box/pokemon-box.component';
+import { PokemonBoxComponent } from './pokemonbox/pokemonbox.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';

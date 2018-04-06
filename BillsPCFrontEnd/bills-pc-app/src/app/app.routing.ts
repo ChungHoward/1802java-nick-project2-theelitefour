@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { TeambuilderComponent } from './teambuilder/teambuilder.component';
-import { PokemonBoxComponent } from './pokemon-box/pokemon-box.component';
+import { PokemonBoxComponent } from './pokemonbox/pokemonbox.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'teambuilder', component: TeambuilderComponent },
-  { path: 'pokemon-box', component: PokemonBoxComponent },
+  { path: 'pokemonbox', component: PokemonBoxComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'icons', component: IconsComponent },
   { path: 'maps', component: MapsComponent },

@@ -39,6 +39,9 @@ ul {
 table {
   font-size: 12px;
 }
+td input {
+  width: 100px;
+}
 .form-group {
   margin-top: 0px;
 }

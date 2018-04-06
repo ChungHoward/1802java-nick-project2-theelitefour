@@ -12,7 +12,7 @@ export class Sort implements PipeTransform {
       return [];
     }
 
-    if (!sortBy || !ascending) {
+    if (!sortBy) {
       return pkmnList;
     }
 

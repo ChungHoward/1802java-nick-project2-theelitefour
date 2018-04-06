@@ -52,8 +52,8 @@
                   <tr>
                     <th>Name</th>
                     <th>Type</th>
-                    <th>Category</th>
-                    <th>Power</th>
+                    <th>Class</th>
+                    <th>Pow</th>
                     <th>Acc</th>
                     <th>PP</th>
                     <th>Effect</th>
@@ -153,7 +153,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort:sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
                       <img src="{{ pkmn.types[0] }}" class="type">
