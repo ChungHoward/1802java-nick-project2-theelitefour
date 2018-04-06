@@ -1,4 +1,4 @@
-8package com.revature.domains;
+package com.revature.domains;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
