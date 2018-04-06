@@ -155,7 +155,6 @@ export class TeambuilderComponent implements OnInit {
       this.colSortIcons[i] = 'arrow_drop_down';
     }
     this.sortBy = this.pkmnTableColNames[i];
-    alert(this.sortBy);
   }
 
   selectPokemon(pkmn: Pokemon) {
@@ -210,8 +209,7 @@ export class TeambuilderComponent implements OnInit {
   };
 
   ngOnInit() {
-    /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
+    /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
     const dataEmailsSubscriptionChart = {
       labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
       series: [ this.selectedPkmn.stats ]

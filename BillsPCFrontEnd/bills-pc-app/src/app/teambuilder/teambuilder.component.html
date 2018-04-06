@@ -35,13 +35,16 @@
           <div class="card-header card-chart" data-background-color="purple">
             <div class="ct-chart" id="emailsSubscriptionChart"></div>
           </div>
+
           <div class="card-content ta-center">
             <img class="sprite" src="{{ selectedPkmn.sprite_url }}" alt="" />
             <br/>
             <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
             <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
             <h4 class="title">{{ selectedPkmn.name }}</h4>
+            <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
           </div>
+
           <div class="card-footer">
             <div class="table-responsive">
               <table class="table table-hover">
@@ -127,18 +130,14 @@
 
       <div class="col-lg-5 col-md-12">
         <div class="card">
+          <div class="card-content">
             <form class="row poke-search" role="search">
-              <div class="form-group form-black is-empty col-sm-10 col-xl-10">
+              <div class="form-group col-sm-12 col-xl-12">
                 <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
-                  placeholder="Filter by name">
+                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
                 <span class="material-input"></span>
               </div>
-              <button type="submit" class="btn btn-primary btn-round btn-just-icon">
-                <i class="material-icons">search</i>
-                <div class="ripple-container"></div>
-              </button>
             </form>
-          <div class="card-content">
           </div>
 
           <div class="card-footer">
@@ -148,7 +147,8 @@
                   <tr>
                     <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
                       {{ col | titlecase }}<br/>
-                      <i class="material-icons md-18" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                      <i class="material-icons md-18" role="button" 
+                        (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
                       </th>
                   </tr>
                 </thead>
