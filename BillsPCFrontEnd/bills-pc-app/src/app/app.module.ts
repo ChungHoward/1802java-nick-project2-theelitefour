@@ -10,6 +10,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 
 import { Filter } from './pipe/filter.pipe';
+import { Sort } from 'app/pipe/sort.pipe';
 
 import { TeambuilderComponent } from './teambuilder/teambuilder.component';
 import { RegisterComponent } from './register/register.component';
@@ -34,6 +35,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     UpgradeComponent,
     PokemonComponent,
     Filter,
+    Sort,
 
   ],
   imports: [

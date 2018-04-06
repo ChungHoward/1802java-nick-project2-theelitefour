@@ -64,52 +64,52 @@
                     <td>
                       <img src="{{ electric }}" class="type">
                     </td>
-                    <td>Special</td>
+                    <td>
+                      <img src="{{ special }}" class="type">
+                    </td>
                     <td>95</td>
                     <td>100%</td>
                     <td>16</td>
-                    <td>
-                      <small>10% paralysis chance.</small>
-                    </td>
+                    <td>10% paralysis chance.</td>
                   </tr>
                   <tr>
                     <td>Ice Beam</td>
                     <td>
                       <img src="{{ ice }}" class="type">
                     </td>
-                    <td>Special</td>
+                    <td>
+                      <img src="{{ special }}" class="type">
+                    </td>
                     <td>95</td>
                     <td>100%</td>
                     <td>16</td>
-                    <td>
-                      <small>10% freeze chance.</small>
-                    </td>
+                    <td>10% freeze chance.</td>
                   </tr>
                   <tr>
                     <td>Counter</td>
                     <td>
                       <img src="{{ fight }}" class="type">
                     </td>
-                    <td>Physical</td>
+                    <td>
+                      <img src="{{ physical }}" class="type">
+                    </td>
                     <td>--</td>
                     <td>100%</td>
                     <td>32</td>
-                    <td>
-                      <small>If hit by normal or fighting type attack, returns double damage.</small>
-                    </td>
+                    <td>If hit by normal or fighting type attack, returns double damage.</td>
                   </tr>
                   <tr>
                     <td>Softboiled</td>
                     <td>
                       <img src="{{ normal }}" class="type">
                     </td>
-                    <td>Status</td>
+                    <td>
+                      <img src="{{ status }}" class="type">
+                    </td>
                     <td>--</td>
                     <td>--</td>
                     <td>16</td>
-                    <td>
-                      <small>Heals self by 50% of max HP.</small>
-                    </td>
+                    <td>Heals self by 50% of max HP.</td>
                   </tr>
                 </tbody>
               </table>
@@ -139,24 +139,20 @@
             <table class="table table-hover">
               <thead class="text-warning">
                 <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>HP</th>
-                  <th>Atk</th>
-                  <th>Def</th>
-                  <th>Satk</th>
-                  <th>Sdef</th>
-                  <th>Spe</th>
+                  <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
+                    {{ col | titlecase }}<br/>
+                    <i class="material-icons md-18" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let pkmn of favTeam | pkmnFilter: searchInput; let i = index">
-                  <td>{{ pkmn.name }}</td>
-                  <td>
+                <tr *ngFor="let pkmn of ((favTeam | pkmnSort:sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <td class="ta-center">{{ pkmn.name }}</td>
+                  <td class="ta-center">
                     <img src="{{ pkmn.types[0] }}" class="type">
                     <img src="{{ pkmn.types[1] }}" class="type">
                   </td>
-                  <td *ngFor="let stat of pkmn.stats">{{ stat }}</td>
+                  <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
                 </tr>
               </tbody>
             </table>

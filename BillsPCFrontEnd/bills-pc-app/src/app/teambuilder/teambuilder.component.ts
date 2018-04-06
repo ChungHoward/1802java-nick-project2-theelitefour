@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleCasePipe } from '@angular/common';
 import { Pokemon } from 'app/pokemon';
 import { Filter } from 'app/pipe/filter.pipe';
+import { Sort } from 'app/pipe/sort.pipe';
 import * as Chartist from 'chartist';
 
 @Component({
@@ -19,20 +21,6 @@ export class TeambuilderComponent implements OnInit {
   pkmn5: Pokemon;
   pkmn6: Pokemon;
 
-  sprite1: string;
-  sprite2: string;
-  sprite3: string;
-  sprite4: string;
-  sprite5: string;
-  sprite6: string;
-
-  attack1: Array<string>;
-  attack2: Array<string>;
-  attack3: Array<string>;
-  attack4: Array<string>;
-  attack5: Array<string>;
-  attack6: Array<string>;
-
   none: string;
   normal: string;
   grass: string;
@@ -49,31 +37,23 @@ export class TeambuilderComponent implements OnInit {
   psychic: string;
   ghost: string;
   dragon: string;
+  physical: string;
+  special: string;
+  status: string;
 
   expandOrCollapse: boolean;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string;
+  pkmnTableColNames: Array<string>;
+  colSortIcons: Array<string>;
+  sortBy: string;
+  ascending: boolean;
   searchInput: string;
 
   constructor() {
-    /* Initialize all the types, perhaps consider exporting them */
-    this.none = 'assets/img/types/none.png';
-    this.normal = 'assets/img/types/normal.png';
-    this.grass = 'assets/img/types/grass.png';
-    this.fire = 'assets/img/types/fire.png';
-    this.water = 'assets/img/types/water.png';
-    this.electric = 'assets/img/types/electric.png';
-    this.ice = 'assets/img/types/ice.png';
-    this.bug = 'assets/img/types/bug.png';
-    this.poison = 'assets/img/types/poison.png';
-    this.ground = 'assets/img/types/ground.png';
-    this.rock = 'assets/img/types/rock.png';
-    this.fight = 'assets/img/types/fight.png';
-    this.flying = 'assets/img/types/flying.png';
-    this.psychic = 'assets/img/types/psychic.png';
-    this.ghost = 'assets/img/types/ghost.png';
-    this.dragon = 'assets/img/types/dragon.png';
+    // Assigns the value of types to their respective image
+    this.intitializeTypeImages();
 
     /* Making my team */
     this.pkmn1 = new Pokemon();
@@ -130,12 +110,69 @@ export class TeambuilderComponent implements OnInit {
     // by default our attacks are collapsed
     this.expandOrCollapse = false;
 
-    // this will be used as a placeholder image before searching for a pokemon
+    // this can be used as a placeholder image before searching for a pokemon
     this.questionSprite = 'assets/img/question.png';
+
+    this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
+    this.colSortIcons = [
+      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
+      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
+    ];
+    this.sortBy = 'name';
+    this.ascending = true;
   }
 
+  // toggles the show moves/hide moves button
   toggleCollapse() {
     this.expandOrCollapse = !this.expandOrCollapse;
+  }
+
+  /**
+   * Switches all other column icons to swap_vert, then toggles the clicked icon,
+   * then changes the sorting strategy
+   * @param i the column index to sort
+   */
+  toggleSort(i: number) {
+    if (this.colSortIcons[i] === 'swap_vert') {
+      for (let k = 0; k < this.colSortIcons.length; k++) {
+        this.colSortIcons[k] = 'swap_vert';
+      }
+      this.colSortIcons[i] = 'arrow_drop_down';
+    } else if (this.colSortIcons[i] === 'arrow_drop_down') {
+      for (let k = 0; k < this.colSortIcons.length; k++) {
+        this.colSortIcons[k] = 'swap_vert';
+      }
+      this.colSortIcons[i] = 'arrow_drop_up';
+    } else if (this.colSortIcons[i] === 'arrow_drop_up') {
+      for (let k = 0; k < this.colSortIcons.length; k++) {
+        this.colSortIcons[k] = 'swap_vert';
+      }
+      this.colSortIcons[i] = 'arrow_drop_down';
+    }
+    this.sortBy = this.pkmnTableColNames[i];
+    alert(this.sortBy);
+  }
+
+  intitializeTypeImages() {
+    this.none = 'assets/img/types/none.png';
+    this.normal = 'assets/img/types/normal.png';
+    this.grass = 'assets/img/types/grass.png';
+    this.fire = 'assets/img/types/fire.png';
+    this.water = 'assets/img/types/water.png';
+    this.electric = 'assets/img/types/electric.png';
+    this.ice = 'assets/img/types/ice.png';
+    this.bug = 'assets/img/types/bug.png';
+    this.poison = 'assets/img/types/poison.png';
+    this.ground = 'assets/img/types/ground.png';
+    this.rock = 'assets/img/types/rock.png';
+    this.fight = 'assets/img/types/fight.png';
+    this.flying = 'assets/img/types/flying.png';
+    this.psychic = 'assets/img/types/psychic.png';
+    this.ghost = 'assets/img/types/ghost.png';
+    this.dragon = 'assets/img/types/dragon.png';
+    this.physical = 'assets/img/types/physical.png';
+    this.special = 'assets/img/types/special.png';
+    this.status = 'assets/img/types/status.png';
   }
 
   /* The following methods are for the charts */

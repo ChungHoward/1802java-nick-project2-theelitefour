@@ -36,6 +36,11 @@ ul {
 .poke-search {
   float: right;
 }
+table {
+  font-size: 12px;
+}
 .pkmn-table {
   max-height: 600px;
 }
+.material-icons.md-18 { font-size: 18px; }
+.ta-center { text-align: center; }
