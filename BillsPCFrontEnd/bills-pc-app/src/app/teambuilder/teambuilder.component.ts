@@ -174,11 +174,11 @@ export class TeambuilderComponent implements OnInit {
 
   ngOnInit() {
     /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
-    const dataEmailsSubscriptionChart = {
+    const dataPokemonStatChart = {
       labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
       series: [ this.selectedPkmn.stats ]
     };
-    const optionsEmailsSubscriptionChart = {
+    const optionsPokemonStatChart = {
       axisX: {
         showGrid: false
       },
@@ -196,15 +196,15 @@ export class TeambuilderComponent implements OnInit {
         }
       }]
     ];
-    const emailsSubscriptionChart = new Chartist.Bar(
-      '#emailsSubscriptionChart',
-      dataEmailsSubscriptionChart,
-      optionsEmailsSubscriptionChart,
+    const pokemonStatChart = new Chartist.Bar(
+      '#pokemonStatChart',
+      dataPokemonStatChart,
+      optionsPokemonStatChart,
       responsiveOptions
     );
 
     // start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(emailsSubscriptionChart);
+    this.startAnimationForBarChart(pokemonStatChart);
   }
 
 }
