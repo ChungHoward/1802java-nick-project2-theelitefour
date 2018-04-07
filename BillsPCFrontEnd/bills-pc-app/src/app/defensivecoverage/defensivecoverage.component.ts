@@ -79,6 +79,13 @@ export class DefensiveCoverageComponent implements OnInit {
     }
     this.sortBy = this.pkmnBoxColNames[i];
   }
+
+  createTable() {
+    for (let i = 0; i < this.favTeam.length; i++) {
+      // this.favTeam[i].types;
+    }
+  }
+
   ngOnInit() {
   }
 
