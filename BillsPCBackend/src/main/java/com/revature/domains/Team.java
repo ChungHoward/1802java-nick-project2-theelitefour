@@ -33,32 +33,32 @@ public class Team {
 	private String teamName;
 	
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET1")
 	private PokemonSet set1;
 	
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET2")
 	private PokemonSet set2;
 	
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET3")
 	private PokemonSet set3;
 	
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET4")
 	private PokemonSet set4;
 	
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET5")
 	private PokemonSet set5;
 	
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET6")
 	private PokemonSet set6;
 
