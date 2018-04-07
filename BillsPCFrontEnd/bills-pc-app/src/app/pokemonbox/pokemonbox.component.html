@@ -8,17 +8,17 @@
             <ul class="nav nav-pills ta-center">
               <li>
                 <a role="button" (click)="newTeam()">
-                  <i class="material-icons">create_new_folder</i> New
+                  <i class="material-icons">create_new_folder</i> New Team
                 </a>
               </li>
               <li>
                 <a role="button" (click)="saveTeam(newTeamName)">
-                  <i class="material-icons">save</i> Save
+                  <i class="material-icons">save</i> Save Team
                 </a>
               </li>
               <li>
-                <a role="button" (click)="favoriteTeam(newTeamName)">
-                  <i class="material-icons">star</i> Favorite
+                <a role="button" (click)="setFavoriteTeam(newTeamName)">
+                  <i class="material-icons">{{ favoriteIcon }}</i> Favorite
                 </a>
               </li>
             </ul>
@@ -46,8 +46,8 @@
                   </tr>
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
-                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index"
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->
+                  <tr *ngFor="let pkmn of (favTeam | pkmnSort: sortBy:ascending); let i = index"
                     dnd-sortable [sortableIndex]="i">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
@@ -82,7 +82,7 @@
           <div class="card-content">
             <form class="row poke-search" role="search">
               <div class="form-group col-sm-12 col-xl-12">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                <input [(ngModel)]="searchBox" name="searchBox" type="text" class="form-control"
                   placeholder="Search Pokemon">
                 <span class="material-input"></span>
               </div>
@@ -103,8 +103,8 @@
                   </tr>
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="myBox">
-                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index"
+                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->
+                  <tr *ngFor="let pkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index"
                     dnd-sortable [sortableIndex]="i">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">

@@ -33,6 +33,10 @@ export class PokemonBoxComponent implements OnInit {
   ascending: boolean;
   searchInput: string;
 
+  /* These variables are for the pill buttons */
+  favoriteIcon: string;
+  newTeamName: string;
+
   constructor() {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
@@ -86,7 +90,46 @@ export class PokemonBoxComponent implements OnInit {
     this.sortBy = this.pkmnBoxColNames[i];
   }
 
+  newTeam() {
+    this.curTeam = new Array<Pokemon>();
+  }
+
+  /**
+   * Adds the curTeam to myTeams and sets the team name to newTeamName
+   * @param newTeamName saves as 'Untitled' if newTeamName is empty
+   */
+  saveTeam(newTeamName: string): boolean {
+    if (this.curTeam.length === 6) {
+      this.myTeams.push(this.curTeam);
+      if (newTeamName.length < 1) {
+        newTeamName = 'Untitled';
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Assigns the curTeam as favTeam and sets favTeam's name to newTeamName
+   * @param newTeamName saves as 'Untitled' if newTeamName is empty
+   */
+  setFavoriteTeam(newTeamName: string) {
+    if (this.saveTeam(newTeamName)) {
+      this.favTeam = this.curTeam;
+      this.favoriteIcon = 'star';
+      if (newTeamName.length < 1) {
+        newTeamName = 'Untitled';
+      }
+      // set favTeam.name = newTeamName;
+    }
+  }
+
   ngOnInit() {
+    if (this.curTeam === this.favTeam) {
+      this.favoriteIcon = 'star';
+    } else {
+      this.favoriteIcon = 'star_border';
+    }
   }
 
 }
