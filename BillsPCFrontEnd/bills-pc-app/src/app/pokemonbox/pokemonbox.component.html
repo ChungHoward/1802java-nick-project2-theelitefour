@@ -45,9 +45,10 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
                   <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index"
+                    dnd-sortable [sortableIndex]="i">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
                       <img src="{{ pkmn.types[0] }}" class="type">
@@ -101,10 +102,10 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody dnd-sortable-container>
-                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index"
-                    dnd-sortable>
+                <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="myBox">
+                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index"
+                    dnd-sortable [sortableIndex]="i">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
                       <img src="{{ pkmn.types[0] }}" class="type">

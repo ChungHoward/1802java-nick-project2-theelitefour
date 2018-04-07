@@ -42,10 +42,12 @@ export class PokemonBoxComponent implements OnInit {
     this.favTeam = this.teamService.favTeam;
     this.curTeam = new Array<Pokemon>();
     this.myBox = new Array<Pokemon>();
-    this.myBox.fill(this.teamService.pkmn1, 0, 5); // give myself some pokemon
-    this.myBox.fill(this.teamService.pkmn6, 6, 10);
+    this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
+    this.myBox.push(this.teamService.pkmn6);
+    this.myBox.push(this.teamService.pkmn2);
+    this.myBox.push(this.teamService.pkmn2);
+    this.myBox.push(this.teamService.pkmn6);
     this.myTeams = new Array<Array<Pokemon>>();
-    this.myTeams.fill(this.teamService.favTeam, 0, 3); // give myself some favTeams
 
     this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
     this.colSortIcons = [ // The icon underneath each pkmnBoxColNames
