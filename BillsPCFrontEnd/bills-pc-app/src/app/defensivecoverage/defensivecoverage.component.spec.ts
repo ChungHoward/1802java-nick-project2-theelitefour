@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsComponent } from './icons.component';
+import { DefensiveCoverageComponent } from './defensivecoverage.component';
 
-describe('IconsComponent', () => {
-  let component: IconsComponent;
-  let fixture: ComponentFixture<IconsComponent>;
+describe('DefensiveCoverageComponent', () => {
+  let component: DefensiveCoverageComponent;
+  let fixture: ComponentFixture<DefensiveCoverageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconsComponent ]
+      declarations: [ DefensiveCoverageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconsComponent);
+    fixture = TestBed.createComponent(DefensiveCoverageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  selector: 'app-offensevsdefense',
+  templateUrl: './offensevsdefense.component.html',
+  styleUrls: ['./offensevsdefense.component.css']
 })
-export class NotificationsComponent implements OnInit {
+export class OffenseVsDefenseComponent implements OnInit {
 
   constructor() { }
   showNotification(from, align) {
@@ -14,7 +14,7 @@ export class NotificationsComponent implements OnInit {
       const color = Math.floor((Math.random() * 4) + 1);
 
       $.notify({
-          icon: 'notifications',
+          icon: 'offensevsdefense',
           message: 'Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.'
 
       }, {

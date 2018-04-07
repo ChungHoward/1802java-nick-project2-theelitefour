@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 @Table(name="TRAINER")
 public class Trainer {
 	
-	
 	@Id
 	@Column(name="TRAINER_ID")
 	@SequenceGenerator(name="trainerSeq" , sequenceName="TRAINER_SEQ")
@@ -34,10 +33,7 @@ public class Trainer {
 	@Column(name="TRAINER_ROLE")
 	private String role;
 
-	public Trainer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Trainer() { }
 
 	public Trainer(int trainerId, String name, String password, String role) {
 		super();

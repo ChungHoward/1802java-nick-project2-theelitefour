@@ -33,16 +33,21 @@
       <div class="col-lg-7 col-md-12">
         <div class="card card-stats container-fluid">
           <div class="card-header card-chart" data-background-color="purple">
-            <div class="ct-chart" id="emailsSubscriptionChart"></div>
+            <div class="ct-chart" id="pokemonStatChart"></div>
+          </div>
+          <div class="card-header" data-background-color="red">
+            Critical Rate <br/>
+            {{ selectedPkmn.stats[5] * 100 / 512 | number:'2.1-2'}} %
           </div>
 
-          <div class="card-content ta-center">
-            <img class="sprite" src="{{ selectedPkmn.sprite_url }}" alt="" />
-            <br/>
-            <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
-            <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
-            <h4 class="title">{{ selectedPkmn.name }}</h4>
-            <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
+          <div class="card-content ta-center row">
+            <div class="no-padding col-lg-3 col-md-3">
+              <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
+              <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
+              <h4 class="title">{{ selectedPkmn.name }}</h4>
+              <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
+            </div>
+            <img class="sprite col-lg-3 col-md-3" src="{{ selectedPkmn.sprite_url }}" alt="" />
           </div>
 
           <div class="card-footer">
@@ -52,8 +57,8 @@
                   <tr>
                     <th>Name</th>
                     <th>Type</th>
-                    <th>Category</th>
-                    <th>Power</th>
+                    <th>Class</th>
+                    <th>Pow</th>
                     <th>Acc</th>
                     <th>PP</th>
                     <th>Effect</th>
@@ -65,10 +70,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[0]" list="canLearn" name="move">
                     </td>
                     <td>
-                      <img src="{{ electric }}" class="type">
+                      <img src="{{ types.electric }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ special }}" class="type">
+                      <img src="{{ types.special }}" class="type">
                     </td>
                     <td>95</td>
                     <td>100%</td>
@@ -80,10 +85,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[1]">
                     </td>
                     <td>
-                      <img src="{{ ice }}" class="type">
+                      <img src="{{ types.ice }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ special }}" class="type">
+                      <img src="{{ types.special }}" class="type">
                     </td>
                     <td>95</td>
                     <td>100%</td>
@@ -95,10 +100,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[2]">
                     </td>
                     <td>
-                      <img src="{{ fight }}" class="type">
+                      <img src="{{ types.fight }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ physical }}" class="type">
+                      <img src="{{ types.physical }}" class="type">
                     </td>
                     <td>--</td>
                     <td>100%</td>
@@ -110,10 +115,10 @@
                       <input type="text" [(value)]="selectedPkmn.moveset[3]">
                     </td>
                     <td>
-                      <img src="{{ normal }}" class="type">
+                      <img src="{{ types.normal }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ status }}" class="type">
+                      <img src="{{ types.status }}" class="type">
                     </td>
                     <td>--</td>
                     <td>--</td>
@@ -153,7 +158,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort:sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
                       <img src="{{ pkmn.types[0] }}" class="type">
@@ -167,6 +173,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
