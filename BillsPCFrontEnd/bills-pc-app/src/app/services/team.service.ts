@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { TypeService } from 'app/services/type.service';
 
 @Injectable()
-export class TeamService {
+export class TeamService implements OnInit {
 
   favTeam: Array<Pokemon>;
   pkmn1: Pokemon;
@@ -71,6 +71,10 @@ export class TeamService {
     this.favTeam.push(this.pkmn5);
     this.favTeam.push(this.pkmn6);
 
+  }
+
+  ngOnInit() {
+    const xhr = new XMLHttpRequest();
   }
 
 }

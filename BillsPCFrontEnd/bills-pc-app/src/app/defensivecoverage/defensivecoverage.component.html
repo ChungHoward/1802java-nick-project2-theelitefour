@@ -1,25 +1,58 @@
-
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-plain">
-                    <div class="card-header" data-background-color="red">
-                        <h4 class="title">Material Design Icons</h4>
-                        <p class="category">Handcrafted by our friends from <a target="_blank" href="https://design.google.com/icons/">Google</a></p>
-                    </div>
-                    <div class="card-content">
-                        <div class="iframe-container hidden-sm hidden-xs">
-                            <iframe src="https://design.google.com/icons/">
-                                <p>Your browser does not support iframes.</p>
-                            </iframe>
-                        </div>
-                        <div class="col-md-6 hidden-lg hidden-md text-center">
-                            <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the  <a href="https://design.google.com/icons/" target="_blank">Material Icons</a></h5>
-                        </div>
-                    </div>
-                </div>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="purple">
+            <ul class="nav nav-pills ta-center">
+              <li>
+                <a role="button" (click)="newTeam()">
+                  <i class="material-icons">create_new_folder</i> New Team
+                </a>
+              </li>
+              <li>
+                <a role="button" (click)="saveTeam(newTeamName)">
+                  <i class="material-icons">save</i> Save Team
+                </a>
+              </li>
+              <li>
+                <a role="button" (click)="setFavoriteTeam(newTeamName)">
+                  <i class="material-icons">{{ favoriteIcon }}</i> Favorite
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-content">
+          </div>
+
+          <div class="card-footer">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnBoxColNames; let i = index">
+                      {{ col | titlecase }}
+                      <br/>
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->
+                  <tr *ngFor="let type of types.img; let i = index">
+                    <td class="ta-center">
+                      <img src="{{ type }}" class="type">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>

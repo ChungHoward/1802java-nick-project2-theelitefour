@@ -24,6 +24,9 @@
   padding-left: 0px;
   padding-right: 0px;
 }
+.card-footer {
+  padding-top: 0px;
+}
 /* Removes bullets and the padding that would normally be for the bullets */
 ul {
   list-style-type: none;
