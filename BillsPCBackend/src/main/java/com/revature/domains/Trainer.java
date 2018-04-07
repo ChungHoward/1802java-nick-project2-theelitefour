@@ -8,6 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 @Entity
 @Table(name="TRAINER")
 public class Trainer {
@@ -27,10 +33,7 @@ public class Trainer {
 	@Column(name="TRAINER_ROLE")
 	private String role;
 
-	public Trainer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Trainer() { }
 
 	public Trainer(int trainerId, String name, String password, String role) {
 		super();

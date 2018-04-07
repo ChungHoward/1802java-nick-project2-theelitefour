@@ -9,31 +9,46 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
+// Pipes
 import { Filter } from './pipe/filter.pipe';
+import { Sort } from 'app/pipe/sort.pipe';
 
-import { TeambuilderComponent } from './teambuilder/teambuilder.component';
+// Components
 import { RegisterComponent } from './register/register.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { LoginComponent } from './login/login.component';
+import { TeambuilderComponent } from './teambuilder/teambuilder.component';
+import { PokemonBoxComponent } from './pokemonbox/pokemonbox.component';
+import { CoreCoverageComponent } from './corecoverage/corecoverage.component';
+import { DefensiveCoverageComponent } from './defensivecoverage/defensivecoverage.component';
+import { OffensiveCoverageComponent } from './offensivecoverage/offensivecoverage.component';
+import { OffenseVsDefenseComponent } from './offensevsdefense/offensevsdefense.component';
+import { FeaturedComponent } from './featured/featured.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import { PokemonComponent } from './pokemon/pokemon.component';
+
+// Services
+import { LoggingService } from './services/logging.service';
+import { MoveService } from './services/move.service';
+import { TeamService } from './services/team.service';
+import { TypeService } from './services/type.service';
+
+// Modules
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeambuilderComponent,
     RegisterComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
-    NotificationsComponent,
+    LoginComponent,
+    TeambuilderComponent,
+    PokemonBoxComponent,
+    CoreCoverageComponent,
+    DefensiveCoverageComponent,
+    OffensiveCoverageComponent,
+    OffenseVsDefenseComponent,
+    FeaturedComponent,
     UpgradeComponent,
-    PokemonComponent,
     Filter,
+    Sort,
 
   ],
   imports: [
@@ -42,9 +57,10 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     HttpModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DndModule.forRoot()
   ],
-  providers: [],
+  providers: [LoggingService, MoveService, TeamService, TypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

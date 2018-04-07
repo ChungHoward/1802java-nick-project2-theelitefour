@@ -12,6 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 @Entity
 @Table(name="POKEMON_SET")
 public class PokemonSet {
@@ -25,7 +32,8 @@ public class PokemonSet {
 	@Column(name="NICKNAME")
 	private String nickname;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;
 	

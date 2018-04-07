@@ -4,26 +4,20 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header" data-background-color="red">
-            <h4 class="title">Register</h4>
-            <p class="category">To start saving your teams and Pokemon</p>
+            <h4 class="title">Login</h4>
+            <p class="category">To access your saved pokemon and teams</p>
           </div>
           <div class="card-content">
             <!-- Display warning here if username is taken or some other error -->
             <div *ngIf="false" id="notification" class="alert alert-danger"></div>
 
             <div *ngIf="!submitted">
-              <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+              <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group form-black label-floating is-empty">
                       <label class="control-label" for="username">Username</label>
                       <input required type="text" class="form-control" id="username" [(ngModel)]="username" name="username">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label" for="email">Email address</label>
-                      <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
                     </div>
                   </div>
                 </div>
@@ -36,26 +30,16 @@
                       [(ngModel)]="password" (ngModelChange)="matchPassword()">
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label" for="cpassword">Confirm Password</label>
-                      <input required type="password" class="form-control" id="cpassword" name="cpassword"
-                      [(ngModel)]="cpassword" (ngModelChange)="matchPassword()">
-                    </div>
-                  </div>
                 </div>
 
-                <button type="submit" class="btn btn-danger pull-right" [disabled]="!registerForm.form.valid" 
-                  [disabled]="!passwordMatch">
-                  Register
-                </button>
+                <button type="submit" class="btn btn-danger pull-right" [disabled]="!loginForm.form.valid" [disabled]="!passwordMatch">Login</button>
                 <div class="clearfix"></div>
               </form>
             </div>
             <!-- Invisible before submit -->
             <div *ngIf="submitted">
               <div class="h3">
-                You have successfully registered!
+                You have successfully Logged In!
               </div>
               <div class="h4">
                 No email confirmation necessary

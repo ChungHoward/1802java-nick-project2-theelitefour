@@ -12,6 +12,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 @Entity
 @Table(name="TEAM")
 public class Team {
@@ -25,25 +32,31 @@ public class Team {
 	@Column(name="TEAM_NAME")
 	private String teamName;
 	
+	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET1")
 	private PokemonSet set1;
 	
+
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET2")
 	private PokemonSet set2;
 	
+
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET3")
 	private PokemonSet set3;
+	
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET4")
 	private PokemonSet set4;
 	
+
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET5")
 	private PokemonSet set5;
+	
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="SET6")
@@ -94,7 +107,7 @@ public class Team {
 	public PokemonSet getSet2() {
 		return set2;
 	}
-
+	
 	public void setSet2(PokemonSet set2) {
 		this.set2 = set2;
 	}
@@ -102,7 +115,7 @@ public class Team {
 	public PokemonSet getSet3() {
 		return set3;
 	}
-
+	
 	public void setSet3(PokemonSet set3) {
 		this.set3 = set3;
 	}
@@ -110,7 +123,7 @@ public class Team {
 	public PokemonSet getSet4() {
 		return set4;
 	}
-
+	
 	public void setSet4(PokemonSet set4) {
 		this.set4 = set4;
 	}
@@ -126,7 +139,7 @@ public class Team {
 	public PokemonSet getSet6() {
 		return set6;
 	}
-
+	
 	public void setSet6(PokemonSet set6) {
 		this.set6 = set6;
 	}
