@@ -11,12 +11,12 @@ export const ROUTES: RouteInfo[] = [
     { path: 'teambuilder', title: 'Teambuilder',  icon: 'view_quilt', class: '' },
     { path: 'pokemonbox', title: 'Pokemon Box',  icon: 'grid_on', class: '' },
     { path: 'corecoverage', title: 'Core Coverage',  icon: 'repeat_one', class: '' },
-    { path: 'typography', title: 'Defensive Coverage',  icon: 'view_list', class: '' },
-    { path: 'icons', title: 'Offensive Coverage',  icon: 'view_stream', class: '' },
-    { path: 'maps', title: 'Offense vs Defense',  icon: 'poll', class: '' },
-    { path: 'notifications', title: 'Notifications',  icon: 'notifications', class: '' }, // TODO: remove notifications
+    { path: 'defensivecoverage', title: 'Defensive Coverage',  icon: 'view_list', class: '' },
+    { path: 'offensivecoverage', title: 'Offensive Coverage',  icon: 'view_stream', class: '' },
+    { path: 'offensevsdefense', title: 'Offense vs Defense',  icon: 'poll', class: '' },
+    { path: 'featured', title: 'Featured Teams',  icon: 'trending_up', class: '' },
     // { path: 'upgrade', title: 'Upgrade to PRO',  icon: 'unarchive', class: 'active-pro' },
-]; // leaving these here in case we add more features
+];
 
 @Component({
   selector: 'app-sidebar',
