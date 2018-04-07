@@ -33,7 +33,7 @@ public class PokemonSet {
 	private String nickname;
 	
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;
 	
