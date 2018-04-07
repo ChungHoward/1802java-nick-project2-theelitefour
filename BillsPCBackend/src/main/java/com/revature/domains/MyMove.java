@@ -1,0 +1,87 @@
+package com.revature.domains;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
+public class MyMove {
+	private Integer id;
+	private String name;
+	private Integer accuracy;
+	private String effect;
+	private Integer effectChance;
+	private Integer pp;
+	private Integer power;
+	private String damageClass;
+	private String generation;
+	private String type;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getAccuracy() {
+		return accuracy;
+	}
+	public void setAccuracy(Integer accuracy) {
+		this.accuracy = accuracy;
+	}
+	public String getEffect() {
+		return effect;
+	}
+	public void setEffect(String effect) {
+		this.effect = effect;
+	}
+	public Integer getEffectChance() {
+		return effectChance;
+	}
+	public void setEffectChance(Integer effectChance) {
+		this.effectChance = effectChance;
+	}
+	public Integer getPp() {
+		return pp;
+	}
+	public void setPp(Integer pp) {
+		this.pp = pp;
+	}
+	public Integer getPower() {
+		return power;
+	}
+	public void setPower(Integer power) {
+		this.power = power;
+	}
+	public String getDamageClass() {
+		return damageClass;
+	}
+	public void setDamageClass(String damageClass) {
+		this.damageClass = damageClass;
+	}
+	public String getGeneration() {
+		return generation;
+	}
+	public void setGeneration(String generation) {
+		this.generation = generation;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "MyMove [id=" + id + ", name=" + name + ", accuracy=" + accuracy + ", effect=" + effect
+				+ ", effectChance=" + effectChance + ", pp=" + pp + ", power=" + power + ", damageClass=" + damageClass
+				+ ", generation=" + generation + ", type=" + type + "]";
+	}
+	
+	
+}
