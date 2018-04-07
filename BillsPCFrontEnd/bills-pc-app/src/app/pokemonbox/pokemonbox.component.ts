@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Filter } from 'app/pipe/filter.pipe';
+import { Sort } from 'app/pipe/sort.pipe';
 import { Pokemon } from 'app/pokemon';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
@@ -9,16 +11,23 @@ import { TypeService } from 'app/services/type.service';
   styleUrls: ['./pokemonbox.component.css']
 })
 export class PokemonBoxComponent implements OnInit {
-  /* These variables are for the Team View at the top of the page, and some other stuff */
-  // The 6 pokemon on my team
+  // The Pokemon we just clicked on
+  selectedPkmn: Pokemon;
+  // My favorite team - there can only be one
   favTeam: Array<Pokemon>;
-  // This service generates 6 sample pokemon for me
+  // The service where I make 6 sample pokemon for temporary use
   teamService: TeamService;
-  // Contains the image for every type and damage class
+  // Contains the images for every type and damage class
   types: TypeService;
+  // The team being built or viewed
+  curTeam: Array<Pokemon>;
+  // Will temporarily contain a list of pokemon in my box
+  myBox: Array<Pokemon>;
+  // Will temporarily contain a list of teams, currently can't be named
+  myTeams: Array<Array<Pokemon>>;
 
-  /* These variables are for the Detailed Pokemon View/Search */
-  pkmnTableColNames: Array<string>;
+  /* These variables are for the Box View/Search */
+  pkmnBoxColNames: Array<string>;
   colSortIcons: Array<string>;
   sortBy: string;
   ascending: boolean;
@@ -31,11 +40,16 @@ export class PokemonBoxComponent implements OnInit {
     /* Assign my favTeam using teamService */
     this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
+    this.curTeam = new Array<Pokemon>();
+    this.myBox = new Array<Pokemon>();
+    this.myBox.fill(this.teamService.pkmn1, 0, 5); // give myself some pokemon
+    this.myBox.fill(this.teamService.pkmn6, 6, 10);
+    this.myTeams = new Array<Array<Pokemon>>();
+    this.myTeams.fill(this.teamService.favTeam, 0, 3); // give myself some favTeams
 
-    this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
-    this.colSortIcons = [ // The icon underneath each pkmnTableColNames
-      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
-      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
+    this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
+    this.colSortIcons = [ // The icon underneath each pkmnBoxColNames
+      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
     ];
     this.sortBy = 'name';
     this.ascending = true;
@@ -67,7 +81,7 @@ export class PokemonBoxComponent implements OnInit {
       this.colSortIcons[i] = 'arrow_drop_down';
       this.ascending = false;
     }
-    this.sortBy = this.pkmnTableColNames[i];
+    this.sortBy = this.pkmnBoxColNames[i];
   }
 
   ngOnInit() {

@@ -20,6 +20,9 @@
 table {
   font-size: 12px;
 }
+thead {
+  color: #333333;
+}
 td input {
   width: 100px;
 }
