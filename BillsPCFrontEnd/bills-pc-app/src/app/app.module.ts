@@ -9,9 +9,11 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
+// Pipes
 import { Filter } from './pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
 
+// Components
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { TeambuilderComponent } from './teambuilder/teambuilder.component';
@@ -28,6 +30,9 @@ import { LoggingService } from './services/logging.service';
 import { MoveService } from './services/move.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
+
+// Modules
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,8 @@ import { TypeService } from './services/type.service';
     HttpModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DndModule.forRoot()
   ],
   providers: [LoggingService, MoveService, TeamService, TypeService],
   bootstrap: [AppComponent]
