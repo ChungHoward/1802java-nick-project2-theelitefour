@@ -8,16 +8,16 @@ label?: string;
 draggable?: boolean;
 }
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css']
+  selector: 'app-offensivecoverage',
+  templateUrl: './offensivecoverage.component.html',
+  styleUrls: ['./offensivecoverage.component.css']
 })
-export class MapsComponent implements OnInit {
+export class OffensiveCoverageComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
-      const myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+      const myLatlng = new google.offensivecoverage.LatLng(40.748817, -73.985428);
       const mapOptions = {
           zoom: 13,
           center: myLatlng,
@@ -41,8 +41,8 @@ export class MapsComponent implements OnInit {
               {'featureType': 'poi.business', 'stylers': [{'visibility': 'simplified'}]}
           ]
       };
-      const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      const Marker = new google.maps.Marker({
+      const map = new google.offensivecoverage.Map(document.getElementById('map'), mapOptions);
+      const Marker = new google.offensivecoverage.Marker({
           position: myLatlng,
           title: 'Hello World!'
       });

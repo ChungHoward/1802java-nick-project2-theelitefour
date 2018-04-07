@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationsComponent } from './notifications.component';
+import { OffensiveCoverageComponent } from './offensivecoverage.component';
 
-describe('NotificationsComponent', () => {
-  let component: NotificationsComponent;
-  let fixture: ComponentFixture<NotificationsComponent>;
+describe('OffensiveCoverageComponent', () => {
+  let component: OffensiveCoverageComponent;
+  let fixture: ComponentFixture<OffensiveCoverageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationsComponent ]
+      declarations: [ OffensiveCoverageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationsComponent);
+    fixture = TestBed.createComponent(OffensiveCoverageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
