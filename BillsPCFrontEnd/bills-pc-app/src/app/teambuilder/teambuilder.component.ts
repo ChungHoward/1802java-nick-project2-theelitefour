@@ -1,51 +1,41 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
-import { Pokemon } from 'app/pokemon';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
+import { Pokemon } from 'app/pokemon';
+import { Move } from '../move';
+import { MoveService } from 'app/services/move.service';
+import { TeamService } from 'app/services/team.service';
+import { TypeService } from 'app/services/type.service';
 import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-teambuilder',
   templateUrl: './teambuilder.component.html',
-  styleUrls: ['./teambuilder.component.css']
+  styleUrls: ['./teambuilder.component.css'],
+  providers: [MoveService, TeamService]
 })
 export class TeambuilderComponent implements OnInit {
-
+  /* These variables are for the Team View at the top of the page, and some other stuff */
+  // The 6 pokemon on my team
   favTeam: Array<Pokemon>;
-  pkmn1: Pokemon;
-  pkmn2: Pokemon;
-  pkmn3: Pokemon;
-  pkmn4: Pokemon;
-  pkmn5: Pokemon;
-  pkmn6: Pokemon;
-  selectedPkmn: Pokemon;
-
-  none: string;
-  normal: string;
-  grass: string;
-  fire: string;
-  water: string;
-  electric: string;
-  ice: string;
-  bug: string;
-  poison: string;
-  ground: string;
-  rock: string;
-  fight: string;
-  flying: string;
-  psychic: string;
-  ghost: string;
-  dragon: string;
-  physical: string;
-  special: string;
-  status: string;
-
+  // This service generates 6 sample pokemon for me
+  teamService: TeamService;
+  // Contains the image for every type and damage class
+  types: TypeService;
+  // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
+  // The name of the icon that shows or hides your attacks
   collapse: string;
 
+  /* These variables are for the selected Pokemon thingy */
+  // This is the Pokemon we are viewing in full detail
+  selectedPkmn: Pokemon;
+  selPkmnMoves: Array<Move>;
+  moveService: MoveService;
+
   /* These variables are for the Detailed Pokemon View/Search */
-  questionSprite: string;
+  questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
   pkmnTableColNames: Array<string>;
   colSortIcons: Array<string>;
   sortBy: string;
@@ -54,61 +44,15 @@ export class TeambuilderComponent implements OnInit {
 
   constructor() {
     // Assigns the value of types to their respective image
-    this.intitializeTypeImages();
+    this.types = new TypeService();
 
-    /* Making my team */
-    this.pkmn1 = new Pokemon();
-    this.pkmn2 = new Pokemon();
-    this.pkmn3 = new Pokemon();
-    this.pkmn4 = new Pokemon();
-    this.pkmn5 = new Pokemon();
-    this.pkmn6 = new Pokemon();
+    /* Assign my favTeam using teamService */
+    this.teamService = new TeamService();
+    this.favTeam = this.teamService.favTeam;
 
-    this.pkmn1.name = 'Jolteon';
-    this.pkmn1.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
-    this.pkmn1.types = [this.electric, this.none];
-    this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-    this.pkmn1.stats = [65, 65, 60, 110, 110, 130];
-
-    this.pkmn2.name = 'Exeggutor';
-    this.pkmn2.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
-    this.pkmn2.types = [this.grass, this.psychic];
-    this.pkmn2.moveset = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
-    this.pkmn2.stats = [95, 95, 85, 125, 125, 55];
-
-    this.pkmn3.name = 'Moltres';
-    this.pkmn3.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
-    this.pkmn3.types = [this.fire, this.flying];
-    this.pkmn3.moveset = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
-    this.pkmn3.stats = [90, 100, 90, 125, 125, 90];
-
-    this.pkmn4.name = 'Slowbro';
-    this.pkmn4.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
-    this.pkmn4.types = [this.water, this.psychic];
-    this.pkmn4.moveset = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
-    this.pkmn4.stats = [65, 75, 110, 80, 80, 30];
-
-    this.pkmn5.name = 'Chansey';
-    this.pkmn5.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
-    this.pkmn5.types = [this.normal, this.none];
-    this.pkmn5.moveset = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
-    this.pkmn5.stats = [250, 5, 5, 105, 105, 50];
-
-    this.pkmn6.name = 'Gengar';
-    this.pkmn6.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
-    this.pkmn6.types = [this.ghost, this.poison];
-    this.pkmn6.moveset = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
-    this.pkmn6.stats = [60, 65, 60, 130, 130, 110];
-
-    this.favTeam = new Array<Pokemon>();
-    this.favTeam.push(this.pkmn1);
-    this.favTeam.push(this.pkmn2);
-    this.favTeam.push(this.pkmn3);
-    this.favTeam.push(this.pkmn4);
-    this.favTeam.push(this.pkmn5);
-    this.favTeam.push(this.pkmn6);
-
-    this.selectedPkmn = this.pkmn1;
+    /* My default selected Pokemon */
+    this.selectedPkmn = this.favTeam[0];
+    this.moveService = new MoveService();
 
     // by default our attacks are collapsed
     this.expandOrCollapse = false;
@@ -118,7 +62,7 @@ export class TeambuilderComponent implements OnInit {
     this.questionSprite = 'assets/img/question.png';
 
     this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
-    this.colSortIcons = [
+    this.colSortIcons = [ // The icon underneath each pkmnTableColNames
       'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
       'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
     ];
@@ -143,16 +87,19 @@ export class TeambuilderComponent implements OnInit {
         this.colSortIcons[k] = 'swap_vert';
       }
       this.colSortIcons[i] = 'arrow_drop_down';
+      this.ascending = false;
     } else if (this.colSortIcons[i] === 'arrow_drop_down') {
       for (let k = 0; k < this.colSortIcons.length; k++) {
         this.colSortIcons[k] = 'swap_vert';
       }
       this.colSortIcons[i] = 'arrow_drop_up';
+      this.ascending = true;
     } else if (this.colSortIcons[i] === 'arrow_drop_up') {
       for (let k = 0; k < this.colSortIcons.length; k++) {
         this.colSortIcons[k] = 'swap_vert';
       }
       this.colSortIcons[i] = 'arrow_drop_down';
+      this.ascending = false;
     }
     this.sortBy = this.pkmnTableColNames[i];
   }
@@ -160,28 +107,11 @@ export class TeambuilderComponent implements OnInit {
   selectPokemon(pkmn: Pokemon) {
     this.selectedPkmn = pkmn;
     this.ngOnInit();
-  }
-
-  intitializeTypeImages() {
-    this.none = 'assets/img/types/none.png';
-    this.normal = 'assets/img/types/normal.png';
-    this.grass = 'assets/img/types/grass.png';
-    this.fire = 'assets/img/types/fire.png';
-    this.water = 'assets/img/types/water.png';
-    this.electric = 'assets/img/types/electric.png';
-    this.ice = 'assets/img/types/ice.png';
-    this.bug = 'assets/img/types/bug.png';
-    this.poison = 'assets/img/types/poison.png';
-    this.ground = 'assets/img/types/ground.png';
-    this.rock = 'assets/img/types/rock.png';
-    this.fight = 'assets/img/types/fight.png';
-    this.flying = 'assets/img/types/flying.png';
-    this.psychic = 'assets/img/types/psychic.png';
-    this.ghost = 'assets/img/types/ghost.png';
-    this.dragon = 'assets/img/types/dragon.png';
-    this.physical = 'assets/img/types/physical.png';
-    this.special = 'assets/img/types/special.png';
-    this.status = 'assets/img/types/status.png';
+    // The below for loop doesnt work
+    // for (let i = 0; i < pkmn.moveset.length; i++) {
+    //   this.moveService.getMove(pkmn.moveset[i]).subscribe(data => this.selPkmnMoves[i] = data);
+    //   console.log(this.selPkmnMoves[i]);
+    // }
   }
 
   startAnimationForBarChart(chart) {
@@ -210,11 +140,18 @@ export class TeambuilderComponent implements OnInit {
 
   ngOnInit() {
     /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
-    const dataEmailsSubscriptionChart = {
-      labels: ['HP', 'Atk', 'Def', 'Satk', 'Sdef', 'Spe'],
+    const dataPokemonStatChart = {
+      labels: [
+        this.selectedPkmn.stats[0] + '\nHP',
+        this.selectedPkmn.stats[1] + '\nAtk',
+        this.selectedPkmn.stats[2] + '\nDef',
+        this.selectedPkmn.stats[3] + '\nSatk',
+        this.selectedPkmn.stats[4] + '\nSdef',
+        this.selectedPkmn.stats[5] + '\nSpe'
+      ],
       series: [ this.selectedPkmn.stats ]
     };
-    const optionsEmailsSubscriptionChart = {
+    const optionsPokemonStatChart = {
       axisX: {
         showGrid: false
       },
@@ -232,15 +169,15 @@ export class TeambuilderComponent implements OnInit {
         }
       }]
     ];
-    const emailsSubscriptionChart = new Chartist.Bar(
-      '#emailsSubscriptionChart',
-      dataEmailsSubscriptionChart,
-      optionsEmailsSubscriptionChart,
+    const pokemonStatChart = new Chartist.Bar(
+      '#pokemonStatChart',
+      dataPokemonStatChart,
+      optionsPokemonStatChart,
       responsiveOptions
     );
 
     // start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(emailsSubscriptionChart);
+    this.startAnimationForBarChart(pokemonStatChart);
   }
 
 }

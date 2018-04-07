@@ -12,7 +12,7 @@ export class Sort implements PipeTransform {
       return [];
     }
 
-    if (!sortBy || !ascending) {
+    if (!sortBy) {
       return pkmnList;
     }
 
@@ -44,6 +44,18 @@ export class Sort implements PipeTransform {
           } else {
             return 0;
           }
+        }
+      });
+    } else if (sortBy.includes('move')) {
+      const lastChar = sortBy.substr(sortBy.length - 1, 1);
+      const i = Number.parseInt(lastChar) - 1;
+      sortedArray = pkmnList.sort((p1, p2) => {
+        if (p1.moveset[i] > p2.moveset[i]) {
+          return 1;
+        } else if (p1.moveset[i] < p2.moveset[i]) {
+          return -1;
+        } else {
+          return 0;
         }
       });
     } else {
