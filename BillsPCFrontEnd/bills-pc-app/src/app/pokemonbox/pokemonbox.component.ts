@@ -51,6 +51,10 @@ export class PokemonBoxComponent implements OnInit {
     this.myBox.push(this.teamService.pkmn2);
     this.myBox.push(this.teamService.pkmn2);
     this.myBox.push(this.teamService.pkmn6);
+    this.myBox.push(this.teamService.pkmn4);
+    this.myBox.push(this.teamService.pkmn3);
+    this.myBox.push(this.teamService.pkmn2);
+    this.myBox.push(this.teamService.pkmn3);
     this.myTeams = new Array<Array<Pokemon>>();
 
     this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
