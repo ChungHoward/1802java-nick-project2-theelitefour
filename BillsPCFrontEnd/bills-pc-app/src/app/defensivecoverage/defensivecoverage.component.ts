@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Sort } from 'app/pipe/sort.pipe';
+import { PercentPipe } from '@angular/common';
 import { Pokemon } from 'app/pokemon';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
@@ -22,16 +22,12 @@ export class DefensiveCoverageComponent implements OnInit {
   // The team being built or viewed
   curTeam: Array<Pokemon>;
 
-  /* These variables are for the Box View/Search */
-  pkmnBoxColNames: Array<string>;
-  colSortIcons: Array<string>;
-  sortBy: string;
+  /* These variables are used for the Table */
+  pokemonCol: Array<Pokemon>;
   ascending: boolean;
   searchInput: string;
-
-  /* These variables are for the pill buttons */
-  favoriteIcon: string;
-  newTeamName: string;
+  myTable: number[][];
+  rowColor: string[];
 
   constructor() {
     // Assigns the value of types to their respective image
@@ -42,51 +38,70 @@ export class DefensiveCoverageComponent implements OnInit {
     this.favTeam = this.teamService.favTeam;
     this.curTeam = new Array<Pokemon>();
     this.curTeam = Object.assign([], this.favTeam);
+    this.pokemonCol = new Array<Pokemon>();
 
-    this.pkmnBoxColNames = ['type', '0%', '25%', '50%', '100%', '200%', '400%'];
-    this.colSortIcons = [ // The icon underneath each pkmnBoxColNames
-      'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
-    ];
-    this.sortBy = 'name';
-    this.ascending = true;
-
+    // Show sprite, name, and types in table header
+    for (let i = 0; i < this.curTeam.length; i++) {
+      this.pokemonCol[i] = this.curTeam[i];
+    }
+    this.rowColor = new Array<string>();
   }
 
   /**
-   * Switches all other column icons to swap_vert, then toggles the clicked icon,
-   * then changes the sorting strategy
-   * @param i the column index to sort
+   * Makes a table that shows what types each pokemon on your team
+   * is weak or resistant to and by how much
    */
-  toggleSort(i: number) {
-    if (this.colSortIcons[i] === 'swap_vert') {
-      for (let k = 0; k < this.colSortIcons.length; k++) {
-        this.colSortIcons[k] = 'swap_vert';
-      }
-      this.colSortIcons[i] = 'arrow_drop_down';
-      this.ascending = false;
-    } else if (this.colSortIcons[i] === 'arrow_drop_down') {
-      for (let k = 0; k < this.colSortIcons.length; k++) {
-        this.colSortIcons[k] = 'swap_vert';
-      }
-      this.colSortIcons[i] = 'arrow_drop_up';
-      this.ascending = true;
-    } else if (this.colSortIcons[i] === 'arrow_drop_up') {
-      for (let k = 0; k < this.colSortIcons.length; k++) {
-        this.colSortIcons[k] = 'swap_vert';
-      }
-      this.colSortIcons[i] = 'arrow_drop_down';
-      this.ascending = false;
-    }
-    this.sortBy = this.pkmnBoxColNames[i];
-  }
-
   createTable() {
-    for (let i = 0; i < this.favTeam.length; i++) {
-      // this.favTeam[i].types;
+    this.myTable = new Array<Array<number>>();
+    let effective: number;
+    let defType1: number;
+    let defType2: number;
+    const numPkmn = this.favTeam.length;
+    const numTypes = this.types.chart.length;
+    let row = new Array<number>();
+
+    // for each pokemon on your team
+    for (let i = 0; i < numPkmn; i++) {
+      // for each attack type in the game
+      for (let atkType = 0; atkType < numTypes - 1; atkType++) {
+        // get the types of that pokemon
+        defType1 = this.types.name.indexOf(this.favTeam[i].types[0]);
+        defType2 = this.types.name.indexOf(this.favTeam[i].types[1]);
+        // and see how effective every attack type is against your pokemon
+        effective = this.types.chart[atkType][defType1];
+        effective *= this.types.chart[atkType][defType2];
+        // then update our table
+        row.push(effective);
+      }
+      this.myTable.push(row);
+      row = new Array<number>();
+    }
+
+    let sum: number;
+    for (let y = 0; y < numTypes; y++) {
+      sum = 0;
+      for (let x = 0; x < numPkmn; x++) {
+        if (this.myTable[x][y] <= 1.0) {
+          sum += this.myTable[x][y];
+        } else if (this.myTable[x][y] > 1.0) {
+          sum += this.myTable[x][y] - 0.5;
+        }
+      }
+      if (sum === 0) {
+      } else if (sum > 7) {
+        this.rowColor[y] = 'bg-red';
+      } else if (sum > 6) {
+        this.rowColor[y] = 'bg-pink';
+      } else if (sum < 5) {
+        this.rowColor[y] = 'bg-green';
+      } else if (sum < 6) {
+        this.rowColor[y] = 'bg-lime';
+      }
     }
   }
 
   ngOnInit() {
+    this.createTable();
   }
 
 }

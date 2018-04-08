@@ -3,15 +3,15 @@
 
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
-      <div class="col-lg-2 col-sm-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+      <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
         <div class="card">
           <div class="card-header" data-background-color="orange" 
             (click)="selectPokemon(pkmn)" role="button">
             <img src="{{ favTeam[i].sprite_url }}" alt="" />
           </div>
           <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
-            <img src="{{ favTeam[i].types[0] }}" alt="" class="type" />
-            <img src="{{ favTeam[i].types[1] }}" alt="" class="type" />
+            <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
+            <img src="{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}" alt="" class="type" />
             <h4 class="title">{{ favTeam[i].name }}</h4>
           </div>
           <div class="card-footer ta-center">
@@ -42,8 +42,8 @@
 
           <div class="card-content ta-center row">
             <div class="no-padding col-lg-3 col-md-3">
-              <img src="{{ selectedPkmn.types[0] }}" alt="normal" class="type" />
-              <img src="{{ selectedPkmn.types[1] }}" alt="none" class="type" />
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" alt="normal" class="type" />
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" alt="none" class="type" />
               <h4 class="title">{{ selectedPkmn.name }}</h4>
               <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
             </div>
@@ -162,8 +162,8 @@
                   <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
                     <td class="ta-center">
-                      <img src="{{ pkmn.types[0] }}" class="type">
-                      <img src="{{ pkmn.types[1] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
                     </td>
                     <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
                   </tr>

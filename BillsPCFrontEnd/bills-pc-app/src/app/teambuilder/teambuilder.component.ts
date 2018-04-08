@@ -52,7 +52,6 @@ export class TeambuilderComponent implements OnInit {
 
     /* My default selected Pokemon */
     this.selectedPkmn = this.favTeam[0];
-    this.moveService = new MoveService();
 
     // by default our attacks are collapsed
     this.expandOrCollapse = false;

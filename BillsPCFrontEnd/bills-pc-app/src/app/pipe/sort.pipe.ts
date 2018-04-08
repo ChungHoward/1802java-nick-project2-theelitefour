@@ -16,11 +16,8 @@ export class Sort implements PipeTransform {
       return pkmnList;
     }
 
-    sortBy = sortBy;
-
     let sortedArray: Array<Pokemon>;
 
-    /* Begin: "I want to use a ternary operator so bad, but it would be hard to read if I did." */
     if (sortBy === 'name') {
       sortedArray = pkmnList.sort((p1, p2) => {
         if (p1.name > p2.name) {
