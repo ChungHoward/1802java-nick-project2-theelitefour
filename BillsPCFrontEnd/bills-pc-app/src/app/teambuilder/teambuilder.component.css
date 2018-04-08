@@ -57,9 +57,9 @@ ul {
   padding: 0px;
   margin: 0px;
 }
-/* Improve readability. Default is orange on white background. */
-th {
-  color: #111111;
+.badge {
+  margin: 5px;
+  background-color: rgb(255, 70, 60);
 }
 /* Squeeze more space out of our tables */
 table {
@@ -70,6 +70,9 @@ td input {
 }
 .type-col {
   width: 70px;
+}
+.stat-col {
+  width: 42px;
 }
 .form-group {
   margin-top: 0px;

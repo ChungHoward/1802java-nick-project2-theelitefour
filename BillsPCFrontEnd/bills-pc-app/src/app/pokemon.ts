@@ -27,6 +27,12 @@ export interface Stat {
   spe: number;
 }
 
+export interface UrlName {
+  url: string;
+  name: string; // red-blue or yellow
+}
+
+
 interface Move {
   version_group_details: Array<Detail>; // use Detail.version_group.name === red-blue || '' === yellow
   move: Attack;
@@ -36,11 +42,6 @@ interface Detail {
   move_learn_method: UrlName; // not important
   level_learned_at: number; // not important
   version_group: UrlName;
-}
-
-export interface UrlName {
-  url: string;
-  name: string; // red-blue or yellow
 }
 
 interface Attack {

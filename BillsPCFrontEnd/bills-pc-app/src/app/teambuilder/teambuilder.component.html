@@ -1,6 +1,10 @@
 <div class="main-content">
   <div class="container-fluid">
-
+    <ul *ngIf="selectedPkmn">
+      Test div please ignore
+      <li *ngFor="let app of apps">
+      </li>
+    </ul>
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
       <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
@@ -36,8 +40,7 @@
           </div>
 
           <div class="card-content ta-center row">
-            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprites }}" 
-              title="{{ selectedPkmn.sprites }}" />
+            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprites }}" title="{{ selectedPkmn.sprites }}" />
             <div class="no-padding col-sm-3 col-xl-3">
               <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" class="type" />
               <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" class="type" />
@@ -148,7 +151,7 @@
           <div class="card-content no-pad-top">
             <div class="table-responsive pkmn-table">
               <table class="table table-hover">
-                <thead class="text-warning">
+                <thead>
                   <tr>
                     <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
                       {{ col | titlecase }}
@@ -159,18 +162,19 @@
                 </thead>
                 <tbody>
                   <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <tr class="search-row" 
+                  *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
                     </td>
-                    <td class="ta-center">{{ pkmn.stats.hp }}</td>
-                    <td class="ta-center">{{ pkmn.stats.atk }}</td>
-                    <td class="ta-center">{{ pkmn.stats.def }}</td>
-                    <td class="ta-center">{{ pkmn.stats.satk }}</td>
-                    <td class="ta-center">{{ pkmn.stats.sdef }}</td>
-                    <td class="ta-center">{{ pkmn.stats.spe }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.hp }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.atk }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.def }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.satk }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.sdef }}</td>
+                    <td class="ta-center stat-col">{{ pkmn.stats.spe }}</td>
                   </tr>
                 </tbody>
               </table>

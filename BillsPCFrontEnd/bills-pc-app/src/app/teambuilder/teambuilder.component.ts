@@ -122,7 +122,9 @@ export class TeambuilderComponent implements OnInit {
   getPokeAPIjson() {
     this.pokemonService.getJson().subscribe(data => {
       this.pokedex = data as Array<PokeAPI>;
-    }, error => console.error(error));
+    }, error => {
+      console.error(error);
+    });
   }
 
   startAnimationForBarChart(chart) {
