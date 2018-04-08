@@ -32,6 +32,7 @@ import { PokemonService } from './services/pokemon.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 import { RegisterService } from './services/register.service';
+import { LoginService } from './services/login.service';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
@@ -63,7 +64,7 @@ import { DndModule } from 'ng2-dnd';
     DndModule.forRoot()
   ],
 
-  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService, RegisterService],
+  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService, RegisterService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

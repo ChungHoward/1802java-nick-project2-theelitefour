@@ -172,10 +172,12 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__ = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_logging_service__ = __webpack_require__("./src/app/services/logging.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,6 +212,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 // Modules
 
 var AppModule = (function () {
@@ -230,7 +234,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__["a" /* FeaturedComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__["a" /* UpgradeComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__["a" /* Filter */],
-                __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__["a" /* Sort */],
+                __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__["a" /* Sort */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -239,9 +243,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* ComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["d" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_25_ng2_dnd__["a" /* DndModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_27_ng2_dnd__["a" /* DndModule */].forRoot()
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_20__services_logging_service__["a" /* LoggingService */], __WEBPACK_IMPORTED_MODULE_21__services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_22__services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_23__services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_24__services_register_service__["a" /* RegisterService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_20__services_logging_service__["a" /* LoggingService */], __WEBPACK_IMPORTED_MODULE_22__services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_21__services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_23__services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_24__services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_25__services_register_service__["a" /* RegisterService */], __WEBPACK_IMPORTED_MODULE_26__services_login_service__["a" /* LoginService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -436,7 +440,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a routerLink='login'>\r\n            <i class=\"material-icons\">account_circle</i>\r\n            Login\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a routerLink='register'>\r\n            <i class=\"material-icons\">person</i>\r\n            Register\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"\">\r\n          <a>\r\n            <i class=\"material-icons\">exit_to_app</i>\r\n            Logout\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a routerLink='login'>\r\n            <i class=\"material-icons\">account_circle</i>\r\n            Login\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a routerLink='register'>\r\n            <i class=\"material-icons\">person</i>\r\n            Register\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"\">\r\n          <a>\r\n            <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n            <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i>\r\n            Profile\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"\">\r\n          <a>\r\n            <i class=\"material-icons\">exit_to_app</i>\r\n            Logout\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -649,14 +653,14 @@ var CoreCoverageComponent = (function () {
 /***/ "./src/app/defensivecoverage/defensivecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  margin-bottom: 0px;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 14px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n.pls-land {\r\n  vertical-align: bottom;\r\n}\r\n/* Highlights */\r\n.bg-red {\r\n  background-color: rgb(245, 70, 60);\r\n}\r\n.bg-red:hover {\r\n  background-color: rgb(255, 90, 70);\r\n}\r\n.bg-pink {\r\n  background-color: rgb(240, 100, 90);\r\n}\r\n.bg-pink:hover {\r\n  background-color: rgb(240, 120, 110);\r\n}\r\n.bg-lime {\r\n  background-color: rgb(140, 210, 140);\r\n}\r\n.bg-lime:hover {\r\n  background-color: rgb(150, 220, 150);\r\n}\r\n.bg-green {\r\n  background-color: rgb(90, 190, 90);\r\n}\r\n.bg-green:hover {\r\n  background-color: rgb(110, 200, 110);\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\ntd {\r\n  color: #000000;\r\n  font-weight: bold;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/defensivecoverage/defensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"card card-plain\">\r\n                    <div class=\"card-header\" data-background-color=\"red\">\r\n                        <h4 class=\"title\">Material Design Icons</h4>\r\n                        <p class=\"category\">Handcrafted by our friends from <a target=\"_blank\" href=\"https://design.google.com/icons/\">Google</a></p>\r\n                    </div>\r\n                    <div class=\"card-content\">\r\n                        <div class=\"iframe-container hidden-sm hidden-xs\">\r\n                            <iframe src=\"https://design.google.com/icons/\">\r\n                                <p>Your browser does not support iframes.</p>\r\n                            </iframe>\r\n                        </div>\r\n                        <div class=\"col-md-6 hidden-lg hidden-md text-center\">\r\n                            <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the  <a href=\"https://design.google.com/icons/\" target=\"_blank\">Material Icons</a></h5>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-12 col-md-12\">\r\n        <div class=\"card\">\r\n\r\n          <div class=\"card-content\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center pls-land\">\r\n                      <img src=\"{{ types.none }}\" class=\"type\">\r\n                      <br/> Type <br/>\r\n                    </th>\r\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\r\n                      <img src=\"{{ pkmn.sprites }}\" class=\"sprite\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <br/>{{ pkmn.name | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\r\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ type }}\" class=\"type\">\r\n                    </td>\r\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\r\n                      {{ effective[i] | percent }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -666,6 +670,8 @@ module.exports = "\r\n<div class=\"main-content\">\r\n    <div class=\"container
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DefensiveCoverageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -676,10 +682,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DefensiveCoverageComponent = (function () {
     function DefensiveCoverageComponent() {
+        // Assigns the value of types to their respective image
+        this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
+        /* Assign my favTeam using teamService */
+        this.teamService = new __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]();
+        this.favTeam = this.teamService.favTeam;
+        this.curTeam = new Array();
+        this.curTeam = Object.assign([], this.favTeam);
+        this.pokemonCol = new Array();
+        // Show sprite, name, and types in table header
+        for (var i = 0; i < this.curTeam.length; i++) {
+            this.pokemonCol[i] = this.curTeam[i];
+        }
+        this.rowColor = new Array();
     }
+    /**
+     * Makes a table that shows what types each pokemon on your team
+     * is weak or resistant to and by how much
+     */
+    DefensiveCoverageComponent.prototype.createTable = function () {
+        this.myTable = new Array();
+        var effective;
+        var defType1;
+        var defType2;
+        var numPkmn = this.favTeam.length;
+        var numTypes = this.types.chart.length;
+        var row = new Array();
+        // for each pokemon on your team
+        for (var i = 0; i < numPkmn; i++) {
+            // for each attack type in the game
+            for (var atkType = 0; atkType < numTypes - 1; atkType++) {
+                // get the types of that pokemon
+                defType1 = this.types.name.indexOf(this.favTeam[i].types[0]);
+                defType2 = this.types.name.indexOf(this.favTeam[i].types[1]);
+                // and see how effective every attack type is against your pokemon
+                effective = this.types.chart[atkType][defType1];
+                effective *= this.types.chart[atkType][defType2];
+                // then update our table
+                row.push(effective);
+            }
+            this.myTable.push(row);
+            row = new Array();
+        }
+        var sum;
+        for (var y = 0; y < numTypes; y++) {
+            sum = 0;
+            for (var x = 0; x < numPkmn; x++) {
+                if (this.myTable[x][y] <= 1.0) {
+                    sum += this.myTable[x][y];
+                }
+                else if (this.myTable[x][y] > 1.0) {
+                    sum += this.myTable[x][y] - 0.5;
+                }
+            }
+            if (sum === 0) {
+            }
+            else if (sum > 7) {
+                this.rowColor[y] = 'bg-red';
+            }
+            else if (sum > 6) {
+                this.rowColor[y] = 'bg-pink';
+            }
+            else if (sum < 5) {
+                this.rowColor[y] = 'bg-green';
+            }
+            else if (sum < 6) {
+                this.rowColor[y] = 'bg-lime';
+            }
+        }
+    };
     DefensiveCoverageComponent.prototype.ngOnInit = function () {
+        this.createTable();
     };
     DefensiveCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -755,7 +832,7 @@ module.exports = ".ng-valid[required], .ng-valid.required  {\r\n    border-botto
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Login</h4>\r\n            <p class=\"category\">To access your saved pokemon and teams</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\" [disabled]=\"!passwordMatch\">Login</button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div class=\"h3\">\r\n                You have successfully Logged In!\r\n              </div>\r\n              <div class=\"h4\">\r\n                No email confirmation necessary\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-md-4\">\r\n        <div class=\"card card-profile\">\r\n          <div class=\"card-avatar\">\r\n            <a href=\"#bill\">\r\n              <img class=\"img\" src=\"assets/img/faces/Bill.png\" />\r\n            </a>\r\n          </div>\r\n\r\n          <div class=\"content\">\r\n            <h6 class=\"category text-gray\">Masaki Sonezaki</h6>\r\n            <h4 class=\"card-title\">Bill, Head Engineer</h4>\r\n            <p class=\"card-content\">\r\n              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert\r\n              analytics and statistics are provided by our leading Professors.\r\n            </p>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      \r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Login</h4>\r\n            <p class=\"category\">To access your saved pokemon and teams</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\">Login</button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                    You have successfully Logged In!\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Invalid login credentials\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -765,6 +842,7 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -775,26 +853,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(loginService) {
+        this.loginService = loginService;
         this.submitted = false;
     }
     LoginComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.submitted = true;
-        var xhr = new XMLHttpRequest();
-        // receive reply
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var reply = JSON.parse(xhr.responseText);
-                alert(reply);
-                document.getElementById('notification').innerHTML = reply;
-            }
-        };
-        // send request to /login with fields, username, password, email
-        xhr.open('POST', 'login', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('username=' + this.username + '&password=' + this.password);
-        // xhr.send('username=' + this.username + 'password=' + this.password);
+        this.loginService.login(this.username, this.password).subscribe(function (successful) { _this.valid = successful; }, function (error) { return console.error(error); });
     };
     LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent = __decorate([
@@ -803,9 +871,10 @@ var LoginComponent = (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _a || Object])
     ], LoginComponent);
     return LoginComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=login.component.js.map
@@ -887,7 +956,7 @@ module.exports = ""
 /***/ "./src/app/offensivecoverage/offensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"map\"></div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Notifications</h4>\r\n        <p class=\"category\">Handcrafted by our friend\r\n        </p>\r\n      </div>\r\n      <div class=\"card-content\">\r\n        \r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -910,39 +979,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var OffensiveCoverageComponent = (function () {
     function OffensiveCoverageComponent() {
     }
-    OffensiveCoverageComponent.prototype.ngOnInit = function () {
-        var myLatlng = new google.offensivecoverage.LatLng(40.748817, -73.985428);
-        var mapOptions = {
-            zoom: 13,
-            center: myLatlng,
-            scrollwheel: false,
-            styles: [
-                { 'featureType': 'water', 'stylers': [{ 'saturation': 43 }, { 'lightness': -11 }, { 'hue': '#0088ff' }] },
-                { 'featureType': 'road', 'elementType': 'geometry.fill', 'stylers': [{ 'hue': '#ff0000' },
-                        { 'saturation': -100 }, { 'lightness': 99 }] },
-                { 'featureType': 'road', 'elementType': 'geometry.stroke', 'stylers': [{ 'color': '#808080' },
-                        { 'lightness': 54 }] },
-                { 'featureType': 'landscape.man_made', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#ece2d9' }] },
-                { 'featureType': 'poi.park', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#ccdca1' }] },
-                { 'featureType': 'road', 'elementType': 'labels.text.fill', 'stylers': [{ 'color': '#767676' }] },
-                { 'featureType': 'road', 'elementType': 'labels.text.stroke', 'stylers': [{ 'color': '#ffffff' }] },
-                { 'featureType': 'poi', 'stylers': [{ 'visibility': 'off' }] },
-                { 'featureType': 'landscape.natural', 'elementType': 'geometry.fill', 'stylers': [{ 'visibility': 'on' },
-                        { 'color': '#b8cb93' }] },
-                { 'featureType': 'poi.park', 'stylers': [{ 'visibility': 'on' }] },
-                { 'featureType': 'poi.sports_complex', 'stylers': [{ 'visibility': 'on' }] },
-                { 'featureType': 'poi.medical', 'stylers': [{ 'visibility': 'on' }] },
-                { 'featureType': 'poi.business', 'stylers': [{ 'visibility': 'simplified' }] }
-            ]
-        };
-        var map = new google.offensivecoverage.Map(document.getElementById('map'), mapOptions);
-        var Marker = new google.offensivecoverage.Marker({
-            position: myLatlng,
-            title: 'Hello World!'
-        });
-        // To add the marker to the map, call setMap();
-        Marker.setMap(map);
-    };
+    OffensiveCoverageComponent.prototype.ngOnInit = function () { };
     OffensiveCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-offensivecoverage',
@@ -1025,9 +1062,7 @@ var Sort = (function () {
         if (!sortBy) {
             return pkmnList;
         }
-        sortBy = sortBy;
         var sortedArray;
-        /* Begin: "I want to use a ternary operator so bad, but it would be hard to read if I did." */
         if (sortBy === 'name') {
             sortedArray = pkmnList.sort(function (p1, p2) {
                 if (p1.name > p2.name) {
@@ -1076,26 +1111,24 @@ var Sort = (function () {
             });
         }
         else {
-            var i_2;
             if (sortBy === 'hp') {
-                i_2 = 0;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.hp - p2.stats.hp; });
             }
             else if (sortBy === 'atk') {
-                i_2 = 1;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.atk - p2.stats.atk; });
             }
             else if (sortBy === 'def') {
-                i_2 = 2;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.def - p2.stats.def; });
             }
             else if (sortBy === 'satk') {
-                i_2 = 3;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.satk - p2.stats.satk; });
             }
             else if (sortBy === 'sdef') {
-                i_2 = 4;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.sdef - p2.stats.sdef; });
             }
             else if (sortBy === 'spe') {
-                i_2 = 5;
+                sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats.spe - p2.stats.spe; });
             }
-            sortedArray = pkmnList.sort(function (p1, p2) { return p1.stats[i_2] - p2.stats[i_2]; });
         }
         if (ascending) {
             return sortedArray;
@@ -1134,14 +1167,14 @@ var Pokemon = (function () {
 /***/ "./src/app/pokemonbox/pokemonbox.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 575px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 435px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 575px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 435px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/pokemonbox/pokemonbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills ta-center\">\r\n              <li>\r\n                <a role=\"button\" (click)=\"newTeam()\">\r\n                  <i class=\"material-icons\">create_new_folder</i> New Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">save</i> Save Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\r\n                  <tr *ngFor=\"let pkmn of (favTeam | pkmnSort: sortBy:ascending); let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name }}</td>\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ pkmn.types[0] }}\" class=\"type\">\r\n                      <img src=\"{{ pkmn.types[1] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills\">\r\n              <li class=\"active\">\r\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\r\n                  <i class=\"material-icons\">line_weight</i> Pokemon\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a data-toggle=\"pill\" href=\"#teamBox\">\r\n                  <i class=\"material-icons\">view_module</i> Teams\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"searchBox\" name=\"searchBox\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer tab-content\">\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\r\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\r\n                  <tr *ngFor=\"let pkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name }}</td>\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ pkmn.types[0] }}\" class=\"type\">\r\n                      <img src=\"{{ pkmn.types[1] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills ta-center\">\r\n              <li>\r\n                <a role=\"button\" (click)=\"newTeam()\">\r\n                  <i class=\"material-icons\">create_new_folder</i> New Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">save</i> Save Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\r\n                  <tr *ngFor=\"let pkmn of favTeam; let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills\">\r\n              <li class=\"active\">\r\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\r\n                  <i class=\"material-icons\">line_weight</i> Pokemon\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a data-toggle=\"pill\" href=\"#teamBox\">\r\n                  <i class=\"material-icons\">view_module</i> Teams\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"searchBox\" name=\"searchBox\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer tab-content\">\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\r\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\r\n                  <tr *ngFor=\"let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(boxpkmn)\" role=\"button\">{{ boxpkmn.name }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of boxpkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1173,6 +1206,7 @@ var PokemonBoxComponent = (function () {
         this.teamService = new __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]();
         this.favTeam = this.teamService.favTeam;
         this.curTeam = new Array();
+        this.curTeam = Object.assign([], this.favTeam);
         this.myBox = new Array();
         this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
         this.myBox.push(this.teamService.pkmn6);
@@ -1242,14 +1276,12 @@ var PokemonBoxComponent = (function () {
      * @param newTeamName saves as 'Untitled' if newTeamName is empty
      */
     PokemonBoxComponent.prototype.setFavoriteTeam = function (newTeamName) {
-        if (this.saveTeam(newTeamName)) {
-            this.favTeam = this.curTeam;
-            this.favoriteIcon = 'star';
-            if (newTeamName.length < 1) {
-                newTeamName = 'Untitled';
-            }
-            // set favTeam.name = newTeamName;
+        this.favTeam = this.curTeam;
+        this.favoriteIcon = 'star';
+        if (newTeamName.length < 1) {
+            newTeamName = 'Untitled';
         }
+        // set favTeam.name = newTeamName;
     };
     PokemonBoxComponent.prototype.ngOnInit = function () {
         if (this.curTeam === this.favTeam) {
@@ -1371,6 +1403,44 @@ var LoggingService = (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/login.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LoginService = (function () {
+    function LoginService(http) {
+        this.http = http;
+    }
+    LoginService.prototype.login = function (username, password) {
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username).set('password', password);
+        return this.http.post('login', body);
+    };
+    LoginService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], LoginService);
+    return LoginService;
+    var _a;
+}());
+
+//# sourceMappingURL=login.service.js.map
+
+/***/ }),
+
 /***/ "./src/app/services/move.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1390,21 +1460,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MoveService = (function () {
-    function MoveService() {
+    function MoveService(http) {
+        this.http = http;
         this.url = 'https://pokeapi.co/api/v2/move/';
-        this.http = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */](this.handler);
     }
     MoveService.prototype.getMove = function (name) {
         return this.http.get(this.url + name);
     };
     MoveService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], MoveService);
     return MoveService;
+    var _a;
 }());
 
 //# sourceMappingURL=move.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/pokemon.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PokemonService = (function () {
+    function PokemonService(http) {
+        this.http = http;
+    }
+    PokemonService.prototype.getJson = function () {
+        return this.http.get('assets/pokeAPI.json');
+    };
+    PokemonService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], PokemonService);
+    return PokemonService;
+    var _a;
+}());
+
+//# sourceMappingURL=pokemon.service.js.map
 
 /***/ }),
 
@@ -1478,35 +1586,36 @@ var TeamService = (function () {
         this.pkmn5 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
         this.pkmn6 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
         this.pkmn1.name = 'Jolteon';
-        this.pkmn1.types = [this.types.electric, this.types.none];
-        this.pkmn1.stats = [65, 65, 60, 110, 110, 130];
+        this.pkmn1.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+        this.pkmn1.types = ['electric', 'none'];
         this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
-        this.pkmn1.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+        this.pkmn1.stats = { hp: 65, atk: 65, def: 60, satk: 110, sdef: 110, spe: 130 };
+        this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
         this.pkmn2.name = 'Exeggutor';
-        this.pkmn2.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
-        this.pkmn2.types = [this.types.grass, this.types.psychic];
+        this.pkmn2.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
+        this.pkmn2.types = ['grass', 'psychic'];
         this.pkmn2.moveset = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
-        this.pkmn2.stats = [95, 95, 85, 125, 125, 55];
+        this.pkmn2.stats = { hp: 95, atk: 95, def: 85, satk: 125, sdef: 125, spe: 55 };
         this.pkmn3.name = 'Moltres';
-        this.pkmn3.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
-        this.pkmn3.types = [this.types.fire, this.types.flying];
+        this.pkmn3.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
+        this.pkmn3.types = ['fire', 'flying'];
         this.pkmn3.moveset = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
-        this.pkmn3.stats = [90, 100, 90, 125, 125, 90];
+        this.pkmn3.stats = { hp: 90, atk: 100, def: 90, satk: 125, sdef: 125, spe: 90 };
         this.pkmn4.name = 'Slowbro';
-        this.pkmn4.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
-        this.pkmn4.types = [this.types.water, this.types.psychic];
+        this.pkmn4.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
+        this.pkmn4.types = ['water', 'psychic'];
         this.pkmn4.moveset = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
-        this.pkmn4.stats = [65, 75, 110, 80, 80, 30];
+        this.pkmn4.stats = { hp: 65, atk: 75, def: 110, satk: 80, sdef: 80, spe: 30 };
         this.pkmn5.name = 'Chansey';
-        this.pkmn5.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
-        this.pkmn5.types = [this.types.normal, this.types.none];
+        this.pkmn5.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
+        this.pkmn5.types = ['normal', 'none'];
         this.pkmn5.moveset = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
-        this.pkmn5.stats = [250, 5, 5, 105, 105, 50];
+        this.pkmn5.stats = { hp: 250, atk: 5, def: 5, satk: 105, sdef: 105, spe: 50 };
         this.pkmn6.name = 'Gengar';
-        this.pkmn6.sprite_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
-        this.pkmn6.types = [this.types.ghost, this.types.poison];
+        this.pkmn6.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
+        this.pkmn6.types = ['ghost', 'poison'];
         this.pkmn6.moveset = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
-        this.pkmn6.stats = [60, 65, 60, 130, 130, 110];
+        this.pkmn6.stats = { hp: 60, atk: 65, def: 60, satk: 130, sdef: 130, spe: 110 };
         this.favTeam = new Array();
         this.favTeam.push(this.pkmn1);
         this.favTeam.push(this.pkmn2);
@@ -1515,6 +1624,7 @@ var TeamService = (function () {
         this.favTeam.push(this.pkmn5);
         this.favTeam.push(this.pkmn6);
     }
+    TeamService.prototype.ngOnInit = function () { };
     TeamService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [])
@@ -1555,7 +1665,7 @@ var TypeService = (function () {
         this.poison = 'assets/img/types/poison.png';
         this.ground = 'assets/img/types/ground.png';
         this.rock = 'assets/img/types/rock.png';
-        this.fight = 'assets/img/types/fight.png';
+        this.fighting = 'assets/img/types/fighting.png';
         this.flying = 'assets/img/types/flying.png';
         this.psychic = 'assets/img/types/psychic.png';
         this.ghost = 'assets/img/types/ghost.png';
@@ -1563,6 +1673,37 @@ var TypeService = (function () {
         this.physical = 'assets/img/types/physical.png';
         this.special = 'assets/img/types/special.png';
         this.status = 'assets/img/types/status.png';
+        this.name = [
+            'normal', 'psychic', 'electric', 'ice',
+            'ground', 'rock', 'water', 'grass',
+            'flying', 'fighting', 'fire', 'bug',
+            'poison', 'ghost', 'dragon', 'none'
+        ];
+        this.img = [
+            this.normal, this.psychic, this.electric, this.ice,
+            this.ground, this.rock, this.water, this.grass,
+            this.flying, this.fighting, this.fire, this.bug,
+            this.poison, this.ghost, this.dragon, this.none
+        ];
+        this.chart = [
+            // nrm, psy, elc, ice, grd, rck, wtr, grs, fly, ftg, fir, bug, psn, gst, drg, none
+            [1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0],
+            [1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 0.5, 1.0, 0.0, 1.0, 2.0, 0.5, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0],
+            [1.0, 1.0, 1.0, 0.5, 2.0, 1.0, 0.5, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0],
+            [1.0, 1.0, 2.0, 1.0, 1.0, 2.0, 1.0, 0.5, 0.0, 1.0, 2.0, 0.5, 2.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 2.0, 1.0, 0.5, 1.0, 1.0, 2.0, 0.5, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 0.5, 0.5, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 0.5, 1.0],
+            [1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 0.5, 0.5, 1.0, 0.5, 0.5, 0.5, 1.0, 0.5, 1.0],
+            [1.0, 1.0, 0.5, 1.0, 1.0, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0],
+            [2.0, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.5, 1.0, 1.0, 0.5, 0.5, 0.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 2.0, 1.0, 0.5, 0.5, 2.0, 1.0, 1.0, 0.5, 2.0, 1.0, 1.0, 0.5, 1.0],
+            [1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 0.5, 0.5, 0.5, 1.0, 2.0, 0.5, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0, 0.5, 0.5, 1.0, 2.0, 1.0, 1.0, 1.0, 2.0, 0.5, 0.5, 1.0, 1.0],
+            [0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] // none
+        ];
     }
     TypeService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
@@ -1578,14 +1719,14 @@ var TypeService = (function () {
 /***/ "./src/app/teambuilder/teambuilder.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width:100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width:100%;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n}\r\n.card-stats {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n/* Improve readability. Default is orange on white background. */\r\nth {\r\n  color: #111111;\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n  max-height: 600px;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\n.no-padding {\r\n  padding: 0px;\r\n}"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width:100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width:100%;\r\n}\r\n.col-md-12 {\r\n  max-height: 470px;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n  max-height: 450px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n}\r\n.card-stats {\r\n  min-height: 450px;\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  max-height: 500px;\r\n}\r\n.card-footer.ta-center {\r\n  margin-bottom: 0px!important;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n  max-height: 450px;\r\n  margin-left: 4px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n  }\r\n.ta-center {\r\n  text-align: center;\r\n  }\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/teambuilder/teambuilder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-sm-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"orange\" \r\n            (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img src=\"{{ favTeam[i].sprite_url }}\" alt=\"\" />\r\n          </div>\r\n          <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img src=\"{{ favTeam[i].types[0] }}\" alt=\"\" class=\"type\" />\r\n            <img src=\"{{ favTeam[i].types[1] }}\" alt=\"\" class=\"type\" />\r\n            <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n          </div>\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">{{ atk }}</li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            Critical Rate <br/>\r\n            {{ selectedPkmn.stats[5] * 100 / 512 | number:'2.1-2'}} %\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <div class=\"no-padding col-lg-3 col-md-3\">\r\n              <img src=\"{{ selectedPkmn.types[0] }}\" alt=\"normal\" class=\"type\" />\r\n              <img src=\"{{ selectedPkmn.types[1] }}\" alt=\"none\" class=\"type\" />\r\n              <h4 class=\"title\">{{ selectedPkmn.name }}</h4>\r\n              <small><a href=\"https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}\">Smogon Analysis</a></small>\r\n            </div>\r\n            <img class=\"sprite col-lg-3 col-md-3\" src=\"{{ selectedPkmn.sprite_url }}\" alt=\"\" />\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[0]\" list=\"canLearn\" name=\"move\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.electric }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% paralysis chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[1]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.ice }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% freeze chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[2]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.fight }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.physical }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>100%</td>\r\n                    <td>32</td>\r\n                    <td>If hit by normal or fighting type attack, returns double damage.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[3]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.normal }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.status }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>--</td>\r\n                    <td>16</td>\r\n                    <td>Heals self by 50% of max HP.</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\" [(value)]=\"selectedPkmn.name\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}<br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" \r\n                        (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                      </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr *ngFor=\"let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name }}</td>\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ pkmn.types[0] }}\" class=\"type\">\r\n                      <img src=\"{{ pkmn.types[1] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let stat of pkmn.stats\">{{ stat }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <ul *ngIf=\"selectedPkmn\">\r\n      Test div please ignore\r\n      <li *ngFor=\"let app of apps\">\r\n      </li>\r\n    </ul>\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\">\r\n            <img src=\"{{ favTeam[i].sprites }}\" alt=\"\" />\r\n          </div>\r\n          <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" alt=\"\" class=\"type\" />\r\n            <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}\" alt=\"\" class=\"type\" />\r\n            <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n          </div>\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">{{ atk }}</li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" src=\"{{ selectedPkmn.sprites }}\" title=\"{{ selectedPkmn.sprites }}\" />\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <img src=\"{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}\" class=\"type\" />\r\n              <img src=\"{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}\" class=\"type\" />\r\n              <br/>\r\n              <span class=\"badge red\">\r\n                Critical Rate\r\n                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %\r\n              </span>\r\n              <br/>\r\n              <small>\r\n                <a href=\"https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}\">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\" [(value)]=\"selectedPkmn.name\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[0]\" list=\"canLearn\" name=\"move\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.electric }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% paralysis chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[1]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.ice }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% freeze chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[2]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.fight }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.physical }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>100%</td>\r\n                    <td>32</td>\r\n                    <td>If hit by normal or fighting type attack, returns double damage.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[3]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.normal }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.status }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>--</td>\r\n                    <td>16</td>\r\n                    <td>Heals self by 50% of max HP.</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" \r\n                  *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.hp }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.atk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.def }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.satk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.sdef }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.spe }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1596,10 +1737,11 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeambuilderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_chartist__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chartist__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1614,16 +1756,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TeambuilderComponent = (function () {
-    function TeambuilderComponent() {
+    function TeambuilderComponent(pokemonService) {
+        this.pokemonService = pokemonService;
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]();
-        /* Assign my favTeam using teamService */
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */]();
+        this.types = new __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]();
+        // Assign my favTeam using teamService
+        this.teamService = new __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */]();
         this.favTeam = this.teamService.favTeam;
-        /* My default selected Pokemon */
+        // My default selected Pokemon
         this.selectedPkmn = this.favTeam[0];
-        this.moveService = new __WEBPACK_IMPORTED_MODULE_1_app_services_move_service__["a" /* MoveService */]();
         // by default our attacks are collapsed
         this.expandOrCollapse = false;
         this.collapse = 'arrow_drop_down';
@@ -1636,6 +1779,7 @@ var TeambuilderComponent = (function () {
         ];
         this.sortBy = 'name';
         this.ascending = true;
+        //
     }
     // toggles the show moves/hide moves button
     TeambuilderComponent.prototype.toggleCollapse = function () {
@@ -1680,6 +1824,14 @@ var TeambuilderComponent = (function () {
         //   console.log(this.selPkmnMoves[i]);
         // }
     };
+    TeambuilderComponent.prototype.getPokeAPIjson = function () {
+        var _this = this;
+        this.pokemonService.getJson().subscribe(function (data) {
+            _this.pokedex = data;
+        }, function (error) {
+            console.error(error);
+        });
+    };
     TeambuilderComponent.prototype.startAnimationForBarChart = function (chart) {
         var seq2, delays2, durations2;
         seq2 = 0;
@@ -1703,17 +1855,26 @@ var TeambuilderComponent = (function () {
     };
     ;
     TeambuilderComponent.prototype.ngOnInit = function () {
-        /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
+        // Load 151 Pokemon into this.pokedex
+        this.getPokeAPIjson();
+        /* Pokemon Stat Chart initialization  */
         var dataPokemonStatChart = {
             labels: [
-                this.selectedPkmn.stats[0] + '\nHP',
-                this.selectedPkmn.stats[1] + '\nAtk',
-                this.selectedPkmn.stats[2] + '\nDef',
-                this.selectedPkmn.stats[3] + '\nSatk',
-                this.selectedPkmn.stats[4] + '\nSdef',
-                this.selectedPkmn.stats[5] + '\nSpe'
+                this.selectedPkmn.stats.hp + '\nHP',
+                this.selectedPkmn.stats.atk + '\nAtk',
+                this.selectedPkmn.stats.def + '\nDef',
+                this.selectedPkmn.stats.satk + '\nSatk',
+                this.selectedPkmn.stats.sdef + '\nSdef',
+                this.selectedPkmn.stats.spe + '\nSpe'
             ],
-            series: [this.selectedPkmn.stats]
+            series: [[
+                    this.selectedPkmn.stats.hp,
+                    this.selectedPkmn.stats.atk,
+                    this.selectedPkmn.stats.def,
+                    this.selectedPkmn.stats.satk,
+                    this.selectedPkmn.stats.sdef,
+                    this.selectedPkmn.stats.spe
+                ]]
         };
         var optionsPokemonStatChart = {
             axisX: {
@@ -1733,7 +1894,7 @@ var TeambuilderComponent = (function () {
                     }
                 }]
         ];
-        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_4_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
+        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_5_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
         // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(pokemonStatChart);
     };
@@ -1742,11 +1903,12 @@ var TeambuilderComponent = (function () {
             selector: 'app-teambuilder',
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=teambuilder.component.js.map

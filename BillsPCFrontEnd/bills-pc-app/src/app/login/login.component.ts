@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,30 +12,17 @@ export class LoginComponent implements OnInit {
   password: string;
 
   submitted: boolean;
+  valid: boolean;
 
-  constructor() {
+  constructor(private loginService: LoginService) {
     this.submitted = false;
   }
 
   onSubmit() {
     this.submitted = true;
-
-    const xhr = new XMLHttpRequest();
-    // receive reply
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const reply = JSON.parse(xhr.responseText);
-        alert(reply);
-
-        document.getElementById('notification').innerHTML = reply;
-      }
-    };
-    // send request to /login with fields, username, password, email
-    xhr.open('POST', 'login', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send('username=' + this.username + '&password=' + this.password);
-
-    // xhr.send('username=' + this.username + 'password=' + this.password);
+    this.loginService.login(this.username, this.password).subscribe(
+      successful => {this.valid = successful; }, error => console.error(error)
+    );
   }
 
   ngOnInit() { }

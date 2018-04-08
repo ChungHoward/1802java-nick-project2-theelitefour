@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class LoginDAO
+public class LoginDao
 {
     public static boolean login(String username, String password)
     {

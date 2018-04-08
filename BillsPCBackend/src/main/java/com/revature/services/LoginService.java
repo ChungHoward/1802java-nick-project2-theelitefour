@@ -1,11 +1,11 @@
 package com.revature.services;
 
-import com.revature.daos.LoginDAO;
+import com.revature.daos.LoginDao;
 
 public class LoginService
 {
-    public static void login(String username, String password)
+    public static boolean login(String username, String password)
     {
-        LoginDAO.login(username, password);
+        return LoginDao.login(username, password);
     }
 }
