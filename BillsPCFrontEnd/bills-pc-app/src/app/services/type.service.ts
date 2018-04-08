@@ -13,7 +13,7 @@ export class TypeService {
   readonly poison = 'assets/img/types/poison.png';
   readonly ground = 'assets/img/types/ground.png';
   readonly rock = 'assets/img/types/rock.png';
-  readonly fighting = 'assets/img/types/fighting.png';
+  readonly fight = 'assets/img/types/fight.png';
   readonly flying = 'assets/img/types/flying.png';
   readonly psychic = 'assets/img/types/psychic.png';
   readonly ghost = 'assets/img/types/ghost.png';
@@ -25,13 +25,13 @@ export class TypeService {
   readonly name = [
     'normal', 'psychic', 'electric', 'ice',
     'ground', 'rock', 'water', 'grass',
-    'flying', 'fighting', 'fire', 'bug',
+    'flying', 'fight', 'fire', 'bug',
     'poison', 'ghost', 'dragon', 'none'
   ];
   readonly img = [
     this.normal, this.psychic, this.electric, this.ice,
     this.ground, this.rock, this.water, this.grass,
-    this.flying, this.fighting, this.fire, this.bug,
+    this.flying, this.fight, this.fire, this.bug,
     this.poison, this.ghost, this.dragon, this.none
   ];
 
@@ -46,7 +46,7 @@ export class TypeService {
     [1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 0.5, 0.5, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 0.5, 1.0], // water
     [1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 0.5, 0.5, 1.0, 0.5, 0.5, 0.5, 1.0, 0.5, 1.0], // grass
     [1.0, 1.0, 0.5, 1.0, 1.0, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0], // flying
-    [2.0, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.5, 1.0, 1.0, 0.5, 0.5, 0.0, 1.0, 1.0], // fighting
+    [2.0, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.5, 1.0, 1.0, 0.5, 0.5, 0.0, 1.0, 1.0], // fight
     [1.0, 1.0, 1.0, 2.0, 1.0, 0.5, 0.5, 2.0, 1.0, 1.0, 0.5, 2.0, 1.0, 1.0, 0.5, 1.0], // fire
     [1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 0.5, 0.5, 0.5, 1.0, 2.0, 0.5, 1.0, 1.0], // bug
     [1.0, 1.0, 1.0, 1.0, 0.5, 0.5, 1.0, 2.0, 1.0, 1.0, 1.0, 2.0, 0.5, 0.5, 1.0, 1.0], // poison

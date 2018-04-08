@@ -32,6 +32,7 @@ export class TeamService implements OnInit {
     this.pkmn1.types = ['electric', 'none'];
     this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
     this.pkmn1.stats = {hp: 65, atk: 65, def: 60, satk: 110, sdef: 110, spe: 130};
+    this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
 
     this.pkmn2.name = 'Exeggutor';
     this.pkmn2.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';

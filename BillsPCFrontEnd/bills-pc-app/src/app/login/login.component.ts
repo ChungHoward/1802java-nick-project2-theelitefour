@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequest } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   submitted: boolean;
 
-  constructor(private http: HttpRequest) {
+  constructor() {
     this.submitted = false;
   }
 
@@ -29,7 +28,7 @@ export class LoginComponent implements OnInit {
 
         document.getElementById('notification').innerHTML = reply;
       }
-    };
+    }
     // send request to /login with fields, username, password, email
     xhr.open('POST', '/login', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

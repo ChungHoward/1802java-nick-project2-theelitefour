@@ -33,7 +33,7 @@ export class TeambuilderComponent implements OnInit {
   // This is the Pokemon we are viewing in full detail
   selectedPkmn: Pokemon;
   selPkmnMoves: Array<Move>;
-  move: Move;
+  moveService: MoveService;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
@@ -46,7 +46,7 @@ export class TeambuilderComponent implements OnInit {
   // This is for reading PokeAPI objects from json file
   pokedex: Array<PokeAPI>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService) {
+  constructor(private pokemonService: PokemonService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
@@ -109,14 +109,12 @@ export class TeambuilderComponent implements OnInit {
     this.sortBy = this.pkmnTableColNames[i];
   }
 
-  selectPokemon(pkmn: PokeAPI) {
+  selectPokemon(pkmn: Pokemon) {
     this.selectedPkmn = pkmn;
-    this.ngOnInit(); // this calls the animate bar chart thing
-
-    // for (let i = 0; i < pkmn.moves.length; i++) {
-    //   this.moveService.getJson(pkmn.moves[i].url).subscribe(data => {
-    //     this.selPkmnMoves[i] = data;
-    //   }, error => console.error(error));
+    this.ngOnInit();
+    // The below for loop doesnt work
+    // for (let i = 0; i < pkmn.moveset.length; i++) {
+    //   this.moveService.getMove(pkmn.moveset[i]).subscribe(data => this.selPkmnMoves[i] = data);
     //   console.log(this.selPkmnMoves[i]);
     // }
   }

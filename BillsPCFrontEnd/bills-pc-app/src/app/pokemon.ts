@@ -3,7 +3,7 @@ export class Pokemon {
   public name: string;
   public sprites: string;
   public moveset: Array<string>;
-  public moves: Array<UrlName>;
+  public moves: Array<Attack>;
   public stats: Stat;
   public types: Array<string>;
 }
@@ -13,7 +13,7 @@ export interface PokeAPI {
   name: string;
   sprites: string;
   moveset: Array<string>; // attacks it knows
-  moves: Array<UrlName>; // attacks it can learn
+  moves: Array<Attack>; // attacks it can learn
   stats: Stat;
   types: Array<string>;
 }
