@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.domains.PokemonSet;
 import com.revature.domains.Trainer;
@@ -20,6 +21,20 @@ public class TrainerDaoImp implements TrainerDao {
 		sess.close();
 		
 		return tr;
+	}
+	
+	@Override
+	public Trainer retrieveTrainerByName(String name) {
+		Session sess = HibernateUtil.getSession();
+		Criteria cr = sess.createCriteria(Trainer.class);
+		cr.add(Restrictions.eq("name", name));
+		List<Trainer> list = cr.list();
+		sess.close();
+		if(list.size()==0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
 	}
 
 	@Override

@@ -8,6 +8,8 @@ public interface TrainerDao {
 	
 	public Trainer retrieveTrainerById(int i);
 	
+	public Trainer retrieveTrainerByName(String name);
+	
 	public List<Trainer> retreiveAllTrainers();
 	
 	public int createTrainer(Trainer tr);

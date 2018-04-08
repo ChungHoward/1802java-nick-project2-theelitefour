@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
@@ -30,9 +30,11 @@ import { LoggingService } from './services/logging.service';
 import { MoveService } from './services/move.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
+import { RegisterService } from './services/register.service';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
+
 
 @NgModule({
   declarations: [
@@ -54,13 +56,13 @@ import { DndModule } from 'ng2-dnd';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
     DndModule.forRoot()
   ],
-  providers: [LoggingService, MoveService, TeamService, TypeService],
+  providers: [LoggingService, MoveService, TeamService, TypeService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
