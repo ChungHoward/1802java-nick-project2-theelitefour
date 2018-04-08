@@ -1,5 +1,6 @@
 package co.pokeapi.domain.pokemon;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -144,6 +145,8 @@ public class Pokemon {
 		
 		myPokemon.setId(id);
 		myPokemon.setName(name);
+		myPokemon.setTrainerId(0);
+		myPokemon.setAttackIds(new ArrayList<Integer>());
 		myPokemon.setSprite(sprites.getFrontDefault());
 		myPokemon.setMoves(getLearnableMoves());
 		myPokemon.setStats(getStatMap());

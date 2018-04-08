@@ -10,6 +10,8 @@ import co.pokeapi.domain.commonmodel.NamedApiResource;
 @Component
 public class MyPokemon {
 	private Integer id;
+	private Integer trainerId;
+	private List<Integer> attackIds;
 	private String name;
 	private String sprite;
 	private List<NamedApiResource> moves;
@@ -24,6 +26,22 @@ public class MyPokemon {
 		this.id = id;
 	}
 	
+	public Integer getTrainerId() {
+		return trainerId;
+	}
+
+	public List<Integer> getAttackIds() {
+		return attackIds;
+	}
+
+	public void setAttackIds(List<Integer> attackIds) {
+		this.attackIds = attackIds;
+	}
+
+	public void setTrainerId(Integer trainerId) {
+		this.trainerId = trainerId;
+	}
+
 	public String getName() {
 		return name;
 	}
