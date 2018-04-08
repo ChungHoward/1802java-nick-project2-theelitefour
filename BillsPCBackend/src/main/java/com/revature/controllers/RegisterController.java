@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RegisterController
 {
-    @RequestMapping(method = RequestMethod.POST, value = "/register")
+    @RequestMapping(method = RequestMethod.POST, value = "resources/register")
     public void hello(@RequestParam String username, String password, String email)
     {
         RegisterService.register(username, password, email);

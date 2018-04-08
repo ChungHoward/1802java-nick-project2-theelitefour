@@ -877,10 +877,10 @@ var LoginComponent = (function () {
             }
         };
         // send request to /login with fields, username, password, email
-        xhr.open('POST', 'login', true);
+        xhr.open('POST', 'http://localhost:8080/login', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('username=' + this.username + '&password=' + this.password);
-        // xhr.send('username=' + this.username + 'password=' + this.password);
+        xhr.send("username=" + this.username + "&password=" + this.password);
+        //xhr.send('username=' + this.username + 'password=' + this.password);
     };
     LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent = __decorate([
@@ -1451,7 +1451,7 @@ var RegisterComponent = (function () {
             }
         };
         // send request to /register with fields, username, password, email
-        xhr.open('POST', 'register', true);
+        xhr.open('POST', 'localhost:8090/register', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('username=' + this.username + '&password=' + this.password + '&email=' + this.email);
     };

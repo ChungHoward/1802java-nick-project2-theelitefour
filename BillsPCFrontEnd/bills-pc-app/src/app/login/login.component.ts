@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
 
         document.getElementById('notification').innerHTML = reply;
       }
-    }
+    };
     // send request to /login with fields, username, password, email
-    xhr.open('POST', 'http://localhost:8080/login', true);
+    xhr.open('POST', 'login', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("username=" + this.username + "&password=" + this.password);
+    xhr.send('username=' + this.username + '&password=' + this.password);
 
-    //xhr.send('username=' + this.username + 'password=' + this.password);
+    // xhr.send('username=' + this.username + 'password=' + this.password);
   }
 
   ngOnInit() { }
