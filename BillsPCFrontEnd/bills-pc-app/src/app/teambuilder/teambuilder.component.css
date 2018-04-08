@@ -57,6 +57,10 @@ ul {
   padding: 0px;
   margin: 0px;
 }
+.badge {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 /* Improve readability. Default is orange on white background. */
 th {
   color: #111111;
