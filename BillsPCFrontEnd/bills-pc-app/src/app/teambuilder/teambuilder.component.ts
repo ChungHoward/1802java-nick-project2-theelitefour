@@ -14,7 +14,7 @@ import * as Chartist from 'chartist';
   selector: 'app-teambuilder',
   templateUrl: './teambuilder.component.html',
   styleUrls: ['./teambuilder.component.css'],
-  providers: [PokemonService, TeamService, TypeService]
+  providers: [MoveService, PokemonService, TeamService, TypeService]
 })
 export class TeambuilderComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
