@@ -32,9 +32,9 @@ export class RegisterComponent implements OnInit {
 
         document.getElementById('notification').innerHTML = reply;
       }
-    }
+    };
     // send request to /register with fields, username, password, email
-    xhr.open('POST', 'localhost:8090/register', true);
+    xhr.open('POST', 'register', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send('username=' + this.username + '&password=' + this.password + '&email=' + this.email);
   }

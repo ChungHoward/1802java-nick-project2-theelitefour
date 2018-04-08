@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController
 {
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "resources/login")
     public void login(@RequestParam String username, String password, String email)
     {
         System.out.println("hello called from LoginController " + username + " " + password);
