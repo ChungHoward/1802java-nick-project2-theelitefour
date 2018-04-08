@@ -1,7 +1,11 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
+      
+      <div class="col-lg-4">
+      </div>
+
+      <div class="col-lg-4">
         <div class="card">
           <div class="card-header" data-background-color="red">
             <h4 class="title">Login</h4>
@@ -14,7 +18,7 @@
             <div *ngIf="!submitted">
               <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group form-black label-floating is-empty">
                       <label class="control-label" for="username">Username</label>
                       <input required type="text" class="form-control" id="username" [(ngModel)]="username" name="username">
@@ -23,7 +27,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group form-black label-floating is-empty">
                       <label class="control-label" for="password">Password</label>
                       <input required type="password" class="form-control" id="password" name="password"
@@ -49,24 +53,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card card-profile">
-          <div class="card-avatar">
-            <a href="#bill">
-              <img class="img" src="assets/img/faces/Bill.png" />
-            </a>
-          </div>
 
-          <div class="content">
-            <h6 class="category text-gray">Masaki Sonezaki</h6>
-            <h4 class="card-title">Bill, Head Engineer</h4>
-            <p class="card-content">
-              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert
-              analytics and statistics are provided by our leading Professors.
-            </p>
-          </div>
-
-        </div>
+      <div class="col-lg-4">
       </div>
     </div>
   </div>

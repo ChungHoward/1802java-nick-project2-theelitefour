@@ -16,11 +16,8 @@ export class Sort implements PipeTransform {
       return pkmnList;
     }
 
-    sortBy = sortBy;
-
     let sortedArray: Array<Pokemon>;
 
-    /* Begin: "I want to use a ternary operator so bad, but it would be hard to read if I did." */
     if (sortBy === 'name') {
       sortedArray = pkmnList.sort((p1, p2) => {
         if (p1.name > p2.name) {
@@ -59,15 +56,19 @@ export class Sort implements PipeTransform {
         }
       });
     } else {
-      let i: number;
-      if (sortBy === 'hp') { i = 0;
-      } else if (sortBy === 'atk') { i = 1;
-      } else if (sortBy === 'def') { i = 2;
-      } else if (sortBy === 'satk') { i = 3;
-      } else if (sortBy === 'sdef') { i = 4;
-      } else if (sortBy === 'spe') { i = 5;
+      if (sortBy === 'hp') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.hp - p2.stats.hp);
+      } else if (sortBy === 'atk') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.atk - p2.stats.atk);
+      } else if (sortBy === 'def') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.def - p2.stats.def);
+      } else if (sortBy === 'satk') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.satk - p2.stats.satk);
+      } else if (sortBy === 'sdef') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.sdef - p2.stats.sdef);
+      } else if (sortBy === 'spe') {
+        sortedArray = pkmnList.sort((p1, p2) => p1.stats.spe - p2.stats.spe);
       }
-      sortedArray = pkmnList.sort((p1, p2) => p1.stats[i] - p2.stats[i]);
     }
 
     if (ascending) {

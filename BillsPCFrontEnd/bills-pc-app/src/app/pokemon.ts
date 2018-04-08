@@ -1,40 +1,37 @@
 export class Pokemon {
+  public id: number;
   public name: string;
-  public types: Array<string>;
-  public stats: Array<number>;
+  public sprites: string;
   public moveset: Array<string>;
-  public sprite_url: string;
+  public moves: Array<Attack>;
+  public stats: Stat;
+  public types: Array<string>;
 }
-
+// Used to read pokeAPIjson
 export interface PokeAPI {
   id: number;
   name: string;
-  types: Array<Type>; // use Type.slot (1 or 2) && Type.type.name (fire, grass, etc)
-  stats: Array<Stat>; // use Stat.stat.name ('special-attack, speed, etc') && Stat.base_stat (number)
-  moves: Array<Move>; // use Move.move.name | Move.move.url | Move.version_group_details (Detail)
-  sprites: Sprite;    // use sprites.front_default (url string)
+  sprites: string;
+  moveset: Array<string>; // attacks it knows
+  moves: Array<Attack>; // attacks it can learn
+  stats: Stat;
+  types: Array<string>;
 }
 
-interface Type {
-  slot: number;
-  type: TypeName;
+export interface Stat {
+  satk: number;
+  def: number;
+  atk: number;
+  hp: number;
+  sdef: number;
+  spe: number;
 }
 
-interface TypeName {
+export interface UrlName {
   url: string;
-  name: string;
+  name: string; // red-blue or yellow
 }
 
-interface Stat {
-  stat: StatName;
-  effort: number;
-  base_stat: number;
-}
-
-interface StatName {
-  url: string;
-  name: string;
-}
 
 interface Move {
   version_group_details: Array<Detail>; // use Detail.version_group.name === red-blue || '' === yellow
@@ -47,23 +44,7 @@ interface Detail {
   version_group: UrlName;
 }
 
-interface UrlName {
-  url: string;
-  name: string; // red-blue or yellow
-}
-
 interface Attack {
   url: string;
   name: string;
-}
-
-interface Sprite {
-  back_female: string;
-  back_shiny_female: string;
-  back_default: string;
-  front_female: string;
-  front_shiny_female: string;
-  back_shiny: string;
-  front_default: string;
-  front_shiny: string;
 }

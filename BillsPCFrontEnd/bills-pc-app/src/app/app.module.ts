@@ -28,6 +28,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 // Services
 import { LoggingService } from './services/logging.service';
 import { MoveService } from './services/move.service';
+import { PokemonService } from './services/pokemon.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 import { RegisterService } from './services/register.service';
@@ -50,8 +51,7 @@ import { DndModule } from 'ng2-dnd';
     FeaturedComponent,
     UpgradeComponent,
     Filter,
-    Sort,
-
+    Sort
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,8 @@ import { DndModule } from 'ng2-dnd';
     AppRoutingModule,
     DndModule.forRoot()
   ],
-  providers: [LoggingService, MoveService, TeamService, TypeService, RegisterService],
+
+  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,94 @@
+/* Layout */
+.main-content {
+  margin-top: 50px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+.row {
+  width: 100%;
+}
+.card {
+  margin-bottom: 0px;
+}
+/* Native image sizes */
+.type {
+  width: 48px;
+  height: 16px;
+}
+.sprite {
+  width: 96px;
+  height: 96px;
+  padding: 0px;
+  margin: 0px;
+}
+/* Squeeze more space out of our tables */
+.card-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.card-content {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.card-footer {
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+table {
+  font-size: 14px;
+}
+.pkmn-table {
+  width: 100%;
+}
+.pls-land {
+  vertical-align: bottom;
+}
+/* Highlights */
+.bg-red {
+  background-color: rgb(245, 70, 60);
+}
+.bg-red:hover {
+  background-color: rgb(255, 90, 70);
+}
+.bg-pink {
+  background-color: rgb(240, 100, 90);
+}
+.bg-pink:hover {
+  background-color: rgb(240, 120, 110);
+}
+.bg-lime {
+  background-color: rgb(140, 210, 140);
+}
+.bg-lime:hover {
+  background-color: rgb(150, 220, 150);
+}
+.bg-green {
+  background-color: rgb(90, 190, 90);
+}
+.bg-green:hover {
+  background-color: rgb(110, 200, 110);
+}
+/* Readability */
+thead {
+  color: #333333;
+}
+td {
+  color: #000000;
+  font-weight: bold;
+}
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.ta-center {
+  text-align: center;
+}
+a i {
+  display: inline;
+}
+.nav-link {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.nav {
+  margin: 0px
+}
