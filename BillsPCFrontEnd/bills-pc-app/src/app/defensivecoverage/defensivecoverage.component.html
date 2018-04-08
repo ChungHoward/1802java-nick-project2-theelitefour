@@ -1,25 +1,48 @@
-
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-plain">
-                    <div class="card-header" data-background-color="red">
-                        <h4 class="title">Material Design Icons</h4>
-                        <p class="category">Handcrafted by our friends from <a target="_blank" href="https://design.google.com/icons/">Google</a></p>
-                    </div>
-                    <div class="card-content">
-                        <div class="iframe-container hidden-sm hidden-xs">
-                            <iframe src="https://design.google.com/icons/">
-                                <p>Your browser does not support iframes.</p>
-                            </iframe>
-                        </div>
-                        <div class="col-md-6 hidden-lg hidden-md text-center">
-                            <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the  <a href="https://design.google.com/icons/" target="_blank">Material Icons</a></h5>
-                        </div>
-                    </div>
-                </div>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+
+          <div class="card-content">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center pls-land">
+                      <img src="{{ types.none }}" class="type">
+                      <br/> Type <br/>
+                    </th>
+                    <th class="ta-center" *ngFor="let pkmn of pokemonCol; let i = index">
+                      <img src="{{ pkmn.sprites }}" class="sprite">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
+                      <br/>{{ pkmn.name | titlecase }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->
+                  <tr *ngFor="let type of types.img; let i = index" class="{{ rowColor[i] }}">
+                    <td class="ta-center">
+                      <img src="{{ type }}" class="type">
+                    </td>
+                    <td *ngFor="let effective of myTable" class="ta-center">
+                      {{ effective[i] | percent }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+
+          <div class="card-footer">
+
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
