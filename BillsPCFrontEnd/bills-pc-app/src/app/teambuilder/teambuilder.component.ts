@@ -2,9 +2,10 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
-import { Pokemon } from 'app/pokemon';
+import { Pokemon, PokeAPI, Stat } from 'app/pokemon';
 import { Move } from '../move';
 import { MoveService } from 'app/services/move.service';
+import { PokemonService } from 'app/services/pokemon.service';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 import * as Chartist from 'chartist';
@@ -13,7 +14,7 @@ import * as Chartist from 'chartist';
   selector: 'app-teambuilder',
   templateUrl: './teambuilder.component.html',
   styleUrls: ['./teambuilder.component.css'],
-  providers: [MoveService, TeamService]
+  providers: [PokemonService, TeamService, TypeService]
 })
 export class TeambuilderComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
@@ -28,7 +29,7 @@ export class TeambuilderComponent implements OnInit {
   // The name of the icon that shows or hides your attacks
   collapse: string;
 
-  /* These variables are for the selected Pokemon thingy */
+  /* These variables are for the selected Pokemon thing */
   // This is the Pokemon we are viewing in full detail
   selectedPkmn: Pokemon;
   selPkmnMoves: Array<Move>;
@@ -42,15 +43,18 @@ export class TeambuilderComponent implements OnInit {
   ascending: boolean;
   searchInput: string;
 
-  constructor() {
+  // This is for reading PokeAPI objects from json file
+  pokedex: Array<PokeAPI>;
+
+  constructor(private pokemonService: PokemonService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
-    /* Assign my favTeam using teamService */
+    // Assign my favTeam using teamService
     this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
 
-    /* My default selected Pokemon */
+    // My default selected Pokemon
     this.selectedPkmn = this.favTeam[0];
 
     // by default our attacks are collapsed
@@ -67,6 +71,8 @@ export class TeambuilderComponent implements OnInit {
     ];
     this.sortBy = 'name';
     this.ascending = true;
+
+    //
   }
 
   // toggles the show moves/hide moves button
@@ -113,6 +119,12 @@ export class TeambuilderComponent implements OnInit {
     // }
   }
 
+  getPokeAPIjson() {
+    this.pokemonService.getJson().subscribe(data => {
+      this.pokedex = data as Array<PokeAPI>;
+    }, error => console.error(error));
+  }
+
   startAnimationForBarChart(chart) {
     let seq2: number, delays2: number, durations2: number;
 
@@ -138,17 +150,27 @@ export class TeambuilderComponent implements OnInit {
   };
 
   ngOnInit() {
-    /* Pokemon Stat Chart initialization - rename Emails to Pokemon */
+    // Load 151 Pokemon into this.pokedex
+    this.getPokeAPIjson();
+
+    /* Pokemon Stat Chart initialization  */
     const dataPokemonStatChart = {
       labels: [
-        this.selectedPkmn.stats[0] + '\nHP',
-        this.selectedPkmn.stats[1] + '\nAtk',
-        this.selectedPkmn.stats[2] + '\nDef',
-        this.selectedPkmn.stats[3] + '\nSatk',
-        this.selectedPkmn.stats[4] + '\nSdef',
-        this.selectedPkmn.stats[5] + '\nSpe'
+        this.selectedPkmn.stats.hp + '\nHP',
+        this.selectedPkmn.stats.atk + '\nAtk',
+        this.selectedPkmn.stats.def + '\nDef',
+        this.selectedPkmn.stats.satk + '\nSatk',
+        this.selectedPkmn.stats.sdef + '\nSdef',
+        this.selectedPkmn.stats.spe + '\nSpe'
       ],
-      series: [ this.selectedPkmn.stats ]
+      series: [[
+        this.selectedPkmn.stats.hp,
+        this.selectedPkmn.stats.atk,
+        this.selectedPkmn.stats.def,
+        this.selectedPkmn.stats.satk,
+        this.selectedPkmn.stats.sdef,
+        this.selectedPkmn.stats.spe
+      ]]
     };
     const optionsPokemonStatChart = {
       axisX: {

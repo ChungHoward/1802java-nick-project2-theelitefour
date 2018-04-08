@@ -5,9 +5,8 @@
       <!-- Loop through and print every Pokemon in favTeam -->
       <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
         <div class="card">
-          <div class="card-header" data-background-color="orange" 
-            (click)="selectPokemon(pkmn)" role="button">
-            <img src="{{ favTeam[i].sprite_url }}" alt="" />
+          <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)">
+            <img src="{{ favTeam[i].sprites }}" alt="" />
           </div>
           <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
             <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
@@ -35,23 +34,34 @@
           <div class="card-header card-chart" data-background-color="purple">
             <div class="ct-chart" id="pokemonStatChart"></div>
           </div>
-          <div class="card-header" data-background-color="red">
-            Critical Rate <br/>
-            {{ selectedPkmn.stats[5] * 100 / 512 | number:'2.1-2'}} %
-          </div>
 
           <div class="card-content ta-center row">
-            <div class="no-padding col-lg-3 col-md-3">
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" alt="normal" class="type" />
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" alt="none" class="type" />
-              <h4 class="title">{{ selectedPkmn.name }}</h4>
-              <small><a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a></small>
+            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprites }}" 
+              title="{{ selectedPkmn.sprites }}" />
+            <div class="no-padding col-sm-3 col-xl-3">
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" class="type" />
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" class="type" />
+              <br/>
+              <span class="badge red">
+                Critical Rate
+                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
+              </span>
+              <br/>
+              <small>
+                <a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a>
+              </small>
             </div>
-            <img class="sprite col-lg-3 col-md-3" src="{{ selectedPkmn.sprite_url }}" alt="" />
+            <form class="row poke-search" role="search">
+              <div class="form-group col-sm-4 col-xl-4">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <span class="material-input"></span>
+              </div>
+            </form>
           </div>
 
-          <div class="card-footer">
-            <div class="table-responsive">
+          <div class="card-footer mt-10">
+            <div class="table-responsive pkmn-table">
               <table class="table table-hover">
                 <thead class="text-warning">
                   <tr>
@@ -135,41 +145,40 @@
 
       <div class="col-lg-5 col-md-12">
         <div class="card">
-          <div class="card-content">
-            <form class="row poke-search" role="search">
-              <div class="form-group col-sm-12 col-xl-12">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
-                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
-                <span class="material-input"></span>
-              </div>
-            </form>
-          </div>
-
-          <div class="card-footer">
+          <div class="card-content no-pad-top">
             <div class="table-responsive pkmn-table">
               <table class="table table-hover">
                 <thead class="text-warning">
                   <tr>
                     <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
-                      {{ col | titlecase }}<br/>
-                      <i class="material-icons md-18" role="button" 
-                        (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
-                      </th>
+                      {{ col | titlecase }}
+                      <br/>
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr *ngFor="let pkmn of ((favTeam | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
-                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
-                    <td class="ta-center">
-                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
+                    <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
                     </td>
-                    <td class="ta-center" *ngFor="let stat of pkmn.stats">{{ stat }}</td>
+                    <td class="ta-center">{{ pkmn.stats.hp }}</td>
+                    <td class="ta-center">{{ pkmn.stats.atk }}</td>
+                    <td class="ta-center">{{ pkmn.stats.def }}</td>
+                    <td class="ta-center">{{ pkmn.stats.satk }}</td>
+                    <td class="ta-center">{{ pkmn.stats.sdef }}</td>
+                    <td class="ta-center">{{ pkmn.stats.spe }}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <div class="card-footer">
+
           </div>
         </div>
       </div>

@@ -31,6 +31,7 @@
     "core-js": "2.4.1",
     "googleapis": "19.0.0",
     "jquery": "3.2.1",
+    "mdbootstrap": "^4.5.0",
     "moment": "2.18.1",
     "ng2-dnd": "^4.0.0",
     "perfect-scrollbar": "1.1.0",

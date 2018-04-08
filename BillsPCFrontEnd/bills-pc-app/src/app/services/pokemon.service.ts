@@ -1,21 +1,14 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { PokeAPI } from '../pokemon';
-import { TypeService } from 'app/services/type.service';
 
 @Injectable()
-export class PokemonService implements OnInit {
+export class PokemonService {
 
-  pokedex: Array<PokeAPI>;
+  constructor(private http: HttpClient) { }
 
-  types: TypeService;
-
-  constructor() {
-    // Assigns the value of types to their respective image
-    this.types = new TypeService();
-
-  }
-
-  ngOnInit() {
+  getJson() {
+    return this.http.get<Array<PokeAPI>>('assets/pokeAPI.json');
   }
 
 }

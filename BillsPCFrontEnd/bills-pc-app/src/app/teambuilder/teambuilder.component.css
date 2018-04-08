@@ -15,20 +15,31 @@
 .stats {
   width:100%;
 }
+.col-md-12 {
+  max-height: 470px;
+}
 /* Card styling */
 .card {
   box-shadow: 0px 2px 8px #BBBBBB;
   margin: 18px 0px;
+  max-height: 450px;
 }
 .card-content {
   padding-bottom: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .card-stats {
+  min-height: 450px;
   padding-left: 0px;
   padding-right: 0px;
 }
 .card-footer {
   padding-top: 0px;
+  max-height: 500px;
+}
+.card-footer.ta-center {
+  margin-bottom: 0px!important;
 }
 /* Removes bullets and the padding that would normally be for the bullets */
 ul {
@@ -47,9 +58,6 @@ ul {
   margin: 0px;
 }
 /* Improve readability. Default is orange on white background. */
-.bg-green {
-  background-color: limegreen;
-}
 th {
   color: #111111;
 }
@@ -60,6 +68,9 @@ table {
 td input {
   width: 100px;
 }
+.type-col {
+  width: 70px;
+}
 .form-group {
   margin-top: 0px;
 }
@@ -69,10 +80,21 @@ td input {
 }
 .pkmn-table {
   width: 100%;
-  max-height: 600px;
+  max-height: 450px;
+  margin-left: 4px;
 }
-.material-icons.md-18 { font-size: 18px; }
-.ta-center { text-align: center; }
+.material-icons.md-18 {
+  font-size: 18px;
+  }
+.ta-center {
+  text-align: center;
+  }
 .no-padding {
   padding: 0px;
+}
+.no-pad-top {
+  padding-top: 0px!important;
+}
+.mt-10 {
+  margin-top: 10px;
 }
