@@ -33,7 +33,6 @@ export class TeambuilderComponent implements OnInit {
   // This is the Pokemon we are viewing in full detail
   selectedPkmn: Pokemon;
   selPkmnMoves: Array<Move>;
-  moveService: MoveService;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
@@ -45,8 +44,9 @@ export class TeambuilderComponent implements OnInit {
 
   // This is for reading PokeAPI objects from json file
   pokedex: Array<PokeAPI>;
+  movedex: Array<Move>;
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private moveService: MoveService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
@@ -55,13 +55,13 @@ export class TeambuilderComponent implements OnInit {
     this.favTeam = this.teamService.favTeam;
 
     // My default selected Pokemon
-    this.selectedPkmn = this.favTeam[0];
+    this.selPkmnMoves = new Array<Move>();
 
     // by default our attacks are collapsed
     this.expandOrCollapse = false;
     this.collapse = 'arrow_drop_down';
 
-    // this can be used as a placeholder image before searching for a pokemon
+    // this can be used as a placeholder image for a Pokemon when a user not made a team
     this.questionSprite = 'assets/img/question.png';
 
     this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
@@ -71,8 +71,6 @@ export class TeambuilderComponent implements OnInit {
     ];
     this.sortBy = 'name';
     this.ascending = true;
-
-    //
   }
 
   // toggles the show moves/hide moves button
@@ -111,17 +109,41 @@ export class TeambuilderComponent implements OnInit {
 
   selectPokemon(pkmn: Pokemon) {
     this.selectedPkmn = pkmn;
-    this.ngOnInit();
+    this.loadStatChart();
     // The below for loop doesnt work
-    // for (let i = 0; i < pkmn.moveset.length; i++) {
-    //   this.moveService.getMove(pkmn.moveset[i]).subscribe(data => this.selPkmnMoves[i] = data);
-    //   console.log(this.selPkmnMoves[i]);
-    // }
+    for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) {
+      if (!!this.selectedPkmn.attackIds[i]) {
+        // subtract 1 because our json is 1-indexed while arrays are 0-indexed
+        this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
+
+        if (!!this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+          this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+            String(this.selPkmnMoves[i].effectChance)); // with this
+        }
+      } else {
+        this.selPkmnMoves[i] = undefined;
+      }
+    }
   }
 
+  /**
+   * Reads json file created by pokeAPI and populates our pokedex with 151 Pokemon
+   */
   getPokeAPIjson() {
     this.pokemonService.getJson().subscribe(data => {
       this.pokedex = data as Array<PokeAPI>;
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  /**
+   * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
+   * because some data was wrong and populates our movedex with 164 Moves
+   */
+  getMoveAPIjson() {
+    this.moveService.getJson().subscribe(data => {
+      this.movedex = data as Array<Move>;
     }, error => {
       console.error(error);
     });
@@ -151,10 +173,7 @@ export class TeambuilderComponent implements OnInit {
     seq2 = 0;
   };
 
-  ngOnInit() {
-    // Load 151 Pokemon into this.pokedex
-    this.getPokeAPIjson();
-
+  loadStatChart() {
     /* Pokemon Stat Chart initialization  */
     const dataPokemonStatChart = {
       labels: [
@@ -201,6 +220,15 @@ export class TeambuilderComponent implements OnInit {
 
     // start animation for the Emails Subscription Chart
     this.startAnimationForBarChart(pokemonStatChart);
+  }
+
+  ngOnInit() {
+    // Load 151 Pokemon into this.pokedex
+    const p = new Pokemon();
+    this.selectPokemon(p);
+    this.getPokeAPIjson();
+    this.getMoveAPIjson();
+    this.loadStatChart();
   }
 
 }

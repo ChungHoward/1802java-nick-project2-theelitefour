@@ -1,8 +1,9 @@
 <div class="main-content">
   <div class="container-fluid">
-    <ul *ngIf="selectedPkmn">
+    <ul *ngIf="selPkmnMoves">
       Test div please ignore
-      <li *ngFor="let app of apps">
+      <li *ngFor="let move of selPkmnMoves">
+        {{ move.effect }}
       </li>
     </ul>
     <div class="row">
@@ -10,7 +11,7 @@
       <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
         <div class="card">
           <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)">
-            <img src="{{ favTeam[i].sprites }}" alt="" />
+            <img src="{{ favTeam[i].sprite }}" alt="" />
           </div>
           <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
             <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
@@ -40,10 +41,10 @@
           </div>
 
           <div class="card-content ta-center row">
-            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprites }}" title="{{ selectedPkmn.sprites }}" />
+            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprite }}" title="{{ selectedPkmn.sprite }}" />
             <div class="no-padding col-sm-3 col-xl-3">
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" class="type" />
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" class="type" />
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" class="type"/>
+              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" class="type" alt="Bird"/>
               <br/>
               <span class="badge red">
                 Critical Rate
@@ -78,65 +79,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let move of selPkmnMoves">
                     <td>
-                      <input type="text" [(value)]="selectedPkmn.moveset[0]" list="canLearn" name="move">
+                      <input type="text" [(value)]="move.name" list="canLearn" name="move">
                     </td>
                     <td>
-                      <img src="{{ types.electric }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(move.type)] }}" class="type">
                     </td>
                     <td>
-                      <img src="{{ types.special }}" class="type">
+                      <img src="{{ types.classImg[types.class.indexOf(move.damageClass)] }}" class="type">
                     </td>
-                    <td>95</td>
-                    <td>100%</td>
-                    <td>16</td>
-                    <td>10% paralysis chance.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type="text" [(value)]="selectedPkmn.moveset[1]">
-                    </td>
-                    <td>
-                      <img src="{{ types.ice }}" class="type">
-                    </td>
-                    <td>
-                      <img src="{{ types.special }}" class="type">
-                    </td>
-                    <td>95</td>
-                    <td>100%</td>
-                    <td>16</td>
-                    <td>10% freeze chance.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type="text" [(value)]="selectedPkmn.moveset[2]">
-                    </td>
-                    <td>
-                      <img src="{{ types.fight }}" class="type">
-                    </td>
-                    <td>
-                      <img src="{{ types.physical }}" class="type">
-                    </td>
-                    <td>--</td>
-                    <td>100%</td>
-                    <td>32</td>
-                    <td>If hit by normal or fighting type attack, returns double damage.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type="text" [(value)]="selectedPkmn.moveset[3]">
-                    </td>
-                    <td>
-                      <img src="{{ types.normal }}" class="type">
-                    </td>
-                    <td>
-                      <img src="{{ types.status }}" class="type">
-                    </td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>16</td>
-                    <td>Heals self by 50% of max HP.</td>
+                    <td>{{ move.power }}</td>
+                    <td>{{ move.accuracy }}</td>
+                    <td>{{ move.pp }}</td>
+                    <td>{{ move.effect }}</td>
                   </tr>
                 </tbody>
               </table>

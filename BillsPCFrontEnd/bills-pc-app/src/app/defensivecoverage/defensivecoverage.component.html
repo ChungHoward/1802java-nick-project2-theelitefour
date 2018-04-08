@@ -15,7 +15,7 @@
                       <br/> Type <br/>
                     </th>
                     <th class="ta-center" *ngFor="let pkmn of pokemonCol; let i = index">
-                      <img src="{{ pkmn.sprites }}" class="sprite">
+                      <img src="{{ pkmn.sprite }}" class="sprite">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
                       <br/>{{ pkmn.name | titlecase }}

@@ -34,6 +34,8 @@ export class TypeService {
     this.flying, this.fighting, this.fire, this.bug,
     this.poison, this.ghost, this.dragon, this.none
   ];
+  readonly class = ['physical', 'special', 'status'];
+  readonly classImg = [ this.physical, this.special, this.status ];
 
   readonly chart = [ // ----------===== Defending type =====----------  ----------===== Attacking type
   // nrm, psy, elc, ice, grd, rck, wtr, grs, fly, ftg, fir, bug, psn, gst, drg, none
