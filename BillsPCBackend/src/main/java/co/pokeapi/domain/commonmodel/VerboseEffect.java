@@ -2,6 +2,16 @@ package co.pokeapi.domain.commonmodel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Represents the JSON object VerboseEffect from PokeApi.
+ * The JSON object is laid out as follows:
+ * {
+ * 		"effect": String,
+ * 		"short_effect": String,
+ * 		"language": NamedApiResource
+ * }
+ *
+ */
 public class VerboseEffect {
 	private String effect;
 	private String shortEffect;

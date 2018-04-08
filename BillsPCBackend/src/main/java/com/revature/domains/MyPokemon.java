@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import co.pokeapi.domain.commonmodel.NamedApiResource;
+
 @Component
 public class MyPokemon {
 	private Integer id;
 	private String name;
 	private String sprite;
-	private List<MyMove> moves;
+	private List<NamedApiResource> moves;
 	Map<String, Integer> stats;
 	List<String> types;
 	
@@ -38,11 +40,11 @@ public class MyPokemon {
 		this.sprite = sprite;
 	}
 	
-	public List<MyMove> getMoves() {
+	public List<NamedApiResource> getMoves() {
 		return moves;
 	}
 	
-	public void setMoves(List<MyMove> moves) {
+	public void setMoves(List<NamedApiResource> moves) {
 		this.moves = moves;
 	}
 	

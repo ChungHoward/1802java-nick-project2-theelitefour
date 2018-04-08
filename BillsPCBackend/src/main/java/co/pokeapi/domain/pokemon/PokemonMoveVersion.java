@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 
+/**
+ * 
+ *
+ */
 public class PokemonMoveVersion {
 	private NamedApiResource moveLearnMethod;
 	private NamedApiResource versionGroup;

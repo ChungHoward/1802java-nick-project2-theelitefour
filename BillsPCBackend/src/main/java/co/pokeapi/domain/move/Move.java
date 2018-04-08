@@ -7,6 +7,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 import co.pokeapi.domain.commonmodel.VerboseEffect;
 
+/**
+ * Represents the JSON for Move from PokeApi.
+ * The JSON is laid out as follows:
+ * {
+ * 		"id": Integer,
+ * 		"name": String,
+ * 		"Accuracy": Integer,
+ * 		"effect_chance": Integer,
+ * 		"pp": Integer,
+ * 		"power": Integer,
+ * 		"contest_combos": ContestComboSets,
+ * 		"constest_type": NamedApiResource,
+ * 		"contest_effect": ApiResource,
+ * 		"damage_class": NamedApiResource,
+ * 		"effect_entries": List<VerboseEffect>,
+ * 		"effect_changes": List<AbilityEffectChange>,
+ * 		"flavor_text_entries": List<MoveFlavorText>,
+ * 		"generation": NamedApiResource,
+ * 		"machines": List<MachineVersionDetail>,
+ * 		"meta": MoveMetaData,
+ * 		"names": List<Name>,
+ * 		"past_values": List<PastMoveStatValues>,
+ * 		"stat_changes": List<MoveStatChange>,
+ * 		"super_contest_effect", ApiResource,
+ * 		"target", NamedApiResource,
+ * 		"type", NamedApiResource
+ * }
+ *
+ */
 public class Move {
 	private Integer id;
 	private String name;

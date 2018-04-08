@@ -4,6 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 
+/**
+ * Represents the JSON for MoveFlavorText from PokeApi.
+ * The JSON is laid out as follows:
+ * {
+ * 		"flavor_text": String,
+ * 		"language": NamedApiResource,
+ * 		"version_group": NamedApiResource
+ * }
+ *
+ */
 public class MoveFlavorText {
 	private String flavorText;
 	private NamedApiResource language;

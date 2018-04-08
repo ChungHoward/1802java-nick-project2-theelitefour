@@ -2,6 +2,30 @@ package co.pokeapi.domain.pokemon;
 
 import java.util.List;
 
+/**
+ * Represents the JSON for Pokemon from PokeApi.
+ * The JSON is laid out as follows:
+ * {
+ * 		"id": Integer,
+ * 		"name": String,
+ * 		"base_experience": Integer,
+ * 		"height": Integer,
+ * 		"is_default": Boolean,
+ * 		"order": Integer,
+ * 		"weight": Integer,
+ * 		"abilities": List<PokemonAbility>,
+ * 		"forms": List<NamedApiResource>,
+ * 		"game_indices": List<VersionGameIndex>,
+ * 		"held_items": PokemonHeldItem,
+ * 		"location_area_encounters": String,
+ * 		"moves": List<PokemonMove>,
+ * 		"sprites": PokemonSprites,
+ * 		"species": NamedApiResource,
+ * 		"stats": List<PokemonStat>,
+ * 		"types": List<PokemonType>
+ * }
+ *
+ */
 public class Pokemon {
 	
 	private Integer id;

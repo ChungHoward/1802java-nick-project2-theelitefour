@@ -1,5 +1,14 @@
 package co.pokeapi.domain.commonmodel;
 
+/**
+ * Represents the JSON object "NamedApiResource" from PokeApi.
+ * The JSON Object is laid out as follows:
+ * {
+ * 		"url": String,
+ * 		"name": String
+ * }
+ *
+ */
 public class NamedApiResource {
 	private String url;
 	private String name;

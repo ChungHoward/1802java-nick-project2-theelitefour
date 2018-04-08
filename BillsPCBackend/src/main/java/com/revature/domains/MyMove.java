@@ -1,10 +1,7 @@
 package com.revature.domains;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import co.pokeapi.domain.move.Move;
 
-@Component
-@Scope("prototype")
 public class MyMove {
 	private Integer id;
 	private String name;
@@ -82,6 +79,22 @@ public class MyMove {
 				+ ", effectChance=" + effectChance + ", pp=" + pp + ", power=" + power + ", damageClass=" + damageClass
 				+ ", generation=" + generation + ", type=" + type + "]";
 	}
-	
-	
+
+	public static MyMove parseMove(Move move) {
+		MyMove myMove = new MyMove();
+
+		myMove.setId(move.getId());
+		myMove.setName(move.getName());
+		myMove.setAccuracy(move.getAccuracy());
+		myMove.setEffect(move.getEffectEntries().get(0).getShortEffect());
+		myMove.setEffectChance(move.getEffectChance());
+		myMove.setPp(move.getPp());
+		myMove.setPower(move.getPower());
+		myMove.setDamageClass(move.getDamageClass().getName());
+		myMove.setGeneration(move.getGeneration().getName());
+		myMove.setType(move.getType().getName());
+
+		return myMove;
+	}
+
 }
