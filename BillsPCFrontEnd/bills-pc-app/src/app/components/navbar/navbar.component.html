@@ -25,6 +25,15 @@
         </li>
         <li *ngIf="">
           <a>
+            <!-- Profile icon changes depending on role: trainer, pro, admin -->
+            <i class="material-icons" *ngIf="">face</i>
+            <i class="material-icons" *ngIf="">whatshot</i>
+            <i class="material-icons" *ngIf="">supervisor_account</i>
+            Profile
+          </a>
+        </li>
+        <li *ngIf="">
+          <a>
             <i class="material-icons">exit_to_app</i>
             Logout
           </a>

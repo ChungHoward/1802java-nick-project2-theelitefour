@@ -35,6 +35,8 @@
 }
 .card-footer {
   padding-top: 0px;
+  margin-left: 10px;
+  margin-right: 0px;
   margin-bottom: 0px;
 }
 table {
@@ -42,6 +44,9 @@ table {
 }
 td input {
   width: 100px;
+}
+.type-col {
+  width: 70px;
 }
 .form-group {
   margin-top: 0px;

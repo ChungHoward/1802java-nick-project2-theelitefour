@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import { Move } from '../move';
 
 @Injectable()
@@ -8,14 +9,10 @@ export class MoveService {
     readonly url = 'https://pokeapi.co/api/v2/move/';
 
     myMove: Move;
-    http: HttpClient;
-    handler: HttpHandler;
 
-    constructor() {
-        this.http = new HttpClient(this.handler);
-    }
+    constructor(private http: HttpClient) {}
 
-    getMove(name: string) {
+    getMove(name: string): Observable<Move> {
         return this.http.get<Move>(this.url + name);
     }
 

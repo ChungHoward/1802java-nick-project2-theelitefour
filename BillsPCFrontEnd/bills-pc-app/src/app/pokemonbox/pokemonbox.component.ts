@@ -45,6 +45,7 @@ export class PokemonBoxComponent implements OnInit {
     this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
     this.curTeam = new Array<Pokemon>();
+    this.curTeam = Object.assign([], this.favTeam);
     this.myBox = new Array<Pokemon>();
     this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
     this.myBox.push(this.teamService.pkmn6);
@@ -118,14 +119,12 @@ export class PokemonBoxComponent implements OnInit {
    * @param newTeamName saves as 'Untitled' if newTeamName is empty
    */
   setFavoriteTeam(newTeamName: string) {
-    if (this.saveTeam(newTeamName)) {
-      this.favTeam = this.curTeam;
-      this.favoriteIcon = 'star';
-      if (newTeamName.length < 1) {
-        newTeamName = 'Untitled';
-      }
-      // set favTeam.name = newTeamName;
+    this.favTeam = this.curTeam;
+    this.favoriteIcon = 'star';
+    if (newTeamName.length < 1) {
+      newTeamName = 'Untitled';
     }
+    // set favTeam.name = newTeamName;
   }
 
   ngOnInit() {

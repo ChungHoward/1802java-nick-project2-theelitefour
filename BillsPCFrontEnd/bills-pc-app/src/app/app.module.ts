@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
@@ -28,6 +29,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 // Services
 import { LoggingService } from './services/logging.service';
 import { MoveService } from './services/move.service';
+import { PokemonService } from './services/pokemon.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 
@@ -48,19 +50,19 @@ import { DndModule } from 'ng2-dnd';
     FeaturedComponent,
     UpgradeComponent,
     Filter,
-    Sort,
-
+    Sort
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
     DndModule.forRoot()
   ],
-  providers: [LoggingService, MoveService, TeamService, TypeService],
+  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

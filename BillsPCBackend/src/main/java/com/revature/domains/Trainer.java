@@ -1,19 +1,21 @@
 package com.revature.domains;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
-@Component
-@Scope("prototype")
+
 @Entity
 @Table(name="TRAINER")
 public class Trainer {
@@ -32,6 +34,9 @@ public class Trainer {
 	
 	@Column(name="TRAINER_ROLE")
 	private String role;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="trainer", orphanRemoval = true)
+	private Set<PokemonSet> ownedPokemon = new HashSet<PokemonSet>();
 
 	public Trainer() { }
 
@@ -75,6 +80,14 @@ public class Trainer {
 		this.role = role;
 	}
 
+	public Set<PokemonSet> getOwnedPokemon() {
+		return ownedPokemon;
+	}
+
+	public void setOwnedPokemon(Set<PokemonSet> ownedPokemon) {
+		this.ownedPokemon = ownedPokemon;
+	}
+
 	@Override
 	public String toString() {
 		return "Trainer [trainerId=" + trainerId + ", name=" + name + ", password=" + password + ", role=" + role + "]";
@@ -85,6 +98,7 @@ public class Trainer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((ownedPokemon == null) ? 0 : ownedPokemon.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + trainerId;
@@ -105,6 +119,11 @@ public class Trainer {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (ownedPokemon == null) {
+			if (other.ownedPokemon != null)
+				return false;
+		} else if (!ownedPokemon.equals(other.ownedPokemon))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -119,6 +138,8 @@ public class Trainer {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 
