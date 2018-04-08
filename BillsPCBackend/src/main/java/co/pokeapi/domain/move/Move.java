@@ -3,6 +3,7 @@ package co.pokeapi.domain.move;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.revature.domains.MyMove;
 
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 import co.pokeapi.domain.commonmodel.VerboseEffect;
@@ -137,6 +138,22 @@ public class Move {
 				+ ", pp=" + pp + ", power=" + power + ", damageClass=" + damageClass + ", effectEntries="
 				+ effectEntries + ", generation=" + generation + ", type="
 				+ type + "]";
+	}
+	
+	public MyMove toMyMove() {
+		MyMove myMove = new MyMove();
+		
+		myMove.setId(id);
+		myMove.setName(name);
+		myMove.setAccuracy(accuracy);
+		myMove.setDamageClass(damageClass.getName());
+		myMove.setEffect(effectEntries.get(0).getShortEffect());
+		myMove.setEffectChance(effectChance);
+		myMove.setPp(pp);
+		myMove.setPower(power);
+		myMove.setType(type.getName());
+		
+		return myMove;
 	}
 	
 	

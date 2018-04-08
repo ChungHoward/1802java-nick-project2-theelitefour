@@ -30,43 +30,20 @@ public class PokemonController {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/pokemon", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<MyPokemon>> getAllPokemon() {
-		List<Pokemon> pokemons = service.getAllPokemon();
 		
-		List<MyPokemon> myPokemon = new ArrayList<>();
+//		List<MyPokemon> myPokemon = new ArrayList<>();
+//		
+//		for (Pokemon pokemon: pokemons) {
+//			MyPokemon my = new MyPokemon();
+//			
+//			my.setId(pokemon.getId());
+//			my.setName(pokemon.getName());
+//			my.setSprite(pokemon.getSprites().getFrontDefault());
+//			my.setMoves(pokemon.getLearnableMoves());
+//			my.setTypes(pokemon.getTypeList());
+//			myPokemon.add(my);
+//		}
 		
-		for (Pokemon pokemon: pokemons) {
-			MyPokemon my = new MyPokemon();
-			
-			my.setId(pokemon.getId());
-			my.setName(pokemon.getName());
-			my.setSprite(pokemon.getSprites().getFrontDefault());
-			my.setMoves(pokemon.getMoves().stream().map(PokemonMove::getMove).filter(move -> introducedBeforeGeneration(move.getUrl())).collect(Collectors.toList()));
-			
-			Map<String, Integer> myStats = new HashMap<>();
-			for (PokemonStat stat : pokemon.getStats()) {
-				myStats.put(stat.getStat().getName(), stat.getBaseStat());
-			}
-			
-			List<String> myTypes = new ArrayList<>();
-			for (PokemonType type: pokemon.getTypes()) {
-				myTypes.add(type.getType().getName());
-			}
-			
-			myPokemon.add(my);
-		}
-		
-		return new ResponseEntity<List<MyPokemon>>(myPokemon, HttpStatus.OK);
-	}
-	
-	private boolean introducedBeforeGeneration(String url) {
-//		Gen 1 introduced only 165 moves
-		int moveLimit = 165;
-		
-		System.out.println(url);
-		Pattern pattern = Pattern.compile(".*move\\/(\\d+)\\/");
-		Matcher m = pattern.matcher(url);
-		
-		
-		return Integer.parseInt(m.group(1)) < moveLimit;
+		return new ResponseEntity<List<MyPokemon>>(service.getAllPokemon().parallelStream().map(Pokemon::toMyPokemon).collect(Collectors.toList()), HttpStatus.OK);
 	}
 }

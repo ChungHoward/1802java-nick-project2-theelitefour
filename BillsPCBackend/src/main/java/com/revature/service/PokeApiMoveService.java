@@ -2,6 +2,8 @@ package com.revature.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -32,5 +34,12 @@ public class PokeApiMoveService {
 	
 	public List<Move> getAllLearnableMoves(List<PokemonMove> learnableMoves) {
 		return null;
+	}
+	
+	public List<Move> getAllMoves() {
+		return IntStream.rangeClosed(1, 164)
+				.parallel()
+				.mapToObj(this::getMoveById)
+				.collect(Collectors.toList());
 	}
 }

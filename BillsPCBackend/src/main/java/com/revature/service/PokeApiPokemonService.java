@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import co.pokeapi.domain.pokemon.Pokemon;
 
 public class PokeApiPokemonService {
+	
 	public Pokemon getPokemonById(int id) {
 		RestTemplate restTemplate = new RestTemplate();
 
@@ -29,12 +32,9 @@ public class PokeApiPokemonService {
 	}
 	
 	public List<Pokemon> getAllPokemon() {
-		List<Pokemon> pokemon = new ArrayList<>();
-		
-		for (int i = 1; i <= 1; i++) {
-			pokemon.add(getPokemonById(i));
-		}
-		
-		return pokemon;
+		return IntStream.rangeClosed(1, 151)
+				.parallel()
+				.mapToObj(this::getPokemonById)
+				.collect(Collectors.toList());
 	}
 }

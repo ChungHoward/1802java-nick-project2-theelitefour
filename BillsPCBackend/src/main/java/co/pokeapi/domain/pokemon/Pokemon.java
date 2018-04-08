@@ -1,6 +1,13 @@
 package co.pokeapi.domain.pokemon;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.revature.domains.MyPokemon;
+
+import co.pokeapi.domain.commonmodel.NamedApiResource;
 
 /**
  * Represents the JSON for Pokemon from PokeApi.
@@ -87,5 +94,61 @@ public class Pokemon {
 	public String toString() {
 		return "Pokemon [id=" + id + ", name=" + name + ", moves=" + moves + ", stats=" + stats + ", types=" + types
 				+ "]";
+	}
+	
+	public Map<String, Integer> getStatMap() {
+		Map<String, Integer> statMap = new HashMap<>();
+		
+		for (PokemonStat stat : stats) {
+			switch (stat.getStat().getName()) {
+			case "attack":
+				statMap.put("atk", stat.getBaseStat());
+				break;
+			case "defense":
+				statMap.put("def", stat.getBaseStat());
+				break;
+			case "special-attack":
+				statMap.put("satk", stat.getBaseStat());
+				break;
+			case "special-defense":
+				statMap.put("sdef", stat.getBaseStat());
+				break;
+			case "speed":
+				statMap.put("spe", stat.getBaseStat());
+				break;
+				default:
+					statMap.put(stat.getStat().getName(), stat.getBaseStat());
+					break;
+			}
+		}
+		
+		return statMap;
+	}
+	
+	public List<String> getTypeList() {
+		return types.stream()
+				.map(PokemonType::getType)
+				.map(NamedApiResource::getName)
+				.collect(Collectors.toList());
+	}
+	
+	public List<NamedApiResource> getLearnableMoves() {
+		return moves.stream()
+				.filter(PokemonMove::isLearnableByGeneration)
+				.map(PokemonMove::getMove)
+				.collect(Collectors.toList());
+	}
+	
+	public MyPokemon toMyPokemon() {
+		MyPokemon myPokemon = new MyPokemon();
+		
+		myPokemon.setId(id);
+		myPokemon.setName(name);
+		myPokemon.setSprite(sprites.getFrontDefault());
+		myPokemon.setMoves(getLearnableMoves());
+		myPokemon.setStats(getStatMap());
+		myPokemon.setTypes(getTypeList());
+		
+		return myPokemon;
 	}
 }
