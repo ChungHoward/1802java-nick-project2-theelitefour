@@ -1,4 +1,4 @@
-package com.revature.DAOs;
+package com.revature.daos;
 
 import com.revature.domains.Trainer;
 import com.revature.util.HibernateUtil;

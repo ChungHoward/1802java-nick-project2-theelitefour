@@ -1,6 +1,6 @@
 package com.revature.services;
 
-import com.revature.DAOs.LoginDAO;
+import com.revature.daos.LoginDAO;
 
 public class LoginService
 {
