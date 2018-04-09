@@ -1,6 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Trainer } from '../../trainer';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +15,9 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  loggedIn: boolean;
+  trainer: Trainer;
 
-  constructor(location: Location, private element: ElementRef) {
+  constructor(location: Location, private element: ElementRef, private loginService: LoginService) {
     this.location = location;
     this.sidebarVisible = false;
   }
@@ -24,6 +26,9 @@ export class NavbarComponent implements OnInit {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+    this.loginService.currentTrainer.subscribe(trainer => {
+      this.trainer = trainer;
+    });
   }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
@@ -64,5 +69,12 @@ export class NavbarComponent implements OnInit {
       }
     }
     return 'Dashboard';
+  }
+
+  logout() {
+    this.loginService.logout().subscribe(loggedOut => {
+      localStorage.removeItem('trainer');
+      this.loginService.changeTrainer(null);
+    });
   }
 }
