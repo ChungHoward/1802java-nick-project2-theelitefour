@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
+  loggedIn: boolean;
+
   constructor(location: Location, private element: ElementRef) {
     this.location = location;
     this.sidebarVisible = false;

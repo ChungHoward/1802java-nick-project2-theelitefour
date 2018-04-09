@@ -440,7 +440,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a routerLink='login'>\r\n            <i class=\"material-icons\">account_circle</i>\r\n            Login\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a routerLink='register'>\r\n            <i class=\"material-icons\">person</i>\r\n            Register\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"\">\r\n          <a>\r\n            <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n            <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i>\r\n            Profile\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"\">\r\n          <a>\r\n            <i class=\"material-icons\">exit_to_app</i>\r\n            Logout\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li *ngIf=\"!loggedIn\">\r\n          <a routerLink='login'>\r\n            <i class=\"material-icons\">account_circle</i>\r\n            Login\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"!loggedIn\">\r\n          <a routerLink='register'>\r\n            <i class=\"material-icons\">person</i>\r\n            Register\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"loggedIn\">\r\n          <a>\r\n            <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n            <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i>\r\n            {{profile}}\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"loggedIn\">\r\n          <a>\r\n            <i class=\"material-icons\">exit_to_app</i>\r\n            Logout\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -857,24 +857,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginComponent = (function () {
     function LoginComponent(loginService) {
         this.loginService = loginService;
+        this.loggedIn = false;
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.submitted = false;
     }
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = true;
-        this.loginService.login(this.username, this.password).subscribe(function (successful) { _this.valid = successful; }, function (error) { return console.error(error); });
+        this.loginService.login(this.username, this.password).subscribe(function (successful) {
+            _this.valid = successful;
+            _this.notify.emit(successful);
+        }, function (error) {
+            console.error(error);
+        });
     };
     LoginComponent.prototype.ngOnInit = function () { };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Object)
+    ], LoginComponent.prototype, "loggedIn", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+    ], LoginComponent.prototype, "notify", void 0);
     LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-login',
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _b || Object])
     ], LoginComponent);
     return LoginComponent;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=login.component.js.map

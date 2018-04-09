@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -14,14 +14,23 @@ export class LoginComponent implements OnInit {
   submitted: boolean;
   valid: boolean;
 
+  @Input()
+  loggedIn = false;
+  @Output()
+  notify: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private loginService: LoginService) {
     this.submitted = false;
   }
 
   onSubmit() {
     this.submitted = true;
-    this.loginService.login(this.username, this.password).subscribe(
-      successful => {this.valid = successful; }, error => console.error(error)
+    this.loginService.login(this.username, this.password).subscribe(successful => {
+      this.valid = successful;
+      this.notify.emit(successful);
+    }, error => {
+      console.error(error);
+    }
     );
   }
 
