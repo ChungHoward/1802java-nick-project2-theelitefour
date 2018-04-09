@@ -1,6 +1,6 @@
-package com.revature.daos;
+package com.revature.dao;
 
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
