@@ -37,12 +37,9 @@ public class Driver {
 		PokemonSetDaoImp dao = new PokemonSetDaoImp();
 		TrainerDao trDao = new TrainerDaoImp();
 		TeamDao teamDao = new TeamDaoImp();
-		Trainer brock = trDao.retrieveTrainerById(1750);
+		Trainer brock = trDao.retrieveTrainerByName("Misty");
 		System.out.println(brock);
-		Team team = teamDao.retrieveTeamById(750);
-		
-		
-		teamDao.deleteTeam(team);
+
 	
 		
 	

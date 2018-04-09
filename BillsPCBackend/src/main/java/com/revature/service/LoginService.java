@@ -1,11 +1,14 @@
 package com.revature.service;
 
-import com.revature.dao.LoginDAO;
+import org.springframework.stereotype.Service;
+import com.revature.dao.LoginDao;
+import com.revature.domain.Trainer;
 
+@Service
 public class LoginService
-{
-    public static void login(String username, String password)
+{	
+    public Trainer login(String username, String password)
     {
-        LoginDAO.login(username, password);
+    	return LoginDao.login(username, password);
     }
 }

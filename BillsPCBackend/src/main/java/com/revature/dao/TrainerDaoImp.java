@@ -5,11 +5,13 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
-
+@Component
 public class TrainerDaoImp implements TrainerDao {
 
 	@Override
@@ -19,6 +21,20 @@ public class TrainerDaoImp implements TrainerDao {
 		sess.close();
 		
 		return tr;
+	}
+	
+	@Override
+	public Trainer retrieveTrainerByName(String name) {
+		Session sess = HibernateUtil.getSession();
+		Criteria cr = sess.createCriteria(Trainer.class);
+		cr.add(Restrictions.eq("name", name));
+		List<Trainer> list = cr.list();
+		sess.close();
+		if(list.size()==0) {
+			return null;
+		}else {
+			return list.get(0);
+		}
 	}
 
 	@Override

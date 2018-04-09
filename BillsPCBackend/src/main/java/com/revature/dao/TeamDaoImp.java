@@ -5,11 +5,13 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.domain.Team;
 import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class TeamDaoImp implements TeamDao {
 
 	@Override

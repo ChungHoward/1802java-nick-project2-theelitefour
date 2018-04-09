@@ -14,8 +14,7 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope("prototype")
+
 @Entity
 @Table(name="POKEMON_SET")
 public class PokemonSet {
