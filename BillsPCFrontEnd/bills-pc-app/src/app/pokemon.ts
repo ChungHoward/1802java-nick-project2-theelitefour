@@ -9,15 +9,15 @@ export class Pokemon {
   moves: Array<Attack>; // currently empty
   stats: Stat;
   types: Array<string>;
-
+  // A missingno for our placeholder!
   constructor() {
     this.id = 0;
-    this.trainerId = 0;
-    this.attackIds = [];
+    this.trainerId = 1;
+    this.attackIds = [null, null, null, null];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
     this.moveset = ['water-gun', 'sky-attack', '', ''];
-    this.moves = [];
+    this.moves = [null, null, null, null];
     this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
     this.types = ['normal', 'bird'];
   }

@@ -30,9 +30,9 @@ export class TeambuilderComponent implements OnInit {
   collapse: string;
 
   /* These variables are for the selected Pokemon thing */
-  // This is the Pokemon we are viewing in full detail
   selectedPkmn: Pokemon;
   selPkmnMoves: Array<Move>;
+  newMoves: Array<string>;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
@@ -55,6 +55,7 @@ export class TeambuilderComponent implements OnInit {
     this.favTeam = this.teamService.favTeam;
 
     // My default selected Pokemon
+    this.newMoves = ['', '', '', ''];
     this.selPkmnMoves = new Array<Move>();
 
     // by default our attacks are collapsed
@@ -110,7 +111,7 @@ export class TeambuilderComponent implements OnInit {
   selectPokemon(pkmn: Pokemon) {
     this.selectedPkmn = pkmn;
     this.loadStatChart();
-    // The below for loop doesnt work
+    // Assign detailed attack info into selPkmnMoves
     for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) {
       if (!!this.selectedPkmn.attackIds[i]) {
         // subtract 1 because our json is 1-indexed while arrays are 0-indexed
@@ -122,6 +123,12 @@ export class TeambuilderComponent implements OnInit {
         }
       } else {
         this.selPkmnMoves[i] = undefined;
+      }
+    }
+    if (this.selectedPkmn.attackIds.length < 4) {
+      const numBlanks = 4 - this.selectedPkmn.attackIds.length;
+      for (let i = 0; i < numBlanks; i++) {
+        this.selPkmnMoves.push(undefined);
       }
     }
   }
