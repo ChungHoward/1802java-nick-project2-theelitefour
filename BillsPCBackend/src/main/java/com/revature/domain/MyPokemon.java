@@ -1,4 +1,4 @@
-package com.revature.domains;
+package com.revature.domain;
 
 import java.util.List;
 import java.util.Map;

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.revature.domains.MyPokemon;
+import com.revature.domain.MyPokemon;
 
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 

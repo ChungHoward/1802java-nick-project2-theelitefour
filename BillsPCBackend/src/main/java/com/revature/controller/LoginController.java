@@ -1,6 +1,6 @@
-package com.revature.controllers;
+package com.revature.controller;
 
-import com.revature.services.LoginService;
+import com.revature.service.LoginService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

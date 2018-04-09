@@ -1,8 +1,8 @@
-package com.revature.daos;
+package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 
 public interface TrainerDao {
 	
