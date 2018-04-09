@@ -40,6 +40,7 @@ import co.pokeapi.domain.commonmodel.VerboseEffect;
 public class Move {
 	private Integer id;
 	private String name;
+	private List<Name> names;
 	private Integer accuracy;
 	private Integer effectChance;
 	private Integer pp;
@@ -132,6 +133,14 @@ public class Move {
 		this.type = type;
 	}
 	
+	public List<Name> getNames() {
+		return names;
+	}
+
+	public void setNames(List<Name> names) {
+		this.names = names;
+	}
+
 	@Override
 	public String toString() {
 		return "Move [id=" + id + ", name=" + name + ", accuracy=" + accuracy + ", effectChance=" + effectChance
@@ -140,11 +149,20 @@ public class Move {
 				+ type + "]";
 	}
 	
+	private String getLocalizedName(String language) {
+		for (Name name : names) {
+			if (language.equals(name.getLanguage().getName()))
+				return name.getName();
+		}
+		return null;
+	}
+	
 	public MyMove toMyMove() {
 		MyMove myMove = new MyMove();
 		
 		myMove.setId(id);
-		myMove.setName(name);
+		myMove.setName(getLocalizedName("en"));
+		myMove.setApiName(name);
 		myMove.setAccuracy(accuracy);
 		myMove.setDamageClass(damageClass.getName());
 		myMove.setEffect(effectEntries.get(0).getShortEffect());

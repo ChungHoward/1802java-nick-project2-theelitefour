@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 
 public class PokemonStat {
-	public Integer baseStat;
-	public Integer effort;
-	public NamedApiResource stat;
+	private Integer baseStat;
+	private Integer effort;
+	private NamedApiResource stat;
 	public Integer getBaseStat() {
 		return baseStat;
 	}

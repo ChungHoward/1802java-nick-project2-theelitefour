@@ -18,7 +18,7 @@ import co.pokeapi.domain.commonmodel.NamedApiResource;
  *
  */
 public class PokemonMove {
-	public NamedApiResource move;
+	private NamedApiResource move;
 	private List<PokemonMoveVersion> moveVersion;
 	private Pattern pattern = Pattern.compile(".*move\\/(\\d+)\\/");
 	

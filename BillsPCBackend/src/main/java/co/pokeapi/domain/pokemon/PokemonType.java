@@ -3,8 +3,8 @@ package co.pokeapi.domain.pokemon;
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 
 public class PokemonType {
-	public Integer slot;
-	public NamedApiResource type;
+	private Integer slot;
+	private NamedApiResource type;
 
 	public Integer getSlot() {
 		return slot;

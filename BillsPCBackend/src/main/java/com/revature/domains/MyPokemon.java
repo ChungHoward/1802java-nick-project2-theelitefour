@@ -15,7 +15,7 @@ public class MyPokemon {
 	private String name;
 	private String sprite;
 	private List<NamedApiResource> moves;
-	Map<String, Integer> stats;
+	private Map<String, Integer> stats;
 	List<String> types;
 	
 	public Integer getId() {

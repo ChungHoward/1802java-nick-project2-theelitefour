@@ -1,10 +1,9 @@
 package com.revature.domains;
 
-import co.pokeapi.domain.move.Move;
-
 public class MyMove {
 	private Integer id;
 	private String name;
+	private String apiName;
 	private Integer accuracy;
 	private String effect;
 	private Integer effectChance;
@@ -65,6 +64,12 @@ public class MyMove {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getApiName() {
+		return apiName;
+	}
+	public void setApiName(String apiName) {
+		this.apiName = apiName;
 	}
 	@Override
 	public String toString() {
