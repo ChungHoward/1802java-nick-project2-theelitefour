@@ -34,7 +34,6 @@ export class TeamService implements OnInit {
     this.pkmn1.attackIds = [85, 42, 24, 86];
     this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
     this.pkmn1.stats = {hp: 65, atk: 65, def: 60, satk: 110, sdef: 110, spe: 130};
-    this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
 
     this.pkmn2.name = 'Exeggutor';
     this.pkmn2.trainerId = 1;

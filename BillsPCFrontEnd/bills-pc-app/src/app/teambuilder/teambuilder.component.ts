@@ -18,8 +18,10 @@ import * as Chartist from 'chartist';
 })
 export class TeambuilderComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
-  // The 6 pokemon on my team
+  // The placeholder 6 pokemon on my team
   favTeam: Array<Pokemon>;
+  // The Team I am editing
+  curTeam: Array<PokeAPI>;
   // This service generates 6 sample pokemon for me
   teamService: TeamService;
   // Contains the image for every type and damage class
@@ -30,9 +32,9 @@ export class TeambuilderComponent implements OnInit {
   collapse: string;
 
   /* These variables are for the selected Pokemon thing */
+  selected: number;
   selectedPkmn: Pokemon;
   selPkmnMoves: Array<Move>;
-  newMoves: Array<string>;
 
   /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
@@ -54,23 +56,24 @@ export class TeambuilderComponent implements OnInit {
     this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
 
-    // My default selected Pokemon
-    this.newMoves = ['', '', '', ''];
+    // Make a team full of missingno
+    this.curTeam = new Array<PokeAPI>();
+    for (let i = 0; i < 6; i++) {
+      this.curTeam.push(new PokeAPI());
+    }
+    // My default selected Pokemon's attacks
     this.selPkmnMoves = new Array<Move>();
 
     // by default our attacks are collapsed
     this.expandOrCollapse = false;
     this.collapse = 'arrow_drop_down';
 
-    // this can be used as a placeholder image for a Pokemon when a user not made a team
-    this.questionSprite = 'assets/img/question.png';
-
     this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
-    this.colSortIcons = [ // The icon underneath each pkmnTableColNames
+    this.colSortIcons = [ // The sort icon underneath each pkmnTableColNames
       'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
       'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
     ];
-    this.sortBy = 'name';
+    this.sortBy = ''; // default sort by pokedex order
     this.ascending = true;
   }
 
@@ -108,12 +111,22 @@ export class TeambuilderComponent implements OnInit {
     this.sortBy = this.pkmnTableColNames[i];
   }
 
+  selectTeamPokemon(i: number, pkmn: Pokemon) {
+    // TODO: Actually modify our pokemon if any changes are made to it
+    this.selected = i;
+    this.selectPokemon(pkmn);
+  }
+
+  selectNewPokemon(pkmn: PokeAPI) {
+
+  }
+
   selectPokemon(pkmn: Pokemon) {
     this.selectedPkmn = pkmn;
     this.loadStatChart();
     // Assign detailed attack info into selPkmnMoves
-    for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) {
-      if (!!this.selectedPkmn.attackIds[i]) {
+    if (!!this.selectedPkmn.attackIds.length) {
+      for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) { // attackIds are of unknown length
         // subtract 1 because our json is 1-indexed while arrays are 0-indexed
         this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
 
@@ -121,14 +134,10 @@ export class TeambuilderComponent implements OnInit {
           this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
             String(this.selPkmnMoves[i].effectChance)); // with this
         }
-      } else {
-        this.selPkmnMoves[i] = undefined;
       }
-    }
-    if (this.selectedPkmn.attackIds.length < 4) {
-      const numBlanks = 4 - this.selectedPkmn.attackIds.length;
-      for (let i = 0; i < numBlanks; i++) {
-        this.selPkmnMoves.push(undefined);
+    } else {
+      for (let i = 0; i < 4; i++) {
+        this.selPkmnMoves[i] = this.movedex[164]; // 164 is my placeholder
       }
     }
   }
@@ -146,14 +155,31 @@ export class TeambuilderComponent implements OnInit {
 
   /**
    * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
-   * because some data was wrong and populates our movedex with 164 Moves
+   * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
    */
   getMoveAPIjson() {
     this.moveService.getJson().subscribe(data => {
       this.movedex = data as Array<Move>;
+
+      const p = new Pokemon();
+      this.selectPokemon(p);
     }, error => {
       console.error(error);
     });
+  }
+
+  /**
+   * Given an attack name, put the full move details into selPkmnMoves
+   * @param i the index of selPkmnMove to change
+   * @param attackName the attack name
+   */
+  setSelPkmnMoves(i: number, attackName: string) {
+    alert(i + ' ' + attackName);
+    for (const move of this.movedex) {
+      if (move.name === attackName) {
+        this.selPkmnMoves[i] = move;
+      }
+    }
   }
 
   startAnimationForBarChart(chart) {
@@ -231,8 +257,6 @@ export class TeambuilderComponent implements OnInit {
 
   ngOnInit() {
     // Load 151 Pokemon into this.pokedex
-    const p = new Pokemon();
-    this.selectPokemon(p);
     this.getPokeAPIjson();
     this.getMoveAPIjson();
     this.loadStatChart();

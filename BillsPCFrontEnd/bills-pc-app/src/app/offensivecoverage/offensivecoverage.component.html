@@ -2,14 +2,39 @@
   <div class="container-fluid">
     <div class="card">
       <div class="card-header" data-background-color="red">
-        <h4 class="title">Notifications</h4>
-        <p class="category">Handcrafted by our friend
-        </p>
+        <h4 class="title">Missing type coverage</h4>
+        <p class="category">Your team
+          <strong>does not</strong> have a super-effective attack against these Types</p>
       </div>
-      <div class="card-content">
-        
 
+      <div class="card-content row">
+        <div *ngFor="let type of uniqueTypes" class="col-xs-2 col-xl-2">
+          <div *ngFor="let pokemon of favTeam">
+            <!--<div *ngIf="types.chart[types.name.indexOf(type[1])][]">-->
+            <div>
+              <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
+              <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="card">
+
+      <div class="card-header" data-background-color="red">
+        <h4 class="title">Types covered</h4>
+        <p class="category">Your team has super-effective attacks against these Types</p>
+      </div>
+
+      <div class="card-content">
+        <div *ngFor="let type of uniqueTypes">
+          <div>
+            <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

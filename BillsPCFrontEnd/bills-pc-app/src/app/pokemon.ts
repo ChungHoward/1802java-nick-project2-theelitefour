@@ -13,17 +13,17 @@ export class Pokemon {
   constructor() {
     this.id = 0;
     this.trainerId = 1;
-    this.attackIds = [null, null, null, null];
+    this.attackIds = [];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
-    this.moveset = ['water-gun', 'sky-attack', '', ''];
-    this.moves = [null, null, null, null];
+    this.moveset = ['', '', '', ''];
+    this.moves = [];
     this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
-    this.types = ['normal', 'bird'];
+    this.types = ['normal'];
   }
 }
 // Used to read pokeAPIjson
-export interface PokeAPI {
+export class PokeAPI {
   id: number;
   trainerId: number;
   attackIds: Array<number>;
@@ -33,6 +33,18 @@ export interface PokeAPI {
   moves: Array<Attack>; // attacks it can learn
   stats: Stat;
   types: Array<string>;
+
+  constructor() {
+    this.id = 0;
+    this.trainerId = 1;
+    this.attackIds = [];
+    this.name = 'missingno';
+    this.sprite = 'assets/img/question.png';
+    this.moveset = ['', '', '', ''];
+    this.moves = [];
+    this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
+    this.types = ['normal'];
+  }
 }
 
 export interface Stat {

@@ -1,21 +1,18 @@
 <div class="main-content">
   <div class="container-fluid">
-    <ul *ngIf="selectedPkmn">
-      Test div please ignore {{selectedPkmn.trainerId}}
-      <li *ngFor="let move of selectedPkmn.moves">
-        {{ move.name }}
-      </li>
-    </ul>
+    <!-- <div *ngFor="let move of movedex">
+      {{ move.name }}
+    </div> -->
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
       <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
         <div class="card">
-          <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)">
-            <img src="{{ favTeam[i].sprite }}" alt="" />
+          <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
+            <img [src]="favTeam[i].sprite" alt="" />
           </div>
           <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
-            <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
-            <img src="{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}" alt="" class="type" />
+            <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
             <h4 class="title">{{ favTeam[i].name }}</h4>
           </div>
           <div class="card-footer ta-center">
@@ -24,7 +21,9 @@
             </i>
             <div class="stats" *ngIf="expandOrCollapse">
               <ul>
-                <li *ngFor="let atk of favTeam[i].moveset">{{ atk }}</li>
+                <li *ngFor="let atk of favTeam[i].moveset">
+                  {{ atk }}
+                </li>
               </ul>
             </div>
           </div>
@@ -41,15 +40,15 @@
           </div>
 
           <div class="card-content ta-center row">
-            <img class="sprite col-sm-3 col-xl-3" src="{{ selectedPkmn.sprite }}" title="{{ selectedPkmn.sprite }}" />
+            <img class="sprite col-sm-3 col-xl-3" [src]="selectedPkmn.sprite" title="{{ selectedPkmn.sprite }}" />
             <div class="no-padding col-sm-3 col-xl-3">
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}" class="type"/>
-              <img src="{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}" class="type" alt="Bird"/>
-              <br/>
               <span class="badge badge-primary">
                 Critical Rate
                 <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
               </span>
+              <br/>
+              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
+              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[1])]" class="type" />
               <br/>
               <small>
                 <a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a>
@@ -57,8 +56,7 @@
             </div>
             <form class="row poke-search" role="search">
               <div class="form-group col-sm-4 col-xl-4">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
-                  placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
                 <span class="material-input"></span>
               </div>
             </form>
@@ -78,41 +76,25 @@
                     <th>Effect</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="selectedPkmn.trainerId > 0">
-                  <tr *ngFor="let move of selPkmnMoves">
+                <tbody *ngIf="selectedPkmn">
+                  <tr *ngFor="let move of selPkmnMoves; let i = index">
                     <td>
-                      <input type="text" [(value)]="move.name" list="canLearn" name="move">
-                    </td>
-                    <td>
-                      <img src="{{ types.img[types.name.indexOf(move.type)] }}" class="type">
-                    </td>
-                    <td>
-                      <img src="{{ types.classImg[types.class.indexOf(move.damageClass)] }}" class="type">
-                    </td>
-                    <td>{{ move.power }}</td>
-                    <td>{{ move.accuracy }}</td>
-                    <td>{{ move.pp }}</td>
-                    <td>{{ move.effect }}</td>
-                  </tr>
-                </tbody>
-                <tbody *ngIf="selectedPkmn.trainerId == 0">
-                  <tr *ngFor="let newgroove of newMoves; let i = index">
-                    <td>
-                      <input type="text" list="canLearn" name="newMove">
+                      <input type="text" [(value)]="move.name" list="canLearn" name="move"
+                        (change)="setSelPkmnMoves(i, move.name)" class="material-input">
                       <datalist id="canLearn">
                         <option *ngFor="let move of selectedPkmn.moves" value="{{move.name}}">
                       </datalist>
                     </td>
                     <td>
-                      <img src="" class="type">
+                      <img [src]="types.img[types.name.indexOf(move.type)]" class="type">
                     </td>
                     <td>
-                      <img src="" class="type">
+                      <img [src]="types.classImg[types.class.indexOf(move.damageClass)]" class="type">
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ move.power }}</td>
+                    <td>{{ move.accuracy }}</td>
+                    <td>{{ move.pp }}</td>
+                    <td>{{ move.effect }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -138,12 +120,11 @@
                 </thead>
                 <tbody>
                   <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->
-                  <tr class="search-row" 
-                  *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                  <tr class="search-row" *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
-                      <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
-                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                      <img [src]="types.img[types.name.indexOf(pkmn.types[1])]" class="type">
+                      <img [src]="types.img[types.name.indexOf(pkmn.types[0])]" class="type">
                     </td>
                     <td class="ta-center stat-col">{{ pkmn.stats.hp }}</td>
                     <td class="ta-center stat-col">{{ pkmn.stats.atk }}</td>

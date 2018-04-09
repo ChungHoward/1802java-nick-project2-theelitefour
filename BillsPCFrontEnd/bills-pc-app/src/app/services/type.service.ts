@@ -37,7 +37,7 @@ export class TypeService {
   readonly class = ['physical', 'special', 'status'];
   readonly classImg = [ this.physical, this.special, this.status ];
 
-  readonly chart = [ // ----------===== Defending type =====----------  ----------===== Attacking type
+  readonly chart = [ // ---------===== Defending type =====---------[A][D]---------===== Attacking type
   // nrm, psy, elc, ice, grd, rck, wtr, grs, fly, ftg, fir, bug, psn, gst, drg, none
     [1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], // normal
     [1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0], // psychic
