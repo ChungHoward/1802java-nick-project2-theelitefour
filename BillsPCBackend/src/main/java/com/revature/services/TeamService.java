@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.daos.TeamDao;
-import com.revature.domains.Team;
-import com.revature.domains.Trainer;
+import com.revature.dao.TeamDao;
+import com.revature.domain.Team;
+import com.revature.domain.Trainer;
 
 @Service
 public class TeamService {

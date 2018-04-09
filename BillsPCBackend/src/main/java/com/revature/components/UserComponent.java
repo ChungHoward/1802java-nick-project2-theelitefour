@@ -3,7 +3,7 @@ package com.revature.components;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 
 @Component
 @Scope("session")

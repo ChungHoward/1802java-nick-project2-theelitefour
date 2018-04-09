@@ -3,7 +3,7 @@ package co.pokeapi.domain.move;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.revature.domains.MyMove;
+import com.revature.domain.MyMove;
 
 import co.pokeapi.domain.commonmodel.NamedApiResource;
 import co.pokeapi.domain.commonmodel.VerboseEffect;

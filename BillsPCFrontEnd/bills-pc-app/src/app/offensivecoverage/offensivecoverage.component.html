@@ -2,14 +2,29 @@
   <div class="container-fluid">
     <div class="card">
       <div class="card-header" data-background-color="red">
-        <h4 class="title">Notifications</h4>
-        <p class="category">Handcrafted by our friend
-        </p>
-      </div>
-      <div class="card-content">
-        
+        <h4 class="title">Unique Types</h4>
+        <p class="category">Here's a thing</p>
+
+        <div *ngFor="let tmp of uniqueTypes">
+            {{tmp.types}}
+          </div>
+          <p class="category">And Another...</p>
 
       </div>
+      <div class="card-content"></div>
+    </div>
+    <div class="card">
+      <div class="card-header" data-background-color="red">
+        <h4 class="title">All Types</h4>
+
+        <div *ngFor="let tmp of pokedex">
+          {{tmp.types}}
+        </div>
+
+        <p class="category">And Another...</p>
+
+      </div>
+      <div class="card-content"></div>
     </div>
   </div>
 </div>

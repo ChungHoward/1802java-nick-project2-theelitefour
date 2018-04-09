@@ -1,6 +1,6 @@
-package com.revature.controllers;
+package com.revature.controller;
 
-import com.revature.services.RegisterService;
+import com.revature.service.RegisterService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

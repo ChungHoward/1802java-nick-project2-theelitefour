@@ -1,6 +1,6 @@
-package com.revature.daos;
+package com.revature.dao;
 
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -24,19 +24,6 @@ public class LoginDao
         		return trainer;
         	}
         }
-        
-//        for(int i = 0; i < results.size(); i++)
-//        {
-//            System.out.println("result " + i + " = " + results.get(i));
-//            System.out.println("Trainer name = " + results.get(i).getName());
-//
-//            if(results.get(i).getName().equals(username) && results.get(i).getPassword().equals(password))
-//            {
-//                System.out.println("login success");
-//                return true;
-//            }
-//        }
-//        System.out.println("login failure");
 
         return null;
     }

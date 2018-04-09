@@ -1,7 +1,7 @@
-package com.revature.services;
+package com.revature.service;
 
-import com.revature.daos.RegisterDAO;
-import com.revature.daos.TrainerDaoImp;
+import com.revature.dao.TrainerDaoImp;
+import com.revature.dao.RegisterDAO;
 
 public class RegisterService
 {

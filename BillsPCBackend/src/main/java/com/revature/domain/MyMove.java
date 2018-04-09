@@ -1,4 +1,4 @@
-package com.revature.domains;
+package com.revature.domain;
 
 public class MyMove {
 	private Integer id;

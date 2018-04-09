@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.revature.domains.Team;
-import com.revature.domains.Trainer;
+import com.revature.domain.Team;
+import com.revature.domain.Trainer;
 import com.revature.services.TeamService;
 
 @RestController

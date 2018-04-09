@@ -1,4 +1,4 @@
-package com.revature.daos;
+package com.revature.dao;
 
 import java.util.List;
 
@@ -8,8 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import com.revature.domains.PokemonSet;
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
 @Component

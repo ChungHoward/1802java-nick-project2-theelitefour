@@ -1,4 +1,4 @@
-package com.revature.controllers;
+package com.revature.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.domains.MyMove;
+import com.revature.domain.MyMove;
 import com.revature.service.PokeApiMoveService;
 
 import co.pokeapi.domain.move.Move;
