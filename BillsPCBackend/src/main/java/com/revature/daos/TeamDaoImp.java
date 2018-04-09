@@ -11,12 +11,14 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 import org.hibernate.sql.JoinType;
+import org.springframework.stereotype.Component;
 
 import com.revature.domains.PokemonSet;
 import com.revature.domains.Team;
 import com.revature.domains.Trainer;
 import com.revature.util.HibernateUtil;
 
+@Component
 public class TeamDaoImp implements TeamDao {
 
 	@Override

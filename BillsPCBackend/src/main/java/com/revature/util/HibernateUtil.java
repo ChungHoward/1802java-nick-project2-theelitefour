@@ -9,7 +9,7 @@ import org.hibernate.service.ServiceRegistry;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
-	
+
 	public static SessionFactory getSessionFactory() {
 		if(sessionFactory == null) {
 			Configuration conf =new Configuration().configure();
@@ -19,10 +19,10 @@ public class HibernateUtil {
 		}
 		return sessionFactory;
 	}
-	
+
 	public static Session getSession() {
-		
+
 		return HibernateUtil.getSessionFactory().openSession();
 	}	
-	
+
 }

@@ -14,8 +14,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 
+@Component
+@Scope(value=WebApplicationContext.SCOPE_SESSION)
 @Entity
 @Table(name="TRAINER")
 public class Trainer {
