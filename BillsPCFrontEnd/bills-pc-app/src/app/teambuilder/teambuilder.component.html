@@ -83,7 +83,6 @@
                     <td>
                       <input type="text" [(ngModel)]="move.name" name="moveInput{{i}}"
                          list="canLearn" (change)="setSelPkmnMoves(i)">
-                         <!--  -->
                       <datalist id="canLearn">
                         <option *ngFor="let canlearn of selectedPkmn.moves" value="{{canlearn.name}}">
                       </datalist>
@@ -92,7 +91,6 @@
                       <img [src]="types.img[types.name.indexOf(move.type)]" class="type">
                     </td>
                     <td>
-                      <!-- if damageClass is not status, use move.type to calculate damage class -->
                       <img class="type" [src]=
 "move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]">
                     </td>
