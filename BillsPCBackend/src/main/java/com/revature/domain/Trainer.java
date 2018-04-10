@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
@@ -39,7 +41,8 @@ public class Trainer {
 	
 	@Column(name="TRAINER_ROLE")
 	private String role;
-	
+
+	//@JsonManagedReference
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="trainer", orphanRemoval = true)
 	private Set<PokemonSet> ownedPokemon = new HashSet<PokemonSet>();
 

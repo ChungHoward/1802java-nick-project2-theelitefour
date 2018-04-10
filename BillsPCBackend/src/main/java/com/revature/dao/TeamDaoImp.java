@@ -2,9 +2,12 @@ package com.revature.dao;
 
 import java.util.List;
 
+import com.revature.domain.PokemonSet;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.revature.domain.Team;
@@ -27,7 +30,8 @@ public class TeamDaoImp implements TeamDao {
 	public List<Team> retreiveAllTeamsByTrainer(Trainer user) {
 		Session sess = HibernateUtil.getSession();
 		String hql = "FROM Team WHERE set1 in (Select setId from PokemonSet where trainer ="+user.getTrainerId()+")";
-		
+		//String hql = "FROM Team WHERE TR_ID = " + user.getTrainerId();
+
 		Query query = sess.createQuery(hql);
 		return query.list();
 

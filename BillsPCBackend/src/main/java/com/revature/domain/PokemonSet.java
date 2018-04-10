@@ -11,9 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.revature.domain.Trainer;
 
 @Entity
 @Table(name="POKEMON_SET")
@@ -27,9 +31,9 @@ public class PokemonSet {
 	
 	@Column(name="NICKNAME")
 	private String nickname;
-	
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+
+	//@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;
 	

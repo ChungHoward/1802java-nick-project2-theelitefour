@@ -13,6 +13,9 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<Trainer> {
+    console.log("login service called called");
+    console.log("uname = " + username + " pass = " + password);
+
     const body = new HttpParams().set('username', username).set('password', password);
     return this.http.post<Trainer>('login', body);
   }

@@ -1,4 +1,4 @@
-package com.revature.services;
+package com.revature.service;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import com.revature.domain.Trainer;
 
 @Service
 public class TeamService {
+
 	@Autowired
 	private TeamDao dao;
 	
