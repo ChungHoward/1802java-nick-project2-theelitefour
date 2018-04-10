@@ -21,10 +21,11 @@ public class LoginDao
 
         for (Trainer trainer : results) {
         	if (username.equals(trainer.getName()) && password.equals(trainer.getPassword())) {
+        		session.close();
         		return trainer;
         	}
         }
-
+        session.close();
         return null;
     }
 }

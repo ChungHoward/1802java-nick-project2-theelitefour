@@ -27,5 +27,6 @@ public class RegisterDAO
             e.printStackTrace();
             session.getTransaction().rollback();
         }
+        session.close();
     }
 }
