@@ -178,6 +178,7 @@ export class TeambuilderComponent implements OnInit {
     for (const move of this.movedex) {
       if (move.name === attackName) {
         this.selPkmnMoves[i] = move;
+        break;
       }
     }
   }

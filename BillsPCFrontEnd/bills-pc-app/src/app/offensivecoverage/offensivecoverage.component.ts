@@ -113,6 +113,7 @@ export class OffensiveCoverageComponent implements OnInit {
 
   compareOurMovesVsUniqueTypes() {
     let effective: number;
+    let atkType: number;
     let defType1: number;
     let defType2: number;
 
@@ -120,15 +121,18 @@ export class OffensiveCoverageComponent implements OnInit {
     loop1:
     for (const pairTypes of this.uniqueTypes) {
       // for each attack type on my team
-      for (const atkType of this.teamMoveTypes) {
+      for (const moveType of this.teamMoveTypes) {
         // get the types of the defending pokemon
+        atkType = this.types.name.indexOf(moveType);
         defType1 = this.types.name.indexOf(pairTypes[0]);
         defType2 = this.types.name.indexOf(pairTypes[1]);
-        console.log(this.types.chart[atkType]);
+        // if defType2 is undefined, set it to "none = 15"
+        defType2 = (defType2 < 0) ? 15 : defType2;
         // and see how effective my attack type is against every other pokemon
         effective = this.types.chart[atkType][defType1];
         effective *= this.types.chart[atkType][defType2];
-        console.log(atkType + ' vs ' + defType1 + ' ' + defType2 + ' = ' + effective);
+        console.log(moveType + ' vs ' + this.types.name[defType1] + ' ' + this.types.name[defType2]
+         + ' = ' + effective);
         // if our attack is super effective
         if (effective > 1) {
           // add it to our list of covered types
@@ -150,6 +154,12 @@ export class OffensiveCoverageComponent implements OnInit {
 
     // the above methods are being replaced by the below method which calls both Observables
     // in parallel and waits for them to finish -- or apparently not
+    // Observable.zip(
+    //   this.pokemonService.getJson(),
+    //   this.moveService.getJson()
+    // ).subscribe(myTuple => {
+    //   this.pokedex = myTuple[0];
+    //   this.movedex = myTuple[1];
     Observable.forkJoin(
       this.pokemonService.getJson(),
       this.moveService.getJson()
@@ -157,7 +167,6 @@ export class OffensiveCoverageComponent implements OnInit {
       ([pokeAPIArray, moveArray]) => {
       this.pokedex = pokeAPIArray;
       this.movedex = moveArray;
-
       // calling these functions here because this is the only location where
       // we can guarantee our pokedex and movedex have been fully loaded
       this.getUniqueTypes();

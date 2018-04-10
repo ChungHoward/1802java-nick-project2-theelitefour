@@ -8,11 +8,11 @@
   width: 100%;
 }
 .card {
-  height: 575px;
+  height: 500px;
   margin-bottom: 0px;
 }
 .table-responsive {
-  max-height: 435px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 /* Native image sizes */
@@ -32,6 +32,8 @@
 .card-content {
   padding-top: 4px;
   padding-bottom: 4px;
+  min-height: 80px;
+  position: relative;
 }
 .card-footer {
   padding-top: 0px;
@@ -54,6 +56,8 @@ td input {
 .poke-search {
   margin-top: 0px;
   margin-left: 0px;
+  position: absolute;
+  bottom: 0;
 }
 .pkmn-table {
   width: 100%;

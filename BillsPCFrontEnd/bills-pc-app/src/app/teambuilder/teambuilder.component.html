@@ -80,7 +80,7 @@
                   <tr *ngFor="let move of selPkmnMoves; let i = index">
                     <td>
                       <input type="text" [(ngModel)]="move.name"
-                        (change)="setSelPkmnMoves(i, moveInput)" list="canLearn">
+                        (change)="setSelPkmnMoves(i, move.name)" list="canLearn">
                       <datalist id="canLearn">
                         <option *ngFor="let canlearn of selectedPkmn.moves" value="{{canlearn.name}}">
                       </datalist>
