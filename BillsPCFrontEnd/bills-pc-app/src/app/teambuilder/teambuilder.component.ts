@@ -160,7 +160,7 @@ export class TeambuilderComponent implements OnInit {
   getMoveAPIjson() {
     this.moveService.getJson().subscribe(data => {
       this.movedex = data as Array<Move>;
-
+      // I think this throws "Cannot read property 'sprite' of undefined" because things havent loaded yet
       this.selectPokemon(this.favTeam[0]);
       this.loadStatChart();
     }, error => {
@@ -174,7 +174,7 @@ export class TeambuilderComponent implements OnInit {
    * @param attackName the attack name
    */
   setSelPkmnMoves(i: number, attackName: string) {
-    alert(i + ' ' + attackName);
+    alert(i + ' ' + attackName); // TODO:
     for (const move of this.movedex) {
       if (move.name === attackName) {
         this.selPkmnMoves[i] = move;

@@ -8,14 +8,12 @@
       </div>
 
       <div class="card-content row">
-        <div *ngFor="let type of uniqueTypes" class="col-xs-2 col-xl-2">
-          <div *ngFor="let pokemon of favTeam">
-            <!--<div *ngIf="types.chart[types.name.indexOf(type[1])][]">-->
-            <div>
-              <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
-              <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
-            </div>
+        <div *ngFor="let type of uncoveredTypes" class="col-xs-2 col-xl-2">
+          <div>
+            <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
           </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -26,8 +24,8 @@
         <p class="category">Your team has super-effective attacks against these Types</p>
       </div>
 
-      <div class="card-content">
-        <div *ngFor="let type of uniqueTypes">
+      <div class="card-content row">
+        <div *ngFor="let type of uniqueTypes" class="col-xs-2 col-xl-2">
           <div>
             <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
             <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
