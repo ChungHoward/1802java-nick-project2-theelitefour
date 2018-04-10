@@ -36,6 +36,7 @@ import { LoginService } from './services/login.service';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { DndModule } from 'ng2-dnd';
     FeaturedComponent,
     UpgradeComponent,
     Filter,
-    Sort
+    Sort,
+    ViewUsersComponent
   ],
   imports: [
     BrowserModule,
