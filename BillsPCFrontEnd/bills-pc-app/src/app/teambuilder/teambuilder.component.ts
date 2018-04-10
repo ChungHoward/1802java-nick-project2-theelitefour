@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Observable} from 'rxjs/Rx';
 import { TitleCasePipe } from '@angular/common';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
@@ -24,8 +25,6 @@ export class TeambuilderComponent implements OnInit {
   curTeam: Array<PokeAPI>;
   // This service generates 6 sample pokemon for me
   teamService: TeamService;
-  // Contains the image for every type and damage class
-  types: TypeService;
   // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
   // The name of the icon that shows or hides your attacks
@@ -48,9 +47,7 @@ export class TeambuilderComponent implements OnInit {
   pokedex: Array<PokeAPI>;
   movedex: Array<Move>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService) {
-    // Assigns the value of types to their respective image
-    this.types = new TypeService();
+  constructor(private pokemonService: PokemonService, private moveService: MoveService, private types: TypeService) {
 
     // Assign my favTeam using teamService
     this.teamService = new TeamService();
@@ -125,12 +122,12 @@ export class TeambuilderComponent implements OnInit {
     this.selectedPkmn = pkmn;
     this.loadStatChart();
     // Assign detailed attack info into selPkmnMoves
-    if (!!this.selectedPkmn.attackIds.length) {
+    if (this.selectedPkmn.attackIds.length) {
       for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) { // attackIds are of unknown length
         // subtract 1 because our json is 1-indexed while arrays are 0-indexed
         this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
 
-        if (!!this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
           this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
             String(this.selPkmnMoves[i].effectChance)); // with this
         }
@@ -173,14 +170,21 @@ export class TeambuilderComponent implements OnInit {
    * @param i the index of selPkmnMove to change
    * @param attackName the attack name
    */
-  setSelPkmnMoves(i: number, attackName: string) {
-    alert(i + ' ' + attackName); // TODO:
-    for (const move of this.movedex) {
-      if (move.name === attackName) {
-        this.selPkmnMoves[i] = move;
-        break;
+  setSelPkmnMoves(i: number) {
+    for (const mymove of this.selPkmnMoves) {
+      if (mymove.name !== '') {
+        for (const move of this.movedex) {
+          console.log(move.name + ' ?= ' + this.selPkmnMoves[i].name);
+          if (move.name === this.selPkmnMoves[i].name) {
+            this.selPkmnMoves[i] = move;
+            break;
+          }
+        }
       }
     }
+    // alert(this.selPkmnMoves[0].name + ' ' + this.selPkmnMoves[1].name
+    // + ' ' + this.selPkmnMoves[2].name + ' ' + this.selPkmnMoves[3].name); // TODO:
+    this.selectPokemon(this.selectedPkmn);
   }
 
   startAnimationForBarChart(chart) {
@@ -258,8 +262,20 @@ export class TeambuilderComponent implements OnInit {
 
   ngOnInit() {
     // Load 151 Pokemon into this.pokedex
-    this.getPokeAPIjson();
-    this.getMoveAPIjson();
+    // this.getPokeAPIjson();
+    // this.getMoveAPIjson();
+    Observable.forkJoin(
+      this.pokemonService.getJson(),
+      this.moveService.getJson()
+    ).subscribe(
+      ([pokeAPIArray, moveArray]) => {
+      this.pokedex = pokeAPIArray;
+      this.movedex = moveArray;
+      // calling these functions here because this is the only location where
+      // we can guarantee our pokedex and movedex have been fully loaded
+      this.selectPokemon(this.favTeam[0]);
+      this.loadStatChart();
+    });
   }
 
 }

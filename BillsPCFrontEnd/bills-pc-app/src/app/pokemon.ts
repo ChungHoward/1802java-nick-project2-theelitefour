@@ -13,7 +13,7 @@ export class Pokemon {
   constructor() {
     this.id = 0;
     this.trainerId = 1;
-    this.attackIds = [];
+    this.attackIds = [164, 164, 164, 164];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
     this.moveset = ['', '', '', ''];
@@ -37,7 +37,7 @@ export class PokeAPI {
   constructor() {
     this.id = 0;
     this.trainerId = 1;
-    this.attackIds = [];
+    this.attackIds = [164, 164, 164, 164];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
     this.moveset = ['', '', '', ''];

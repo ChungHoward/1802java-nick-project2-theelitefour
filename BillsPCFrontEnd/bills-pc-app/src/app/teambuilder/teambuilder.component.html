@@ -10,11 +10,13 @@
           <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
             <img [src]="favTeam[i].sprite" alt="" />
           </div>
+
           <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
             <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
             <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
             <h4 class="title">{{ favTeam[i].name }}</h4>
           </div>
+          
           <div class="card-footer ta-center">
             <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
               {{ collapse }}
@@ -79,8 +81,9 @@
                 <tbody *ngIf="selectedPkmn">
                   <tr *ngFor="let move of selPkmnMoves; let i = index">
                     <td>
-                      <input type="text" [(ngModel)]="move.name"
-                        (change)="setSelPkmnMoves(i, move.name)" list="canLearn">
+                      <input type="text" [(ngModel)]="move.name" name="moveInput{{i}}"
+                         list="canLearn" (change)="setSelPkmnMoves(i)">
+                         <!--  -->
                       <datalist id="canLearn">
                         <option *ngFor="let canlearn of selectedPkmn.moves" value="{{canlearn.name}}">
                       </datalist>
