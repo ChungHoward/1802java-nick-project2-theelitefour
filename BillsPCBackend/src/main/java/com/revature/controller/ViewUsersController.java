@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.revature.domain.Trainer;
+import com.revature.service.ViewUsersService;
 
 //use session scope to check what type of user is calling this method
 @RestController
@@ -21,10 +23,21 @@ public class ViewUsersController {
 	@Autowired
 	private Trainer user;
 	
+	@Autowired
+	private ViewUsersService viewUsers;
+	
 	@RequestMapping(method= RequestMethod.GET, value = "resources/view-user", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Trainer>> viewUsers(){
-		
-		return null;
+		System.out.println("In viewUsers method, user is: "+user);
+		List<Trainer> toRet = null;
+		if(user.getRole()==null || !user.getRole().equals("3")) {
+			return new ResponseEntity<List<Trainer>>(HttpStatus.UNAUTHORIZED);
+		}
+		else{
+			toRet = viewUsers.getTrainers();
+			System.out.println(toRet);
+			return new ResponseEntity<List<Trainer>>(toRet, HttpStatus.OK);
+		}
 	}
 	
 }
