@@ -66,7 +66,9 @@ import { DndModule } from 'ng2-dnd';
     PokemonService,
     MoveService,
     TeamService,
-    TypeService
+    TypeService,
+    LoginService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
