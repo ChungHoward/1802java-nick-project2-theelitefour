@@ -31,22 +31,26 @@
                     <div class="form-group form-black label-floating is-empty">
                       <label class="control-label" for="password">Password</label>
                       <input required type="password" class="form-control" id="password" name="password"
-                      [(ngModel)]="password" (ngModelChange)="matchPassword()">
+                      [(ngModel)]="password">
                     </div>
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-danger pull-right" [disabled]="!loginForm.form.valid" [disabled]="!passwordMatch">Login</button>
+                <button type="submit" class="btn btn-danger pull-right" [disabled]="!loginForm.form.valid">Login</button>
                 <div class="clearfix"></div>
               </form>
             </div>
             <!-- Invisible before submit -->
             <div *ngIf="submitted">
-              <div class="h3">
-                You have successfully Logged In!
+              <div *ngIf="valid">
+                <div class="h3">
+                    You have successfully Logged In!
+                </div>
               </div>
-              <div class="h4">
-                No email confirmation necessary
+              <div *ngIf="!valid">
+                <div class="h3">
+                    Invalid login credentials
+                </div>
               </div>
             </div>
 

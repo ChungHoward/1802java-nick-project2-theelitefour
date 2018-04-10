@@ -147,6 +147,7 @@ export class OffensiveCoverageComponent implements OnInit {
   ngOnInit() {
     // this.getPokeAPIjson();
     // this.getMoveAPIjson();
+
     // the above methods are being replaced by the below method which calls both Observables
     // in parallel and waits for them to finish -- or apparently not
     Observable.forkJoin(
@@ -154,8 +155,6 @@ export class OffensiveCoverageComponent implements OnInit {
       this.moveService.getJson()
     ).subscribe(
       ([pokeAPIArray, moveArray]) => {
-      // results[0] is our result of first api call
-      // results[1] is our result of second api call
       this.pokedex = pokeAPIArray;
       this.movedex = moveArray;
 

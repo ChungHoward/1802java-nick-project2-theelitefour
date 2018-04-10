@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
+import { Trainer } from '../trainer';
 
 @Component({
   selector: 'app-login',
@@ -11,30 +14,28 @@ export class LoginComponent implements OnInit {
   password: string;
 
   submitted: boolean;
+  valid: boolean;
 
-  constructor() {
+  constructor(private loginService: LoginService, private router: Router) {
     this.submitted = false;
   }
 
   onSubmit() {
     this.submitted = true;
+    this.loginService.login(this.username, this.password).subscribe(trainer => {
+      alert(JSON.stringify(trainer));
+      this.valid = trainer !== null;
 
-    const xhr = new XMLHttpRequest();
-    // receive reply
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const reply = JSON.parse(xhr.responseText);
-        alert(reply);
+      if (trainer !== null) {
+        this.loginService.changeTrainer(trainer);
 
-        document.getElementById('notification').innerHTML = reply;
+        localStorage.setItem('trainer', JSON.stringify(trainer));
+        this.router.navigate(['/teambuilder']);
       }
+    }, error => {
+      console.error(error);
     }
-    // send request to /login with fields, username, password, email
-    xhr.open('POST', 'http://localhost:8080/login', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("username=" + this.username + "&password=" + this.password);
-
-    //xhr.send('username=' + this.username + 'password=' + this.password);
+    );
   }
 
   ngOnInit() { }

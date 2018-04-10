@@ -62,7 +62,13 @@ import { DndModule } from 'ng2-dnd';
     AppRoutingModule,
     DndModule.forRoot()
   ],
-  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService],
+  providers: [
+    LoggingService,
+    PokemonService,
+    MoveService,
+    TeamService,
+    TypeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
