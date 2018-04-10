@@ -33,11 +33,11 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event: any) => {
       this.navbar.sidebarClose();
       if (event instanceof NavigationStart) {
-        if (event.url !== this.lastPoppedUrl) {
+        if (event.url != this.lastPoppedUrl) {
           this.yScrollStack.push(window.scrollY);
         }
       } else if (event instanceof NavigationEnd) {
-        if (event.url === this.lastPoppedUrl) {
+        if (event.url == this.lastPoppedUrl) {
           this.lastPoppedUrl = undefined;
           window.scrollTo(0, this.yScrollStack.pop());
         } else {
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
   isMaps(path) {
     let titlee = this.location.prepareExternalUrl(this.location.path());
     titlee = titlee.slice(1);
-    if (path === titlee) {
+    if (path == titlee) {
       return false;
     } else {
       return true;
