@@ -54,11 +54,21 @@
             </div>
             <!-- Invisible before submit -->
             <div *ngIf="submitted">
-              <div class="h3">
-                You have successfully registered!
+              <div *ngIf="valid">
+                <div class="h3">
+                  You have successfully registered!
+                </div>
+                <div class="h4">
+                  No email confirmation necessary
+                </div>
               </div>
-              <div class="h4">
-                No email confirmation necessary
+              <div *ngIf="!valid">
+                <div class="h3">
+                    Registration Failed
+                  </div>
+                  <div class="h4">
+                    Username is already in use
+                  </div>
               </div>
             </div>
 

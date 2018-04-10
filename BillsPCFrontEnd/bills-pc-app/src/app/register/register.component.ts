@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -14,29 +15,18 @@ export class RegisterComponent implements OnInit {
 
   submitted: boolean;
   passwordMatch: boolean;
+  valid: boolean;
 
-  constructor() {
+  constructor(private registerService: RegisterService) {
     this.submitted = false;
     this.passwordMatch = false;
   }
 
   onSubmit() {
     this.submitted = true;
-
-    const xhr = new XMLHttpRequest();
-    // receive reply
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const reply = JSON.parse(xhr.responseText);
-        alert(reply);
-
-        document.getElementById('notification').innerHTML = reply;
-      }
-    }
-    // send request to /register with fields, username, password, email
-    xhr.open('POST', 'localhost:8090/register', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send('username=' + this.username + '&password=' + this.password + '&email=' + this.email);
+    this.registerService.register(this.username, this.password, this.email).subscribe(
+      successful => {this.valid = successful; }, error => console.error(error)
+    );
   }
 
   matchPassword() {

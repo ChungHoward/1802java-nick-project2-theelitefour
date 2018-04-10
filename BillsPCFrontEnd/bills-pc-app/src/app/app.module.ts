@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -31,9 +30,12 @@ import { MoveService } from './services/move.service';
 import { PokemonService } from './services/pokemon.service';
 import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
+import { RegisterService } from './services/register.service';
+import { LoginService } from './services/login.service';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,6 @@ import { DndModule } from 'ng2-dnd';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     ComponentsModule,
     RouterModule,

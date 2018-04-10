@@ -166,5 +166,4 @@ export class OffensiveCoverageComponent implements OnInit {
       this.compareOurMovesVsUniqueTypes();
     });
   }
-
 }

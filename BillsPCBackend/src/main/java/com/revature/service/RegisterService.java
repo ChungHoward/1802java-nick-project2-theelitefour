@@ -1,11 +1,20 @@
 package com.revature.service;
 
+import com.revature.dao.TrainerDaoImp;
 import com.revature.dao.RegisterDAO;
 
 public class RegisterService
 {
-    public static void register(String username, String password, String email)
+	private static TrainerDaoImp dao = new TrainerDaoImp();
+	
+    public static boolean register(String username, String password, String email)
     {
-        RegisterDAO.register(username, password, email);
+    	if(dao.retrieveTrainerByName(username)==null) {
+    		RegisterDAO.register(username, password, email);
+    		return true;
+    	}
+    	
+        
+        return false;
     }
 }
