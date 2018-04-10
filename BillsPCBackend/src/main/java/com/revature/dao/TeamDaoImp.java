@@ -29,6 +29,7 @@ public class TeamDaoImp implements TeamDao {
 		String hql = "FROM Team WHERE set1 in (Select setId from PokemonSet where trainer ="+user.getTrainerId()+")";
 		
 		Query query = sess.createQuery(hql);
+		sess.close();
 		return query.list();
 
 	}

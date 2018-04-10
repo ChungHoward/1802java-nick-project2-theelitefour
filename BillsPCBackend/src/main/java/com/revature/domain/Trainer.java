@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 
-@Component
-@Scope(value=WebApplicationContext.SCOPE_SESSION)
+
 @Entity
 @Table(name="TRAINER")
 public class Trainer {
