@@ -1,4 +1,4 @@
-package com.revature.daos;
+package com.revature.dao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.domains.PokemonSet;
-import com.revature.domains.Trainer;
+import com.revature.domain.PokemonSet;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
 

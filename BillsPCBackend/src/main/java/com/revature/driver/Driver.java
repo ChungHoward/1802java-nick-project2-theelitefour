@@ -9,14 +9,14 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 
-import com.revature.daos.PokemonSetDaoImp;
-import com.revature.daos.TeamDao;
-import com.revature.daos.TeamDaoImp;
-import com.revature.daos.TrainerDao;
-import com.revature.daos.TrainerDaoImp;
-import com.revature.domains.PokemonSet;
-import com.revature.domains.Team;
-import com.revature.domains.Trainer;
+import com.revature.dao.PokemonSetDaoImp;
+import com.revature.dao.TeamDao;
+import com.revature.dao.TeamDaoImp;
+import com.revature.dao.TrainerDao;
+import com.revature.dao.TrainerDaoImp;
+import com.revature.domain.PokemonSet;
+import com.revature.domain.Team;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
 public class Driver {

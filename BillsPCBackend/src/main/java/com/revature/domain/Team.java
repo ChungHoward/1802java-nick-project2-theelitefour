@@ -1,4 +1,4 @@
-package com.revature.domains;
+package com.revature.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

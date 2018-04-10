@@ -1,10 +1,11 @@
 package com.revature.controllers;
 
-import com.revature.services.RegisterService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.revature.service.RegisterService;
 
 @RestController
 public class RegisterController

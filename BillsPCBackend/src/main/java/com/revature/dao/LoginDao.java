@@ -1,13 +1,13 @@
-package com.revature.daos;
+package com.revature.dao;
 
-import com.revature.domains.Trainer;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class LoginDAO
+public class LoginDao
 {
     public static boolean login(String username, String password)
     {

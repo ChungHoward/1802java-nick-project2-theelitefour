@@ -1,4 +1,4 @@
-package com.revature.daos;
+package com.revature.dao;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 import org.hibernate.sql.JoinType;
 
-import com.revature.domains.PokemonSet;
-import com.revature.domains.Team;
-import com.revature.domains.Trainer;
+import com.revature.domain.PokemonSet;
+import com.revature.domain.Team;
+import com.revature.domain.Trainer;
 import com.revature.util.HibernateUtil;
 
 public class TeamDaoImp implements TeamDao {
