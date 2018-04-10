@@ -1,4 +1,4 @@
-package com.revature.controllers;
+package com.revature.controller;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.revature.domain.Team;
 import com.revature.domain.Trainer;
-import com.revature.services.TeamService;
+import com.revature.service.TeamService;
 
 @RestController
 @Scope(value=WebApplicationContext.SCOPE_SESSION)

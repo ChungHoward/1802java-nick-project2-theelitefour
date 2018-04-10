@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -30,7 +31,7 @@ public class PokemonSet {
 	@Column(name="NICKNAME")
 	private String nickname;
 	
-	
+	@JsonIgnore()
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;
