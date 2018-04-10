@@ -13,9 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'corecoverage', title: 'Core Coverage',  icon: 'repeat_one', class: '' },
     { path: 'defensivecoverage', title: 'Defensive Coverage',  icon: 'view_list', class: '' },
     { path: 'offensivecoverage', title: 'Offensive Coverage',  icon: 'view_stream', class: '' },
-    { path: 'offensevsdefense', title: 'Offense vs Defense',  icon: 'poll', class: '' },
-    { path: 'featured', title: 'Featured Teams',  icon: 'trending_up', class: '' },
-    // { path: 'upgrade', title: 'Upgrade to PRO',  icon: 'unarchive', class: 'active-pro' },
+    { path: 'featured', title: 'Featured Teams',  icon: 'trending_up', class: '' }
 ];
 
 @Component({

@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Move } from '../move';
 
 @Injectable()
 export class MoveService {
 
-    readonly url = 'https://pokeapi.co/api/v2/move/';
+    constructor(private http: HttpClient) { }
 
-    myMove: Move;
-
-    constructor(private http: HttpClient) {}
-
-    getMove(name: string): Observable<Move> {
-        return this.http.get<Move>(this.url + name);
+    getJson() {
+        return this.http.get<Array<Move>>('assets/moveAPI.json');
     }
 
 }

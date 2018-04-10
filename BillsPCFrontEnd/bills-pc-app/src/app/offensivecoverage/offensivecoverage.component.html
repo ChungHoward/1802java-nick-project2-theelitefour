@@ -2,29 +2,37 @@
   <div class="container-fluid">
     <div class="card">
       <div class="card-header" data-background-color="red">
-        <h4 class="title">Unique Types</h4>
-        <p class="category">Here's a thing</p>
+        <h4 class="title">Missing type coverage</h4>
+        <p class="category">Your team
+          <strong>does not</strong> have a super-effective attack against these Types</p>
+      </div>
 
-        <div *ngFor="let tmp of uniqueTypes">
-            {{tmp.types}}
+      <div class="card-content row">
+        <div *ngFor="let type of uncoveredTypes" class="col-xs-2 col-xl-2">
+          <div>
+            <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
           </div>
-          <p class="category">And Another...</p>
-
+        </div>
       </div>
       <div class="card-content"></div>
     </div>
     <div class="card">
+
       <div class="card-header" data-background-color="red">
-        <h4 class="title">All Types</h4>
-
-        <div *ngFor="let tmp of pokedex">
-          {{tmp.types}}
-        </div>
-
-        <p class="category">And Another...</p>
-
+        <h4 class="title">Types covered</h4>
+        <p class="category">Your team has super-effective attacks against these Types</p>
       </div>
-      <div class="card-content"></div>
+
+      <div class="card-content row">
+        <div *ngFor="let type of uniqueTypes" class="col-xs-2 col-xl-2">
+          <div>
+            <img [src]="types.img[types.name.indexOf(type[1])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

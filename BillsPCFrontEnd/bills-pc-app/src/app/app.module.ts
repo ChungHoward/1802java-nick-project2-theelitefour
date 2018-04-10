@@ -26,7 +26,6 @@ import { FeaturedComponent } from './featured/featured.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 
 // Services
-import { LoggingService } from './services/logging.service';
 import { MoveService } from './services/move.service';
 import { PokemonService } from './services/pokemon.service';
 import { TeamService } from './services/team.service';
@@ -63,8 +62,12 @@ import { DndModule } from 'ng2-dnd';
     AppRoutingModule,
     DndModule.forRoot()
   ],
-
-  providers: [LoggingService, PokemonService, MoveService, TeamService, TypeService, RegisterService, LoginService],
+  providers: [
+    PokemonService,
+    MoveService,
+    TeamService,
+    TypeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

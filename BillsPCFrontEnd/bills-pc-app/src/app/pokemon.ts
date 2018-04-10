@@ -1,21 +1,50 @@
+// Used for temporary storage such as team building
 export class Pokemon {
-  public id: number;
-  public name: string;
-  public sprites: string;
-  public moveset: Array<string>;
-  public moves: Array<Attack>;
-  public stats: Stat;
-  public types: Array<string>;
+  id: number;
+  trainerId: number;
+  attackIds: Array<number>;
+  name: string;
+  sprite: string;
+  moveset: Array<string>;
+  moves: Array<Attack>; // currently empty
+  stats: Stat;
+  types: Array<string>;
+  // A missingno for our placeholder!
+  constructor() {
+    this.id = 0;
+    this.trainerId = 1;
+    this.attackIds = [];
+    this.name = 'missingno';
+    this.sprite = 'assets/img/question.png';
+    this.moveset = ['', '', '', ''];
+    this.moves = [];
+    this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
+    this.types = ['normal'];
+  }
 }
 // Used to read pokeAPIjson
-export interface PokeAPI {
+export class PokeAPI {
   id: number;
+  trainerId: number;
+  attackIds: Array<number>;
   name: string;
-  sprites: string;
-  moveset: Array<string>; // attacks it knows
+  sprite: string;
+  moveset: Array<string>; // attacks it knows, currently empty
   moves: Array<Attack>; // attacks it can learn
   stats: Stat;
   types: Array<string>;
+
+  constructor() {
+    this.id = 0;
+    this.trainerId = 1;
+    this.attackIds = [];
+    this.name = 'missingno';
+    this.sprite = 'assets/img/question.png';
+    this.moveset = ['', '', '', ''];
+    this.moves = [];
+    this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
+    this.types = ['normal'];
+  }
 }
 
 export interface Stat {
@@ -30,18 +59,6 @@ export interface Stat {
 export interface UrlName {
   url: string;
   name: string; // red-blue or yellow
-}
-
-
-interface Move {
-  version_group_details: Array<Detail>; // use Detail.version_group.name === red-blue || '' === yellow
-  move: Attack;
-}
-
-interface Detail {
-  move_learn_method: UrlName; // not important
-  level_learned_at: number; // not important
-  version_group: UrlName;
 }
 
 interface Attack {
