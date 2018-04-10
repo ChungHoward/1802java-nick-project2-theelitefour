@@ -8,12 +8,12 @@
   padding-left: 0px;
 }
 .row {
-  width:100%;
+  width: 100%;
   margin-left: 0px;
   margin-right: 0px;
 }
 .stats {
-  width:100%;
+  width: 100%;
 }
 .col-md-12 {
   max-height: 470px;
@@ -28,15 +28,12 @@
   padding-bottom: 0px;
   padding-left: 4px;
   padding-right: 4px;
+  min-height: 100px;
 }
 .card-stats {
-  min-height: 450px;
   padding-left: 0px;
   padding-right: 0px;
-}
-.card-footer {
-  padding-top: 0px;
-  max-height: 500px;
+  min-height: 150px;
 }
 .card-footer.ta-center {
   margin-bottom: 0px!important;
@@ -88,10 +85,16 @@ td input {
 }
 .material-icons.md-18 {
   font-size: 18px;
-  }
+}
+.ta-left {
+  text-align: left;
+}
 .ta-center {
   text-align: center;
-  }
+}
+.ta-right {
+  text-align: right;
+}
 .no-padding {
   padding: 0px;
 }

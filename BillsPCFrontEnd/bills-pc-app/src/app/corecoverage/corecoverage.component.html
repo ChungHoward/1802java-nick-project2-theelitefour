@@ -1,35 +1,27 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-
-        <div class="row">
-          <!-- Loop through and print every Pokemon in favTeam -->
-          <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
-            <div class="card">
-              <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)">
-                <img src="{{ favTeam[i].sprites }}" alt="" />
-              </div>
-              <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
+      <!-- Loop through and print every Pokemon in favTeam -->
+      <div class="col-lg-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+        <div class="card card-stats">
+          <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)" role="button">
+            <img src="{{ favTeam[i].sprite }}" />
+          </div>
+          <div class="card-content ta-center" >
+            <ul>
+              <li *ngFor="let partner of partners[i]">{{ partner }}</li>
+            </ul>
+          </div>
+            <div class="card-footer ta-left">
+              <div>
                 <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
                 <img src="{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}" alt="" class="type" />
                 <h4 class="title">{{ favTeam[i].name }}</h4>
               </div>
-              <div class="card-footer ta-center">
-                <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
-                  {{ collapse }}
-                </i>
-                <div class="stats" *ngIf="expandOrCollapse">
-                  <ul>
-                    <li *ngFor="let tmp of partners[i]">{{ tmp }}</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-
       </div>
     </div>
+
   </div>
 </div>

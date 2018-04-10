@@ -161,8 +161,8 @@ export class TeambuilderComponent implements OnInit {
     this.moveService.getJson().subscribe(data => {
       this.movedex = data as Array<Move>;
 
-      const p = new Pokemon();
-      this.selectPokemon(p);
+      this.selectPokemon(this.favTeam[0]);
+      this.loadStatChart();
     }, error => {
       console.error(error);
     });
@@ -259,7 +259,6 @@ export class TeambuilderComponent implements OnInit {
     // Load 151 Pokemon into this.pokedex
     this.getPokeAPIjson();
     this.getMoveAPIjson();
-    this.loadStatChart();
   }
 
 }

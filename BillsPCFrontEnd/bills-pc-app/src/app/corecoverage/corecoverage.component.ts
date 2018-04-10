@@ -19,19 +19,13 @@ export class CoreCoverageComponent implements OnInit {
   teamService: TeamService;
   // Contains the image for every type and damage class
   types: TypeService;
-  // The current state of whether viewing your team's attacks are being shown or hidden
-  expandOrCollapse: boolean;
-  // The name of the icon that shows or hides your attacks
-  collapse: string;
 
-  /* These variables are for the selected Pokemon thing */
-  // This is the Pokemon we are viewing in full detail
+  // This is the Pokemon we selected
   selectedPkmn: Pokemon;
 
-  /* These variables are for the Detailed Pokemon View/Search */
   questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
 
-  //
+  // The list of pokemon that are good partners for favTeam
   partners: Array<Array<string>>;
 
   constructor(private pokemonService: PokemonService) {
@@ -45,10 +39,6 @@ export class CoreCoverageComponent implements OnInit {
     // My default selected Pokemon
     this.selectedPkmn = this.favTeam[0];
 
-    // by default our attacks are collapsed
-    this.expandOrCollapse = true;
-    this.collapse = 'arrow_drop_down';
-
     // this can be used as a placeholder image before searching for a pokemon
     this.questionSprite = 'assets/img/question.png';
   }
@@ -59,7 +49,7 @@ export class CoreCoverageComponent implements OnInit {
    * [x][y] x=the pokemon at that index of your team. y=names of partners that resist the weaknesses of x.
    * @param numResist The minimum number of resistances the user considers a good partner to have
    */
-  checkCoreCoverage(numResist: number): Array<Array<string>> {
+  checkCoreCoverage(numResist: number) {
     let myWeaknesses: Array<number>;
     let type1ID: number, type2ID: number;
     let myResist: number;
@@ -103,17 +93,11 @@ export class CoreCoverageComponent implements OnInit {
         }
       }
     } // outer for loop
-    return partners;
-  }
-
-  // toggles the show moves/hide moves button
-  toggleCollapse() {
-    this.expandOrCollapse = !this.expandOrCollapse;
-    this.collapse = this.expandOrCollapse ? 'arrow_drop_up' : 'arrow_drop_down';
+    this.partners = partners;
   }
 
   ngOnInit() {
-    this.partners = this.checkCoreCoverage(5);
+    this.checkCoreCoverage(5);
   }
 
 }
