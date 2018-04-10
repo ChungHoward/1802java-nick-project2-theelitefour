@@ -23,10 +23,16 @@ export class CoreCoverageComponent implements OnInit {
   // This is the Pokemon we selected
   selectedPkmn: Pokemon;
 
-  questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
+  // The number of resistances we would like on an ideal partner
+  @Input() threshold = 0;
+  // two-way data binding wouldn't work so here's the hard way
+  @Output() thresholdChange = new EventEmitter<number>();
 
   // The list of pokemon that are good partners for favTeam
   partners: Array<Array<string>>;
+
+  // The ID of types that each Pokemon on your team are weak to
+  weaknesses: Array<Array<number>>;
 
   constructor(private pokemonService: PokemonService) {
     // Assigns the value of types to their respective image
@@ -39,8 +45,25 @@ export class CoreCoverageComponent implements OnInit {
     // My default selected Pokemon
     this.selectedPkmn = this.favTeam[0];
 
-    // this can be used as a placeholder image before searching for a pokemon
-    this.questionSprite = 'assets/img/question.png';
+    // Arbitrary value. Pokemon typically have between 1 and 5 weaknesses. 3 is the average.
+    this.threshold = 3;
+  }
+
+  // The maximum amount of weaknesses a Pokemon can have is 7
+  addThresh() {
+    if (this.threshold < 7) {
+      this.threshold++;
+      this.checkCoreCoverage(this.threshold);
+      this.thresholdChange.emit(this.threshold);
+    }
+  }
+  // Disallow negatives
+  subThresh() {
+    if (this.threshold > 0) {
+      this.threshold--;
+      this.checkCoreCoverage(this.threshold);
+      this.thresholdChange.emit(this.threshold);
+    }
   }
 
   /**
@@ -55,6 +78,7 @@ export class CoreCoverageComponent implements OnInit {
     let myResist: number;
     let partners: Array<Array<string>>; // Just the Pokemon's name is fine;
     partners = [];
+    this.weaknesses = [];
 
     // Begin the forbidden O(n^3) loop
     for (const pkmn of this.favTeam) {
@@ -70,6 +94,7 @@ export class CoreCoverageComponent implements OnInit {
           myWeaknesses.push(i);
         }
       }
+      this.weaknesses.push(myWeaknesses);
       // now that we have pkmn's weaknesses -- check if any teammates resists all (or some) of those weaknesses
       for (const teammate of this.favTeam) {
         // get teammate's types
@@ -87,17 +112,17 @@ export class CoreCoverageComponent implements OnInit {
         // if teammate's number of resistances is less than the user specified threshold in the param,
         // or teammate resists every weakness of pkmn, then teammate is a partner
         if (myResist >= numResist || myResist === myWeaknesses.length) {
-
-          // hacky way of getting the index of my team rather than using an index variable in my for loop because I don't plan ahead
+          // hacky way of getting the index of my team rather than using an index variable
+          // in my for loop because I don't plan ahead
           partners[this.favTeam.indexOf(pkmn)].push(teammate.name);
         }
       }
-    } // outer for loop
+    }
     this.partners = partners;
   }
 
   ngOnInit() {
-    this.checkCoreCoverage(5);
+    this.checkCoreCoverage(this.threshold);
   }
 
 }
