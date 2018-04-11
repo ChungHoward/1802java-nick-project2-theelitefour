@@ -14,4 +14,11 @@ public class ViewUsersService {
 		TrainerDaoImp dao = new TrainerDaoImp();
 		return dao.retreiveAllTrainers();
 	}
+	
+	public void updateTrainer(String username) {
+		TrainerDaoImp dao = new TrainerDaoImp();
+		Trainer toUpdate = dao.retrieveTrainerByName(username);
+		toUpdate.setRole("2");
+		dao.updateTrainer(toUpdate);
+	}
 }
