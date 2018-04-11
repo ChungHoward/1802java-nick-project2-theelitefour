@@ -30,7 +30,14 @@ export class OffensiveCoverageComponent implements OnInit {
   constructor(private pokemonService: PokemonService, private moveService: MoveService,
               private teamService: TeamService, private types: TypeService) {
     // Assign my favTeam using teamService
-    this.favTeam = this.teamService.favTeam;
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
     // Initialize
     this.teamMoveTypes = new Array<string>();
     this.uniqueTypes = new Array<Array<string>>();

@@ -15,7 +15,7 @@ export class TeamService implements OnInit {
   pkmn6: PokeAPI;
 
   constructor(private types: TypeService) {
-
+    this.curTeam = new Array<PokeAPI>();
     // Making my team
     this.pkmn1 = new PokeAPI();
     this.pkmn2 = new PokeAPI();
@@ -79,7 +79,6 @@ export class TeamService implements OnInit {
     this.favTeam.push(this.pkmn4);
     this.favTeam.push(this.pkmn5);
     this.favTeam.push(this.pkmn6);
-
   }
 
   ngOnInit() { }

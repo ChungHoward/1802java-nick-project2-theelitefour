@@ -18,7 +18,7 @@
               {{ favTeam[i].name | titlecase}}
             </h4>
           </div>
-          
+
           <div class="card-footer ta-center">
             <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
               {{ collapse }}
@@ -44,14 +44,16 @@
           </div>
 
           <div class="card-content ta-center row">
-            <img class="sprite col-sm-3 col-xl-3" [src]="selectedPkmn.sprite" title="{{ selectedPkmn.sprite }}" />
+            <img class="sprite col-sm-3 col-xl-3" [src]="selectedPkmn.sprite" title="{{ (selectedPkmn) ? selectedPkmn.sprite : '' }}"
+            />
+            <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->
             <div class="no-padding col-sm-3 col-xl-3">
               <span class="badge badge-primary">
                 Critical Rate
                 <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
               </span>
               <br/>
-              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[1])]" class="type" />
+              <img [src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]" class="type" />
               <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
               <br/>
               <small>
@@ -67,7 +69,7 @@
           </div>
 
           <div class="card-footer mt-10">
-            <div class="table-responsive pkmn-table">
+            <div class="table-responsive move-table">
               <table class="table table-hover">
                 <thead class="text-primary">
                   <tr>
@@ -83,8 +85,8 @@
                 <tbody *ngIf="selectedPkmn">
                   <tr *ngFor="let move of selPkmnMoves; let i = index">
                     <td>
-                      <input type="text" [(ngModel)]="selPkmnMoves[i].name" name="moveInput{{i}}"
-                         list="canLearn" (change)="setSelPkmnMoves(i, selPkmnMoves[i].name)">
+                      <input type="text" [(ngModel)]="selPkmnMoves[i].name" name="moveInput{{i}}" list="canLearn"
+                        (change)="setSelPkmnMoves(i, selPkmnMoves[i].name)">
                       <datalist id="canLearn">
                         <option *ngFor="let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending" value="{{canlearn.name}}">
                       </datalist>
@@ -93,8 +95,7 @@
                       <img [src]="types.img[types.name.indexOf(move.type)]" class="type">
                     </td>
                     <td>
-                      <img class="type" [src]=
-"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]">
+                      <img class="type" [src]="move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]">
                     </td>
                     <td>{{ move.power }}</td>
                     <td>{{ move.accuracy }}</td>
@@ -104,10 +105,9 @@
                 </tbody>
               </table>
             </div>
-            <button class="btn btn-primary btn-sm save-button"
-              (click)="savePokemon()">
+            <button class="btn btn-primary btn-sm save-button" (click)="savePokemon()">
               <i class="material-icons">save</i>
-              Save
+              {{ (selected === -1) ? 'Save to Pokemon Box' : 'Save to Team' }}
             </button>
           </div>
         </div>
@@ -130,17 +130,29 @@
                 <tbody>
                   <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->
                   <tr class="search-row" *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
-                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
-                    <td class="ta-center type-col">
+                    <td class="ta-center" (click)="selectNewPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
+                    <td class="ta-center type-col" (click)="selectNewPokemon(pkmn)">
                       <img [src]="types.img[types.name.indexOf(pkmn.types[1])]" class="type">
                       <img [src]="types.img[types.name.indexOf(pkmn.types[0])]" class="type">
                     </td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.hp }}</td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.atk }}</td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.def }}</td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.satk }}</td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.sdef }}</td>
-                    <td class="ta-center stat-col">{{ pkmn.stats.spe }}</td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.hp }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.atk }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.def }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.satk }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.sdef }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.spe }}
+                    </td>
                   </tr>
                 </tbody>
               </table>

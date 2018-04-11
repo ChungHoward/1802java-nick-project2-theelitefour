@@ -48,7 +48,7 @@
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
                   <tr *ngFor="let pkmn of favTeam; let i = index" dnd-sortable [sortableIndex]="i">
-                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name }}</td>
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">

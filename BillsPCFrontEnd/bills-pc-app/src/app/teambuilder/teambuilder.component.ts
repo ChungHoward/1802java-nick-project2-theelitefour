@@ -46,13 +46,21 @@ export class TeambuilderComponent implements OnInit {
   movedex: Array<Move>;
 
   constructor(private pokemonService: PokemonService, private moveService: MoveService,
-              private teamService: TeamService, private types: TypeService) {
-
-    // Assign my favTeam using teamService
-    this.favTeam = this.teamService.favTeam;
+    private teamService: TeamService, private types: TypeService) {
 
     // Make a team full of missingno
     this.curTeam = new Array<PokeAPI>();
+
+    // Assign my favTeam using teamService
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
+
     for (let i = 0; i < 6; i++) {
       this.curTeam.push(new PokeAPI());
     }
@@ -107,7 +115,8 @@ export class TeambuilderComponent implements OnInit {
   }
 
   /**
-   * Shows you detailed information about your Pokemon, specifically their attacks
+   * Shows you detailed information about your Pokemon, specifically their attacks.
+   * If a pokemon from the search box is selected, give them 4 empty attacks
    * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
    */
   selectPokemon(pkmn: PokeAPI) {
@@ -144,14 +153,26 @@ export class TeambuilderComponent implements OnInit {
     }
     this.selectPokemon(pkmn);
   }
-
+  /**
+   * If an event needs to occur when selecting a Pokemon from the Pokemon Search box, do it here
+   * @param pkmn The pokemon selected
+   */
   selectNewPokemon(pkmn: PokeAPI) {
-
+    if (this.favTeam.length < 6) {
+      this.selected = this.favTeam.length;
+    }
+    this.selectPokemon(pkmn);
   }
 
+  /**
+   * Triggers when the save button is pressed
+   */
   savePokemon() {
     let myTrainer: Trainer;
     myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+    // wipe our selected Pokemon's old attacks
+    this.selectedPkmn.attackIds = new Array<number>();
+    this.selectedPkmn.moveset = new Array<string>();
 
     // If our trainer is logged in, assign trainer ID
     if (myTrainer) {
@@ -165,14 +186,13 @@ export class TeambuilderComponent implements OnInit {
     // Add the Pokemon to our team
     if (this.selected >= 0) {
       this.favTeam[this.selected] = this.selectedPkmn;
-      for (let i = 0; i < this.favTeam.length; i++) {
-        console.log('FavTeam: ' + this.favTeam[i].name + ' | TeamServ: ' + this.teamService.favTeam[i].name);
-      }
-    } else {
-      // Or save to box
+    }
+    // Save to box
+    if (myTrainer) {
       myTrainer.sets.push(this.selectedPkmn);
     }
-    // send request to save team to server
+    // Put our favTeam in local storage so even an unregistered user can use our service
+    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
   }
 
   /**
@@ -210,100 +230,106 @@ export class TeambuilderComponent implements OnInit {
     for (const move of this.movedex) {
       if (move.name === attackName) {
         this.selPkmnMoves[i] = Object.assign(move);
+        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+          this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+            String(this.selPkmnMoves[i].effectChance)); // with this
+        }
         break;
       }
     }
   }
 
-startAnimationForBarChart(chart) {
-  let seq2: number, delays2: number, durations2: number;
+  startAnimationForBarChart(chart) {
+    let seq2: number, delays2: number, durations2: number;
 
-  seq2 = 0;
-  delays2 = 80;
-  durations2 = 500;
-  chart.on('draw', function (data) {
-    if (data.type === 'bar') {
-      seq2++;
-      data.element.animate({
-        opacity: {
-          begin: seq2 * delays2,
-          dur: durations2,
-          from: 0,
-          to: 1,
-          easing: 'ease'
-        }
-      });
-    }
-  });
-
-  seq2 = 0;
-};
-
-loadStatChart() {
-  /* Pokemon Stat Chart initialization  */
-  const dataPokemonStatChart = {
-    labels: [
-      this.selectedPkmn.stats.hp + '\nHP',
-      this.selectedPkmn.stats.atk + '\nAtk',
-      this.selectedPkmn.stats.def + '\nDef',
-      this.selectedPkmn.stats.satk + '\nSatk',
-      this.selectedPkmn.stats.sdef + '\nSdef',
-      this.selectedPkmn.stats.spe + '\nSpe'
-    ],
-    series: [[
-      this.selectedPkmn.stats.hp,
-      this.selectedPkmn.stats.atk,
-      this.selectedPkmn.stats.def,
-      this.selectedPkmn.stats.satk,
-      this.selectedPkmn.stats.sdef,
-      this.selectedPkmn.stats.spe
-    ]]
-  };
-  const optionsPokemonStatChart = {
-    axisX: {
-      showGrid: false
-    },
-    low: 0,
-    high: 200,
-    chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-  };
-  const responsiveOptions: any[] = [
-    ['screen and (max-width: 640px)', {
-      seriesBarDistance: 5,
-      axisX: {
-        labelInterpolationFnc: function (value) {
-          return value[0];
-        }
+    seq2 = 0;
+    delays2 = 80;
+    durations2 = 500;
+    chart.on('draw', function (data) {
+      if (data.type === 'bar') {
+        seq2++;
+        data.element.animate({
+          opacity: {
+            begin: seq2 * delays2,
+            dur: durations2,
+            from: 0,
+            to: 1,
+            easing: 'ease'
+          }
+        });
       }
-    }]
-  ];
-  const pokemonStatChart = new Chartist.Bar(
-    '#pokemonStatChart',
-    dataPokemonStatChart,
-    optionsPokemonStatChart,
-    responsiveOptions
-  );
-
-  // start animation for the Emails Subscription Chart
-  this.startAnimationForBarChart(pokemonStatChart);
-}
-
-ngOnInit() {
-  // Load 151 Pokemon into this.pokedex
-  // this.getPokeAPIjson();
-  // this.getMoveAPIjson();
-  Observable.forkJoin(
-    this.pokemonService.getJson(),
-    this.moveService.getJson()
-  ).subscribe(
-    ([pokeAPIArray, moveArray]) => {
-      this.pokedex = pokeAPIArray;
-      this.movedex = moveArray;
-      // calling these functions here because this is the only location where
-      // we can guarantee our pokedex and movedex have been fully loaded
-      this.selectPokemon(this.favTeam[0]);
-      this.loadStatChart();
     });
-}
+
+    seq2 = 0;
+  };
+
+  loadStatChart() {
+    /* Pokemon Stat Chart initialization  */
+    const dataPokemonStatChart = {
+      labels: [
+        this.selectedPkmn.stats.hp + '\nHP',
+        this.selectedPkmn.stats.atk + '\nAtk',
+        this.selectedPkmn.stats.def + '\nDef',
+        this.selectedPkmn.stats.satk + '\nSatk',
+        this.selectedPkmn.stats.sdef + '\nSdef',
+        this.selectedPkmn.stats.spe + '\nSpe'
+      ],
+      series: [[
+        this.selectedPkmn.stats.hp,
+        this.selectedPkmn.stats.atk,
+        this.selectedPkmn.stats.def,
+        this.selectedPkmn.stats.satk,
+        this.selectedPkmn.stats.sdef,
+        this.selectedPkmn.stats.spe
+      ]]
+    };
+    const optionsPokemonStatChart = {
+      axisX: {
+        showGrid: false
+      },
+      low: 0,
+      high: 200,
+      chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+    };
+    const responsiveOptions: any[] = [
+      ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+          labelInterpolationFnc: function (value) {
+            return value[0];
+          }
+        }
+      }]
+    ];
+    const pokemonStatChart = new Chartist.Bar(
+      '#pokemonStatChart',
+      dataPokemonStatChart,
+      optionsPokemonStatChart,
+      responsiveOptions
+    );
+
+    // start animation for the Emails Subscription Chart
+    this.startAnimationForBarChart(pokemonStatChart);
+  }
+
+  ngOnInit() {
+    // Load 151 Pokemon into pokedex and 164 moves into movedex
+    // this.getPokeAPIjson();
+    // this.getMoveAPIjson();
+    // Using a forkJoin to guarantee both dex being loaded before execution
+    Observable.forkJoin(
+      this.pokemonService.getJson(),
+      this.moveService.getJson()
+    ).subscribe(
+      ([pokeAPIArray, moveArray]) => {
+        this.pokedex = pokeAPIArray;
+        this.movedex = moveArray;
+        // calling these functions here because this is the only location where
+        // we can guarantee our pokedex and movedex have been fully loaded
+        this.selectPokemon(this.favTeam[0]);
+        this.loadStatChart();
+      }
+    );
+  }
 
 }

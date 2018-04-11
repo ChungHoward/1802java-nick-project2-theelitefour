@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PercentPipe } from '@angular/common';
-import { Pokemon } from 'app/pokemon';
+import { Pokemon, PokeAPI } from 'app/pokemon';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 
@@ -12,16 +12,16 @@ import { TypeService } from 'app/services/type.service';
 export class DefensiveCoverageComponent implements OnInit {
 
   // The Pokemon we just clicked on
-  selectedPkmn: Pokemon;
+  selectedPkmn: PokeAPI;
   // My favorite team - there can only be one
-  favTeam: Array<Pokemon>;
+  favTeam: Array<PokeAPI>;
   // Contains the images for every type and damage class
   types: TypeService;
   // The team being built or viewed
-  curTeam: Array<Pokemon>;
+  curTeam: Array<PokeAPI>;
 
   /* These variables are used for the Table */
-  pokemonCol: Array<Pokemon>;
+  pokemonCol: Array<PokeAPI>;
   ascending: boolean;
   searchInput: string;
   myTable: number[][];
@@ -31,11 +31,19 @@ export class DefensiveCoverageComponent implements OnInit {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
-    /* Assign my favTeam using teamService */
-    this.favTeam = this.teamService.favTeam;
-    this.curTeam = new Array<Pokemon>();
+    // Assign my favTeam using teamService
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
+
+    this.curTeam = new Array<PokeAPI>();
     this.curTeam = Object.assign([], this.favTeam);
-    this.pokemonCol = new Array<Pokemon>();
+    this.pokemonCol = new Array<PokeAPI>();
 
     // Show sprite, name, and types in table header
     for (let i = 0; i < this.curTeam.length; i++) {
@@ -64,6 +72,10 @@ export class DefensiveCoverageComponent implements OnInit {
         // get the types of that pokemon
         defType1 = this.types.name.indexOf(this.favTeam[i].types[0]);
         defType2 = this.types.name.indexOf(this.favTeam[i].types[1]);
+        // if type2 is not defined, set it to none
+        if (defType2 < 0) {
+          defType2 = 15;
+        }
         // and see how effective every attack type is against your pokemon
         effective = this.types.chart[atkType][defType1];
         effective *= this.types.chart[atkType][defType2];

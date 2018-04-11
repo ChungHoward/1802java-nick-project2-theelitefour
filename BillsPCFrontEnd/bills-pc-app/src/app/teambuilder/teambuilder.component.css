@@ -16,13 +16,13 @@
   width:100%;
 }
 .col-md-12 {
-  max-height: 480px;
+  max-height: 500px;
 }
 /* Card styling */
 .card {
-  box-shadow: 0px 2px 8px #BBBBBB;
+  box-shadow: 0px 2px 8px #DDDDDD;
   margin: 18px 0px;
-  max-height: 450px;
+  max-height: 500px;
 }
 .card-content {
   padding-bottom: 0px;
@@ -30,13 +30,13 @@
   padding-right: 4px;
 }
 .card-stats {
-  min-height: 450px;
+  min-height: 480px;
   padding-left: 0px;
   padding-right: 0px;
 }
 .card-footer {
   padding-top: 0px;
-  max-height: 500px;
+  max-height: 520px;
 }
 .card-footer.ta-center {
   margin-bottom: 0px!important;
@@ -83,8 +83,13 @@ td input {
 }
 .pkmn-table {
   width: 100%;
-  max-height: 450px;
+  min-height: 470px;
+  max-height: 470px;
   margin-left: 4px;
+}
+.move-table {
+  width: 100%;
+  max-height: 270px;
 }
 .material-icons.md-18 {
   font-size: 18px;
@@ -110,5 +115,5 @@ td input {
   background-color: rgb(255, 200, 200);
 }
 .bg-default {
-  background-color: rgb(255, 255, 255);
+  background-color: #DDDDDD;
 }

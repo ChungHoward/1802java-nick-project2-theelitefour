@@ -24,17 +24,16 @@
             <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)" role="button">
               <img src="{{ favTeam[i].sprite }}" />
             </div>
-            <div class="card-content ta-center">
-              <h5>Partners with</h5>
-              <span class="badge" *ngFor="let partner of partners[i]">
-                {{ partner }}
+            <div class="card-content ta-center row va-center">
+              <span class="badge col-xs-3 col-xl-3" *ngFor="let partner of partners[i]">
+                {{ partner | titlecase }}
               </span>
             </div>
             <div class="card-footer ta-left row">
               <div class="col-xl-5 col-xs-5">
-                <h4 class="title">{{ favTeam[i].name }}</h4>
-                <img src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" alt="" class="type" />
-                <img src="{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}" alt="" class="type" />
+                <h4 class="title">{{ favTeam[i].name | titlecase }}</h4>
+                <img class="type" src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" />
+                <img class="type" src="{{ types.name.indexOf(favTeam[i].types[1]) >= 0 ? types.img[types.name.indexOf(favTeam[i].types[1])] : types.img[15] }}" />
               </div>
               <div class="col-xl-7 col-xs-7">
                 is weak to

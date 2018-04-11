@@ -82,6 +82,9 @@ td input {
 .ta-right {
   text-align: right;
 }
+.va-center {
+  vertical-align: center;
+}
 .no-padding {
   padding: 0px;
 }
