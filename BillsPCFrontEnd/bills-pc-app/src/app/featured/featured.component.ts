@@ -16,6 +16,10 @@ export class FeaturedComponent implements OnInit {
 
   constructor(private featureService: FeatureService) {}
 
+  selectTeamPokemon(pkmn: PokeAPI) {
+    // TODO: Save this pokemon to your box
+  }
+
   ngOnInit() {
     this.featureService.getFeaturedTeams().subscribe(response => {
       this.featTeamArray = response;

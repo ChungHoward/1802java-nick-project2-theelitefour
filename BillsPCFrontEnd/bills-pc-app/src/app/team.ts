@@ -1,6 +1,6 @@
 import { Set } from './set';
 
-export interface Team {
+export class Team {
     teamName: string;
     teamId: number;
     set1: Set;
@@ -9,4 +9,6 @@ export interface Team {
     set4: Set;
     set5: Set;
     set6: Set;
+
+    constructor() {}
 }

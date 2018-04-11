@@ -32,7 +32,7 @@ import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
-import { ConvertService } from './services/converter.service';
+import { ConvertService } from './services/convert.service';
 import { FeatureService } from './services/feature.service';
 
 // Custom Modules

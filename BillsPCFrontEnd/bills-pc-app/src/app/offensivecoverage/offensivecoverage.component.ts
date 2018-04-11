@@ -99,7 +99,9 @@ export class OffensiveCoverageComponent implements OnInit {
         // if that attack deals damage
         if (detailedMove.power > 0) {
           // always add it to our list of damaging move types if our list is empty
-          if (this.teamMoveTypes.length > 0) {
+          if (this.teamMoveTypes.length === 0) {
+            this.teamMoveTypes.push(detailedMove.type);
+          } else {
             // We don't want duplicates. if one exists, check the next attack
             for (const type of this.teamMoveTypes) {
               if (type === detailedMove.type) {
@@ -107,9 +109,7 @@ export class OffensiveCoverageComponent implements OnInit {
               }
             } // add unique type to our array if there are no dupes
             this.teamMoveTypes.push(detailedMove.type);
-          } else {
-            // I subtract 1 because our json is 1-indexed while arrays are 0-indexed
-            this.teamMoveTypes.push(detailedMove.type);
+            console.log('Damaging move type: ' + detailedMove.type);
           }
         }
       }
@@ -136,10 +136,10 @@ export class OffensiveCoverageComponent implements OnInit {
         // and see how effective my attack type is against every other pokemon
         effective = this.types.chart[atkType][defType1];
         effective *= this.types.chart[atkType][defType2];
-        console.log(moveType + ' vs ' + this.types.name[defType1] + ' ' + this.types.name[defType2]
-         + ' = ' + effective);
         // if our attack is super effective
         if (effective > 1) {
+          console.log(moveType + ' vs ' + this.types.name[defType1] + ' ' + this.types.name[defType2]
+          + ' = ' + effective);
           // add it to our list of covered types
           this.coveredTypes.push(pairTypes);
           // then check a new type combination
