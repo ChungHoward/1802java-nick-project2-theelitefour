@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      
+
       <div class="col-lg-4">
       </div>
 
@@ -30,8 +30,7 @@
                   <div class="col-md-12">
                     <div class="form-group form-black label-floating is-empty">
                       <label class="control-label" for="password">Password</label>
-                      <input required type="password" class="form-control" id="password" name="password"
-                      [(ngModel)]="password">
+                      <input required type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
                     </div>
                   </div>
                 </div>
@@ -41,16 +40,19 @@
               </form>
             </div>
             <!-- Invisible before submit -->
-            <div *ngIf="submitted">
-              <div *ngIf="valid">
-                <div class="h3">
-                    You have successfully Logged In!
-                </div>
+            <div *ngIf="submitted && valid === undefined">
+              <div class="h3">
+                Just a moment...
               </div>
-              <div *ngIf="!valid">
-                <div class="h3">
-                    Invalid login credentials
-                </div>
+            </div>
+            <div *ngIf="submitted && valid === true">
+              <div class="h3">
+                You have successfully Logged In!
+              </div>
+            </div>
+            <div *ngIf="submitted && valid === false">
+              <div class="h3">
+                Invalid login credentials
               </div>
             </div>
 

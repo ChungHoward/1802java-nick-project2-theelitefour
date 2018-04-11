@@ -61,7 +61,7 @@ export class TeambuilderComponent implements OnInit {
     this.trainer = JSON.parse(localStorage.getItem('trainer'));
     this.myTeam = JSON.parse(localStorage.getItem('teams'));
     if (this.myTeam && this.trainer) {
-      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam, this.trainer.id);
+      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
     } else {
       this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
     }
@@ -214,6 +214,7 @@ export class TeambuilderComponent implements OnInit {
     }
     // Save to box
     if (myTrainer) {
+      
       myTrainer.sets.push(this.selectedPkmn);
     }
     // Put our favTeam in local storage so even an unregistered user can use our service

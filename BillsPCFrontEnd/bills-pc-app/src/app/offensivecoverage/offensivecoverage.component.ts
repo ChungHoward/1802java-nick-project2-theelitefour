@@ -66,7 +66,10 @@ export class OffensiveCoverageComponent implements OnInit {
     this.uniqueTypes = result;
   }
 
-  // Load 151 Pokemon into this.pokedex
+/**
+ * Deprecated
+ * Load 151 Pokemon into this.pokedex
+ */
   getPokeAPIjson() {
     this.pokemonService.getJson().subscribe(data => {
       this.pokedex = data as Array<PokeAPI>;
@@ -76,6 +79,7 @@ export class OffensiveCoverageComponent implements OnInit {
   }
 
   /**
+   * Deprecated
    * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
    * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
    */
@@ -97,7 +101,7 @@ export class OffensiveCoverageComponent implements OnInit {
       for (let i = 0; i < pkmn.attackIds.length; i++) {
         detailedMove = this.movedex[pkmn.attackIds[i] - 1];
         // if that attack deals damage
-        if (detailedMove.power > 0) {
+        if (detailedMove && detailedMove.power > 0) {
           // always add it to our list of damaging move types if our list is empty
           if (this.teamMoveTypes.length === 0) {
             this.teamMoveTypes.push(detailedMove.type);
@@ -109,7 +113,6 @@ export class OffensiveCoverageComponent implements OnInit {
               }
             } // add unique type to our array if there are no dupes
             this.teamMoveTypes.push(detailedMove.type);
-            console.log('Damaging move type: ' + detailedMove.type);
           }
         }
       }
@@ -175,7 +178,6 @@ export class OffensiveCoverageComponent implements OnInit {
       // calling these functions here because this is the only location where
       // we can guarantee our pokedex and movedex have been fully loaded
       this.getUniqueTypes();
-      this.getMoveAPIjson();
       this.getTeamMoveTypes();
       this.compareOurMovesVsUniqueTypes();
     });
