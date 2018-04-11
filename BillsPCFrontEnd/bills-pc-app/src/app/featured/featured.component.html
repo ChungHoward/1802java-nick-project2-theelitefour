@@ -9,9 +9,10 @@
 
       <div class="card-content">
         <div class="row" *ngFor="let featTeam of featTeamArray">
+          <!-- Somewhere around here is where I would make a button to save the whole team -->
           <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of featTeam; let i = index">
             <div class="card">
-              <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
+              <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(pkmn)">
                 <img [src]="favTeam[i].sprite" alt="" />
               </div>
 
