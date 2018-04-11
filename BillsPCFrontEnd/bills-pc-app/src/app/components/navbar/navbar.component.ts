@@ -79,4 +79,8 @@ export class NavbarComponent implements OnInit {
       this.loginService.changeTrainer(null);
     });
   }
+
+  viewUsers(){
+    
+  }
 }
