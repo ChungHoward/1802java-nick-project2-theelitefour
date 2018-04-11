@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
-import { Pokemon } from 'app/pokemon';
+import { Pokemon, PokeAPI } from 'app/pokemon';
+import { Trainer } from '../trainer';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
+import { StringifyOptions } from 'querystring';
+import { ConvertService } from '../services/convert.service';
+declare var $: any;
 
 @Component({
   selector: 'app-pokemonbox',
@@ -12,19 +16,17 @@ import { TypeService } from 'app/services/type.service';
 })
 export class PokemonBoxComponent implements OnInit {
   // The Pokemon we just clicked on
-  selectedPkmn: Pokemon;
+  selectedPkmn: PokeAPI;
   // My favorite team - there can only be one
-  favTeam: Array<Pokemon>;
-  // The service where I make 6 sample pokemon for temporary use
-  teamService: TeamService;
+  favTeam: Array<PokeAPI>;
   // Contains the images for every type and damage class
   types: TypeService;
   // The team being built or viewed
-  curTeam: Array<Pokemon>;
+  curTeam: Array<PokeAPI>;
   // Will temporarily contain a list of pokemon in my box
-  myBox: Array<Pokemon>;
+  myBox: Array<PokeAPI>;
   // Will temporarily contain a list of teams, currently can't be named
-  myTeams: Array<Array<Pokemon>>;
+  myTeams: Array<Array<PokeAPI>>;
 
   /* These variables are for the Box View/Search */
   pkmnBoxColNames: Array<string>;
@@ -37,26 +39,29 @@ export class PokemonBoxComponent implements OnInit {
   favoriteIcon: string;
   newTeamName: string;
 
-  constructor() {
+  constructor(private teamService: TeamService, private convertService: ConvertService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
-    /* Assign my favTeam using teamService */
-    this.teamService = new TeamService();
-    this.favTeam = this.teamService.favTeam;
-    this.curTeam = new Array<Pokemon>();
+    // Assign my favTeam using teamService
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
+    this.curTeam = new Array<PokeAPI>();
     this.curTeam = Object.assign([], this.favTeam);
-    this.myBox = new Array<Pokemon>();
+    this.myBox = new Array<PokeAPI>();
     this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-    this.myBox.push(this.teamService.pkmn6);
     this.myBox.push(this.teamService.pkmn2);
-    this.myBox.push(this.teamService.pkmn2);
-    this.myBox.push(this.teamService.pkmn6);
+    this.myBox.push(this.teamService.pkmn3);
     this.myBox.push(this.teamService.pkmn4);
-    this.myBox.push(this.teamService.pkmn3);
-    this.myBox.push(this.teamService.pkmn2);
-    this.myBox.push(this.teamService.pkmn3);
-    this.myTeams = new Array<Array<Pokemon>>();
+    this.myBox.push(this.teamService.pkmn5);
+    this.myBox.push(this.teamService.pkmn6);
+    this.myTeams = new Array<Array<PokeAPI>>();
 
     this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
     this.colSortIcons = [ // The icon underneath each pkmnBoxColNames
@@ -96,7 +101,7 @@ export class PokemonBoxComponent implements OnInit {
   }
 
   newTeam() {
-    this.curTeam = new Array<Pokemon>();
+    this.favTeam = new Array<PokeAPI>();
   }
 
   /**
@@ -104,11 +109,20 @@ export class PokemonBoxComponent implements OnInit {
    * @param newTeamName saves as 'Untitled' if newTeamName is empty
    */
   saveTeam(newTeamName: string): boolean {
-    if (this.curTeam.length === 6) {
-      this.myTeams.push(this.curTeam);
-      if (newTeamName.length < 1) {
-        newTeamName = 'Untitled';
+    // if our team isn't over the legal limit
+    if (this.curTeam.length <= 6) {
+      let myTrainer: Trainer;
+      myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+
+      // Save to box
+      if (myTrainer) {
+        myTrainer.sets.push(this.selectedPkmn);
       }
+      // TODO: THIS IS WHERE I LEFT OFF YESTERDAY
+      // Put our favTeam in local storage so even an unregistered user can use our service
+      localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+      this.myTeams.push(this.curTeam);
+
       return true;
     }
     return false;
@@ -125,6 +139,46 @@ export class PokemonBoxComponent implements OnInit {
       newTeamName = 'Untitled';
     }
     // set favTeam.name = newTeamName;
+  }
+
+  showNotification(myMessage: string) {
+    // const type = ['', 'info', 'success', 'warning', 'danger'];
+    // const color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: 'notification',
+      message: myMessage
+    }, {
+        type: 'warning',
+        timer: 4000,
+        placement: {
+          from: 'top',
+          align: 'center'
+        }
+      }
+    );
+  }
+
+  /**
+   * When we drag and drop we should update our team
+   */
+  updateTeam(pkmn: PokeAPI, i: number) {
+    console.log('drop team ' + pkmn.name + ' at index ' + i);
+    // inserts pkmn at index i, deleting 0 elements
+    // this.favTeam.splice(i, 0, pkmn);
+    // removes pkmn from box
+    // this.myBox.splice(this.myBox.indexOf(pkmn), 1);
+  }
+
+  /**
+   * When we drag and drop we should update our box
+   */
+  updateBox(pkmn: PokeAPI, i: number) {
+    console.log('drop box ' + pkmn.name + ' at index ' + i);
+    // inserts pkmn at index i, deleting 0 elements
+    // this.myBox.splice(i, 0, pkmn);
+    // removes pkmn from box
+    // this.favTeam.splice(this.favTeam.indexOf(pkmn), 1);
   }
 
   ngOnInit() {

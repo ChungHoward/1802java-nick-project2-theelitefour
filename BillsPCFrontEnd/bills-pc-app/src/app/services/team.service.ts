@@ -1,31 +1,28 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon';
+import { Pokemon, PokeAPI } from '../pokemon';
 import { TypeService } from 'app/services/type.service';
 
 @Injectable()
 export class TeamService implements OnInit {
 
-  favTeam: Array<Pokemon>;
-  pkmn1: Pokemon;
-  pkmn2: Pokemon;
-  pkmn3: Pokemon;
-  pkmn4: Pokemon;
-  pkmn5: Pokemon;
-  pkmn6: Pokemon;
+  curTeam: Array<PokeAPI>;
+  favTeam: Array<PokeAPI>;
+  pkmn1: PokeAPI;
+  pkmn2: PokeAPI;
+  pkmn3: PokeAPI;
+  pkmn4: PokeAPI;
+  pkmn5: PokeAPI;
+  pkmn6: PokeAPI;
 
-  types: TypeService;
-
-  constructor() {
-    // Assigns the value of types to their respective image
-    this.types = new TypeService();
-
+  constructor(private types: TypeService) {
+    this.curTeam = new Array<PokeAPI>();
     // Making my team
-    this.pkmn1 = new Pokemon();
-    this.pkmn2 = new Pokemon();
-    this.pkmn3 = new Pokemon();
-    this.pkmn4 = new Pokemon();
-    this.pkmn5 = new Pokemon();
-    this.pkmn6 = new Pokemon();
+    this.pkmn1 = new PokeAPI();
+    this.pkmn2 = new PokeAPI();
+    this.pkmn3 = new PokeAPI();
+    this.pkmn4 = new PokeAPI();
+    this.pkmn5 = new PokeAPI();
+    this.pkmn6 = new PokeAPI();
 
     this.pkmn1.name = 'Jolteon';
     this.pkmn1.trainerId = 1;
@@ -82,7 +79,6 @@ export class TeamService implements OnInit {
     this.favTeam.push(this.pkmn4);
     this.favTeam.push(this.pkmn5);
     this.favTeam.push(this.pkmn6);
-
   }
 
   ngOnInit() { }

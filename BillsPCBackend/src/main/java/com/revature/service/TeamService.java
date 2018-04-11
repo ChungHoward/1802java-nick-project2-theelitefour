@@ -21,4 +21,8 @@ public class TeamService {
 	public List<Team> retrieveAllTeamsByTrainer(Trainer trainer) {
 		return dao.retreiveAllTeamsByTrainer(trainer);
 	}
+	
+	public List<Team> retrieveFeaturedTeams() {
+		return dao.retrieveFeaturedTeams();
+	}
 }

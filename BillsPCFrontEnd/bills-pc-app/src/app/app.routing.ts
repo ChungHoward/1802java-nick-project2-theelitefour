@@ -12,7 +12,6 @@ import { DefensiveCoverageComponent } from './defensivecoverage/defensivecoverag
 import { OffensiveCoverageComponent } from './offensivecoverage/offensivecoverage.component';
 import { OffenseVsDefenseComponent } from './offensevsdefense/offensevsdefense.component';
 import { FeaturedComponent } from './featured/featured.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
@@ -26,7 +25,7 @@ const routes: Routes = [
   { path: 'offensivecoverage', component: OffensiveCoverageComponent },
   { path: 'offensevsdefense', component: OffenseVsDefenseComponent },
   { path: 'featured', component: FeaturedComponent },
-  { path: 'upgrade', component: UpgradeComponent },
+  { path: 'view-users', component: ViewUsersComponent },
   { path: '', redirectTo: 'teambuilder', pathMatch: 'full' }
 ];
 

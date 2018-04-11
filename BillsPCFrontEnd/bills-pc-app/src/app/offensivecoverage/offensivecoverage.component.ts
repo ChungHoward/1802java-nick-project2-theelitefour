@@ -16,8 +16,6 @@ import { TypeService } from 'app/services/type.service';
 export class OffensiveCoverageComponent implements OnInit {
   // The placeholder 6 pokemon on my team
   favTeam: Array<Pokemon>;
-  // This service generates 6 sample pokemon for me
-  teamService: TeamService;
   // List of types of damaging moves
   teamMoveTypes: Array<string>;
 
@@ -29,10 +27,17 @@ export class OffensiveCoverageComponent implements OnInit {
   coveredTypes: Array<Array<string>>;
   uncoveredTypes: Array<Array<string>>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService, private types: TypeService) {
+  constructor(private pokemonService: PokemonService, private moveService: MoveService,
+              private teamService: TeamService, private types: TypeService) {
     // Assign my favTeam using teamService
-    this.teamService = new TeamService();
-    this.favTeam = this.teamService.favTeam;
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
     // Initialize
     this.teamMoveTypes = new Array<string>();
     this.uniqueTypes = new Array<Array<string>>();
@@ -94,7 +99,9 @@ export class OffensiveCoverageComponent implements OnInit {
         // if that attack deals damage
         if (detailedMove.power > 0) {
           // always add it to our list of damaging move types if our list is empty
-          if (this.teamMoveTypes.length > 0) {
+          if (this.teamMoveTypes.length === 0) {
+            this.teamMoveTypes.push(detailedMove.type);
+          } else {
             // We don't want duplicates. if one exists, check the next attack
             for (const type of this.teamMoveTypes) {
               if (type === detailedMove.type) {
@@ -102,9 +109,7 @@ export class OffensiveCoverageComponent implements OnInit {
               }
             } // add unique type to our array if there are no dupes
             this.teamMoveTypes.push(detailedMove.type);
-          } else {
-            // I subtract 1 because our json is 1-indexed while arrays are 0-indexed
-            this.teamMoveTypes.push(detailedMove.type);
+            console.log('Damaging move type: ' + detailedMove.type);
           }
         }
       }
@@ -113,6 +118,7 @@ export class OffensiveCoverageComponent implements OnInit {
 
   compareOurMovesVsUniqueTypes() {
     let effective: number;
+    let atkType: number;
     let defType1: number;
     let defType2: number;
 
@@ -120,17 +126,20 @@ export class OffensiveCoverageComponent implements OnInit {
     loop1:
     for (const pairTypes of this.uniqueTypes) {
       // for each attack type on my team
-      for (const atkType of this.teamMoveTypes) {
+      for (const moveType of this.teamMoveTypes) {
         // get the types of the defending pokemon
+        atkType = this.types.name.indexOf(moveType);
         defType1 = this.types.name.indexOf(pairTypes[0]);
         defType2 = this.types.name.indexOf(pairTypes[1]);
-        console.log(this.types.chart[atkType]);
+        // if defType2 is undefined, set it to "none = 15"
+        defType2 = (defType2 < 0) ? 15 : defType2;
         // and see how effective my attack type is against every other pokemon
         effective = this.types.chart[atkType][defType1];
         effective *= this.types.chart[atkType][defType2];
-        console.log(atkType + ' vs ' + defType1 + ' ' + defType2 + ' = ' + effective);
         // if our attack is super effective
         if (effective > 1) {
+          console.log(moveType + ' vs ' + this.types.name[defType1] + ' ' + this.types.name[defType2]
+          + ' = ' + effective);
           // add it to our list of covered types
           this.coveredTypes.push(pairTypes);
           // then check a new type combination
@@ -150,6 +159,12 @@ export class OffensiveCoverageComponent implements OnInit {
 
     // the above methods are being replaced by the below method which calls both Observables
     // in parallel and waits for them to finish -- or apparently not
+    // Observable.zip(
+    //   this.pokemonService.getJson(),
+    //   this.moveService.getJson()
+    // ).subscribe(myTuple => {
+    //   this.pokedex = myTuple[0];
+    //   this.movedex = myTuple[1];
     Observable.forkJoin(
       this.pokemonService.getJson(),
       this.moveService.getJson()
@@ -157,7 +172,6 @@ export class OffensiveCoverageComponent implements OnInit {
       ([pokeAPIArray, moveArray]) => {
       this.pokedex = pokeAPIArray;
       this.movedex = moveArray;
-
       // calling these functions here because this is the only location where
       // we can guarantee our pokedex and movedex have been fully loaded
       this.getUniqueTypes();

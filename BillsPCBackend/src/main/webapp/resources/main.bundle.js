@@ -173,17 +173,19 @@ var defensivecoverage_component_1 = __webpack_require__("./src/app/defensivecove
 var offensivecoverage_component_1 = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
 var offensevsdefense_component_1 = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
 var featured_component_1 = __webpack_require__("./src/app/featured/featured.component.ts");
-var upgrade_component_1 = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
+var view_users_component_1 = __webpack_require__("./src/app/view-users/view-users.component.ts");
 // Services
 var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
 var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
+var register_service_1 = __webpack_require__("./src/app/services/register.service.ts");
 var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
+var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
+var feature_service_1 = __webpack_require__("./src/app/services/feature.service.ts");
 var view_user_service_1 = __webpack_require__("./src/app/services/view-user.service.ts");
-// Modules
+// Custom Modules
 var ng2_dnd_1 = __webpack_require__("./node_modules/ng2-dnd/index.js");
-var view_users_component_1 = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -200,7 +202,6 @@ var AppModule = (function () {
                 offensivecoverage_component_1.OffensiveCoverageComponent,
                 offensevsdefense_component_1.OffenseVsDefenseComponent,
                 featured_component_1.FeaturedComponent,
-                upgrade_component_1.UpgradeComponent,
                 filter_pipe_1.Filter,
                 sort_pipe_1.Sort,
                 view_users_component_1.ViewUsersComponent
@@ -221,6 +222,9 @@ var AppModule = (function () {
                 team_service_1.TeamService,
                 type_service_1.TypeService,
                 login_service_1.LoginService,
+                register_service_1.RegisterService,
+                convert_service_1.ConvertService,
+                feature_service_1.FeatureService,
                 view_user_service_1.ViewUserService
             ],
             bootstrap: [app_component_1.AppComponent]
@@ -258,7 +262,6 @@ var defensivecoverage_component_1 = __webpack_require__("./src/app/defensivecove
 var offensivecoverage_component_1 = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
 var offensevsdefense_component_1 = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
 var featured_component_1 = __webpack_require__("./src/app/featured/featured.component.ts");
-var upgrade_component_1 = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
 var view_users_component_1 = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var routes = [
     { path: 'view-user', component: view_users_component_1.ViewUsersComponent },
@@ -271,7 +274,7 @@ var routes = [
     { path: 'offensivecoverage', component: offensivecoverage_component_1.OffensiveCoverageComponent },
     { path: 'offensevsdefense', component: offensevsdefense_component_1.OffenseVsDefenseComponent },
     { path: 'featured', component: featured_component_1.FeaturedComponent },
-    { path: 'upgrade', component: upgrade_component_1.UpgradeComponent },
+    { path: 'view-users', component: view_users_component_1.ViewUsersComponent },
     { path: '', redirectTo: 'teambuilder', pathMatch: 'full' }
 ];
 var AppRoutingModule = (function () {
@@ -350,7 +353,7 @@ module.exports = ""
 /***/ "./src/app/components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\r\n  <div class=\"container-fluid\">\r\n    <nav class=\"pull-left\">\r\n      <ul>\r\n        <li>\r\n          <a href=\"https://www.reddit.com/u/me\">\r\n            Contact\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.revature.com\">\r\n            Revature\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://github.com/revatureclass/1802java-nick-project2-theelitefour\">\r\n            Github\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.twitter.com\">\r\n            Follow Us\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </nav>\r\n    <p class=\"copyright pull-right\">\r\n      &copy; {{test | date: 'yyyy'}}\r\n      <a href=\"#\">The Elite Four</a>\r\n    </p>\r\n  </div>\r\n</footer>"
+module.exports = "<footer>\r\n  <div class=\"container-fluid\">\r\n    <nav class=\"pull-left\">\r\n      <ul>\r\n        <li>\r\n          <a href=\"mailto:email@example.com\">\r\n            Contact\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.revature.com\">\r\n            Revature\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://github.com/revatureclass/1802java-nick-project2-theelitefour\">\r\n            Github\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.veryobservantindeed.com\">\r\n            Observant, aren't you?\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </nav>\r\n    <p class=\"copyright pull-right\">\r\n      &copy; {{test | date: 'yyyy'}}\r\n      <a href=\"#\">The Elite Four</a>\r\n    </p>\r\n  </div>\r\n</footer>"
 
 /***/ }),
 
@@ -575,14 +578,14 @@ exports.SidebarComponent = SidebarComponent;
 /***/ "./src/app/corecoverage/corecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width: 100%;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n  min-height: 110px;\r\n}\r\n.card-stats {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n  max-height: 230px;\r\n}\r\n.card-footer {\r\n  min-height: 110px;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-left {\r\n  text-align: left;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.ta-right {\r\n  text-align: right;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width: 100%;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n  min-height: 110px;\r\n}\r\n.card-stats {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n  max-height: 230px;\r\n}\r\n.card-footer {\r\n  min-height: 110px;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-left {\r\n  text-align: left;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.ta-right {\r\n  text-align: right;\r\n}\r\n.va-center {\r\n  vertical-align: center;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/corecoverage/corecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card card-plain\">\r\n      <div class=\"card-header row\" data-background-color=\"red\">\r\n        <div class=\"col-lg-10 col-xs-9\">\r\n          <h4 class=\"title\">Core Coverage shows you which teammates make good partners for your Pokemon</h4>\r\n          <p class=\"category\">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>\r\n        </div>\r\n        <div class=\"col-lg-2 col-xs-3 ta-right\">\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"subThresh()\">\r\n            indeterminate_check_box\r\n          </i>\r\n          <span class=\"h3\">{{ threshold }}</span>\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"addThresh()\">\r\n            add_box\r\n          </i>\r\n        </div>\r\n      </div>\r\n      <br/>\r\n      <div class=\"row\">\r\n        <!-- Loop through and print every Pokemon in favTeam -->\r\n        <div class=\"col-lg-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n          <div class=\"card card-stats\">\r\n            <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n              <img src=\"{{ favTeam[i].sprite }}\" />\r\n            </div>\r\n            <div class=\"card-content ta-center\">\r\n              <h5>Partners with</h5>\r\n              <span class=\"badge\" *ngFor=\"let partner of partners[i]\">\r\n                {{ partner }}\r\n              </span>\r\n            </div>\r\n            <div class=\"card-footer ta-left row\">\r\n              <div class=\"col-xl-5 col-xs-5\">\r\n                <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" alt=\"\" class=\"type\" />\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}\" alt=\"\" class=\"type\" />\r\n              </div>\r\n              <div class=\"col-xl-7 col-xs-7\">\r\n                is weak to\r\n                <br/>\r\n                <img *ngFor=\"let typeID of weaknesses[i]\" [src]=\"types.img[typeID]\" class=\"type\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card card-plain\">\r\n      <div class=\"card-header row\" data-background-color=\"red\">\r\n        <div class=\"col-lg-10 col-xs-9\">\r\n          <h4 class=\"title\">Core Coverage shows you which teammates make good partners for your Pokemon</h4>\r\n          <p class=\"category\">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>\r\n        </div>\r\n        <div class=\"col-lg-2 col-xs-3 ta-right\">\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"subThresh()\">\r\n            indeterminate_check_box\r\n          </i>\r\n          <span class=\"h3\">{{ threshold }}</span>\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"addThresh()\">\r\n            add_box\r\n          </i>\r\n        </div>\r\n      </div>\r\n      <br/>\r\n      <div class=\"row\">\r\n        <!-- Loop through and print every Pokemon in favTeam -->\r\n        <div class=\"col-lg-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n          <div class=\"card card-stats\">\r\n            <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n              <img src=\"{{ favTeam[i].sprite }}\" />\r\n            </div>\r\n            <div class=\"card-content ta-center row va-center\">\r\n              <span class=\"badge col-xs-3 col-xl-3\" *ngFor=\"let partner of partners[i]\">\r\n                {{ partner | titlecase }}\r\n              </span>\r\n            </div>\r\n            <div class=\"card-footer ta-left row\">\r\n              <div class=\"col-xl-5 col-xs-5\">\r\n                <h4 class=\"title\">{{ favTeam[i].name | titlecase }}</h4>\r\n                <img class=\"type\" src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" />\r\n                <img class=\"type\" src=\"{{ types.name.indexOf(favTeam[i].types[1]) >= 0 ? types.img[types.name.indexOf(favTeam[i].types[1])] : types.img[15] }}\" />\r\n              </div>\r\n              <div class=\"col-xl-7 col-xs-7\">\r\n                is weak to\r\n                <br/>\r\n                <img *ngFor=\"let typeID of weaknesses[i]\" [src]=\"types.img[typeID]\" class=\"type\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -606,8 +609,9 @@ var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var CoreCoverageComponent = (function () {
-    function CoreCoverageComponent(pokemonService) {
+    function CoreCoverageComponent(pokemonService, teamService) {
         this.pokemonService = pokemonService;
+        this.teamService = teamService;
         // The number of resistances we would like on an ideal partner
         this.threshold = 0;
         // two-way data binding wouldn't work so here's the hard way
@@ -615,8 +619,13 @@ var CoreCoverageComponent = (function () {
         // Assigns the value of types to their respective image
         this.types = new type_service_1.TypeService();
         // Assign my favTeam using teamService
-        this.teamService = new team_service_1.TeamService();
-        this.favTeam = this.teamService.favTeam;
+        // this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using localStorage TODO: or from session if one exists
+        this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+        // if null, get an empty team
+        if (!this.favTeam) {
+            this.favTeam = new Array();
+        }
         // My default selected Pokemon
         this.selectedPkmn = this.favTeam[0];
         // Arbitrary value. Pokemon typically have between 1 and 5 weaknesses. 3 is the average.
@@ -658,8 +667,15 @@ var CoreCoverageComponent = (function () {
             // get pkmn's types
             type1ID = this.types.name.indexOf(pkmn.types[0]);
             type2ID = this.types.name.indexOf(pkmn.types[1]);
+            // if type2 is not defined, set it to none
+            if (type2ID < 0) {
+                type2ID = 15;
+            }
             // Find attacks that are super-effective against my type
             for (var i = 0; i < this.types.chart.length; i++) {
+                // Test
+                console.log(this.types.name[i] + ' vs ' + this.types.name[type1ID] + ' ' + this.types.name[type2ID]
+                    + ' = ' + this.types.chart[i][type1ID] * this.types.chart[i][type2ID]);
                 // chart[A][D], A=attack type, D=defending type -- if the multiplier is higher than 1, the move is super effective
                 if (this.types.chart[i][type1ID] * this.types.chart[i][type2ID] > 1) {
                     // add the super effective move ID to myWeaknesses
@@ -712,10 +728,10 @@ var CoreCoverageComponent = (function () {
             styles: [__webpack_require__("./src/app/corecoverage/corecoverage.component.css")],
             providers: [pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _b || Object])
     ], CoreCoverageComponent);
     return CoreCoverageComponent;
-    var _a;
+    var _a, _b;
 }());
 exports.CoreCoverageComponent = CoreCoverageComponent;
 //# sourceMappingURL=corecoverage.component.js.map
@@ -755,12 +771,18 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var DefensiveCoverageComponent = (function () {
-    function DefensiveCoverageComponent() {
+    function DefensiveCoverageComponent(teamService) {
+        this.teamService = teamService;
         // Assigns the value of types to their respective image
         this.types = new type_service_1.TypeService();
-        /* Assign my favTeam using teamService */
-        this.teamService = new team_service_1.TeamService();
-        this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using teamService
+        // this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using localStorage TODO: or from session if one exists
+        this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+        // if null, get an empty team
+        if (!this.favTeam) {
+            this.favTeam = new Array();
+        }
         this.curTeam = new Array();
         this.curTeam = Object.assign([], this.favTeam);
         this.pokemonCol = new Array();
@@ -789,6 +811,10 @@ var DefensiveCoverageComponent = (function () {
                 // get the types of that pokemon
                 defType1 = this.types.name.indexOf(this.favTeam[i].types[0]);
                 defType2 = this.types.name.indexOf(this.favTeam[i].types[1]);
+                // if type2 is not defined, set it to none
+                if (defType2 < 0) {
+                    defType2 = 15;
+                }
                 // and see how effective every attack type is against your pokemon
                 effective = this.types.chart[atkType][defType1];
                 effective *= this.types.chart[atkType][defType2];
@@ -802,22 +828,25 @@ var DefensiveCoverageComponent = (function () {
         for (var y = 0; y < numTypes; y++) {
             sum = 0;
             for (var x = 0; x < numPkmn; x++) {
-                if (this.myTable[x][y] <= 1.0) {
-                    sum += this.myTable[x][y];
+                if (this.myTable[x][y] === 1.0) {
+                    sum += 1;
                 }
                 else if (this.myTable[x][y] > 1.0) {
-                    sum += this.myTable[x][y] - 0.5;
+                    sum += 1.5;
+                }
+                else if (this.myTable[x][y] < 1.0) {
+                    sum += 0.5;
                 }
             }
             if (sum === 0) {
             }
-            else if (sum > 7) {
+            else if (sum > 6.5) {
                 this.rowColor[y] = 'bg-red';
             }
             else if (sum > 6) {
                 this.rowColor[y] = 'bg-pink';
             }
-            else if (sum < 5) {
+            else if (sum < 5.5) {
                 this.rowColor[y] = 'bg-green';
             }
             else if (sum < 6) {
@@ -834,9 +863,10 @@ var DefensiveCoverageComponent = (function () {
             template: __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.html"),
             styles: [__webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _a || Object])
     ], DefensiveCoverageComponent);
     return DefensiveCoverageComponent;
+    var _a;
 }());
 exports.DefensiveCoverageComponent = DefensiveCoverageComponent;
 //# sourceMappingURL=defensivecoverage.component.js.map
@@ -853,7 +883,7 @@ module.exports = ""
 /***/ "./src/app/featured/featured.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--\r\n<input [(ngModel)]=\"id\" type=\"text\"/>\r\n<button (click)=\"getPokemon()\">get pokemon</button>\r\n<p>Name: {{myPokemon.name}}</p>\r\n<p>Height: {{myPokemon.height}}</p>\r\n-->\r\n"
+module.exports = "<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n  \r\n      <div class=\"card card-plain\">\r\n        <div class=\"card-header\" data-background-color=\"red\">\r\n          <h4 class=\"title\">Featured Teams by our ace trainers</h4>\r\n          <p class=\"category\">Ace trainers are carefully chosen by our experts to ensure the highest quality teams</p>\r\n        </div>\r\n  \r\n        <div class=\"card-content\">\r\n          <div class=\"row\" *ngFor=\"let featTeam of featTeamArray\">\r\n            <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of featTeam; let i = index\">\r\n  \r\n              <div class=\"card\" [style.background-color]=\"(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'\">\r\n                <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\r\n                  <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n                </div>\r\n      \r\n                <div class=\"card-content ta-center\" (click)=\"selectTeamPokemon(i, pkmn)\" role=\"button\">\r\n                  <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n                  <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n                  <h4 class=\"title\">\r\n                    {{ favTeam[i].name | titlecase}}\r\n                  </h4>\r\n                </div>\r\n      \r\n                <div class=\"card-footer ta-center\">\r\n                  <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n                    {{ collapse }}\r\n                  </i>\r\n                  <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n                    <ul>\r\n                      <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                        {{ atk }}\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  \r\n                </div>\r\n              </div>\r\n              \r\n            </div>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"card-footer\">\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -873,19 +903,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var feature_service_1 = __webpack_require__("./src/app/services/feature.service.ts");
 var FeaturedComponent = (function () {
-    function FeaturedComponent() {
+    function FeaturedComponent(featureService) {
+        this.featureService = featureService;
     }
-    FeaturedComponent.prototype.ngOnInit = function () { };
+    FeaturedComponent.prototype.selectTeamPokemon = function (pkmn) {
+        // TODO: Save this pokemon to your box
+    };
+    FeaturedComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.featureService.getFeaturedTeams().subscribe(function (response) {
+            _this.featTeamArray = response;
+            console.log(_this.featTeamArray.toString());
+            // if the Array is not empty, we should turn the sets inside into pokemon
+            if (_this.featTeamArray) {
+                // do something
+            }
+        }, function (error) {
+            console.error(error);
+        });
+    };
     FeaturedComponent = __decorate([
         core_1.Component({
             selector: 'app-featured',
             template: __webpack_require__("./src/app/featured/featured.component.html"),
             styles: [__webpack_require__("./src/app/featured/featured.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof feature_service_1.FeatureService !== "undefined" && feature_service_1.FeatureService) === "function" && _a || Object])
     ], FeaturedComponent);
     return FeaturedComponent;
+    var _a;
 }());
 exports.FeaturedComponent = FeaturedComponent;
 //# sourceMappingURL=featured.component.js.map
@@ -968,6 +1016,32 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
+/***/ "./src/app/move.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Move = (function () {
+    function Move() {
+        this.id = null;
+        this.name = null;
+        this.accuracy = null;
+        this.effect = null;
+        this.effectChance = null;
+        this.pp = null;
+        this.power = null;
+        this.damageClass = null;
+        this.type = null;
+    }
+    ;
+    return Move;
+}());
+exports.Move = Move;
+//# sourceMappingURL=move.js.map
+
+/***/ }),
+
 /***/ "./src/app/offensevsdefense/offensevsdefense.component.css":
 /***/ (function(module, exports) {
 
@@ -1043,7 +1117,7 @@ module.exports = "\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n 
 /***/ "./src/app/offensivecoverage/offensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Missing type coverage</h4>\r\n        <p class=\"category\">Your team\r\n          <strong>does not</strong> have a super-effective attack against these Types</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uncoveredTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n    <div class=\"card\">\r\n\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Types covered</h4>\r\n        <p class=\"category\">Your team has super-effective attacks against these Types</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uniqueTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Missing type coverage</h4>\r\n        <p class=\"category\">Your team <strong>lacks</strong> super-effective attacks against these Type combinations</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uncoveredTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n    <div class=\"card\">\r\n\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Types covered</h4>\r\n        <p class=\"category\">Your team has super-effective attacks against these Type combinations!</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uniqueTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1069,13 +1143,19 @@ var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var OffensiveCoverageComponent = (function () {
-    function OffensiveCoverageComponent(pokemonService, moveService, types) {
+    function OffensiveCoverageComponent(pokemonService, moveService, teamService, types) {
+        // Assign my favTeam using teamService
+        // this.favTeam = this.teamService.favTeam;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
+        this.teamService = teamService;
         this.types = types;
-        // Assign my favTeam using teamService
-        this.teamService = new team_service_1.TeamService();
-        this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using localStorage TODO: or from session if one exists
+        this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+        // if null, get an empty team
+        if (!this.favTeam) {
+            this.favTeam = new Array();
+        }
         // Initialize
         this.teamMoveTypes = new Array();
         this.uniqueTypes = new Array();
@@ -1136,7 +1216,10 @@ var OffensiveCoverageComponent = (function () {
                 // if that attack deals damage
                 if (detailedMove.power > 0) {
                     // always add it to our list of damaging move types if our list is empty
-                    if (this.teamMoveTypes.length > 0) {
+                    if (this.teamMoveTypes.length === 0) {
+                        this.teamMoveTypes.push(detailedMove.type);
+                    }
+                    else {
                         // We don't want duplicates. if one exists, check the next attack
                         for (var _b = 0, _c = this.teamMoveTypes; _b < _c.length; _b++) {
                             var type = _c[_b];
@@ -1145,10 +1228,7 @@ var OffensiveCoverageComponent = (function () {
                             }
                         } // add unique type to our array if there are no dupes
                         this.teamMoveTypes.push(detailedMove.type);
-                    }
-                    else {
-                        // I subtract 1 because our json is 1-indexed while arrays are 0-indexed
-                        this.teamMoveTypes.push(detailedMove.type);
+                        console.log('Damaging move type: ' + detailedMove.type);
                     }
                 }
             }
@@ -1157,6 +1237,7 @@ var OffensiveCoverageComponent = (function () {
     OffensiveCoverageComponent.prototype.compareOurMovesVsUniqueTypes = function () {
         var _this = this;
         var effective;
+        var atkType;
         var defType1;
         var defType2;
         // for each unique defending type combination
@@ -1164,17 +1245,20 @@ var OffensiveCoverageComponent = (function () {
             var pairTypes = _a[_i];
             // for each attack type on my team
             for (var _b = 0, _c = this.teamMoveTypes; _b < _c.length; _b++) {
-                var atkType = _c[_b];
+                var moveType = _c[_b];
                 // get the types of the defending pokemon
+                atkType = this.types.name.indexOf(moveType);
                 defType1 = this.types.name.indexOf(pairTypes[0]);
                 defType2 = this.types.name.indexOf(pairTypes[1]);
-                console.log(this.types.chart[atkType]);
+                // if defType2 is undefined, set it to "none = 15"
+                defType2 = (defType2 < 0) ? 15 : defType2;
                 // and see how effective my attack type is against every other pokemon
                 effective = this.types.chart[atkType][defType1];
                 effective *= this.types.chart[atkType][defType2];
-                console.log(atkType + ' vs ' + defType1 + ' ' + defType2 + ' = ' + effective);
                 // if our attack is super effective
                 if (effective > 1) {
+                    console.log(moveType + ' vs ' + this.types.name[defType1] + ' ' + this.types.name[defType2]
+                        + ' = ' + effective);
                     // add it to our list of covered types
                     this.coveredTypes.push(pairTypes);
                     // then check a new type combination
@@ -1191,6 +1275,12 @@ var OffensiveCoverageComponent = (function () {
         var _this = this;
         // the above methods are being replaced by the below method which calls both Observables
         // in parallel and waits for them to finish -- or apparently not
+        // Observable.zip(
+        //   this.pokemonService.getJson(),
+        //   this.moveService.getJson()
+        // ).subscribe(myTuple => {
+        //   this.pokedex = myTuple[0];
+        //   this.movedex = myTuple[1];
         Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
@@ -1210,10 +1300,10 @@ var OffensiveCoverageComponent = (function () {
             styles: [__webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.css")],
             providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object, typeof (_c = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object, typeof (_c = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _c || Object, typeof (_d = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _d || Object])
     ], OffensiveCoverageComponent);
     return OffensiveCoverageComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 exports.OffensiveCoverageComponent = OffensiveCoverageComponent;
 //# sourceMappingURL=offensivecoverage.component.js.map
@@ -1380,13 +1470,14 @@ exports.Sort = Sort;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-// Used for temporary storage such as team building
+// Used before I had db access
 var Pokemon = (function () {
     // A missingno for our placeholder!
     function Pokemon() {
         this.id = 0;
+        this.setId = 0;
         this.trainerId = 1;
-        this.attackIds = [];
+        this.attackIds = [164, 164, 164, 164];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
         this.moveset = ['', '', '', ''];
@@ -1401,8 +1492,9 @@ exports.Pokemon = Pokemon;
 var PokeAPI = (function () {
     function PokeAPI() {
         this.id = 0;
+        this.setId = 0;
         this.trainerId = 1;
-        this.attackIds = [];
+        this.attackIds = [164, 164, 164, 164];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
         this.moveset = ['', '', '', ''];
@@ -1420,14 +1512,14 @@ exports.PokeAPI = PokeAPI;
 /***/ "./src/app/pokemonbox/pokemonbox.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 575px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 435px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 500px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 400px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n  min-height: 80px;\r\n  position: relative;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\nth {\r\n  height: 39px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\n.ta-right { text-align: right; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/pokemonbox/pokemonbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills ta-center\">\r\n              <li>\r\n                <a role=\"button\" (click)=\"newTeam()\">\r\n                  <i class=\"material-icons\">create_new_folder</i> New Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">save</i> Save Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\r\n                  <tr *ngFor=\"let pkmn of favTeam; let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills\">\r\n              <li class=\"active\">\r\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\r\n                  <i class=\"material-icons\">line_weight</i> Pokemon\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a data-toggle=\"pill\" href=\"#teamBox\">\r\n                  <i class=\"material-icons\">view_module</i> Teams\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-12 col-xl-12\">\r\n                <input [(ngModel)]=\"searchBox\" name=\"searchBox\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer tab-content\">\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\r\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\r\n                  <tr *ngFor=\"let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\"\r\n                    dnd-sortable [sortableIndex]=\"i\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(boxpkmn)\" role=\"button\">{{ boxpkmn.name }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of boxpkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <!--\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills ta-center\">\r\n              <li>\r\n                <a role=\"button\" (click)=\"newTeam()\">\r\n                  <i class=\"material-icons\">create_new_folder</i> New Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">save</i> Save Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          -->\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-7 col-xl-7\">\r\n                <h4>My Team</h4>\r\n                <!-- <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\r\n                <span class=\"material-input\"></span> -->\r\n              </div>\r\n              <div class=\"col-sm-4 col-xl-4 ta-right\">\r\n                <button class=\"btn btn-primary btn-sm save-button\" (click)=\"saveTeam()\">\r\n                  <i class=\"material-icons\">save</i>\r\n                  Save Team\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\r\n                  <tr *ngFor=\"let pkmn of favTeam; let i = index\" dnd-sortable [sortableIndex]=\"i\" (onDropSuccess)=\"updateTeam(pkmn, i)\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <!--\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills\">\r\n              <li class=\"active\">\r\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\r\n                  <i class=\"material-icons\">line_weight</i> Pokemon\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a data-toggle=\"pill\" href=\"#teamBox\">\r\n                  <i class=\"material-icons\">view_module</i> Teams\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          -->\r\n          <div class=\"card-content\">\r\n            <form class=\"row form-group label-floating is-empty poke-search\" role=\"search\">\r\n              <div class=\"col-sm-11 col-xl-11\">\r\n                <label class=\"control-label\" for=\"searchBox\">Search Box</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"searchBox\" name=\"searchBox\" [(ngModel)]=\"searchBox\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer tab-content\">\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\r\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\r\n                  <tr *ngFor=\"let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\" dnd-sortable [sortableIndex]=\"i\"\r\n                    (onDropSuccess)=\"updateBox(boxpkmn, i)\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(boxpkmn)\" role=\"button\">{{ boxpkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of boxpkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1449,25 +1541,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
+var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
 var PokemonBoxComponent = (function () {
-    function PokemonBoxComponent() {
+    function PokemonBoxComponent(teamService, convertService) {
+        this.teamService = teamService;
+        this.convertService = convertService;
         // Assigns the value of types to their respective image
         this.types = new type_service_1.TypeService();
-        /* Assign my favTeam using teamService */
-        this.teamService = new team_service_1.TeamService();
-        this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using teamService
+        // this.favTeam = this.teamService.favTeam;
+        // Assign my favTeam using localStorage TODO: or from session if one exists
+        this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+        // if null, get an empty team
+        if (!this.favTeam) {
+            this.favTeam = new Array();
+        }
         this.curTeam = new Array();
         this.curTeam = Object.assign([], this.favTeam);
         this.myBox = new Array();
         this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-        this.myBox.push(this.teamService.pkmn6);
         this.myBox.push(this.teamService.pkmn2);
-        this.myBox.push(this.teamService.pkmn2);
-        this.myBox.push(this.teamService.pkmn6);
+        this.myBox.push(this.teamService.pkmn3);
         this.myBox.push(this.teamService.pkmn4);
-        this.myBox.push(this.teamService.pkmn3);
-        this.myBox.push(this.teamService.pkmn2);
-        this.myBox.push(this.teamService.pkmn3);
+        this.myBox.push(this.teamService.pkmn5);
+        this.myBox.push(this.teamService.pkmn6);
         this.myTeams = new Array();
         this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
         this.colSortIcons = [
@@ -1506,18 +1603,25 @@ var PokemonBoxComponent = (function () {
         this.sortBy = this.pkmnBoxColNames[i];
     };
     PokemonBoxComponent.prototype.newTeam = function () {
-        this.curTeam = new Array();
+        this.favTeam = new Array();
     };
     /**
      * Adds the curTeam to myTeams and sets the team name to newTeamName
      * @param newTeamName saves as 'Untitled' if newTeamName is empty
      */
     PokemonBoxComponent.prototype.saveTeam = function (newTeamName) {
-        if (this.curTeam.length === 6) {
-            this.myTeams.push(this.curTeam);
-            if (newTeamName.length < 1) {
-                newTeamName = 'Untitled';
+        // if our team isn't over the legal limit
+        if (this.curTeam.length <= 6) {
+            var myTrainer = void 0;
+            myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+            // Save to box
+            if (myTrainer) {
+                myTrainer.sets.push(this.selectedPkmn);
             }
+            // TODO: THIS IS WHERE I LEFT OFF YESTERDAY
+            // Put our favTeam in local storage so even an unregistered user can use our service
+            localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+            this.myTeams.push(this.curTeam);
             return true;
         }
         return false;
@@ -1534,6 +1638,41 @@ var PokemonBoxComponent = (function () {
         }
         // set favTeam.name = newTeamName;
     };
+    PokemonBoxComponent.prototype.showNotification = function (myMessage) {
+        // const type = ['', 'info', 'success', 'warning', 'danger'];
+        // const color = Math.floor((Math.random() * 4) + 1);
+        $.notify({
+            icon: 'notification',
+            message: myMessage
+        }, {
+            type: 'warning',
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'center'
+            }
+        });
+    };
+    /**
+     * When we drag and drop we should update our team
+     */
+    PokemonBoxComponent.prototype.updateTeam = function (pkmn, i) {
+        console.log('drop team ' + pkmn.name + ' at index ' + i);
+        // inserts pkmn at index i, deleting 0 elements
+        // this.favTeam.splice(i, 0, pkmn);
+        // removes pkmn from box
+        // this.myBox.splice(this.myBox.indexOf(pkmn), 1);
+    };
+    /**
+     * When we drag and drop we should update our box
+     */
+    PokemonBoxComponent.prototype.updateBox = function (pkmn, i) {
+        console.log('drop box ' + pkmn.name + ' at index ' + i);
+        // inserts pkmn at index i, deleting 0 elements
+        // this.myBox.splice(i, 0, pkmn);
+        // removes pkmn from box
+        // this.favTeam.splice(this.favTeam.indexOf(pkmn), 1);
+    };
     PokemonBoxComponent.prototype.ngOnInit = function () {
         if (this.curTeam === this.favTeam) {
             this.favoriteIcon = 'star';
@@ -1548,9 +1687,10 @@ var PokemonBoxComponent = (function () {
             template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
             styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object])
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
+    var _a, _b;
 }());
 exports.PokemonBoxComponent = PokemonBoxComponent;
 //# sourceMappingURL=pokemonbox.component.js.map
@@ -1567,7 +1707,7 @@ module.exports = ".ng-valid[required], .ng-valid.required  {\r\n  border-bottom:
 /***/ "./src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Register</h4>\r\n            <p class=\"category\">To start saving your teams and Pokemon</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"email\">Email address</label>\r\n                      <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" name=\"email\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"cpassword\">Confirm Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"cpassword\" name=\"cpassword\"\r\n                      [(ngModel)]=\"cpassword\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!registerForm.form.valid\" \r\n                  [disabled]=\"!passwordMatch\">\r\n                  Register\r\n                </button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                  You have successfully registered!\r\n                </div>\r\n                <div class=\"h4\">\r\n                  No email confirmation necessary\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Registration Failed\r\n                  </div>\r\n                  <div class=\"h4\">\r\n                    Username is already in use\r\n                  </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-md-4\">\r\n        <div class=\"card card-profile\">\r\n          <div class=\"card-avatar\">\r\n            <a href=\"#bill\">\r\n              <img class=\"img\" src=\"assets/img/faces/Bill.png\" />\r\n            </a>\r\n          </div>\r\n\r\n          <div class=\"content\">\r\n            <h6 class=\"category text-gray\">Masaki Sonezaki</h6>\r\n            <h4 class=\"card-title\">Bill, Head Engineer</h4>\r\n            <p class=\"card-content\">\r\n              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert\r\n              analytics and statistics are provided by our leading Professors.\r\n            </p>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Register</h4>\r\n            <p class=\"category\">To start saving your teams and Pokemon</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" name=\"username\"\r\n                        [(ngModel)]=\"username\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"email\">Email address</label>\r\n                      <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" name=\"email\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"cpassword\">Confirm Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"cpassword\" name=\"cpassword\"\r\n                      [(ngModel)]=\"cpassword\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!registerForm.form.valid\" \r\n                  [disabled]=\"!passwordMatch\">\r\n                  Register\r\n                </button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                  You have successfully registered!\r\n                </div>\r\n                <div class=\"h4\">\r\n                  No email confirmation necessary\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Registration Failed\r\n                  </div>\r\n                  <div class=\"h4\">\r\n                    Username is already in use\r\n                  </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-md-4\">\r\n        <div class=\"card card-profile\">\r\n          <div class=\"card-avatar\">\r\n            <a href=\"#bill\">\r\n              <img class=\"img\" src=\"assets/img/faces/Bill.png\" />\r\n            </a>\r\n          </div>\r\n\r\n          <div class=\"content\">\r\n            <h6 class=\"category text-gray\">Masaki Sonezaki</h6>\r\n            <h4 class=\"card-title\">Bill, Head Engineer</h4>\r\n            <p class=\"card-content\">\r\n              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert\r\n              analytics and statistics are provided by our leading Professors.\r\n            </p>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1624,6 +1764,307 @@ exports.RegisterComponent = RegisterComponent;
 
 /***/ }),
 
+/***/ "./src/app/services/convert.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
+var set_1 = __webpack_require__("./src/app/set.ts");
+var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
+var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
+var team_1 = __webpack_require__("./src/app/team.ts");
+var ConvertService = (function () {
+    function ConvertService(pokemonService, moveService) {
+        var _this = this;
+        this.pokemonService = pokemonService;
+        this.moveService = moveService;
+        Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+            var pokeAPIArray = _a[0], moveArray = _a[1];
+            _this.pokedex = pokeAPIArray;
+            _this.movedex = moveArray;
+        });
+    }
+    ConvertService.prototype.pokeapiToSet = function (pkmn) {
+        var result = new set_1.Set();
+        result.setId = 1;
+        result.pokemonId = pkmn.id;
+        result.nickname = pkmn.name;
+        result.atk1 = pkmn.attackIds[0];
+        result.atk2 = pkmn.attackIds[1];
+        result.atk3 = pkmn.attackIds[2];
+        result.atk4 = pkmn.attackIds[3];
+        return result;
+    };
+    /**
+     * For some reason, my back end team didn't want to send me an array of Sets,
+     * so I can't write a loop
+     * @param pkmnArray The team to send to back-end
+     * @param teamName The optional team name
+     * @param teamID The original team ID if one exists
+     */
+    ConvertService.prototype.pokeTeamToSetTeam = function (pkmnArray, teamName, teamID) {
+        var result;
+        var myTeam = new team_1.Team();
+        var resultArray = [];
+        if (teamID) {
+            myTeam.teamId = teamID;
+        }
+        else {
+            myTeam.teamId = -1;
+        }
+        if (teamName) {
+            myTeam.teamName = teamName;
+        }
+        else {
+            myTeam.teamName = 'Untitled';
+        }
+        result = new set_1.Set();
+        result.setId = pkmnArray[0].setId;
+        result.pokemonId = pkmnArray[0].id;
+        result.nickname = pkmnArray[0].name;
+        result.atk1 = pkmnArray[0].attackIds[0];
+        result.atk2 = pkmnArray[0].attackIds[1];
+        result.atk3 = pkmnArray[0].attackIds[2];
+        result.atk4 = pkmnArray[0].attackIds[3];
+        myTeam.set1 = result;
+        result = new set_1.Set();
+        result.setId = pkmnArray[1].setId;
+        result.pokemonId = pkmnArray[1].id;
+        result.nickname = pkmnArray[1].name;
+        result.atk1 = pkmnArray[1].attackIds[0];
+        result.atk2 = pkmnArray[1].attackIds[1];
+        result.atk3 = pkmnArray[1].attackIds[2];
+        result.atk4 = pkmnArray[1].attackIds[3];
+        myTeam.set2 = result;
+        result = new set_1.Set();
+        result.setId = pkmnArray[2].setId;
+        result.pokemonId = pkmnArray[2].id;
+        result.nickname = pkmnArray[2].name;
+        result.atk1 = pkmnArray[2].attackIds[0];
+        result.atk2 = pkmnArray[2].attackIds[1];
+        result.atk3 = pkmnArray[2].attackIds[2];
+        result.atk4 = pkmnArray[2].attackIds[3];
+        myTeam.set3 = result;
+        result = new set_1.Set();
+        result.setId = pkmnArray[3].setId;
+        result.pokemonId = pkmnArray[3].id;
+        result.nickname = pkmnArray[3].name;
+        result.atk1 = pkmnArray[3].attackIds[0];
+        result.atk2 = pkmnArray[3].attackIds[1];
+        result.atk3 = pkmnArray[3].attackIds[2];
+        result.atk4 = pkmnArray[3].attackIds[3];
+        myTeam.set4 = result;
+        result = new set_1.Set();
+        result.setId = pkmnArray[4].setId;
+        result.pokemonId = pkmnArray[4].id;
+        result.nickname = pkmnArray[4].name;
+        result.atk1 = pkmnArray[4].attackIds[0];
+        result.atk2 = pkmnArray[4].attackIds[1];
+        result.atk3 = pkmnArray[4].attackIds[2];
+        result.atk4 = pkmnArray[4].attackIds[3];
+        myTeam.set5 = result;
+        result = new set_1.Set();
+        result.setId = pkmnArray[5].setId;
+        result.pokemonId = pkmnArray[5].id;
+        result.nickname = pkmnArray[5].name;
+        result.atk1 = pkmnArray[5].attackIds[0];
+        result.atk2 = pkmnArray[5].attackIds[1];
+        result.atk3 = pkmnArray[5].attackIds[2];
+        result.atk4 = pkmnArray[5].attackIds[3];
+        myTeam.set6 = result;
+        return myTeam;
+    };
+    ConvertService.prototype.setToPokeapi = function (set, trainerID) {
+        var result = new pokemon_1.PokeAPI();
+        var pkmn = this.pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
+        result.attackIds[0] = set.atk1;
+        result.attackIds[1] = set.atk2;
+        result.attackIds[2] = set.atk3;
+        result.attackIds[3] = set.atk4;
+        result.id = set.pokemonId;
+        result.moves = pkmn.moves;
+        result.moveset[0] = this.movedex[set.atk1].name;
+        result.moveset[1] = this.movedex[set.atk2].name;
+        result.moveset[2] = this.movedex[set.atk3].name;
+        result.moveset[3] = this.movedex[set.atk4].name;
+        result.name = pkmn.name;
+        result.sprite = pkmn.sprite;
+        result.stats = pkmn.stats;
+        result.trainerId = trainerID;
+        result.types = pkmn.types;
+        return result;
+    };
+    /**
+     * For some reason, my back end team didn't want to send me an array of Sets,
+     * so I can't write a loop
+     * @param myTeam The team to convert from
+     * @param trainerID The owner of the team
+     */
+    ConvertService.prototype.teamToPokeTeam = function (myTeam, trainerID) {
+        var result;
+        var resultArray = [];
+        // Find my pokemon in the pokedex using (id - 1) because we're zero-indexed and the pokedex is not
+        result = Object.assign(this.pokedex[myTeam.set1.pokemonId - 1]);
+        // These fields are being provided by the pokedex and do not need to be set
+        // result.moves = pkmn.moves;
+        // result.name = pkmn.name;
+        // result.sprite = pkmn.sprite;
+        // result.stats = pkmn.stats;
+        // result.types = pkmn.types;
+        // Pokemon 1
+        result.id = myTeam.set1.pokemonId;
+        result.setId = myTeam.set1.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set1.atk1;
+        result.attackIds[1] = myTeam.set1.atk2;
+        result.attackIds[2] = myTeam.set1.atk3;
+        result.attackIds[3] = myTeam.set1.atk4;
+        result.moveset[0] = this.movedex[myTeam.set1.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set1.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set1.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set1.atk4].name;
+        resultArray.push(result);
+        // Pokemon 2
+        result = Object.assign(this.pokedex[myTeam.set2.pokemonId - 1]);
+        result.id = myTeam.set2.pokemonId;
+        result.setId = myTeam.set2.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set2.atk1;
+        result.attackIds[1] = myTeam.set2.atk2;
+        result.attackIds[2] = myTeam.set2.atk3;
+        result.attackIds[3] = myTeam.set2.atk4;
+        result.moveset[0] = this.movedex[myTeam.set2.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set2.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set2.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set2.atk4].name;
+        resultArray.push(result);
+        // Pokemon 3
+        result = Object.assign(this.pokedex[myTeam.set3.pokemonId - 1]);
+        result.id = myTeam.set3.pokemonId;
+        result.setId = myTeam.set3.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set3.atk1;
+        result.attackIds[1] = myTeam.set3.atk2;
+        result.attackIds[2] = myTeam.set3.atk3;
+        result.attackIds[3] = myTeam.set3.atk4;
+        result.moveset[0] = this.movedex[myTeam.set3.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set3.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set3.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set3.atk4].name;
+        resultArray.push(result);
+        // Pokemon 4
+        result = Object.assign(this.pokedex[myTeam.set4.pokemonId - 1]);
+        result.id = myTeam.set4.pokemonId;
+        result.setId = myTeam.set4.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set4.atk1;
+        result.attackIds[1] = myTeam.set4.atk2;
+        result.attackIds[2] = myTeam.set4.atk3;
+        result.attackIds[3] = myTeam.set4.atk4;
+        result.moveset[0] = this.movedex[myTeam.set4.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set4.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set4.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set4.atk4].name;
+        resultArray.push(result);
+        // Pokemon 5
+        result = Object.assign(this.pokedex[myTeam.set5.pokemonId - 1]);
+        result.id = myTeam.set5.pokemonId;
+        result.setId = myTeam.set5.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set5.atk1;
+        result.attackIds[1] = myTeam.set5.atk2;
+        result.attackIds[2] = myTeam.set5.atk3;
+        result.attackIds[3] = myTeam.set5.atk4;
+        result.moveset[0] = this.movedex[myTeam.set5.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set5.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set5.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set5.atk4].name;
+        resultArray.push(result);
+        // Pokemon 6
+        result = Object.assign(this.pokedex[myTeam.set6.pokemonId - 1]);
+        result.id = myTeam.set6.pokemonId;
+        result.setId = myTeam.set6.setId;
+        result.trainerId = trainerID;
+        result.attackIds[0] = myTeam.set6.atk1;
+        result.attackIds[1] = myTeam.set6.atk2;
+        result.attackIds[2] = myTeam.set6.atk3;
+        result.attackIds[3] = myTeam.set6.atk4;
+        result.moveset[0] = this.movedex[myTeam.set6.atk1].name;
+        result.moveset[1] = this.movedex[myTeam.set6.atk2].name;
+        result.moveset[2] = this.movedex[myTeam.set6.atk3].name;
+        result.moveset[3] = this.movedex[myTeam.set6.atk4].name;
+        resultArray.push(result);
+        return resultArray;
+    };
+    ConvertService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object])
+    ], ConvertService);
+    return ConvertService;
+    var _a, _b;
+}());
+exports.ConvertService = ConvertService;
+//# sourceMappingURL=convert.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/feature.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var BehaviorSubject_1 = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
+var FeatureService = (function () {
+    function FeatureService(http) {
+        this.http = http;
+        this.featTeamSource = new BehaviorSubject_1.BehaviorSubject(JSON.parse(localStorage.getItem('featTeams')));
+        this.featuredTeams = this.featTeamSource.asObservable();
+    }
+    FeatureService.prototype.getFeaturedTeams = function () {
+        // const body = new HttpParams();
+        return this.http.get('featured'); // , body);
+    };
+    FeatureService.prototype.changeFeaturedTeams = function (featTeams) {
+        this.featTeamSource.next(featTeams);
+        localStorage.setItem('featTeams', JSON.stringify(featTeams));
+    };
+    FeatureService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
+    ], FeatureService);
+    return FeatureService;
+    var _a;
+}());
+exports.FeatureService = FeatureService;
+//# sourceMappingURL=feature.service.js.map
+
+/***/ }),
+
 /***/ "./src/app/services/login.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1657,6 +2098,7 @@ var LoginService = (function () {
         return this.http.post('login', body);
     };
     LoginService.prototype.logout = function () {
+        localStorage.clear(); // Seems important yeah?
         return this.http.get('logout');
     };
     LoginService.prototype.changeTrainer = function (trainer) {
@@ -1668,7 +2110,7 @@ var LoginService = (function () {
         localStorage.setItem('sets', JSON.stringify(sets));
     };
     LoginService.prototype.changeTeam = function (team) {
-        this.setSource.next(team);
+        this.teamSource.next(team);
         localStorage.setItem('teams', JSON.stringify(team));
     };
     LoginService = __decorate([
@@ -1811,16 +2253,16 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var TeamService = (function () {
-    function TeamService() {
-        // Assigns the value of types to their respective image
-        this.types = new type_service_1.TypeService();
+    function TeamService(types) {
+        this.types = types;
+        this.curTeam = new Array();
         // Making my team
-        this.pkmn1 = new pokemon_1.Pokemon();
-        this.pkmn2 = new pokemon_1.Pokemon();
-        this.pkmn3 = new pokemon_1.Pokemon();
-        this.pkmn4 = new pokemon_1.Pokemon();
-        this.pkmn5 = new pokemon_1.Pokemon();
-        this.pkmn6 = new pokemon_1.Pokemon();
+        this.pkmn1 = new pokemon_1.PokeAPI();
+        this.pkmn2 = new pokemon_1.PokeAPI();
+        this.pkmn3 = new pokemon_1.PokeAPI();
+        this.pkmn4 = new pokemon_1.PokeAPI();
+        this.pkmn5 = new pokemon_1.PokeAPI();
+        this.pkmn6 = new pokemon_1.PokeAPI();
         this.pkmn1.name = 'Jolteon';
         this.pkmn1.trainerId = 1;
         this.pkmn1.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
@@ -1874,9 +2316,10 @@ var TeamService = (function () {
     TeamService.prototype.ngOnInit = function () { };
     TeamService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _a || Object])
     ], TeamService);
     return TeamService;
+    var _a;
 }());
 exports.TeamService = TeamService;
 //# sourceMappingURL=team.service.js.map
@@ -2006,17 +2449,49 @@ exports.ViewUserService = ViewUserService;
 
 /***/ }),
 
+/***/ "./src/app/set.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Set = (function () {
+    function Set() {
+    }
+    return Set;
+}());
+exports.Set = Set;
+//# sourceMappingURL=set.js.map
+
+/***/ }),
+
+/***/ "./src/app/team.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Team = (function () {
+    function Team() {
+    }
+    return Team;
+}());
+exports.Team = Team;
+//# sourceMappingURL=team.js.map
+
+/***/ }),
+
 /***/ "./src/app/teambuilder/teambuilder.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width:100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width:100%;\r\n}\r\n.col-md-12 {\r\n  max-height: 470px;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n  max-height: 450px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n}\r\n.card-stats {\r\n  min-height: 450px;\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  max-height: 500px;\r\n}\r\n.card-footer.ta-center {\r\n  margin-bottom: 0px!important;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n  max-height: 450px;\r\n  margin-left: 4px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n  }\r\n.ta-center {\r\n  text-align: center;\r\n  }\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width:100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width:100%;\r\n}\r\n.col-md-12 {\r\n  max-height: 500px;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #DDDDDD;\r\n          box-shadow: 0px 2px 8px #DDDDDD;\r\n  margin: 18px 0px;\r\n  max-height: 500px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n}\r\n.card-stats {\r\n  min-height: 480px;\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  max-height: 520px;\r\n}\r\n.card-footer.ta-center {\r\n  margin-bottom: 0px!important;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n  min-height: 470px;\r\n  max-height: 470px;\r\n  margin-left: 4px;\r\n}\r\n.move-table {\r\n  width: 100%;\r\n  max-height: 270px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.save-button {\r\n  float: right;\r\n  margin-top: 0px;\r\n  margin-bottom: 5px;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n.bg-select {\r\n  background-color: rgb(255, 200, 200);\r\n}\r\n.bg-default {\r\n  background-color: #DDDDDD;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/teambuilder/teambuilder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <!-- <div *ngFor=\"let move of movedex\">\r\n      {{ move.name }}\r\n    </div> -->\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\r\n            <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n          </div>\r\n          <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n            <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n          </div>\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                  {{ atk }}\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" [src]=\"selectedPkmn.sprite\" title=\"{{ selectedPkmn.sprite }}\" />\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <span class=\"badge badge-primary\">\r\n                Critical Rate\r\n                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %\r\n              </span>\r\n              <br/>\r\n              <img [src]=\"types.img[types.name.indexOf(selectedPkmn.types[0])]\" class=\"type\" />\r\n              <img [src]=\"types.img[types.name.indexOf(selectedPkmn.types[1])]\" class=\"type\" />\r\n              <br/>\r\n              <small>\r\n                <a href=\"https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}\">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\" placeholder=\"Search Pokemon\" [(value)]=\"selectedPkmn.name\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"selectedPkmn\">\r\n                  <tr *ngFor=\"let move of selPkmnMoves; let i = index\">\r\n                    <td>\r\n                      <input type=\"text\" [(ngModel)]=\"move.name\"\r\n                        (change)=\"setSelPkmnMoves(i, moveInput)\" list=\"canLearn\">\r\n                      <datalist id=\"canLearn\">\r\n                        <option *ngFor=\"let canlearn of selectedPkmn.moves\" value=\"{{canlearn.name}}\">\r\n                      </datalist>\r\n                    </td>\r\n                    <td>\r\n                      <img [src]=\"types.img[types.name.indexOf(move.type)]\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <!-- if damageClass is not status, use move.type to calculate damage class -->\r\n                      <img class=\"type\" [src]=\r\n\"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]\">\r\n                    </td>\r\n                    <td>{{ move.power }}</td>\r\n                    <td>{{ move.accuracy }}</td>\r\n                    <td>{{ move.pp }}</td>\r\n                    <td>{{ move.effect }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[1])]\" class=\"type\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[0])]\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.hp }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.atk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.def }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.satk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.sdef }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.spe }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <!-- <div *ngFor=\"let move of movedex\">\r\n      {{ move.name }}\r\n    </div> -->\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\" [style.background-color]=\"(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\r\n            <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center\" (click)=\"selectTeamPokemon(i, pkmn)\" role=\"button\">\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n            <h4 class=\"title\">\r\n              {{ favTeam[i].name | titlecase}}\r\n            </h4>\r\n          </div>\r\n\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                  {{ atk }}\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" [src]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \"\r\n              [title]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \" />\r\n            <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <span class=\"badge badge-primary\">\r\n                Critical Rate\r\n                <br/> {{ (selectedPkmn) ? (selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2') : '' }} %\r\n              </span>\r\n              <br/>\r\n              <!--[src]=\"(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]\"-->\r\n              <img class=\"type\"\r\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : '' \" />\r\n              <img class=\"type\"\r\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' \" />\r\n              <br/>\r\n              <small>\r\n                <a [href]=\"(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/selectedPkmn.name' : '' \">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\" [(value)]=\"(selectedPkmn) ? selectedPkmn.name : sortBy \">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive move-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"selectedPkmn\">\r\n                  <tr *ngFor=\"let move of selPkmnMoves; let i = index\">\r\n                    <td>\r\n                      <input type=\"text\" [(ngModel)]=\"selPkmnMoves[i].name\" name=\"moveInput{{i}}\" list=\"canLearn\"\r\n                        (change)=\"setSelPkmnMoves(i, selPkmnMoves[i].name)\">\r\n                      <datalist id=\"canLearn\">\r\n                        <option *ngFor=\"let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending\" value=\"{{canlearn.name}}\">\r\n                      </datalist>\r\n                    </td>\r\n                    <td>\r\n                      <img [src]=\"types.img[types.name.indexOf(move.type)]\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img class=\"type\" [src]=\"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]\">\r\n                    </td>\r\n                    <td>{{ move.power }}</td>\r\n                    <td>{{ move.accuracy }}</td>\r\n                    <td>{{ move.pp }}</td>\r\n                    <td>{{ move.effect }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n            <button class=\"btn btn-primary btn-sm save-button\" (click)=\"savePokemon()\">\r\n              <i class=\"material-icons\">save</i>\r\n              {{ (selected === -1) ? 'Save to Pokemon Box' : 'Save to Team' }}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\" (click)=\"selectNewPokemon(pkmn)\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[1])]\" class=\"type\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[0])]\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.hp }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.atk }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.def }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.satk }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.sdef }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.spe }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -2036,25 +2511,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
 var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
+var move_1 = __webpack_require__("./src/app/move.ts");
 var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
 var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
+var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
 var Chartist = __webpack_require__("./node_modules/chartist/dist/chartist.js");
 var TeambuilderComponent = (function () {
-    function TeambuilderComponent(pokemonService, moveService) {
+    function TeambuilderComponent(convertService, pokemonService, moveService, teamService, types) {
+        // Assign my placeholder favTeam using teamService
+        // this.favTeam = this.teamService.favTeam;
+        this.convertService = convertService;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
-        // Assigns the value of types to their respective image
-        this.types = new type_service_1.TypeService();
-        // Assign my favTeam using teamService
-        this.teamService = new team_service_1.TeamService();
-        this.favTeam = this.teamService.favTeam;
-        // Make a team full of missingno
-        this.curTeam = new Array();
-        for (var i = 0; i < 6; i++) {
-            this.curTeam.push(new pokemon_1.PokeAPI());
+        this.teamService = teamService;
+        this.types = types;
+        // Assign my favTeam using localStorage or from session if one exists
+        this.trainer = JSON.parse(localStorage.getItem('trainer'));
+        this.myTeam = JSON.parse(localStorage.getItem('teams'));
+        if (this.myTeam && this.trainer) {
+            this.favTeam = this.convertService.teamToPokeTeam(this.myTeam, this.trainer.id);
+        }
+        else {
+            this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+        }
+        // if null, get an empty team
+        if (!this.favTeam) {
+            this.favTeam = new Array();
+            for (var i = 0; i < 6; i++) {
+                this.favTeam.push(new pokemon_1.PokeAPI());
+            }
         }
         // My default selected Pokemon's attacks
         this.selPkmnMoves = new Array();
@@ -2103,34 +2592,103 @@ var TeambuilderComponent = (function () {
         }
         this.sortBy = this.pkmnTableColNames[i];
     };
-    TeambuilderComponent.prototype.selectTeamPokemon = function (i, pkmn) {
-        // TODO: Actually modify our pokemon if any changes are made to it
-        this.selected = i;
-        this.selectPokemon(pkmn);
-    };
-    TeambuilderComponent.prototype.selectNewPokemon = function (pkmn) {
-    };
+    /**
+     * Shows you detailed information about your Pokemon, specifically their attacks.
+     * If a pokemon from the search box is selected, give them 4 empty attacks
+     * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
+     */
     TeambuilderComponent.prototype.selectPokemon = function (pkmn) {
         this.selectedPkmn = pkmn;
         this.loadStatChart();
+        this.selPkmnMoves = new Array();
+        var myMove;
         // Assign detailed attack info into selPkmnMoves
-        if (!!this.selectedPkmn.attackIds.length) {
-            for (var i = 0; i < this.selectedPkmn.attackIds.length; i++) {
-                // subtract 1 because our json is 1-indexed while arrays are 0-indexed
-                this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
-                if (!!this.selPkmnMoves[i].effectChance) {
-                    this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
-                    String(this.selPkmnMoves[i].effectChance)); // with this
-                }
+        for (var i = 0; i < this.selectedPkmn.attackIds.length; i++) {
+            // subtract 1 because our json is 1-indexed while arrays are 0-indexed
+            myMove = this.movedex[this.selectedPkmn.attackIds[i] - 1];
+            if (myMove) {
+                this.selPkmnMoves[i] = Object.assign(myMove);
+            }
+            else {
+                myMove = new move_1.Move();
+                myMove.name = '';
+                this.selPkmnMoves[i] = myMove;
+            }
+            if (this.selPkmnMoves[i].effectChance) {
+                this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+                String(this.selPkmnMoves[i].effectChance)); // with this
             }
         }
-        else {
-            for (var i = 0; i < 4; i++) {
-                this.selPkmnMoves[i] = this.movedex[164]; // 164 is my placeholder
-            }
+        while (this.selPkmnMoves.length < 4) {
+            this.selPkmnMoves.push(new move_1.Move());
         }
     };
     /**
+     * Selects a pokemon from our team to edit. If already selected, cancel editing
+     * @param i the position of the team your pokemon is in
+     * @param pkmn the pokemon itself
+     */
+    TeambuilderComponent.prototype.selectTeamPokemon = function (i, pkmn) {
+        if (this.selected !== i) {
+            this.selected = i;
+        }
+        else {
+            this.selected = -1;
+        }
+        this.selectPokemon(pkmn);
+    };
+    /**
+     * If an event needs to occur when selecting a Pokemon from the Pokemon Search box, do it here
+     * @param pkmn The pokemon selected
+     */
+    TeambuilderComponent.prototype.selectNewPokemon = function (pkmn) {
+        if (this.favTeam.length < 6) {
+            this.selected = this.favTeam.length;
+        }
+        // Assigns a new instance of the Pokemon, so we don't edit the pokedex itself
+        this.selectPokemon(Object.assign(pkmn));
+    };
+    /**
+     * Triggers when the save button is pressed
+     */
+    TeambuilderComponent.prototype.savePokemon = function () {
+        var myTrainer;
+        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+        // wipe our selected Pokemon's old attacks
+        this.selectedPkmn.attackIds = [null, null, null, null];
+        this.selectedPkmn.moveset = [null, null, null, null];
+        // If our trainer is logged in, assign trainer ID
+        if (myTrainer) {
+            this.selectedPkmn.trainerId = myTrainer.id;
+        }
+        // Save our Pokemon's attacks
+        for (var i = 0; i < 4; i++) {
+            // if the move exists
+            if (this.selPkmnMoves[i].id) {
+                this.selectedPkmn.attackIds[i] = this.selPkmnMoves[i].id;
+                this.selectedPkmn.moveset[i] = this.selPkmnMoves[i].name;
+            }
+            else {
+                // if not, assign a placeholder
+                console.log(this.selPkmnMoves[i]);
+                var m = new move_1.Move();
+                m.name = '';
+                this.selPkmnMoves[i] = m;
+            }
+        }
+        // Add the Pokemon to our team
+        if (this.selected >= 0) {
+            this.favTeam[this.selected] = this.selectedPkmn;
+        }
+        // Save to box
+        if (myTrainer) {
+            myTrainer.sets.push(this.selectedPkmn);
+        }
+        // Put our favTeam in local storage so even an unregistered user can use our service
+        localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+    };
+    /**
+     * Deprecated
      * Reads json file created by pokeAPI and populates our pokedex with 151 Pokemon
      */
     TeambuilderComponent.prototype.getPokeAPIjson = function () {
@@ -2142,6 +2700,7 @@ var TeambuilderComponent = (function () {
         });
     };
     /**
+     * Deprecated
      * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
      * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
      */
@@ -2162,11 +2721,24 @@ var TeambuilderComponent = (function () {
      * @param attackName the attack name
      */
     TeambuilderComponent.prototype.setSelPkmnMoves = function (i, attackName) {
-        alert(i + ' ' + attackName); // TODO:
-        for (var _i = 0, _a = this.movedex; _i < _a.length; _i++) {
-            var move = _a[_i];
-            if (move.name === attackName) {
-                this.selPkmnMoves[i] = move;
+        var myMove;
+        console.log('inside setSelPkmnMoves() ' + i + ' ' + attackName);
+        if (attackName === '') {
+            myMove = new move_1.Move();
+            myMove.name = '';
+            this.selPkmnMoves[i] = myMove;
+        }
+        else {
+            for (var _i = 0, _a = this.movedex; _i < _a.length; _i++) {
+                var move = _a[_i];
+                if (move.name === attackName) {
+                    this.selPkmnMoves[i] = Object.assign(move);
+                    if (this.selPkmnMoves[i].effectChance) {
+                        this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+                        String(this.selPkmnMoves[i].effectChance)); // with this
+                    }
+                    break;
+                }
             }
         }
     };
@@ -2235,74 +2807,35 @@ var TeambuilderComponent = (function () {
         this.startAnimationForBarChart(pokemonStatChart);
     };
     TeambuilderComponent.prototype.ngOnInit = function () {
-        // Load 151 Pokemon into this.pokedex
-        this.getPokeAPIjson();
-        this.getMoveAPIjson();
+        var _this = this;
+        // Load 151 Pokemon into pokedex and 164 moves into movedex
+        // this.getPokeAPIjson();
+        // this.getMoveAPIjson();
+        // Using a forkJoin to guarantee both dex being loaded before execution
+        Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+            var pokeAPIArray = _a[0], moveArray = _a[1];
+            _this.pokedex = pokeAPIArray;
+            _this.movedex = moveArray;
+            // calling these functions here because this is the only location where
+            // we can guarantee our pokedex and movedex have been fully loaded
+            _this.selectPokemon(_this.favTeam[0]);
+            _this.loadStatChart();
+        });
     };
     TeambuilderComponent = __decorate([
         core_1.Component({
             selector: 'app-teambuilder',
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
-            providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
+            providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService, convert_service_1.ConvertService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _a || Object, typeof (_b = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _b || Object, typeof (_c = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _c || Object, typeof (_d = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _d || Object, typeof (_e = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _e || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
-    var _a, _b;
+    var _a, _b, _c, _d, _e;
 }());
 exports.TeambuilderComponent = TeambuilderComponent;
 //# sourceMappingURL=teambuilder.component.js.map
-
-/***/ }),
-
-/***/ "./src/app/upgrade/upgrade.component.css":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/upgrade/upgrade.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-8 col-md-offset-2\">\r\n                <div class=\"card\">\r\n                    <div class=\"card-header text-center\" data-background-color=\"red\">\r\n                        <h4 class=\"title\">Material Dashboard PRO</h4>\r\n                        <p class=\"category\">Are you looking for more components? Please check our Premium Version of Material Dashboard.</p>\r\n                    </div>\r\n                    <div class=\"card-content\">\r\n                        <div class=\"table-responsive table-upgrade\">\r\n                            <table class=\"table\">\r\n                                <thead>\r\n                                    <tr>\r\n                                        <th></th>\r\n                                        <th class=\"text-center\">Free</th>\r\n                                        <th class=\"text-center\">PRO</th>\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td>Components</td>\r\n                                        <td class=\"text-center\">60</td>\r\n                                        <td class=\"text-center\">200</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>Plugins</td>\r\n                                        <td class=\"text-center\">2</td>\r\n                                        <td class=\"text-center\">15</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>Example Pages</td>\r\n                                        <td class=\"text-center\">3</td>\r\n                                        <td class=\"text-center\">27</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>Login, Register, Pricing, Lock Pages</td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-times text-danger\"></i></td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-check text-success\"></i></td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-times text-danger\"></i></td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-check text-success\"></i></td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>Mini Sidebar</td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-times text-danger\"></i></td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-check text-success\"></i></td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>Premium Support</td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-times text-danger\"></i></td>\r\n                                        <td class=\"text-center\"><i class=\"fa fa-check text-success\"></i></td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td></td>\r\n                                        <td class=\"text-center\">Free</td>\r\n                                        <td class=\"text-center\">Just $49</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td class=\"text-center\"></td>\r\n                                        <td class=\"text-center\">\r\n                                            <a href=\"#\" class=\"btn btn-round btn-fill btn-default disabled\">Current Version</a>\r\n                                        </td>\r\n                                        <td class=\"text-center\">\r\n                                            <a target=\"_blank\" href=\"https://www.creative-tim.com/product/material-dashboard-pro-angular2/?ref=md-free-angular-upgrade-local\" class=\"btn btn-round btn-fill btn-info\">Upgrade to PRO</a>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/upgrade/upgrade.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var UpgradeComponent = (function () {
-    function UpgradeComponent() {
-    }
-    UpgradeComponent.prototype.ngOnInit = function () {
-    };
-    UpgradeComponent = __decorate([
-        core_1.Component({
-            selector: 'app-upgrade',
-            template: __webpack_require__("./src/app/upgrade/upgrade.component.html"),
-            styles: [__webpack_require__("./src/app/upgrade/upgrade.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], UpgradeComponent);
-    return UpgradeComponent;
-}());
-exports.UpgradeComponent = UpgradeComponent;
-//# sourceMappingURL=upgrade.component.js.map
 
 /***/ }),
 

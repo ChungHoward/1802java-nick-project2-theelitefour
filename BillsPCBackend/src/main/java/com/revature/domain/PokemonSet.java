@@ -31,7 +31,7 @@ public class PokemonSet {
 	@Column(name="NICKNAME")
 	private String nickname;
 	
-	@JsonIgnore()
+//	@JsonIgnore()
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;

@@ -1,4 +1,4 @@
-export interface Set {
+export class Set {
     setId: number;
     nickname: string;
     pokemonId: number;
@@ -6,4 +6,6 @@ export interface Set {
     atk2: number;
     atk3: number;
     atk4: number;
+
+    constructor() {}
 }

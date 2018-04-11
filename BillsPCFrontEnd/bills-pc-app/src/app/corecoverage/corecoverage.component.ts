@@ -1,9 +1,10 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Pokemon } from 'app/pokemon';
+import { Pokemon, PokeAPI } from 'app/pokemon';
 import { PokemonService } from 'app/services/pokemon.service';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 import * as Chartist from 'chartist';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-corecoverage',
@@ -14,14 +15,13 @@ import * as Chartist from 'chartist';
 export class CoreCoverageComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
   // The 6 pokemon on my team
-  favTeam: Array<Pokemon>;
-  // This service generates 6 sample pokemon for me
-  teamService: TeamService;
+  favTeam: Array<PokeAPI>;
+
   // Contains the image for every type and damage class
   types: TypeService;
 
   // This is the Pokemon we selected
-  selectedPkmn: Pokemon;
+  selectedPkmn: PokeAPI;
 
   // The number of resistances we would like on an ideal partner
   @Input() threshold = 0;
@@ -34,13 +34,19 @@ export class CoreCoverageComponent implements OnInit {
   // The ID of types that each Pokemon on your team are weak to
   weaknesses: Array<Array<number>>;
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private teamService: TeamService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
     // Assign my favTeam using teamService
-    this.teamService = new TeamService();
-    this.favTeam = this.teamService.favTeam;
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
 
     // My default selected Pokemon
     this.selectedPkmn = this.favTeam[0];
@@ -86,8 +92,15 @@ export class CoreCoverageComponent implements OnInit {
       // get pkmn's types
       type1ID = this.types.name.indexOf(pkmn.types[0]);
       type2ID = this.types.name.indexOf(pkmn.types[1]);
+      // if type2 is not defined, set it to none
+      if (type2ID < 0) {
+        type2ID = 15;
+      }
       // Find attacks that are super-effective against my type
       for (let i = 0; i < this.types.chart.length; i++) {
+        // Test
+        console.log(this.types.name[i] + ' vs ' + this.types.name[type1ID] + ' ' + this.types.name[type2ID]
+        + ' = ' + this.types.chart[i][type1ID] * this.types.chart[i][type2ID]);
         // chart[A][D], A=attack type, D=defending type -- if the multiplier is higher than 1, the move is super effective
         if (this.types.chart[i][type1ID] * this.types.chart[i][type2ID] > 1) {
           // add the super effective move ID to myWeaknesses

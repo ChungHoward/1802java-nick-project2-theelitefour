@@ -24,6 +24,7 @@ export class LoginService {
   }
 
   logout(): Observable<boolean> {
+    localStorage.clear(); // Seems important yeah?
     return this.http.get<boolean>('logout');
   }
 
@@ -37,8 +38,8 @@ export class LoginService {
     localStorage.setItem('sets', JSON.stringify(sets));
   }
 
-  changeTeam(team: Array<Set>) {
-    this.setSource.next(team);
+  changeTeam(team: Array<Team>) {
+    this.teamSource.next(team);
     localStorage.setItem('teams', JSON.stringify(team));
   }
 }
