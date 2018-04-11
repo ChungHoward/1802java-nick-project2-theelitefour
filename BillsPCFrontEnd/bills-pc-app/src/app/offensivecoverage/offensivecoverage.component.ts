@@ -16,8 +16,6 @@ import { TypeService } from 'app/services/type.service';
 export class OffensiveCoverageComponent implements OnInit {
   // The placeholder 6 pokemon on my team
   favTeam: Array<Pokemon>;
-  // This service generates 6 sample pokemon for me
-  teamService: TeamService;
   // List of types of damaging moves
   teamMoveTypes: Array<string>;
 
@@ -29,9 +27,9 @@ export class OffensiveCoverageComponent implements OnInit {
   coveredTypes: Array<Array<string>>;
   uncoveredTypes: Array<Array<string>>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService, private types: TypeService) {
+  constructor(private pokemonService: PokemonService, private moveService: MoveService,
+              private teamService: TeamService, private types: TypeService) {
     // Assign my favTeam using teamService
-    this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
     // Initialize
     this.teamMoveTypes = new Array<string>();

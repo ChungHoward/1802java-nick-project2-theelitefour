@@ -18,6 +18,7 @@ export class LoginService {
   }
 
   logout(): Observable<boolean> {
+    localStorage.clear(); // Seems important yeah?
     return this.http.get<boolean>('logout');
   }
 

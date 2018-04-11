@@ -6,15 +6,17 @@
     <div class="row">
       <!-- Loop through and print every Pokemon in favTeam -->
       <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
-        <div class="card">
+        <div class="card" [style.background-color]="(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'">
           <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
             <img [src]="favTeam[i].sprite" alt="" />
           </div>
 
-          <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
+          <div class="card-content ta-center" (click)="selectTeamPokemon(i, pkmn)" role="button">
             <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
             <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
-            <h4 class="title">{{ favTeam[i].name }}</h4>
+            <h4 class="title">
+              {{ favTeam[i].name | titlecase}}
+            </h4>
           </div>
           
           <div class="card-footer ta-center">
@@ -49,8 +51,8 @@
                 <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
               </span>
               <br/>
-              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
               <img [src]="types.img[types.name.indexOf(selectedPkmn.types[1])]" class="type" />
+              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
               <br/>
               <small>
                 <a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a>
@@ -81,10 +83,10 @@
                 <tbody *ngIf="selectedPkmn">
                   <tr *ngFor="let move of selPkmnMoves; let i = index">
                     <td>
-                      <input type="text" [(ngModel)]="move.name" name="moveInput{{i}}"
-                         list="canLearn" (change)="setSelPkmnMoves(i)">
+                      <input type="text" [(ngModel)]="selPkmnMoves[i].name" name="moveInput{{i}}"
+                         list="canLearn" (change)="setSelPkmnMoves(i, selPkmnMoves[i].name)">
                       <datalist id="canLearn">
-                        <option *ngFor="let canlearn of selectedPkmn.moves" value="{{canlearn.name}}">
+                        <option *ngFor="let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending" value="{{canlearn.name}}">
                       </datalist>
                     </td>
                     <td>
@@ -102,7 +104,11 @@
                 </tbody>
               </table>
             </div>
-
+            <button class="btn btn-primary btn-sm save-button"
+              (click)="savePokemon()">
+              <i class="material-icons">save</i>
+              Save
+            </button>
           </div>
         </div>
       </div>

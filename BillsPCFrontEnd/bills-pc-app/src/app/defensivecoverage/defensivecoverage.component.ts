@@ -15,8 +15,6 @@ export class DefensiveCoverageComponent implements OnInit {
   selectedPkmn: Pokemon;
   // My favorite team - there can only be one
   favTeam: Array<Pokemon>;
-  // The service where I make 6 sample pokemon for temporary use
-  teamService: TeamService;
   // Contains the images for every type and damage class
   types: TypeService;
   // The team being built or viewed
@@ -29,12 +27,11 @@ export class DefensiveCoverageComponent implements OnInit {
   myTable: number[][];
   rowColor: string[];
 
-  constructor() {
+  constructor(private teamService: TeamService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
     /* Assign my favTeam using teamService */
-    this.teamService = new TeamService();
     this.favTeam = this.teamService.favTeam;
     this.curTeam = new Array<Pokemon>();
     this.curTeam = Object.assign([], this.favTeam);

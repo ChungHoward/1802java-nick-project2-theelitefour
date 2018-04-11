@@ -16,7 +16,7 @@
   width:100%;
 }
 .col-md-12 {
-  max-height: 470px;
+  max-height: 480px;
 }
 /* Card styling */
 .card {
@@ -88,10 +88,15 @@ td input {
 }
 .material-icons.md-18 {
   font-size: 18px;
-  }
+}
 .ta-center {
   text-align: center;
-  }
+}
+.save-button {
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
 .no-padding {
   padding: 0px;
 }
@@ -100,4 +105,10 @@ td input {
 }
 .mt-10 {
   margin-top: 10px;
+}
+.bg-select {
+  background-color: rgb(255, 200, 200);
+}
+.bg-default {
+  background-color: rgb(255, 255, 255);
 }

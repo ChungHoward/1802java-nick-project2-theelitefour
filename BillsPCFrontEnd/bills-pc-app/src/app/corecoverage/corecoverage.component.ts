@@ -15,8 +15,7 @@ export class CoreCoverageComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
   // The 6 pokemon on my team
   favTeam: Array<Pokemon>;
-  // This service generates 6 sample pokemon for me
-  teamService: TeamService;
+
   // Contains the image for every type and damage class
   types: TypeService;
 
@@ -34,12 +33,11 @@ export class CoreCoverageComponent implements OnInit {
   // The ID of types that each Pokemon on your team are weak to
   weaknesses: Array<Array<number>>;
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private teamService: TeamService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
-    // Assign my favTeam using teamService
-    this.teamService = new TeamService();
+    // Team Service generates me 6 sample pokemon
     this.favTeam = this.teamService.favTeam;
 
     // My default selected Pokemon
