@@ -29,13 +29,16 @@ export class LoginService {
 
   changeTrainer(trainer: Trainer) {
     this.trainerSource.next(trainer);
+    localStorage.setItem('trainer', JSON.stringify(trainer));
   }
 
   changeSets(sets: Array<Set>) {
     this.setSource.next(sets);
+    localStorage.setItem('sets', JSON.stringify(sets));
   }
 
   changeTeam(team: Array<Set>) {
     this.setSource.next(team);
+    localStorage.setItem('teams', JSON.stringify(team));
   }
 }
