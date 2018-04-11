@@ -28,10 +28,16 @@
 
           <div class="card-content">
             <form class="row poke-search" role="search">
-              <div class="form-group col-sm-12 col-xl-12">
+              <div class="form-group col-sm-7 col-xl-7">
                 <h4>My Team</h4>
                 <!-- <input [(ngModel)]="newTeamName" name="newTeamName" type="text" class="form-control" placeholder="Team Name" [(value)]="Untitled">
                 <span class="material-input"></span> -->
+              </div>
+              <div class="col-sm-4 col-xl-4 ta-right">
+                <button class="btn btn-primary btn-sm save-button" (click)="savePokemon()">
+                  <i class="material-icons">save</i>
+                  Save Team
+                </button>
               </div>
             </form>
           </div>
@@ -47,7 +53,7 @@
                   </tr>
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
-                  <tr *ngFor="let pkmn of favTeam; let i = index" dnd-sortable [sortableIndex]="i">
+                  <tr *ngFor="let pkmn of favTeam; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="updateTeam(pkmn, i)">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
@@ -84,8 +90,7 @@
             <form class="row form-group label-floating is-empty poke-search" role="search">
               <div class="col-sm-11 col-xl-11">
                 <label class="control-label" for="searchBox">Search Box</label>
-                <input type="text" class="form-control" id="searchBox" name="searchBox"
-                  [(ngModel)]="searchBox">
+                <input type="text" class="form-control" id="searchBox" name="searchBox" [(ngModel)]="searchBox">
                 <span class="material-input"></span>
               </div>
             </form>
@@ -105,8 +110,9 @@
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="myBox">
                   <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->
-                  <tr *ngFor="let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index" dnd-sortable [sortableIndex]="i">
-                    <td class="ta-center" (click)="selectPokemon(boxpkmn)" role="button">{{ boxpkmn.name }}</td>
+                  <tr *ngFor="let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index" dnd-sortable [sortableIndex]="i"
+                    (onDropSuccess)="updateBox(boxpkmn, i)">
+                    <td class="ta-center" (click)="selectPokemon(boxpkmn)" role="button">{{ boxpkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}" class="type">
                       <img src="{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}" class="type">

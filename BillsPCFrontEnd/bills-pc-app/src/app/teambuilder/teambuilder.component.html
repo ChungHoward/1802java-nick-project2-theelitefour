@@ -53,7 +53,8 @@
                 <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
               </span>
               <br/>
-              <img [src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]" class="type" />
+              <!--[src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]"-->
+              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[1])]" class="type" />
               <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
               <br/>
               <small>

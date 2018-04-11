@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { Trainer } from '../trainer';
@@ -7,7 +7,7 @@ import { Trainer } from '../trainer';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ LoginService ]
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
 
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
       }
     }, error => {
       console.error(error);
-    }
-    );
+    });
   }
 
   ngOnInit() { }
