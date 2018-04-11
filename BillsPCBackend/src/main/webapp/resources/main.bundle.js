@@ -158,6 +158,7 @@ var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var app_routing_1 = __webpack_require__("./src/app/app.routing.ts");
 var components_module_1 = __webpack_require__("./src/app/components/components.module.ts");
+var forms_2 = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 var app_component_1 = __webpack_require__("./src/app/app.component.ts");
 // Pipes
 var filter_pipe_1 = __webpack_require__("./src/app/pipe/filter.pipe.ts");
@@ -205,6 +206,7 @@ var AppModule = (function () {
                 view_users_component_1.ViewUsersComponent
             ],
             imports: [
+                forms_2.ReactiveFormsModule,
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpClientModule,
@@ -2310,7 +2312,7 @@ module.exports = "/* Layout */\r\n.main-content {\r\n    margin-top: 50px;\r\n  
 /***/ "./src/app/view-users/view-users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class = \"card-footer mt-10\">\r\n    <form [formGroup] = \"form\" (ngSubmit) = \"onSubmit\">\r\n      <table class = \"table\">\r\n        <thead class=\"text-primary\">\r\n            <tr>\r\n              <th>Username</th>\r\n              <th>Role</th>\r\n              <th></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor='let user of users; let i = index'>\r\n            <td>{{ user.name }}</td>\r\n            <td>{{ user.role }}</td>\r\n            <td><input type = \"radio\" formControlName = \"promote\" [value] = \"user\" > </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      <p>\r\n          <button type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class = \"card-footer mt-10\">\r\n    <form [formGroup] = \"form\" (ngSubmit) = \"onSubmit()\">\r\n      <table class = \"table\">\r\n        <thead class=\"text-primary\">\r\n            <tr>\r\n              <th>Username</th>\r\n              <th>Role</th>\r\n              <th></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor='let user of users; let i = index'>\r\n            <td>{{ user.name }}</td>\r\n            <td>{{ user.role }}</td>\r\n            <td><input type = \"radio\" formControlName = \"promote\" [value] = \"user\" > </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      <p>\r\n          <button type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2336,6 +2338,10 @@ var ViewUsersComponent = (function () {
     function ViewUsersComponent(viewUserService, fb) {
         this.viewUserService = viewUserService;
         this.fb = fb;
+        this.control = new forms_1.FormControl('', forms_1.Validators.required);
+        this.form = fb.group({
+            'promote': this.control
+        });
     }
     ViewUsersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2343,6 +2349,10 @@ var ViewUsersComponent = (function () {
             alert(JSON.stringify(users));
             _this.users = users;
         });
+    };
+    ViewUsersComponent.prototype.onSubmit = function () {
+        console.log('model-based form submitted');
+        console.log(this.form.value);
     };
     ViewUsersComponent = __decorate([
         core_1.Component({
