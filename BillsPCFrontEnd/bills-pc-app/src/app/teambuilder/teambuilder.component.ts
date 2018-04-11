@@ -56,22 +56,7 @@ export class TeambuilderComponent implements OnInit {
 
     // Assign my placeholder favTeam using teamService
     // this.favTeam = this.teamService.favTeam;
-
-    // Assign my favTeam using localStorage or from session if one exists
-    this.trainer = JSON.parse(localStorage.getItem('trainer'));
-    this.myTeam = JSON.parse(localStorage.getItem('teams'));
-    if (this.myTeam && this.trainer) {
-      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
-    } else {
-      this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
-    }
-    // if null, get an empty team
-    if (!this.favTeam) {
-      this.favTeam = new Array<PokeAPI>();
-      for (let i = 0; i < 6; i++) {
-        this.favTeam.push(new PokeAPI());
-      }
-    }
+    // now using loadTeam() instead
 
     // My default selected Pokemon's attacks
     this.selPkmnMoves = new Array<Move>();
@@ -87,6 +72,23 @@ export class TeambuilderComponent implements OnInit {
     ];
     this.sortBy = ''; // default sort by pokedex order
     this.ascending = true;
+  }
+
+  loadTeam() {
+    this.trainer = JSON.parse(localStorage.getItem('trainer'));
+    this.myTeam = JSON.parse(localStorage.getItem('teams'));
+    if (this.myTeam && this.trainer) {
+      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+    } else {
+      this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    }
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+      for (let i = 0; i < 6; i++) {
+        this.favTeam.push(new PokeAPI());
+      }
+    }
   }
 
   // toggles the show moves/hide moves button
@@ -214,7 +216,7 @@ export class TeambuilderComponent implements OnInit {
     }
     // Save to box
     if (myTrainer) {
-      
+      // TODO:
       myTrainer.sets.push(this.selectedPkmn);
     }
     // Put our favTeam in local storage so even an unregistered user can use our service
@@ -364,6 +366,8 @@ export class TeambuilderComponent implements OnInit {
         // we can guarantee our pokedex and movedex have been fully loaded
         this.selectPokemon(this.favTeam[0]);
         this.loadStatChart();
+        // Assign my favTeam using localStorage or from session if one exists
+        this.loadTeam();
       }
     );
   }
