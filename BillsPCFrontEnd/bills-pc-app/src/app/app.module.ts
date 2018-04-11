@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -34,6 +35,7 @@ import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
 import { ConvertService } from './services/convert.service';
 import { FeatureService } from './services/feature.service';
+import { ViewUserService } from './services/view-user.service';
 
 // Custom Modules
 import { DndModule } from 'ng2-dnd';
@@ -56,6 +58,7 @@ import { DndModule } from 'ng2-dnd';
     ViewUsersComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -72,7 +75,8 @@ import { DndModule } from 'ng2-dnd';
     LoginService,
     RegisterService,
     ConvertService,
-    FeatureService
+    FeatureService,
+    ViewUserService
   ],
   bootstrap: [AppComponent]
 })
