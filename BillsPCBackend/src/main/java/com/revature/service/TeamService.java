@@ -25,4 +25,12 @@ public class TeamService {
 	public List<Team> retrieveFeaturedTeams() {
 		return dao.retrieveFeaturedTeams();
 	}
+	
+	public int createTeam(Team team) {
+		return dao.createTeam(team);
+	}
+	
+	public void updateTeam(Team team) {
+		dao.updateTeam(team);
+	}
 }
