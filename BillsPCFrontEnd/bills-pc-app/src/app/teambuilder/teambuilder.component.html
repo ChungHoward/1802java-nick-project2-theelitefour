@@ -44,25 +44,29 @@
           </div>
 
           <div class="card-content ta-center row">
-            <img class="sprite col-sm-3 col-xl-3" [src]="selectedPkmn.sprite" title="{{ (selectedPkmn) ? selectedPkmn.sprite : '' }}"
-            />
+            <img class="sprite col-sm-3 col-xl-3" [src]=" (selectedPkmn) ? selectedPkmn.sprite : '' "
+              [title]=" (selectedPkmn) ? selectedPkmn.sprite : '' " />
             <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->
             <div class="no-padding col-sm-3 col-xl-3">
               <span class="badge badge-primary">
                 Critical Rate
-                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %
+                <br/> {{ (selectedPkmn) ? (selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2') : '' }} %
               </span>
               <br/>
-              <img [src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]" class="type" />
-              <img [src]="types.img[types.name.indexOf(selectedPkmn.types[0])]" class="type" />
+              <!--[src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]"-->
+              <img class="type"
+              [src]=" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : '' " />
+              <img class="type"
+              [src]=" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' " />
               <br/>
               <small>
-                <a href="https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}">Smogon Analysis</a>
+                <a [href]="(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/selectedPkmn.name' : '' ">Smogon Analysis</a>
               </small>
             </div>
             <form class="row poke-search" role="search">
               <div class="form-group col-sm-4 col-xl-4">
-                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control" placeholder="Search Pokemon" [(value)]="selectedPkmn.name">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                  placeholder="Search Pokemon" [(value)]="(selectedPkmn) ? selectedPkmn.name : sortBy ">
                 <span class="material-input"></span>
               </div>
             </form>

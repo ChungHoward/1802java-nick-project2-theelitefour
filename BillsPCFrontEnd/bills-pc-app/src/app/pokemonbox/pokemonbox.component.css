@@ -44,6 +44,9 @@
 table {
   font-size: 12px;
 }
+th {
+  height: 39px;
+}
 td input {
   width: 100px;
 }
@@ -68,6 +71,7 @@ thead {
 }
 .material-icons.md-18 { font-size: 18px; }
 .ta-center { text-align: center; }
+.ta-right { text-align: right; }
 a i {
   display: inline;
 }
