@@ -13,6 +13,9 @@
             <img [src]="types.img[types.name.indexOf(type[0])]" class="type" />
           </div>
         </div>
+        <div class="ta-center" *ngIf="uncoveredTypes.length === 0">
+          <h3>Congratulations! You have full type coverage!</h3>
+        </div>
       </div>
       <div class="card-content"></div>
     </div>

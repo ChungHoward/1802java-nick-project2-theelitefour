@@ -15,10 +15,10 @@ export class Pokemon {
     this.id = 0;
     this.setId = 0;
     this.trainerId = 1;
-    this.attackIds = [164, 164, 164, 164];
+    this.attackIds = [null, null, null, null];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
-    this.moveset = ['', '', '', ''];
+    this.moveset = [null, null, null, null];
     this.moves = [];
     this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
     this.types = ['normal'];
@@ -41,10 +41,10 @@ export class PokeAPI {
     this.id = 0;
     this.setId = 0;
     this.trainerId = 1;
-    this.attackIds = [164, 164, 164, 164];
+    this.attackIds = [null, null, null, null];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
-    this.moveset = ['', '', '', ''];
+    this.moveset = [null, null, null, null];
     this.moves = [];
     this.stats = {hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29};
     this.types = ['normal'];
