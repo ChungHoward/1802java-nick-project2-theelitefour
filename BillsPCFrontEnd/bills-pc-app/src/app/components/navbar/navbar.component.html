@@ -25,25 +25,25 @@
               Register
             </a>
           </li>
-          </ul>
+        </ul>
       </ng-template>
       <ng-template #elseLogin>
-          <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a>
-            <!-- Profile icon changes depending on role: trainer, pro, admin -->
-            <i class="material-icons" *ngIf="">face</i>
-            <i class="material-icons" *ngIf="">whatshot</i>
-            <i class="material-icons" *ngIf="">supervisor_account</i>
-            {{trainer.username}}
-          </a>
-        </li>
-        <li>
-          <a (click)="logout()">
-            <i class="material-icons">exit_to_app</i>
-            Logout
-          </a>
-        </li>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a>
+              <!-- Profile icon changes depending on role: trainer, pro, admin -->
+              <!-- <i class="material-icons" *ngIf="">face</i>
+              <i class="material-icons" *ngIf="">whatshot</i>
+              <i class="material-icons" *ngIf="">supervisor_account</i> -->
+              Hello {{trainer.name}}
+            </a>
+          </li>
+          <li>
+            <a (click)="logout()">
+              <i class="material-icons">exit_to_app</i>
+              Logout
+            </a>
+          </li>
         </ul>
       </ng-template>
       <form class="navbar-form navbar-right" role="search">

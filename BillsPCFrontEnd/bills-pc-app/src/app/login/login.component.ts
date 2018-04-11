@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loginService.login(this.username, this.password).subscribe(trainer => {
+    this.loginService.login(this.username, this.password).subscribe(result => {
+      const trainer = result[0];
+      const sets = result[1];
+      const teams = result[2];
       alert(JSON.stringify(trainer));
       this.valid = trainer !== null;
 
@@ -31,6 +34,8 @@ export class LoginComponent implements OnInit {
         this.loginService.changeTrainer(trainer);
 
         localStorage.setItem('trainer', JSON.stringify(trainer));
+        localStorage.setItem('sets', JSON.stringify(sets));
+        localStorage.setItem('teams', JSON.stringify(teams));
         this.router.navigate(['/teambuilder']);
       }
     }, error => {

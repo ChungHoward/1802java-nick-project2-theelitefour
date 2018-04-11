@@ -8155,6 +8155,7 @@ if (_global['PromiseRejectionEvent']) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
@@ -8210,6 +8211,63 @@ __webpack_require__("./node_modules/zone.js/dist/zone.js"); // Included with Ang
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
 // import 'intl';  // Run `npm install --save intl`.
+=======
+
+/**
+ * This file includes polyfills needed by Angular and is loaded before the app.
+ * You can add your own extra polyfills to this file.
+ *
+ * This file is divided into 2 sections:
+ *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
+ *      file.
+ *
+ * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
+ * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
+ * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+ *
+ * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/***************************************************************************************************
+ * BROWSER POLYFILLS
+ */
+/** IE9, IE10 and IE11 requires all of the following polyfills. **/
+__webpack_require__("./node_modules/core-js/es6/symbol.js");
+__webpack_require__("./node_modules/core-js/es6/object.js");
+__webpack_require__("./node_modules/core-js/es6/function.js");
+__webpack_require__("./node_modules/core-js/es6/parse-int.js");
+__webpack_require__("./node_modules/core-js/es6/parse-float.js");
+__webpack_require__("./node_modules/core-js/es6/number.js");
+__webpack_require__("./node_modules/core-js/es6/math.js");
+__webpack_require__("./node_modules/core-js/es6/string.js");
+__webpack_require__("./node_modules/core-js/es6/date.js");
+__webpack_require__("./node_modules/core-js/es6/array.js");
+__webpack_require__("./node_modules/core-js/es6/regexp.js");
+__webpack_require__("./node_modules/core-js/es6/map.js");
+__webpack_require__("./node_modules/core-js/es6/set.js");
+/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+__webpack_require__("./node_modules/classlist.js/classList.js"); // Run `npm install --save classlist.js`.
+/** IE10 and IE11 requires the following to support `@angular/animation`. */
+__webpack_require__("./node_modules/web-animations-js/web-animations.min.js"); // Run `npm install --save webå-animations-js`.
+/** Evergreen browsers require these. **/
+__webpack_require__("./node_modules/core-js/es6/reflect.js");
+__webpack_require__("./node_modules/core-js/es7/reflect.js");
+/** ALL Firefox browsers require the following to support `@angular/animation`. **/
+__webpack_require__("./node_modules/web-animations-js/web-animations.min.js"); // Run `npm install --save web-animations-js`.
+/***************************************************************************************************
+ * Zone JS is required by Angular itself.
+ */
+__webpack_require__("./node_modules/zone.js/dist/zone.js"); // Included with Angular CLI.
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+/**
+ * Date, currency, decimal and percent pipes.
+ * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
+ */
+// import 'intl';  // Run `npm install --save intl`.
+>>>>>>> eeb95fd98caa693218a2d73e7ef947ce23ef6aee
 //# sourceMappingURL=polyfills.js.map
 
 /***/ }),

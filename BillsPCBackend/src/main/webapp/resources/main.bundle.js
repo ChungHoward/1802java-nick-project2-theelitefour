@@ -399,7 +399,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\r\n      <ng-template #ifLoggedOut>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a routerLink='login'>\r\n              <i class=\"material-icons\">account_circle</i>\r\n              Login\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink='register'>\r\n              <i class=\"material-icons\">person</i>\r\n              Register\r\n            </a>\r\n          </li>\r\n          </ul>\r\n      </ng-template>\r\n      <ng-template #elseLogin>\r\n          <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>\r\n          <a>\r\n            <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n            <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n            <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i>\r\n            {{trainer.username}}\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a (click)=\"logout()\">\r\n            <i class=\"material-icons\">exit_to_app</i>\r\n            Logout\r\n          </a>\r\n        </li>\r\n        </ul>\r\n      </ng-template>\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\r\n      <ng-template #ifLoggedOut>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a routerLink='login'>\r\n              <i class=\"material-icons\">account_circle</i>\r\n              Login\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink='register'>\r\n              <i class=\"material-icons\">person</i>\r\n              Register\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <ng-template #elseLogin>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a>\r\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\r\n              Hello {{trainer.name}}\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a (click)=\"logout()\">\r\n              <i class=\"material-icons\">exit_to_app</i>\r\n              Logout\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -424,19 +424,19 @@ var common_1 = __webpack_require__("./node_modules/@angular/common/@angular/comm
 var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
 var NavbarComponent = (function () {
     function NavbarComponent(location, element, loginService) {
+        var _this = this;
         this.element = element;
         this.loginService = loginService;
         this.location = location;
         this.sidebarVisible = false;
-    }
-    NavbarComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.listTitles = sidebar_component_1.ROUTES.filter(function (listTitle) { return listTitle; });
-        var navbar = this.element.nativeElement;
-        this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         this.loginService.currentTrainer.subscribe(function (trainer) {
             _this.trainer = trainer;
         });
+    }
+    NavbarComponent.prototype.ngOnInit = function () {
+        this.listTitles = sidebar_component_1.ROUTES.filter(function (listTitle) { return listTitle; });
+        var navbar = this.element.nativeElement;
+        this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     };
     NavbarComponent.prototype.sidebarOpen = function () {
         var toggleButton = this.toggleButton;
@@ -483,6 +483,8 @@ var NavbarComponent = (function () {
         var _this = this;
         this.loginService.logout().subscribe(function (loggedOut) {
             localStorage.removeItem('trainer');
+            localStorage.removeItem('sets');
+            localStorage.removeItem('teams');
             _this.loginService.changeTrainer(null);
         });
     };
@@ -929,12 +931,17 @@ var LoginComponent = (function () {
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = true;
-        this.loginService.login(this.username, this.password).subscribe(function (trainer) {
+        this.loginService.login(this.username, this.password).subscribe(function (result) {
+            var trainer = result[0];
+            var sets = result[1];
+            var teams = result[2];
             alert(JSON.stringify(trainer));
             _this.valid = trainer !== null;
             if (trainer !== null) {
                 _this.loginService.changeTrainer(trainer);
                 localStorage.setItem('trainer', JSON.stringify(trainer));
+                localStorage.setItem('sets', JSON.stringify(sets));
+                localStorage.setItem('teams', JSON.stringify(teams));
                 _this.router.navigate(['/teambuilder']);
             }
         }, function (error) {
@@ -1638,6 +1645,10 @@ var LoginService = (function () {
         this.http = http;
         this.trainerSource = new BehaviorSubject_1.BehaviorSubject(JSON.parse(localStorage.getItem('trainer')));
         this.currentTrainer = this.trainerSource.asObservable();
+        this.setSource = new BehaviorSubject_1.BehaviorSubject(JSON.parse(localStorage.getItem('sets')));
+        this.currentSet = this.trainerSource.asObservable();
+        this.teamSource = new BehaviorSubject_1.BehaviorSubject(JSON.parse(localStorage.getItem('teams')));
+        this.currentTeam = this.trainerSource.asObservable();
     }
     LoginService.prototype.login = function (username, password) {
         var body = new http_1.HttpParams().set('username', username).set('password', password);
@@ -1648,6 +1659,15 @@ var LoginService = (function () {
     };
     LoginService.prototype.changeTrainer = function (trainer) {
         this.trainerSource.next(trainer);
+        localStorage.setItem('trainer', JSON.stringify(trainer));
+    };
+    LoginService.prototype.changeSets = function (sets) {
+        this.setSource.next(sets);
+        localStorage.setItem('sets', JSON.stringify(sets));
+    };
+    LoginService.prototype.changeTeam = function (team) {
+        this.setSource.next(team);
+        localStorage.setItem('teams', JSON.stringify(team));
     };
     LoginService = __decorate([
         core_1.Injectable(),

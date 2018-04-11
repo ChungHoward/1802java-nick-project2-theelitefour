@@ -72,6 +72,7 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     TypeService,
     LoginService,
     ViewUserService
+
   ],
   bootstrap: [AppComponent]
 })
