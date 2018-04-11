@@ -68,7 +68,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     PokemonService,
     MoveService,
     TeamService,
-    TypeService
+    TypeService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
