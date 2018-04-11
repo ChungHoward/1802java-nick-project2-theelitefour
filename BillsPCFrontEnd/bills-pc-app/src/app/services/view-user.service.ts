@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Trainer } from '../trainer';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,6 +11,11 @@ export class ViewUserService {
 
   viewUsers(): Observable<Trainer[]> {
     return this.http.get<Trainer[]>('view-user');
+  }
+
+  promoteUser(username: string): Observable<Trainer[]> {
+    const body = new HttpParams().set('username', username);
+    return this.http.post<Trainer[]>('view-user', body);
   }
 
 }

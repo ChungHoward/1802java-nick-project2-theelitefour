@@ -1990,6 +1990,10 @@ var ViewUserService = (function () {
     ViewUserService.prototype.viewUsers = function () {
         return this.http.get('view-user');
     };
+    ViewUserService.prototype.promoteUser = function (username) {
+        var body = new http_1.HttpParams().set('username', username);
+        return this.http.post('view-user', body);
+    };
     ViewUserService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
@@ -2351,8 +2355,13 @@ var ViewUsersComponent = (function () {
         });
     };
     ViewUsersComponent.prototype.onSubmit = function () {
+        var _this = this;
         console.log('model-based form submitted');
-        console.log(this.form.value);
+        console.log(this.form.value.promote.name);
+        this.viewUserService.promoteUser(this.form.value.promote.name).subscribe(function (users) {
+            alert(JSON.stringify(users));
+            _this.users = users;
+        });
     };
     ViewUsersComponent = __decorate([
         core_1.Component({

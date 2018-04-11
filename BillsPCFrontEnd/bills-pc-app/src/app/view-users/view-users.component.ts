@@ -30,7 +30,11 @@ export class ViewUsersComponent implements OnInit {
 
   onSubmit() {
     console.log('model-based form submitted');
-    console.log(this.form.value);
+    console.log(this.form.value.promote.name);
+    this.viewUserService.promoteUser(this.form.value.promote.name).subscribe(users => {
+      alert(JSON.stringify(users));
+      this.users = users;
+    });
   }
 
 }
