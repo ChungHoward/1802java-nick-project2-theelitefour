@@ -20,15 +20,15 @@ export class NavbarComponent implements OnInit {
   constructor(location: Location, private element: ElementRef, private loginService: LoginService) {
     this.location = location;
     this.sidebarVisible = false;
+    this.loginService.currentTrainer.subscribe(trainer => {
+      this.trainer = trainer;
+    });
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-    this.loginService.currentTrainer.subscribe(trainer => {
-      this.trainer = trainer;
-    });
   }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
@@ -74,6 +74,8 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.loginService.logout().subscribe(loggedOut => {
       localStorage.removeItem('trainer');
+      localStorage.removeItem('sets');
+      localStorage.removeItem('teams');
       this.loginService.changeTrainer(null);
     });
   }

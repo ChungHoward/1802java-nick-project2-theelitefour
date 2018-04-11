@@ -14,7 +14,7 @@ public class LogoutController {
 	
 	@RequestMapping(method=RequestMethod.GET, value = "/resources/logout")
 	public ResponseEntity<Boolean> logout(HttpSession session) {
-		session.invalidate();
+//		session.invalidate();
 		
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
