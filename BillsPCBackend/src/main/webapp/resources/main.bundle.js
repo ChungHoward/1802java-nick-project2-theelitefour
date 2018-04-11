@@ -170,14 +170,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__ = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_logging_service__ = __webpack_require__("./src/app/services/logging.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -213,8 +213,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 // Modules
+
 
 var AppModule = (function () {
     function AppModule() {
@@ -234,7 +234,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__["a" /* FeaturedComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__["a" /* UpgradeComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__["a" /* Filter */],
-                __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__["a" /* Sort */]
+                __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__["a" /* Sort */],
+                __WEBPACK_IMPORTED_MODULE_27__view_users_view_users_component__["a" /* ViewUsersComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -243,9 +244,16 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* ComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["d" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_27_ng2_dnd__["a" /* DndModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_26_ng2_dnd__["a" /* DndModule */].forRoot()
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_20__services_logging_service__["a" /* LoggingService */], __WEBPACK_IMPORTED_MODULE_22__services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_21__services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_23__services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_24__services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_25__services_register_service__["a" /* RegisterService */], __WEBPACK_IMPORTED_MODULE_26__services_login_service__["a" /* LoginService */]],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__["a" /* PokemonService */],
+                __WEBPACK_IMPORTED_MODULE_20__services_move_service__["a" /* MoveService */],
+                __WEBPACK_IMPORTED_MODULE_22__services_team_service__["a" /* TeamService */],
+                __WEBPACK_IMPORTED_MODULE_23__services_type_service__["a" /* TypeService */],
+                __WEBPACK_IMPORTED_MODULE_24__services_login_service__["a" /* LoginService */],
+                __WEBPACK_IMPORTED_MODULE_25__services_view_user_service__["a" /* ViewUserService */]
+            ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -275,6 +283,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__upgrade_upgrade_component__ = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -295,7 +304,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
+    { path: 'view-user', component: __WEBPACK_IMPORTED_MODULE_14__view_users_view_users_component__["a" /* ViewUsersComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */] },
     { path: 'teambuilder', component: __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__["a" /* TeambuilderComponent */] },
@@ -583,8 +594,7 @@ var ROUTES = [
     { path: 'corecoverage', title: 'Core Coverage', icon: 'repeat_one', class: '' },
     { path: 'defensivecoverage', title: 'Defensive Coverage', icon: 'view_list', class: '' },
     { path: 'offensivecoverage', title: 'Offensive Coverage', icon: 'view_stream', class: '' },
-    { path: 'offensevsdefense', title: 'Offense vs Defense', icon: 'poll', class: '' },
-    { path: 'featured', title: 'Featured Teams', icon: 'trending_up', class: '' },
+    { path: 'featured', title: 'Featured Teams', icon: 'trending_up', class: '' }
 ];
 var SidebarComponent = (function () {
     function SidebarComponent() {
@@ -617,14 +627,14 @@ var SidebarComponent = (function () {
 /***/ "./src/app/corecoverage/corecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n    margin-top: 50px;\r\n    padding-right: 0px;\r\n    padding-bottom: 0px;\r\n  }\r\n.container-fluid {\r\n    padding-left: 0px;\r\n  }\r\n.row {\r\n    width:100%;\r\n    margin-left: 0px;\r\n    margin-right: 0px;\r\n  }\r\n.stats {\r\n    width:100%;\r\n  }\r\n.col-md-12 {\r\n    max-height: 470px;\r\n  }\r\n/* Card styling */\r\n.card {\r\n    -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n            box-shadow: 0px 2px 8px #BBBBBB;\r\n    margin: 18px 0px;\r\n    max-height: 450px;\r\n  }\r\n.card-content {\r\n    padding-bottom: 0px;\r\n    padding-left: 4px;\r\n    padding-right: 4px;\r\n  }\r\n.card-stats {\r\n    min-height: 450px;\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n  }\r\n.card-footer {\r\n    padding-top: 0px;\r\n    max-height: 500px;\r\n  }\r\n.card-footer.ta-center {\r\n    margin-bottom: 0px!important;\r\n  }\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n    list-style-type: none;\r\n    padding-left: 0;\r\n  }\r\n/* Native image sizes */\r\n.type {\r\n    width: 48px;\r\n    height: 16px;\r\n  }\r\n.sprite {\r\n    width: 96px;\r\n    height: 96px;\r\n    padding: 0px;\r\n    margin: 0px;\r\n  }\r\n.badge {\r\n    margin: 5px;\r\n    background-color: rgb(255, 70, 60);\r\n  }\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n    font-size: 12px;\r\n  }\r\ntd input {\r\n    width: 100px;\r\n  }\r\n.type-col {\r\n    width: 70px;\r\n  }\r\n.stat-col {\r\n    width: 42px;\r\n  }\r\n.form-group {\r\n    margin-top: 0px;\r\n  }\r\n.poke-search {\r\n    margin-top: 0px;\r\n    margin-left: 0px;\r\n  }\r\n.pkmn-table {\r\n    width: 100%;\r\n    max-height: 450px;\r\n    margin-left: 4px;\r\n  }\r\n.material-icons.md-18 {\r\n    font-size: 18px;\r\n    }\r\n.ta-center {\r\n    text-align: center;\r\n    }\r\n.no-padding {\r\n    padding: 0px;\r\n  }\r\n.no-pad-top {\r\n    padding-top: 0px!important;\r\n  }\r\n.mt-10 {\r\n    margin-top: 10px;\r\n  }"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width: 100%;\r\n}\r\n/* Card styling */\r\n.card {\r\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\r\n          box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n  min-height: 110px;\r\n}\r\n.card-stats {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n  max-height: 230px;\r\n}\r\n.card-footer {\r\n  min-height: 110px;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-left {\r\n  text-align: left;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.ta-right {\r\n  text-align: right;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/corecoverage/corecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n\r\n        <div class=\"row\">\r\n          <!-- Loop through and print every Pokemon in favTeam -->\r\n          <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n            <div class=\"card\">\r\n              <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\">\r\n                <img src=\"{{ favTeam[i].sprites }}\" alt=\"\" />\r\n              </div>\r\n              <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" alt=\"\" class=\"type\" />\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}\" alt=\"\" class=\"type\" />\r\n                <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n              </div>\r\n              <div class=\"card-footer ta-center\">\r\n                <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n                  {{ collapse }}\r\n                </i>\r\n                <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n                  <ul>\r\n                    <li *ngFor=\"let tmp of partners[i]\">{{ tmp }}</li>\r\n                  </ul>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card card-plain\">\r\n      <div class=\"card-header row\" data-background-color=\"red\">\r\n        <div class=\"col-lg-10 col-xs-9\">\r\n          <h4 class=\"title\">Core Coverage shows you which teammates make good partners for your Pokemon</h4>\r\n          <p class=\"category\">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>\r\n        </div>\r\n        <div class=\"col-lg-2 col-xs-3 ta-right\">\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"subThresh()\">\r\n            indeterminate_check_box\r\n          </i>\r\n          <span class=\"h3\">{{ threshold }}</span>\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"addThresh()\">\r\n            add_box\r\n          </i>\r\n        </div>\r\n      </div>\r\n      <br/>\r\n      <div class=\"row\">\r\n        <!-- Loop through and print every Pokemon in favTeam -->\r\n        <div class=\"col-lg-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n          <div class=\"card card-stats\">\r\n            <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n              <img src=\"{{ favTeam[i].sprite }}\" />\r\n            </div>\r\n            <div class=\"card-content ta-center\">\r\n              <h5>Partners with</h5>\r\n              <span class=\"badge\" *ngFor=\"let partner of partners[i]\">\r\n                {{ partner }}\r\n              </span>\r\n            </div>\r\n            <div class=\"card-footer ta-left row\">\r\n              <div class=\"col-xl-5 col-xs-5\">\r\n                <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" alt=\"\" class=\"type\" />\r\n                <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}\" alt=\"\" class=\"type\" />\r\n              </div>\r\n              <div class=\"col-xl-7 col-xs-7\">\r\n                is weak to\r\n                <br/>\r\n                <img *ngFor=\"let typeID of weaknesses[i]\" [src]=\"types.img[typeID]\" class=\"type\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -634,10 +644,9 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreCoverageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -651,30 +660,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var CoreCoverageComponent = (function () {
     function CoreCoverageComponent(pokemonService) {
         this.pokemonService = pokemonService;
+        // The number of resistances we would like on an ideal partner
+        this.threshold = 0;
+        // two-way data binding wouldn't work so here's the hard way
+        this.thresholdChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]();
+        this.types = new __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]();
         // Assign my favTeam using teamService
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */]();
         this.favTeam = this.teamService.favTeam;
         // My default selected Pokemon
         this.selectedPkmn = this.favTeam[0];
-        // by default our attacks are collapsed
-        this.expandOrCollapse = true;
-        this.collapse = 'arrow_drop_down';
-        // this can be used as a placeholder image before searching for a pokemon
-        this.questionSprite = 'assets/img/question.png';
-        this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
-        this.colSortIcons = [
-            'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
-            'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
-        ];
-        this.sortBy = 'name';
-        this.ascending = true;
+        // Arbitrary value. Pokemon typically have between 1 and 5 weaknesses. 3 is the average.
+        this.threshold = 3;
     }
+    // The maximum amount of weaknesses a Pokemon can have is 7
+    CoreCoverageComponent.prototype.addThresh = function () {
+        if (this.threshold < 7) {
+            this.threshold++;
+            this.checkCoreCoverage(this.threshold);
+            this.thresholdChange.emit(this.threshold);
+        }
+    };
+    // Disallow negatives
+    CoreCoverageComponent.prototype.subThresh = function () {
+        if (this.threshold > 0) {
+            this.threshold--;
+            this.checkCoreCoverage(this.threshold);
+            this.thresholdChange.emit(this.threshold);
+        }
+    };
     /**
      * Gets a list of pokemon for each member of your team that resists all the weaknesses of another pokemon of your team
      * @return a 2-D array of Pokemon names.
@@ -684,10 +702,10 @@ var CoreCoverageComponent = (function () {
     CoreCoverageComponent.prototype.checkCoreCoverage = function (numResist) {
         var myWeaknesses;
         var type1ID, type2ID;
-        var weaknessID;
         var myResist;
         var partners; // Just the Pokemon's name is fine;
         partners = [];
+        this.weaknesses = [];
         // Begin the forbidden O(n^3) loop
         for (var _i = 0, _a = this.favTeam; _i < _a.length; _i++) {
             var pkmn = _a[_i];
@@ -703,6 +721,7 @@ var CoreCoverageComponent = (function () {
                     myWeaknesses.push(i);
                 }
             }
+            this.weaknesses.push(myWeaknesses);
             // now that we have pkmn's weaknesses -- check if any teammates resists all (or some) of those weaknesses
             for (var _b = 0, _c = this.favTeam; _b < _c.length; _b++) {
                 var teammate = _c[_b];
@@ -721,31 +740,34 @@ var CoreCoverageComponent = (function () {
                 partners.push(new Array());
                 // if teammate's number of resistances is less than the user specified threshold in the param,
                 // or teammate resists every weakness of pkmn, then teammate is a partner
-                if (myResist >= numResist || myResist == myWeaknesses.length) {
-                    // hacky way of getting the index of my team rather than using an index variable in my for loop because I don't plan ahead
+                if (myResist >= numResist || myResist === myWeaknesses.length) {
+                    // hacky way of getting the index of my team rather than using an index variable
+                    // in my for loop because I don't plan ahead
                     partners[this.favTeam.indexOf(pkmn)].push(teammate.name);
                 }
             }
-        } // outer for loop
-        return partners;
-    };
-    // toggles the show moves/hide moves button
-    CoreCoverageComponent.prototype.toggleCollapse = function () {
-        this.expandOrCollapse = !this.expandOrCollapse;
-        this.collapse = this.expandOrCollapse ? 'arrow_drop_up' : 'arrow_drop_down';
+        }
+        this.partners = partners;
     };
     CoreCoverageComponent.prototype.ngOnInit = function () {
-        this.partners = this.checkCoreCoverage(4);
-        console.log("3 - " + this.partners.length);
+        this.checkCoreCoverage(this.threshold);
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Object)
+    ], CoreCoverageComponent.prototype, "threshold", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+        __metadata("design:type", Object)
+    ], CoreCoverageComponent.prototype, "thresholdChange", void 0);
     CoreCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-corecoverage',
             template: __webpack_require__("./src/app/corecoverage/corecoverage.component.html"),
             styles: [__webpack_require__("./src/app/corecoverage/corecoverage.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
     ], CoreCoverageComponent);
     return CoreCoverageComponent;
     var _a;
@@ -765,7 +787,7 @@ module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  pa
 /***/ "./src/app/defensivecoverage/defensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-12 col-md-12\">\r\n        <div class=\"card\">\r\n\r\n          <div class=\"card-content\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center pls-land\">\r\n                      <img src=\"{{ types.none }}\" class=\"type\">\r\n                      <br/> Type <br/>\r\n                    </th>\r\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\r\n                      <img src=\"{{ pkmn.sprites }}\" class=\"sprite\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <br/>{{ pkmn.name | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\r\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ type }}\" class=\"type\">\r\n                    </td>\r\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\r\n                      {{ effective[i] | percent }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-12 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Defensive Coverage shows what resistances your team needs</h4>\r\n            <p class=\"category\">As well as the resistances your team has plenty of.</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center pls-land\">\r\n                      <img src=\"{{ types.none }}\" class=\"type\">\r\n                      <br/> Type\r\n                      <br/>\r\n                    </th>\r\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\r\n                      <img src=\"{{ pkmn.sprite }}\" class=\"sprite\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <br/>{{ pkmn.name | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\r\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ type }}\" class=\"type\">\r\n                    </td>\r\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\r\n                      {{ effective[i] | percent }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -930,14 +952,14 @@ var FeaturedComponent = (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".ng-valid[required], .ng-valid.required  {\r\n    border-bottom: 1px solid #42A948; /* green */\r\n  }\r\n  \r\n  .ng-invalid:not(form)  {\r\n    border-bottom: 1px solid #a94442; /* red */\r\n  }\r\n  "
+module.exports = ".ng-valid[required], .ng-valid.required  {\r\n    border-bottom: 1px solid #42A948; /* green */\r\n}\r\n  \r\n.ng-invalid:not(form)  {\r\n  border-bottom: 1px solid #a94442; /* red */\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      \r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Login</h4>\r\n            <p class=\"category\">To access your saved pokemon and teams</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\">Login</button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                    You have successfully Logged In!\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Invalid login credentials\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      \r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Login</h4>\r\n            <p class=\"category\">To access your saved pokemon and teams</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\">Login</button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                    You have successfully Logged In!\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Invalid login credentials\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -987,7 +1009,8 @@ var LoginComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-login',
             template: __webpack_require__("./src/app/login/login.component.html"),
-            styles: [__webpack_require__("./src/app/login/login.component.css")]
+            styles: [__webpack_require__("./src/app/login/login.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
     ], LoginComponent);
@@ -1067,14 +1090,14 @@ var OffenseVsDefenseComponent = (function () {
 /***/ "./src/app/offensivecoverage/offensivecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/offensivecoverage/offensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Unique Types</h4>\r\n        <p class=\"category\">Here's a thing</p>\r\n\r\n        <div *ngFor=\"let tmp of uniqueTypes\">\r\n            {{tmp.types}}\r\n          </div>\r\n          <p class=\"category\">And Another...</p>\r\n\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">All Types</h4>\r\n\r\n        <div *ngFor=\"let tmp of pokedex\">\r\n          {{tmp.types}}\r\n        </div>\r\n\r\n        <p class=\"category\">And Another...</p>\r\n\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Missing type coverage</h4>\r\n        <p class=\"category\">Your team\r\n          <strong>does not</strong> have a super-effective attack against these Types</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uncoveredTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n    <div class=\"card\">\r\n\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Types covered</h4>\r\n        <p class=\"category\">Your team has super-effective attacks against these Types</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uniqueTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1084,7 +1107,12 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffensiveCoverageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1096,52 +1124,156 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
 var OffensiveCoverageComponent = (function () {
-    function OffensiveCoverageComponent(pokemonService) {
+    function OffensiveCoverageComponent(pokemonService, moveService, types) {
         this.pokemonService = pokemonService;
-        this.pokedex = new Array();
+        this.moveService = moveService;
+        this.types = types;
+        // Assign my favTeam using teamService
+        this.teamService = new __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]();
+        this.favTeam = this.teamService.favTeam;
+        // Initialize
+        this.teamMoveTypes = new Array();
         this.uniqueTypes = new Array();
-        this.match = 1;
+        this.coveredTypes = new Array();
+        this.uncoveredTypes = new Array();
     }
-    OffensiveCoverageComponent.prototype.populateSet = function () {
-        this.uniqueTypes.push(this.pokedex[0]);
-        for (var i = 0; i < this.pokedex.length; i++) {
-            for (var y = 0; y < this.uniqueTypes.length; y++) {
-                if (this.pokedex[i].types[0] == this.uniqueTypes[y].types[0] && this.pokedex[i].types[1] == this.uniqueTypes[y].types[1]) {
-                    this.match = 0;
-                    break;
+    // Among all 151 pokemon, get only the unique type combinations
+    OffensiveCoverageComponent.prototype.getUniqueTypes = function () {
+        var result = new Array();
+        // initialize array with at least one value to check
+        result.push(this.pokedex[0].types);
+        // for every pokemon in the pokedex
+        loop1: for (var _i = 0, _a = this.pokedex; _i < _a.length; _i++) {
+            var pkmn = _a[_i];
+            // for every unique type discovered so far
+            for (var _b = 0, result_1 = result; _b < result_1.length; _b++) {
+                var type = result_1[_b];
+                // if a pokemon's type1 and type2 has been discovered
+                if ((pkmn.types[0] === type[0] && pkmn.types[1] === type[1]) ||
+                    (pkmn.types[0] === type[1] && pkmn.types[1] === type[0])) {
+                    continue loop1; // check the next pokemon
                 }
-            }
-            if (this.match == 1) {
-                this.uniqueTypes.push(this.pokedex[i]);
-            }
-            this.match = 1;
+            } // add unique type to result
+            result.push([pkmn.types[0], pkmn.types[1]]);
         }
+        this.uniqueTypes = result;
     };
+    // Load 151 Pokemon into this.pokedex
     OffensiveCoverageComponent.prototype.getPokeAPIjson = function () {
         var _this = this;
         this.pokemonService.getJson().subscribe(function (data) {
             _this.pokedex = data;
-            _this.populateSet();
         }, function (error) {
             console.error(error);
         });
     };
+    /**
+     * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
+     * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
+     */
+    OffensiveCoverageComponent.prototype.getMoveAPIjson = function () {
+        var _this = this;
+        this.moveService.getJson().subscribe(function (data) {
+            _this.movedex = data;
+        }, function (error) {
+            console.error(error);
+        });
+    };
+    // get an array of unique damaging types of attacks on our team
+    OffensiveCoverageComponent.prototype.getTeamMoveTypes = function () {
+        var detailedMove;
+        // for each pokemon on my team
+        for (var _i = 0, _a = this.favTeam; _i < _a.length; _i++) {
+            var pkmn = _a[_i];
+            // for each attack they know
+            loop1: for (var i = 0; i < pkmn.attackIds.length; i++) {
+                detailedMove = this.movedex[pkmn.attackIds[i] - 1];
+                // if that attack deals damage
+                if (detailedMove.power > 0) {
+                    // always add it to our list of damaging move types if our list is empty
+                    if (this.teamMoveTypes.length > 0) {
+                        // We don't want duplicates. if one exists, check the next attack
+                        for (var _b = 0, _c = this.teamMoveTypes; _b < _c.length; _b++) {
+                            var type = _c[_b];
+                            if (type === detailedMove.type) {
+                                continue loop1;
+                            }
+                        } // add unique type to our array if there are no dupes
+                        this.teamMoveTypes.push(detailedMove.type);
+                    }
+                    else {
+                        // I subtract 1 because our json is 1-indexed while arrays are 0-indexed
+                        this.teamMoveTypes.push(detailedMove.type);
+                    }
+                }
+            }
+        }
+    };
+    OffensiveCoverageComponent.prototype.compareOurMovesVsUniqueTypes = function () {
+        var _this = this;
+        var effective;
+        var defType1;
+        var defType2;
+        // for each unique defending type combination
+        loop1: for (var _i = 0, _a = this.uniqueTypes; _i < _a.length; _i++) {
+            var pairTypes = _a[_i];
+            // for each attack type on my team
+            for (var _b = 0, _c = this.teamMoveTypes; _b < _c.length; _b++) {
+                var atkType = _c[_b];
+                // get the types of the defending pokemon
+                defType1 = this.types.name.indexOf(pairTypes[0]);
+                defType2 = this.types.name.indexOf(pairTypes[1]);
+                console.log(this.types.chart[atkType]);
+                // and see how effective my attack type is against every other pokemon
+                effective = this.types.chart[atkType][defType1];
+                effective *= this.types.chart[atkType][defType2];
+                console.log(atkType + ' vs ' + defType1 + ' ' + defType2 + ' = ' + effective);
+                // if our attack is super effective
+                if (effective > 1) {
+                    // add it to our list of covered types
+                    this.coveredTypes.push(pairTypes);
+                    // then check a new type combination
+                    continue loop1;
+                }
+            }
+        }
+        // uncovered types is what remains of unique types excluding covered types
+        this.uncoveredTypes = this.uniqueTypes.filter(function (types) { return !_this.coveredTypes.includes(types); });
+    };
     OffensiveCoverageComponent.prototype.ngOnInit = function () {
-        // Load 151 Pokemon into this.pokedex
-        this.getPokeAPIjson();
+        // this.getPokeAPIjson();
+        // this.getMoveAPIjson();
+        var _this = this;
+        // the above methods are being replaced by the below method which calls both Observables
+        // in parallel and waits for them to finish -- or apparently not
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+            var pokeAPIArray = _a[0], moveArray = _a[1];
+            _this.pokedex = pokeAPIArray;
+            _this.movedex = moveArray;
+            // calling these functions here because this is the only location where
+            // we can guarantee our pokedex and movedex have been fully loaded
+            _this.getUniqueTypes();
+            _this.getMoveAPIjson();
+            _this.getTeamMoveTypes();
+            _this.compareOurMovesVsUniqueTypes();
+        });
     };
     OffensiveCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-offensivecoverage',
             template: __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.html"),
             styles: [__webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]) === "function" && _c || Object])
     ], OffensiveCoverageComponent);
     return OffensiveCoverageComponent;
-    var _a;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=offensivecoverage.component.js.map
@@ -1306,11 +1438,39 @@ var Sort = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Pokemon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Pokemon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokeAPI; });
+// Used for temporary storage such as team building
 var Pokemon = (function () {
+    // A missingno for our placeholder!
     function Pokemon() {
+        this.id = 0;
+        this.trainerId = 1;
+        this.attackIds = [];
+        this.name = 'missingno';
+        this.sprite = 'assets/img/question.png';
+        this.moveset = ['', '', '', ''];
+        this.moves = [];
+        this.stats = { hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29 };
+        this.types = ['normal'];
     }
     return Pokemon;
+}());
+
+// Used to read pokeAPIjson
+var PokeAPI = (function () {
+    function PokeAPI() {
+        this.id = 0;
+        this.trainerId = 1;
+        this.attackIds = [];
+        this.name = 'missingno';
+        this.sprite = 'assets/img/question.png';
+        this.moveset = ['', '', '', ''];
+        this.moves = [];
+        this.stats = { hp: 33, atk: 136, def: 0, satk: 6, sdef: 6, spe: 29 };
+        this.types = ['normal'];
+    }
+    return PokeAPI;
 }());
 
 //# sourceMappingURL=pokemon.js.map
@@ -1527,35 +1687,6 @@ var RegisterComponent = (function () {
 
 /***/ }),
 
-/***/ "./src/app/services/logging.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoggingService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var LoggingService = (function () {
-    function LoggingService() {
-    }
-    LoggingService.prototype.log = function (status, message) {
-        console.log('Status: ' + status + ' message: ' + message);
-    };
-    LoggingService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
-    ], LoggingService);
-    return LoggingService;
-}());
-
-//# sourceMappingURL=logging.service.js.map
-
-/***/ }),
-
 /***/ "./src/app/services/login.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1626,10 +1757,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MoveService = (function () {
     function MoveService(http) {
         this.http = http;
-        this.url = 'https://pokeapi.co/api/v2/move/';
     }
-    MoveService.prototype.getMove = function (name) {
-        return this.http.get(this.url + name);
+    MoveService.prototype.getJson = function () {
+        return this.http.get('assets/moveAPI.json');
     };
     MoveService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
@@ -1743,41 +1873,52 @@ var TeamService = (function () {
         // Assigns the value of types to their respective image
         this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
         // Making my team
-        this.pkmn1 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
-        this.pkmn2 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
-        this.pkmn3 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
-        this.pkmn4 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
-        this.pkmn5 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
-        this.pkmn6 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["a" /* Pokemon */]();
+        this.pkmn1 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn2 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn3 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn4 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn5 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn6 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
         this.pkmn1.name = 'Jolteon';
-        this.pkmn1.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
+        this.pkmn1.trainerId = 1;
+        this.pkmn1.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
         this.pkmn1.types = ['electric', 'none'];
+        this.pkmn1.attackIds = [85, 42, 24, 86];
         this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
         this.pkmn1.stats = { hp: 65, atk: 65, def: 60, satk: 110, sdef: 110, spe: 130 };
-        this.pkmn1.moveset = ['Thunderbolt', 'Pin Missile', 'Double Kick', 'Thunder Wave'];
         this.pkmn2.name = 'Exeggutor';
-        this.pkmn2.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
+        this.pkmn2.trainerId = 1;
+        this.pkmn2.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png';
         this.pkmn2.types = ['grass', 'psychic'];
+        this.pkmn2.attackIds = [79, 115, 94, 153];
         this.pkmn2.moveset = ['Sleep Powder', 'Reflect', 'Psychic', 'Explosion'];
         this.pkmn2.stats = { hp: 95, atk: 95, def: 85, satk: 125, sdef: 125, spe: 55 };
         this.pkmn3.name = 'Moltres';
-        this.pkmn3.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
+        this.pkmn3.trainerId = 1;
+        this.pkmn3.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png';
         this.pkmn3.types = ['fire', 'flying'];
+        this.pkmn3.attackIds = [97, 83, 126, 63];
         this.pkmn3.moveset = ['Agility', 'Fire Spin', 'Fire Blast', 'Hyper Beam'];
         this.pkmn3.stats = { hp: 90, atk: 100, def: 90, satk: 125, sdef: 125, spe: 90 };
         this.pkmn4.name = 'Slowbro';
-        this.pkmn4.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
+        this.pkmn4.trainerId = 1;
+        this.pkmn4.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png';
         this.pkmn4.types = ['water', 'psychic'];
+        this.pkmn4.attackIds = [133, 57, 94, 115];
         this.pkmn4.moveset = ['Amnesia', 'Surf', 'Psychic', 'Reflect'];
         this.pkmn4.stats = { hp: 65, atk: 75, def: 110, satk: 80, sdef: 80, spe: 30 };
         this.pkmn5.name = 'Chansey';
-        this.pkmn5.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
+        this.pkmn5.trainerId = 1;
+        this.pkmn5.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png';
         this.pkmn5.types = ['normal', 'none'];
-        this.pkmn5.moveset = ['Thunderbolt', 'Ice Beam', 'Counter', 'Softboiled'];
+        this.pkmn5.attackIds = [85, 58, 68, 135];
+        this.pkmn5.moveset = ['Thunderbolt', 'Ice Beam', 'Counter', 'Soft-boiled'];
         this.pkmn5.stats = { hp: 250, atk: 5, def: 5, satk: 105, sdef: 105, spe: 50 };
         this.pkmn6.name = 'Gengar';
-        this.pkmn6.sprites = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
+        this.pkmn6.trainerId = 1;
+        this.pkmn6.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png';
         this.pkmn6.types = ['ghost', 'poison'];
+        this.pkmn6.attackIds = [85, 72, 109, 153];
         this.pkmn6.moveset = ['Thunderbolt', 'Mega Drain', 'Confuse Ray', 'Explosion'];
         this.pkmn6.stats = { hp: 60, atk: 65, def: 60, satk: 130, sdef: 130, spe: 110 };
         this.favTeam = new Array();
@@ -1849,6 +1990,9 @@ var TypeService = (function () {
             this.flying, this.fighting, this.fire, this.bug,
             this.poison, this.ghost, this.dragon, this.none
         ];
+        this.class = ['physical', 'special', 'status'];
+        this.classImg = [this.physical, this.special, this.status];
+        this.oldClass = [0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, -1];
         this.chart = [
             // nrm, psy, elc, ice, grd, rck, wtr, grs, fly, ftg, fir, bug, psn, gst, drg, none
             [1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0],
@@ -1880,6 +2024,43 @@ var TypeService = (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/view-user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUserService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ViewUserService = (function () {
+    function ViewUserService(http) {
+        this.http = http;
+    }
+    ViewUserService.prototype.viewUsers = function () {
+        return this.http.get('view-user');
+    };
+    ViewUserService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], ViewUserService);
+    return ViewUserService;
+    var _a;
+}());
+
+//# sourceMappingURL=view-user.service.js.map
+
+/***/ }),
+
 /***/ "./src/app/teambuilder/teambuilder.component.css":
 /***/ (function(module, exports) {
 
@@ -1890,7 +2071,7 @@ module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  pa
 /***/ "./src/app/teambuilder/teambuilder.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <ul *ngIf=\"selectedPkmn\">\r\n      Test div please ignore\r\n      <li *ngFor=\"let app of apps\">\r\n      </li>\r\n    </ul>\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\">\r\n            <img src=\"{{ favTeam[i].sprites }}\" alt=\"\" />\r\n          </div>\r\n          <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" alt=\"\" class=\"type\" />\r\n            <img src=\"{{ types.img[types.name.indexOf(favTeam[i].types[1])] }}\" alt=\"\" class=\"type\" />\r\n            <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n          </div>\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">{{ atk }}</li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" src=\"{{ selectedPkmn.sprites }}\" title=\"{{ selectedPkmn.sprites }}\" />\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <img src=\"{{ types.img[types.name.indexOf(selectedPkmn.types[0])] }}\" class=\"type\" />\r\n              <img src=\"{{ types.img[types.name.indexOf(selectedPkmn.types[1])] }}\" class=\"type\" />\r\n              <br/>\r\n              <span class=\"badge red\">\r\n                Critical Rate\r\n                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %\r\n              </span>\r\n              <br/>\r\n              <small>\r\n                <a href=\"https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}\">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\" [(value)]=\"selectedPkmn.name\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[0]\" list=\"canLearn\" name=\"move\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.electric }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% paralysis chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[1]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.ice }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.special }}\" class=\"type\">\r\n                    </td>\r\n                    <td>95</td>\r\n                    <td>100%</td>\r\n                    <td>16</td>\r\n                    <td>10% freeze chance.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[2]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.fight }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.physical }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>100%</td>\r\n                    <td>32</td>\r\n                    <td>If hit by normal or fighting type attack, returns double damage.</td>\r\n                  </tr>\r\n                  <tr>\r\n                    <td>\r\n                      <input type=\"text\" [(value)]=\"selectedPkmn.moveset[3]\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.normal }}\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img src=\"{{ types.status }}\" class=\"type\">\r\n                    </td>\r\n                    <td>--</td>\r\n                    <td>--</td>\r\n                    <td>16</td>\r\n                    <td>Heals self by 50% of max HP.</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" \r\n                  *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.hp }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.atk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.def }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.satk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.sdef }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.spe }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <!-- <div *ngFor=\"let move of movedex\">\r\n      {{ move.name }}\r\n    </div> -->\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\r\n            <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n          </div>\r\n          <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n            <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n          </div>\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                  {{ atk }}\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" [src]=\"selectedPkmn.sprite\" title=\"{{ selectedPkmn.sprite }}\" />\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <span class=\"badge badge-primary\">\r\n                Critical Rate\r\n                <br/> {{ selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2'}} %\r\n              </span>\r\n              <br/>\r\n              <img [src]=\"types.img[types.name.indexOf(selectedPkmn.types[0])]\" class=\"type\" />\r\n              <img [src]=\"types.img[types.name.indexOf(selectedPkmn.types[1])]\" class=\"type\" />\r\n              <br/>\r\n              <small>\r\n                <a href=\"https://www.smogon.com/dex/rb/pokemon/{{selectedPkmn.name}}\">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\" placeholder=\"Search Pokemon\" [(value)]=\"selectedPkmn.name\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"selectedPkmn\">\r\n                  <tr *ngFor=\"let move of selPkmnMoves; let i = index\">\r\n                    <td>\r\n                      <input type=\"text\" [(ngModel)]=\"move.name\"\r\n                        (change)=\"setSelPkmnMoves(i, moveInput)\" list=\"canLearn\">\r\n                      <datalist id=\"canLearn\">\r\n                        <option *ngFor=\"let canlearn of selectedPkmn.moves\" value=\"{{canlearn.name}}\">\r\n                      </datalist>\r\n                    </td>\r\n                    <td>\r\n                      <img [src]=\"types.img[types.name.indexOf(move.type)]\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <!-- if damageClass is not status, use move.type to calculate damage class -->\r\n                      <img class=\"type\" [src]=\r\n\"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]\">\r\n                    </td>\r\n                    <td>{{ move.power }}</td>\r\n                    <td>{{ move.accuracy }}</td>\r\n                    <td>{{ move.pp }}</td>\r\n                    <td>{{ move.effect }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[1])]\" class=\"type\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[0])]\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.hp }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.atk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.def }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.satk }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.sdef }}</td>\r\n                    <td class=\"ta-center stat-col\">{{ pkmn.stats.spe }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1900,12 +2081,13 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeambuilderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_chartist__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_pokemon__ = __webpack_require__("./src/app/pokemon.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_chartist__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1921,29 +2103,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TeambuilderComponent = (function () {
-    function TeambuilderComponent(pokemonService) {
+    function TeambuilderComponent(pokemonService, moveService) {
         this.pokemonService = pokemonService;
+        this.moveService = moveService;
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]();
+        this.types = new __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]();
         // Assign my favTeam using teamService
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]();
         this.favTeam = this.teamService.favTeam;
-        // My default selected Pokemon
-        this.selectedPkmn = this.favTeam[0];
+        // Make a team full of missingno
+        this.curTeam = new Array();
+        for (var i = 0; i < 6; i++) {
+            this.curTeam.push(new __WEBPACK_IMPORTED_MODULE_1_app_pokemon__["a" /* PokeAPI */]());
+        }
+        // My default selected Pokemon's attacks
+        this.selPkmnMoves = new Array();
         // by default our attacks are collapsed
         this.expandOrCollapse = false;
         this.collapse = 'arrow_drop_down';
-        // this can be used as a placeholder image before searching for a pokemon
-        this.questionSprite = 'assets/img/question.png';
         this.pkmnTableColNames = ['name', 'type', 'hp', 'atk', 'def', 'satk', 'sdef', 'spe'];
         this.colSortIcons = [
             'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert',
             'swap_vert', 'swap_vert', 'swap_vert', 'swap_vert'
         ];
-        this.sortBy = 'name';
+        this.sortBy = ''; // default sort by pokedex order
         this.ascending = true;
-        //
     }
     // toggles the show moves/hide moves button
     TeambuilderComponent.prototype.toggleCollapse = function () {
@@ -1979,15 +2165,36 @@ var TeambuilderComponent = (function () {
         }
         this.sortBy = this.pkmnTableColNames[i];
     };
+    TeambuilderComponent.prototype.selectTeamPokemon = function (i, pkmn) {
+        // TODO: Actually modify our pokemon if any changes are made to it
+        this.selected = i;
+        this.selectPokemon(pkmn);
+    };
+    TeambuilderComponent.prototype.selectNewPokemon = function (pkmn) {
+    };
     TeambuilderComponent.prototype.selectPokemon = function (pkmn) {
         this.selectedPkmn = pkmn;
-        this.ngOnInit();
-        // The below for loop doesnt work
-        // for (let i = 0; i < pkmn.moveset.length; i++) {
-        //   this.moveService.getMove(pkmn.moveset[i]).subscribe(data => this.selPkmnMoves[i] = data);
-        //   console.log(this.selPkmnMoves[i]);
-        // }
+        this.loadStatChart();
+        // Assign detailed attack info into selPkmnMoves
+        if (!!this.selectedPkmn.attackIds.length) {
+            for (var i = 0; i < this.selectedPkmn.attackIds.length; i++) {
+                // subtract 1 because our json is 1-indexed while arrays are 0-indexed
+                this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
+                if (!!this.selPkmnMoves[i].effectChance) {
+                    this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+                    String(this.selPkmnMoves[i].effectChance)); // with this
+                }
+            }
+        }
+        else {
+            for (var i = 0; i < 4; i++) {
+                this.selPkmnMoves[i] = this.movedex[164]; // 164 is my placeholder
+            }
+        }
     };
+    /**
+     * Reads json file created by pokeAPI and populates our pokedex with 151 Pokemon
+     */
     TeambuilderComponent.prototype.getPokeAPIjson = function () {
         var _this = this;
         this.pokemonService.getJson().subscribe(function (data) {
@@ -1995,6 +2202,35 @@ var TeambuilderComponent = (function () {
         }, function (error) {
             console.error(error);
         });
+    };
+    /**
+     * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
+     * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
+     */
+    TeambuilderComponent.prototype.getMoveAPIjson = function () {
+        var _this = this;
+        this.moveService.getJson().subscribe(function (data) {
+            _this.movedex = data;
+            // I think this throws "Cannot read property 'sprite' of undefined" because things havent loaded yet
+            _this.selectPokemon(_this.favTeam[0]);
+            _this.loadStatChart();
+        }, function (error) {
+            console.error(error);
+        });
+    };
+    /**
+     * Given an attack name, put the full move details into selPkmnMoves
+     * @param i the index of selPkmnMove to change
+     * @param attackName the attack name
+     */
+    TeambuilderComponent.prototype.setSelPkmnMoves = function (i, attackName) {
+        alert(i + ' ' + attackName); // TODO:
+        for (var _i = 0, _a = this.movedex; _i < _a.length; _i++) {
+            var move = _a[_i];
+            if (move.name === attackName) {
+                this.selPkmnMoves[i] = move;
+            }
+        }
     };
     TeambuilderComponent.prototype.startAnimationForBarChart = function (chart) {
         var seq2, delays2, durations2;
@@ -2018,9 +2254,7 @@ var TeambuilderComponent = (function () {
         seq2 = 0;
     };
     ;
-    TeambuilderComponent.prototype.ngOnInit = function () {
-        // Load 151 Pokemon into this.pokedex
-        this.getPokeAPIjson();
+    TeambuilderComponent.prototype.loadStatChart = function () {
         /* Pokemon Stat Chart initialization  */
         var dataPokemonStatChart = {
             labels: [
@@ -2058,21 +2292,26 @@ var TeambuilderComponent = (function () {
                     }
                 }]
         ];
-        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_5_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
+        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_6_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
         // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(pokemonStatChart);
+    };
+    TeambuilderComponent.prototype.ngOnInit = function () {
+        // Load 151 Pokemon into this.pokedex
+        this.getPokeAPIjson();
+        this.getMoveAPIjson();
     };
     TeambuilderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-teambuilder',
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_3_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_4_app_services_type_service__["a" /* TypeService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _b || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=teambuilder.component.js.map
@@ -2126,6 +2365,66 @@ var UpgradeComponent = (function () {
 }());
 
 //# sourceMappingURL=upgrade.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/view-users/view-users.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/view-users/view-users.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <table>\r\n    <thead>\r\n        <tr>\r\n          <th>Username</th>\r\n          <th>Role</th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor='let user of users; let i = index'>\r\n        <td>{{ user.username }}</td>\r\n        <td>{{ user.role }}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>>"
+
+/***/ }),
+
+/***/ "./src/app/view-users/view-users.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUsersComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ViewUsersComponent = (function () {
+    function ViewUsersComponent(viewUserService) {
+        this.viewUserService = viewUserService;
+    }
+    ViewUsersComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.viewUserService.viewUsers().subscribe(function (users) {
+            alert(JSON.stringify(users));
+            _this.users = users;
+        });
+    };
+    ViewUsersComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'app-view-users',
+            template: __webpack_require__("./src/app/view-users/view-users.component.html"),
+            styles: [__webpack_require__("./src/app/view-users/view-users.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]) === "function" && _a || Object])
+    ], ViewUsersComponent);
+    return ViewUsersComponent;
+    var _a;
+}());
+
+//# sourceMappingURL=view-users.component.js.map
 
 /***/ }),
 

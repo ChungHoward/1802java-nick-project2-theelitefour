@@ -32,6 +32,7 @@ import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
+import { ViewUserService } from './services/view-user.service';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
@@ -68,7 +69,9 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     PokemonService,
     MoveService,
     TeamService,
-    TypeService
+    TypeService,
+    LoginService,
+    ViewUserService
   ],
   bootstrap: [AppComponent]
 })

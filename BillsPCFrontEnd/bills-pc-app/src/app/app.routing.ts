@@ -13,8 +13,10 @@ import { OffensiveCoverageComponent } from './offensivecoverage/offensivecoverag
 import { OffenseVsDefenseComponent } from './offensevsdefense/offensevsdefense.component';
 import { FeaturedComponent } from './featured/featured.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
+  { path: 'view-user', component: ViewUsersComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'teambuilder', component: TeambuilderComponent },
