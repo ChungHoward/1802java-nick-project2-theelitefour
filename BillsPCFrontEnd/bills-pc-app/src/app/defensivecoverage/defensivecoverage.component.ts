@@ -90,18 +90,20 @@ export class DefensiveCoverageComponent implements OnInit {
     for (let y = 0; y < numTypes; y++) {
       sum = 0;
       for (let x = 0; x < numPkmn; x++) {
-        if (this.myTable[x][y] <= 1.0) {
-          sum += this.myTable[x][y];
+        if (this.myTable[x][y] === 1.0) {
+          sum += 1;
         } else if (this.myTable[x][y] > 1.0) {
-          sum += this.myTable[x][y] - 0.5;
+          sum += 1.5;
+        } else if (this.myTable[x][y] < 1.0) {
+          sum += 0.5;
         }
       }
       if (sum === 0) {
-      } else if (sum > 7) {
+      } else if (sum > 6.5) {
         this.rowColor[y] = 'bg-red';
       } else if (sum > 6) {
         this.rowColor[y] = 'bg-pink';
-      } else if (sum < 5) {
+      } else if (sum < 5.5) {
         this.rowColor[y] = 'bg-green';
       } else if (sum < 6) {
         this.rowColor[y] = 'bg-lime';

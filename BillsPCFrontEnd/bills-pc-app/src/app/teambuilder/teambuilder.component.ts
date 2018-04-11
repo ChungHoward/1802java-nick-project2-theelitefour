@@ -8,22 +8,28 @@ import { Trainer } from '../trainer';
 import { Move } from '../move';
 import { MoveService } from 'app/services/move.service';
 import { PokemonService } from 'app/services/pokemon.service';
+import { Set } from '../set';
+import { Team } from '../team';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
+import { ConvertService } from 'app/services/convert.service';
 import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-teambuilder',
   templateUrl: './teambuilder.component.html',
   styleUrls: ['./teambuilder.component.css'],
-  providers: [MoveService, PokemonService, TeamService, TypeService]
+  providers: [MoveService, PokemonService, TeamService, TypeService, ConvertService]
 })
 export class TeambuilderComponent implements OnInit {
-  /* These variables are for the Team View at the top of the page, and some other stuff */
+  // The trainer thats logged in
+  trainer: Trainer;
   // The 6 pokemon on my team
   favTeam: Array<PokeAPI>;
-  // The Team I am editing
-  curTeam: Array<PokeAPI>;
+  // Our trainer's owned Pokemon from the server, if any
+  sets: Array<Set>;
+  // The Team from our server, if one exists
+  myTeam: Team;
   // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
   // The name of the icon that shows or hides your attacks
@@ -45,25 +51,28 @@ export class TeambuilderComponent implements OnInit {
   pokedex: Array<PokeAPI>;
   movedex: Array<Move>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService,
-    private teamService: TeamService, private types: TypeService) {
+  constructor(private convertService: ConvertService, private pokemonService: PokemonService,
+    private moveService: MoveService, private teamService: TeamService, private types: TypeService) {
 
-    // Make a team full of missingno
-    this.curTeam = new Array<PokeAPI>();
-
-    // Assign my favTeam using teamService
+    // Assign my placeholder favTeam using teamService
     // this.favTeam = this.teamService.favTeam;
 
-    // Assign my favTeam using localStorage TODO: or from session if one exists
-    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // Assign my favTeam using localStorage or from session if one exists
+    this.trainer = JSON.parse(localStorage.getItem('trainer'));
+    this.myTeam = JSON.parse(localStorage.getItem('teams'));
+    if (this.myTeam && this.trainer) {
+      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam, this.trainer.id);
+    } else {
+      this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    }
     // if null, get an empty team
     if (!this.favTeam) {
       this.favTeam = new Array<PokeAPI>();
+      for (let i = 0; i < 6; i++) {
+        this.favTeam.push(new PokeAPI());
+      }
     }
 
-    for (let i = 0; i < 6; i++) {
-      this.curTeam.push(new PokeAPI());
-    }
     // My default selected Pokemon's attacks
     this.selPkmnMoves = new Array<Move>();
 
@@ -122,21 +131,27 @@ export class TeambuilderComponent implements OnInit {
   selectPokemon(pkmn: PokeAPI) {
     this.selectedPkmn = pkmn;
     this.loadStatChart();
-    // Assign detailed attack info into selPkmnMoves
-    if (this.selectedPkmn.attackIds.length) {
-      for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) { // attackIds are of unknown length
-        // subtract 1 because our json is 1-indexed while arrays are 0-indexed
-        this.selPkmnMoves[i] = Object.assign(this.movedex[this.selectedPkmn.attackIds[i] - 1]);
+    this.selPkmnMoves = new Array<Move>();
+    let myMove: Move;
 
-        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
-          this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
-            String(this.selPkmnMoves[i].effectChance)); // with this
-        }
+    // Assign detailed attack info into selPkmnMoves
+    for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) { // attackIds are of unknown length
+      // subtract 1 because our json is 1-indexed while arrays are 0-indexed
+      myMove = this.movedex[this.selectedPkmn.attackIds[i] - 1];
+      if (myMove) {
+        this.selPkmnMoves[i] = Object.assign(myMove);
+      } else {
+        myMove = new Move();
+        myMove.name = '';
+        this.selPkmnMoves[i] = myMove;
       }
-    } else {
-      for (let i = 0; i < 4; i++) {
-        this.selPkmnMoves[i] = new Move();
+      if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+        this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+          String(this.selPkmnMoves[i].effectChance)); // with this
       }
+    }
+    while (this.selPkmnMoves.length < 4) {
+      this.selPkmnMoves.push(new Move());
     }
   }
 
@@ -161,7 +176,8 @@ export class TeambuilderComponent implements OnInit {
     if (this.favTeam.length < 6) {
       this.selected = this.favTeam.length;
     }
-    this.selectPokemon(pkmn);
+    // Assigns a new instance of the Pokemon, so we don't edit the pokedex itself
+    this.selectPokemon(Object.assign(pkmn));
   }
 
   /**
@@ -171,17 +187,26 @@ export class TeambuilderComponent implements OnInit {
     let myTrainer: Trainer;
     myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
     // wipe our selected Pokemon's old attacks
-    this.selectedPkmn.attackIds = new Array<number>();
-    this.selectedPkmn.moveset = new Array<string>();
+    this.selectedPkmn.attackIds = [null, null, null, null];
+    this.selectedPkmn.moveset = [null, null, null, null];
 
     // If our trainer is logged in, assign trainer ID
     if (myTrainer) {
       this.selectedPkmn.trainerId = myTrainer.id;
     }
     // Save our Pokemon's attacks
-    for (let i = 0; i < this.selPkmnMoves.length; i++) {
-      this.selectedPkmn.attackIds[i] = this.selPkmnMoves[i].id;
-      this.selectedPkmn.moveset[i] = this.selPkmnMoves[i].name;
+    for (let i = 0; i < 4; i++) {
+      // if the move exists
+      if (this.selPkmnMoves[i].id) {
+        this.selectedPkmn.attackIds[i] = this.selPkmnMoves[i].id;
+        this.selectedPkmn.moveset[i] = this.selPkmnMoves[i].name;
+      } else {
+        // if not, assign a placeholder
+        console.log(this.selPkmnMoves[i]);
+        const m = new Move();
+        m.name = '';
+        this.selPkmnMoves[i] = m;
+      }
     }
     // Add the Pokemon to our team
     if (this.selected >= 0) {
@@ -196,6 +221,7 @@ export class TeambuilderComponent implements OnInit {
   }
 
   /**
+   * Deprecated
    * Reads json file created by pokeAPI and populates our pokedex with 151 Pokemon
    */
   getPokeAPIjson() {
@@ -207,6 +233,7 @@ export class TeambuilderComponent implements OnInit {
   }
 
   /**
+   * Deprecated
    * Reads json file created by pokeAPI, and edited by Howard by hand <--wtf
    * because the data was for gen7 and we needed gen1, then fills our movedex with 164 Moves
    */
@@ -227,14 +254,22 @@ export class TeambuilderComponent implements OnInit {
    * @param attackName the attack name
    */
   setSelPkmnMoves(i: number, attackName: string) {
-    for (const move of this.movedex) {
-      if (move.name === attackName) {
-        this.selPkmnMoves[i] = Object.assign(move);
-        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
-          this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
-            String(this.selPkmnMoves[i].effectChance)); // with this
+    let myMove: Move;
+    console.log('inside setSelPkmnMoves() ' + i + ' ' + attackName);
+    if (attackName === '') {
+      myMove = new Move();
+      myMove.name = '';
+      this.selPkmnMoves[i] = myMove;
+    } else {
+      for (const move of this.movedex) {
+        if (move.name === attackName) {
+          this.selPkmnMoves[i] = Object.assign(move);
+          if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+            this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+              String(this.selPkmnMoves[i].effectChance)); // with this
+          }
+          break;
         }
-        break;
       }
     }
   }
