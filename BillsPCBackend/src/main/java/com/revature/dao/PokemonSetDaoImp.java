@@ -48,6 +48,8 @@ public class PokemonSetDaoImp implements PokemonSetDao {
 	public int createSet(PokemonSet set) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
+		Trainer trainer = (Trainer) sess.get(Trainer.class, set.getTrainer().getTrainerId());
+		set.setTrainer(trainer);
 		int i = (int) sess.save(set);
 		t.commit();
 		sess.close();
@@ -59,6 +61,8 @@ public class PokemonSetDaoImp implements PokemonSetDao {
 	public void updateSet(PokemonSet set) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
+		Trainer trainer = (Trainer) sess.get(Trainer.class, set.getTrainer().getTrainerId());
+		set.setTrainer(trainer);
 		sess.update(set);
 		t.commit();
 		sess.close();
