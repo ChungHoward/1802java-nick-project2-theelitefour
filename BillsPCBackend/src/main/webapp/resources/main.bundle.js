@@ -32,17 +32,10 @@ module.exports = "<div class=\"wrapper\">\r\n    <div class=\"sidebar\" data-col
 /***/ }),
 
 /***/ "./src/app/app.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__ = __webpack_require__("./node_modules/rxjs/add/operator/filter.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__ = __webpack_require__("./node_modules/perfect-scrollbar/dist/perfect-scrollbar.esm.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -52,12 +45,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var common_1 = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+__webpack_require__("./node_modules/rxjs/add/operator/filter.js");
+var navbar_component_1 = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+var perfect_scrollbar_1 = __webpack_require__("./node_modules/perfect-scrollbar/dist/perfect-scrollbar.esm.js");
 var AppComponent = (function () {
     function AppComponent(location, router) {
         this.location = location;
@@ -74,12 +68,12 @@ var AppComponent = (function () {
         });
         this.router.events.subscribe(function (event) {
             _this.navbar.sidebarClose();
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* NavigationStart */]) {
+            if (event instanceof router_1.NavigationStart) {
                 if (event.url != _this.lastPoppedUrl) {
                     _this.yScrollStack.push(window.scrollY);
                 }
             }
-            else if (event instanceof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* NavigationEnd */]) {
+            else if (event instanceof router_1.NavigationEnd) {
                 if (event.url == _this.lastPoppedUrl) {
                     _this.lastPoppedUrl = undefined;
                     window.scrollTo(0, _this.yScrollStack.pop());
@@ -89,13 +83,13 @@ var AppComponent = (function () {
                 }
             }
         });
-        this._router = this.router.events.filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* NavigationEnd */]; }).subscribe(function (event) {
+        this._router = this.router.events.filter(function (event) { return event instanceof router_1.NavigationEnd; }).subscribe(function (event) {
             elemMainPanel.scrollTop = 0;
             elemSidebar.scrollTop = 0;
         });
         if (window.matchMedia("(min-width: 960px)").matches && !this.isMac()) {
-            var ps = new __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__["a" /* default */](elemMainPanel);
-            ps = new __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__["a" /* default */](elemSidebar);
+            var ps = new perfect_scrollbar_1.default(elemMainPanel);
+            ps = new perfect_scrollbar_1.default(elemSidebar);
         }
     };
     AppComponent.prototype.ngAfterViewInit = function () {
@@ -114,7 +108,7 @@ var AppComponent = (function () {
     AppComponent.prototype.runOnRouteChange = function () {
         if (window.matchMedia("(min-width: 960px)").matches && !this.isMac()) {
             var elemMainPanel = document.querySelector('.main-panel');
-            var ps = new __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__["a" /* default */](elemMainPanel);
+            var ps = new perfect_scrollbar_1.default(elemMainPanel);
             ps.update();
         }
     };
@@ -126,266 +120,220 @@ var AppComponent = (function () {
         return bool;
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__["a" /* NavbarComponent */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__["a" /* NavbarComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__["a" /* NavbarComponent */]) === "function" && _a || Object)
+        core_1.ViewChild(navbar_component_1.NavbarComponent),
+        __metadata("design:type", typeof (_a = typeof navbar_component_1.NavbarComponent !== "undefined" && navbar_component_1.NavbarComponent) === "function" && _a || Object)
     ], AppComponent.prototype, "navbar", void 0);
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
     ], AppComponent);
     return AppComponent;
     var _a, _b, _c;
 }());
-
+exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
 /***/ "./src/app/app.module.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing__ = __webpack_require__("./src/app/app.routing.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__("./src/app/components/components.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__ = __webpack_require__("./src/app/pipe/filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__ = __webpack_require__("./src/app/pipe/sort.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__teambuilder_teambuilder_component__ = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pokemonbox_pokemonbox_component__ = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__corecoverage_corecoverage_component__ = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__defensivecoverage_defensivecoverage_component__ = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__offensivecoverage_offensivecoverage_component__ = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__ = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var forms_1 = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+var app_routing_1 = __webpack_require__("./src/app/app.routing.ts");
+var components_module_1 = __webpack_require__("./src/app/components/components.module.ts");
+var app_component_1 = __webpack_require__("./src/app/app.component.ts");
 // Pipes
-
-
+var filter_pipe_1 = __webpack_require__("./src/app/pipe/filter.pipe.ts");
+var sort_pipe_1 = __webpack_require__("./src/app/pipe/sort.pipe.ts");
 // Components
-
-
-
-
-
-
-
-
-
-
+var register_component_1 = __webpack_require__("./src/app/register/register.component.ts");
+var login_component_1 = __webpack_require__("./src/app/login/login.component.ts");
+var teambuilder_component_1 = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
+var pokemonbox_component_1 = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
+var corecoverage_component_1 = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
+var defensivecoverage_component_1 = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
+var offensivecoverage_component_1 = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
+var offensevsdefense_component_1 = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
+var featured_component_1 = __webpack_require__("./src/app/featured/featured.component.ts");
+var upgrade_component_1 = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
 // Services
-
-
-
-
-
-
+var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
+var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
+var view_user_service_1 = __webpack_require__("./src/app/services/view-user.service.ts");
 // Modules
-
-
+var ng2_dnd_1 = __webpack_require__("./node_modules/ng2-dnd/index.js");
+var view_users_component_1 = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
+        core_1.NgModule({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__teambuilder_teambuilder_component__["a" /* TeambuilderComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__pokemonbox_pokemonbox_component__["a" /* PokemonBoxComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__corecoverage_corecoverage_component__["a" /* CoreCoverageComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__defensivecoverage_defensivecoverage_component__["a" /* DefensiveCoverageComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__offensivecoverage_offensivecoverage_component__["a" /* OffensiveCoverageComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__offensevsdefense_offensevsdefense_component__["a" /* OffenseVsDefenseComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__["a" /* FeaturedComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__upgrade_upgrade_component__["a" /* UpgradeComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__["a" /* Filter */],
-                __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__["a" /* Sort */],
-                __WEBPACK_IMPORTED_MODULE_27__view_users_view_users_component__["a" /* ViewUsersComponent */]
+                app_component_1.AppComponent,
+                register_component_1.RegisterComponent,
+                login_component_1.LoginComponent,
+                teambuilder_component_1.TeambuilderComponent,
+                pokemonbox_component_1.PokemonBoxComponent,
+                corecoverage_component_1.CoreCoverageComponent,
+                defensivecoverage_component_1.DefensiveCoverageComponent,
+                offensivecoverage_component_1.OffensiveCoverageComponent,
+                offensevsdefense_component_1.OffenseVsDefenseComponent,
+                featured_component_1.FeaturedComponent,
+                upgrade_component_1.UpgradeComponent,
+                filter_pipe_1.Filter,
+                sort_pipe_1.Sort,
+                view_users_component_1.ViewUsersComponent
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* ComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_router__["d" /* RouterModule */],
-                __WEBPACK_IMPORTED_MODULE_5__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_26_ng2_dnd__["a" /* DndModule */].forRoot()
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpClientModule,
+                components_module_1.ComponentsModule,
+                router_1.RouterModule,
+                app_routing_1.AppRoutingModule,
+                ng2_dnd_1.DndModule.forRoot()
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__["a" /* PokemonService */],
-                __WEBPACK_IMPORTED_MODULE_20__services_move_service__["a" /* MoveService */],
-                __WEBPACK_IMPORTED_MODULE_22__services_team_service__["a" /* TeamService */],
-                __WEBPACK_IMPORTED_MODULE_23__services_type_service__["a" /* TypeService */],
-                __WEBPACK_IMPORTED_MODULE_24__services_login_service__["a" /* LoginService */],
-                __WEBPACK_IMPORTED_MODULE_25__services_view_user_service__["a" /* ViewUserService */]
+                pokemon_service_1.PokemonService,
+                move_service_1.MoveService,
+                team_service_1.TeamService,
+                type_service_1.TypeService,
+                login_service_1.LoginService,
+                view_user_service_1.ViewUserService
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
+            bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
     return AppModule;
 }());
-
+exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
 
 /***/ "./src/app/app.routing.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__ = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pokemonbox_pokemonbox_component__ = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__corecoverage_corecoverage_component__ = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__defensivecoverage_defensivecoverage_component__ = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__offensivecoverage_offensivecoverage_component__ = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__upgrade_upgrade_component__ = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var common_1 = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+var register_component_1 = __webpack_require__("./src/app/register/register.component.ts");
+var login_component_1 = __webpack_require__("./src/app/login/login.component.ts");
+var teambuilder_component_1 = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
+var pokemonbox_component_1 = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
+var corecoverage_component_1 = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
+var defensivecoverage_component_1 = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
+var offensivecoverage_component_1 = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
+var offensevsdefense_component_1 = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
+var featured_component_1 = __webpack_require__("./src/app/featured/featured.component.ts");
+var upgrade_component_1 = __webpack_require__("./src/app/upgrade/upgrade.component.ts");
+var view_users_component_1 = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var routes = [
-    { path: 'view-user', component: __WEBPACK_IMPORTED_MODULE_14__view_users_view_users_component__["a" /* ViewUsersComponent */] },
-    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__register_register_component__["a" /* RegisterComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */] },
-    { path: 'teambuilder', component: __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__["a" /* TeambuilderComponent */] },
-    { path: 'pokemonbox', component: __WEBPACK_IMPORTED_MODULE_7__pokemonbox_pokemonbox_component__["a" /* PokemonBoxComponent */] },
-    { path: 'corecoverage', component: __WEBPACK_IMPORTED_MODULE_8__corecoverage_corecoverage_component__["a" /* CoreCoverageComponent */] },
-    { path: 'defensivecoverage', component: __WEBPACK_IMPORTED_MODULE_9__defensivecoverage_defensivecoverage_component__["a" /* DefensiveCoverageComponent */] },
-    { path: 'offensivecoverage', component: __WEBPACK_IMPORTED_MODULE_10__offensivecoverage_offensivecoverage_component__["a" /* OffensiveCoverageComponent */] },
-    { path: 'offensevsdefense', component: __WEBPACK_IMPORTED_MODULE_11__offensevsdefense_offensevsdefense_component__["a" /* OffenseVsDefenseComponent */] },
-    { path: 'featured', component: __WEBPACK_IMPORTED_MODULE_12__featured_featured_component__["a" /* FeaturedComponent */] },
-    { path: 'upgrade', component: __WEBPACK_IMPORTED_MODULE_13__upgrade_upgrade_component__["a" /* UpgradeComponent */] },
+    { path: 'view-user', component: view_users_component_1.ViewUsersComponent },
+    { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'teambuilder', component: teambuilder_component_1.TeambuilderComponent },
+    { path: 'pokemonbox', component: pokemonbox_component_1.PokemonBoxComponent },
+    { path: 'corecoverage', component: corecoverage_component_1.CoreCoverageComponent },
+    { path: 'defensivecoverage', component: defensivecoverage_component_1.DefensiveCoverageComponent },
+    { path: 'offensivecoverage', component: offensivecoverage_component_1.OffensiveCoverageComponent },
+    { path: 'offensevsdefense', component: offensevsdefense_component_1.OffenseVsDefenseComponent },
+    { path: 'featured', component: featured_component_1.FeaturedComponent },
+    { path: 'upgrade', component: upgrade_component_1.UpgradeComponent },
     { path: '', redirectTo: 'teambuilder', pathMatch: 'full' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        core_1.NgModule({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* RouterModule */].forRoot(routes)
+                common_1.CommonModule,
+                platform_browser_1.BrowserModule,
+                router_1.RouterModule.forRoot(routes)
             ],
             exports: [],
         })
     ], AppRoutingModule);
     return AppRoutingModule;
 }());
-
+exports.AppRoutingModule = AppRoutingModule;
 //# sourceMappingURL=app.routing.js.map
 
 /***/ }),
 
 /***/ "./src/app/components/components.module.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__footer_footer_component__ = __webpack_require__("./src/app/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sidebar_sidebar_component__ = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var common_1 = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+var footer_component_1 = __webpack_require__("./src/app/components/footer/footer.component.ts");
+var navbar_component_1 = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
+var sidebar_component_1 = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
 var ComponentsModule = (function () {
     function ComponentsModule() {
     }
     ComponentsModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        core_1.NgModule({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */],
+                common_1.CommonModule,
+                router_1.RouterModule,
             ],
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_5__sidebar_sidebar_component__["b" /* SidebarComponent */]
+                footer_component_1.FooterComponent,
+                navbar_component_1.NavbarComponent,
+                sidebar_component_1.SidebarComponent
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_5__sidebar_sidebar_component__["b" /* SidebarComponent */]
+                footer_component_1.FooterComponent,
+                navbar_component_1.NavbarComponent,
+                sidebar_component_1.SidebarComponent
             ]
         })
     ], ComponentsModule);
     return ComponentsModule;
 }());
-
+exports.ComponentsModule = ComponentsModule;
 //# sourceMappingURL=components.module.js.map
 
 /***/ }),
@@ -405,11 +353,10 @@ module.exports = "<footer>\r\n  <div class=\"container-fluid\">\r\n    <nav clas
 /***/ }),
 
 /***/ "./src/app/components/footer/footer.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -419,7 +366,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var FooterComponent = (function () {
     function FooterComponent() {
         this.test = new Date();
@@ -427,7 +375,7 @@ var FooterComponent = (function () {
     FooterComponent.prototype.ngOnInit = function () {
     };
     FooterComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-footer',
             template: __webpack_require__("./src/app/components/footer/footer.component.html"),
             styles: [__webpack_require__("./src/app/components/footer/footer.component.css")]
@@ -436,7 +384,7 @@ var FooterComponent = (function () {
     ], FooterComponent);
     return FooterComponent;
 }());
-
+exports.FooterComponent = FooterComponent;
 //# sourceMappingURL=footer.component.js.map
 
 /***/ }),
@@ -456,14 +404,10 @@ module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n 
 /***/ }),
 
 /***/ "./src/app/components/navbar/navbar.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__ = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -473,10 +417,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var sidebar_component_1 = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
+var common_1 = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
 var NavbarComponent = (function () {
     function NavbarComponent(location, element, loginService) {
         this.element = element;
@@ -486,7 +431,7 @@ var NavbarComponent = (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.listTitles = __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__["a" /* ROUTES */].filter(function (listTitle) { return listTitle; });
+        this.listTitles = sidebar_component_1.ROUTES.filter(function (listTitle) { return listTitle; });
         var navbar = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         this.loginService.currentTrainer.subscribe(function (trainer) {
@@ -542,17 +487,17 @@ var NavbarComponent = (function () {
         });
     };
     NavbarComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-navbar',
             template: __webpack_require__("./src/app/components/navbar/navbar.component.html"),
             styles: [__webpack_require__("./src/app/components/navbar/navbar.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _a || Object, typeof (_b = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object])
     ], NavbarComponent);
     return NavbarComponent;
     var _a, _b, _c;
 }());
-
+exports.NavbarComponent = NavbarComponent;
 //# sourceMappingURL=navbar.component.js.map
 
 /***/ }),
@@ -572,12 +517,10 @@ module.exports = "<div class=\"logo\">\r\n    <a href=\"#\" class=\"simple-text\
 /***/ }),
 
 /***/ "./src/app/components/sidebar/sidebar.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SidebarComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -587,8 +530,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-var ROUTES = [
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+exports.ROUTES = [
     { path: 'teambuilder', title: 'Teambuilder', icon: 'view_quilt', class: '' },
     { path: 'pokemonbox', title: 'Pokemon Box', icon: 'grid_on', class: '' },
     { path: 'corecoverage', title: 'Core Coverage', icon: 'repeat_one', class: '' },
@@ -600,7 +544,7 @@ var SidebarComponent = (function () {
     function SidebarComponent() {
     }
     SidebarComponent.prototype.ngOnInit = function () {
-        this.menuItems = ROUTES.filter(function (menuItem) { return menuItem; });
+        this.menuItems = exports.ROUTES.filter(function (menuItem) { return menuItem; });
     };
     SidebarComponent.prototype.isMobileMenu = function () {
         if ($(window).width() > 991) {
@@ -610,7 +554,7 @@ var SidebarComponent = (function () {
     };
     ;
     SidebarComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-sidebar',
             template: __webpack_require__("./src/app/components/sidebar/sidebar.component.html"),
             styles: [__webpack_require__("./src/app/components/sidebar/sidebar.component.css")]
@@ -619,7 +563,7 @@ var SidebarComponent = (function () {
     ], SidebarComponent);
     return SidebarComponent;
 }());
-
+exports.SidebarComponent = SidebarComponent;
 //# sourceMappingURL=sidebar.component.js.map
 
 /***/ }),
@@ -639,14 +583,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/corecoverage/corecoverage.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -656,21 +596,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var CoreCoverageComponent = (function () {
     function CoreCoverageComponent(pokemonService) {
         this.pokemonService = pokemonService;
         // The number of resistances we would like on an ideal partner
         this.threshold = 0;
         // two-way data binding wouldn't work so here's the hard way
-        this.thresholdChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.thresholdChange = new core_1.EventEmitter();
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]();
+        this.types = new type_service_1.TypeService();
         // Assign my favTeam using teamService
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new team_service_1.TeamService();
         this.favTeam = this.teamService.favTeam;
         // My default selected Pokemon
         this.selectedPkmn = this.favTeam[0];
@@ -753,26 +694,26 @@ var CoreCoverageComponent = (function () {
         this.checkCoreCoverage(this.threshold);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        core_1.Input(),
         __metadata("design:type", Object)
     ], CoreCoverageComponent.prototype, "threshold", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+        core_1.Output(),
         __metadata("design:type", Object)
     ], CoreCoverageComponent.prototype, "thresholdChange", void 0);
     CoreCoverageComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-corecoverage',
             template: __webpack_require__("./src/app/corecoverage/corecoverage.component.html"),
             styles: [__webpack_require__("./src/app/corecoverage/corecoverage.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]]
+            providers: [pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object])
     ], CoreCoverageComponent);
     return CoreCoverageComponent;
     var _a;
 }());
-
+exports.CoreCoverageComponent = CoreCoverageComponent;
 //# sourceMappingURL=corecoverage.component.js.map
 
 /***/ }),
@@ -792,13 +733,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/defensivecoverage/defensivecoverage.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DefensiveCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -808,15 +746,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var DefensiveCoverageComponent = (function () {
     function DefensiveCoverageComponent() {
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
+        this.types = new type_service_1.TypeService();
         /* Assign my favTeam using teamService */
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new team_service_1.TeamService();
         this.favTeam = this.teamService.favTeam;
         this.curTeam = new Array();
         this.curTeam = Object.assign([], this.favTeam);
@@ -886,7 +825,7 @@ var DefensiveCoverageComponent = (function () {
         this.createTable();
     };
     DefensiveCoverageComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-defensivecoverage',
             template: __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.html"),
             styles: [__webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.css")]
@@ -895,7 +834,7 @@ var DefensiveCoverageComponent = (function () {
     ], DefensiveCoverageComponent);
     return DefensiveCoverageComponent;
 }());
-
+exports.DefensiveCoverageComponent = DefensiveCoverageComponent;
 //# sourceMappingURL=defensivecoverage.component.js.map
 
 /***/ }),
@@ -915,11 +854,10 @@ module.exports = "<!--\r\n<input [(ngModel)]=\"id\" type=\"text\"/>\r\n<button (
 /***/ }),
 
 /***/ "./src/app/featured/featured.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeaturedComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -929,13 +867,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var FeaturedComponent = (function () {
     function FeaturedComponent() {
     }
     FeaturedComponent.prototype.ngOnInit = function () { };
     FeaturedComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-featured',
             template: __webpack_require__("./src/app/featured/featured.component.html"),
             styles: [__webpack_require__("./src/app/featured/featured.component.css")]
@@ -944,7 +883,7 @@ var FeaturedComponent = (function () {
     ], FeaturedComponent);
     return FeaturedComponent;
 }());
-
+exports.FeaturedComponent = FeaturedComponent;
 //# sourceMappingURL=featured.component.js.map
 
 /***/ }),
@@ -964,13 +903,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/login/login.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -980,9 +916,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var LoginComponent = (function () {
     function LoginComponent(loginService, router) {
         this.loginService = loginService;
@@ -1006,18 +943,18 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-login',
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]]
+            providers: [login_service_1.LoginService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], LoginComponent);
     return LoginComponent;
     var _a, _b;
 }());
-
+exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
@@ -1037,11 +974,10 @@ module.exports = "<div class=\"main-content\">\r\n    <div class=\"container-flu
 /***/ }),
 
 /***/ "./src/app/offensevsdefense/offensevsdefense.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffenseVsDefenseComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1051,7 +987,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var OffenseVsDefenseComponent = (function () {
     function OffenseVsDefenseComponent() {
     }
@@ -1073,7 +1010,7 @@ var OffenseVsDefenseComponent = (function () {
     OffenseVsDefenseComponent.prototype.ngOnInit = function () {
     };
     OffenseVsDefenseComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-offensevsdefense',
             template: __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.html"),
             styles: [__webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.css")]
@@ -1082,7 +1019,7 @@ var OffenseVsDefenseComponent = (function () {
     ], OffenseVsDefenseComponent);
     return OffenseVsDefenseComponent;
 }());
-
+exports.OffenseVsDefenseComponent = OffenseVsDefenseComponent;
 //# sourceMappingURL=offensevsdefense.component.js.map
 
 /***/ }),
@@ -1102,17 +1039,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/offensivecoverage/offensivecoverage.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffensiveCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1122,19 +1052,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
+var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var OffensiveCoverageComponent = (function () {
     function OffensiveCoverageComponent(pokemonService, moveService, types) {
         this.pokemonService = pokemonService;
         this.moveService = moveService;
         this.types = types;
         // Assign my favTeam using teamService
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new team_service_1.TeamService();
         this.favTeam = this.teamService.favTeam;
         // Initialize
         this.teamMoveTypes = new Array();
@@ -1251,7 +1182,7 @@ var OffensiveCoverageComponent = (function () {
         var _this = this;
         // the above methods are being replaced by the below method which calls both Observables
         // in parallel and waits for them to finish -- or apparently not
-        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+        Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
             _this.movedex = moveArray;
@@ -1264,35 +1195,35 @@ var OffensiveCoverageComponent = (function () {
         });
     };
     OffensiveCoverageComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-offensivecoverage',
             template: __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.html"),
             styles: [__webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]]
+            providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object, typeof (_c = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _c || Object])
     ], OffensiveCoverageComponent);
     return OffensiveCoverageComponent;
     var _a, _b, _c;
 }());
-
+exports.OffensiveCoverageComponent = OffensiveCoverageComponent;
 //# sourceMappingURL=offensivecoverage.component.js.map
 
 /***/ }),
 
 /***/ "./src/app/pipe/filter.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Filter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var Filter = (function () {
     function Filter() {
     }
@@ -1313,30 +1244,30 @@ var Filter = (function () {
         return newList;
     };
     Filter = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        core_1.Pipe({
             name: 'pkmnFilter'
         })
     ], Filter);
     return Filter;
 }());
-
+exports.Filter = Filter;
 //# sourceMappingURL=filter.pipe.js.map
 
 /***/ }),
 
 /***/ "./src/app/pipe/sort.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sort; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var Sort = (function () {
     function Sort() {
     }
@@ -1423,23 +1354,23 @@ var Sort = (function () {
         }
     };
     Sort = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        core_1.Pipe({
             name: 'pkmnSort'
         })
     ], Sort);
     return Sort;
 }());
-
+exports.Sort = Sort;
 //# sourceMappingURL=sort.pipe.js.map
 
 /***/ }),
 
 /***/ "./src/app/pokemon.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Pokemon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokeAPI; });
+
+Object.defineProperty(exports, "__esModule", { value: true });
 // Used for temporary storage such as team building
 var Pokemon = (function () {
     // A missingno for our placeholder!
@@ -1456,7 +1387,7 @@ var Pokemon = (function () {
     }
     return Pokemon;
 }());
-
+exports.Pokemon = Pokemon;
 // Used to read pokeAPIjson
 var PokeAPI = (function () {
     function PokeAPI() {
@@ -1472,7 +1403,7 @@ var PokeAPI = (function () {
     }
     return PokeAPI;
 }());
-
+exports.PokeAPI = PokeAPI;
 //# sourceMappingURL=pokemon.js.map
 
 /***/ }),
@@ -1492,13 +1423,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/pokemonbox/pokemonbox.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonBoxComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1508,15 +1436,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var PokemonBoxComponent = (function () {
     function PokemonBoxComponent() {
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
+        this.types = new type_service_1.TypeService();
         /* Assign my favTeam using teamService */
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new team_service_1.TeamService();
         this.favTeam = this.teamService.favTeam;
         this.curTeam = new Array();
         this.curTeam = Object.assign([], this.favTeam);
@@ -1605,7 +1534,7 @@ var PokemonBoxComponent = (function () {
         }
     };
     PokemonBoxComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-pokemonbox',
             template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
             styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")]
@@ -1614,7 +1543,7 @@ var PokemonBoxComponent = (function () {
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
 }());
-
+exports.PokemonBoxComponent = PokemonBoxComponent;
 //# sourceMappingURL=pokemonbox.component.js.map
 
 /***/ }),
@@ -1634,12 +1563,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/register/register.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1649,8 +1576,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var register_service_1 = __webpack_require__("./src/app/services/register.service.ts");
 var RegisterComponent = (function () {
     function RegisterComponent(registerService) {
         this.registerService = registerService;
@@ -1672,30 +1600,26 @@ var RegisterComponent = (function () {
     };
     RegisterComponent.prototype.ngOnInit = function () { };
     RegisterComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-register',
             template: __webpack_require__("./src/app/register/register.component.html"),
             styles: [__webpack_require__("./src/app/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_register_service__["a" /* RegisterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_register_service__["a" /* RegisterService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof register_service_1.RegisterService !== "undefined" && register_service_1.RegisterService) === "function" && _a || Object])
     ], RegisterComponent);
     return RegisterComponent;
     var _a;
 }());
-
+exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/login.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1705,17 +1629,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var BehaviorSubject_1 = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
-        this.trainerSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](JSON.parse(localStorage.getItem('trainer')));
+        this.trainerSource = new BehaviorSubject_1.BehaviorSubject(JSON.parse(localStorage.getItem('trainer')));
         this.currentTrainer = this.trainerSource.asObservable();
     }
     LoginService.prototype.login = function (username, password) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username).set('password', password);
+        var body = new http_1.HttpParams().set('username', username).set('password', password);
         return this.http.post('login', body);
     };
     LoginService.prototype.logout = function () {
@@ -1725,24 +1650,22 @@ var LoginService = (function () {
         this.trainerSource.next(trainer);
     };
     LoginService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
     ], LoginService);
     return LoginService;
     var _a;
 }());
-
+exports.LoginService = LoginService;
 //# sourceMappingURL=login.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/move.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoveService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1752,8 +1675,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var MoveService = (function () {
     function MoveService(http) {
         this.http = http;
@@ -1762,24 +1686,22 @@ var MoveService = (function () {
         return this.http.get('assets/moveAPI.json');
     };
     MoveService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
     ], MoveService);
     return MoveService;
     var _a;
 }());
-
+exports.MoveService = MoveService;
 //# sourceMappingURL=move.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/pokemon.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1789,8 +1711,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var PokemonService = (function () {
     function PokemonService(http) {
         this.http = http;
@@ -1799,24 +1722,22 @@ var PokemonService = (function () {
         return this.http.get('assets/pokeAPI.json');
     };
     PokemonService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
     ], PokemonService);
     return PokemonService;
     var _a;
 }());
-
+exports.PokemonService = PokemonService;
 //# sourceMappingURL=pokemon.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/register.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1826,36 +1747,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var RegisterService = (function () {
     function RegisterService(http) {
         this.http = http;
     }
     RegisterService.prototype.register = function (username, password, email) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username).set('password', password).set('email', email);
+        var body = new http_1.HttpParams().set('username', username).set('password', password).set('email', email);
         return this.http.post('register', body);
     };
     RegisterService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
     ], RegisterService);
     return RegisterService;
     var _a;
 }());
-
+exports.RegisterService = RegisterService;
 //# sourceMappingURL=register.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/team.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pokemon__ = __webpack_require__("./src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1865,20 +1784,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var TeamService = (function () {
     function TeamService() {
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
+        this.types = new type_service_1.TypeService();
         // Making my team
-        this.pkmn1 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
-        this.pkmn2 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
-        this.pkmn3 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
-        this.pkmn4 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
-        this.pkmn5 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
-        this.pkmn6 = new __WEBPACK_IMPORTED_MODULE_1__pokemon__["b" /* Pokemon */]();
+        this.pkmn1 = new pokemon_1.Pokemon();
+        this.pkmn2 = new pokemon_1.Pokemon();
+        this.pkmn3 = new pokemon_1.Pokemon();
+        this.pkmn4 = new pokemon_1.Pokemon();
+        this.pkmn5 = new pokemon_1.Pokemon();
+        this.pkmn6 = new pokemon_1.Pokemon();
         this.pkmn1.name = 'Jolteon';
         this.pkmn1.trainerId = 1;
         this.pkmn1.sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png';
@@ -1931,22 +1851,21 @@ var TeamService = (function () {
     }
     TeamService.prototype.ngOnInit = function () { };
     TeamService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        core_1.Injectable(),
         __metadata("design:paramtypes", [])
     ], TeamService);
     return TeamService;
 }());
-
+exports.TeamService = TeamService;
 //# sourceMappingURL=team.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/type.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1956,7 +1875,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var TypeService = (function () {
     function TypeService() {
         this.none = 'assets/img/types/none.png';
@@ -2014,23 +1934,21 @@ var TypeService = (function () {
         ];
     }
     TypeService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        core_1.Injectable(),
         __metadata("design:paramtypes", [])
     ], TypeService);
     return TypeService;
 }());
-
+exports.TypeService = TypeService;
 //# sourceMappingURL=type.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/services/view-user.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUserService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2040,8 +1958,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var ViewUserService = (function () {
     function ViewUserService(http) {
         this.http = http;
@@ -2050,13 +1969,13 @@ var ViewUserService = (function () {
         return this.http.get('view-user');
     };
     ViewUserService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
     ], ViewUserService);
     return ViewUserService;
     var _a;
 }());
-
+exports.ViewUserService = ViewUserService;
 //# sourceMappingURL=view-user.service.js.map
 
 /***/ }),
@@ -2076,18 +1995,10 @@ module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid
 /***/ }),
 
 /***/ "./src/app/teambuilder/teambuilder.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeambuilderComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_pokemon__ = __webpack_require__("./src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_chartist__);
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2097,26 +2008,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
+var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
+var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
+var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
+var Chartist = __webpack_require__("./node_modules/chartist/dist/chartist.js");
 var TeambuilderComponent = (function () {
     function TeambuilderComponent(pokemonService, moveService) {
         this.pokemonService = pokemonService;
         this.moveService = moveService;
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]();
+        this.types = new type_service_1.TypeService();
         // Assign my favTeam using teamService
-        this.teamService = new __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]();
+        this.teamService = new team_service_1.TeamService();
         this.favTeam = this.teamService.favTeam;
         // Make a team full of missingno
         this.curTeam = new Array();
         for (var i = 0; i < 6; i++) {
-            this.curTeam.push(new __WEBPACK_IMPORTED_MODULE_1_app_pokemon__["a" /* PokeAPI */]());
+            this.curTeam.push(new pokemon_1.PokeAPI());
         }
         // My default selected Pokemon's attacks
         this.selPkmnMoves = new Array();
@@ -2292,7 +2204,7 @@ var TeambuilderComponent = (function () {
                     }
                 }]
         ];
-        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_6_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
+        var pokemonStatChart = new Chartist.Bar('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
         // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(pokemonStatChart);
     };
@@ -2302,18 +2214,18 @@ var TeambuilderComponent = (function () {
         this.getMoveAPIjson();
     };
     TeambuilderComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-teambuilder',
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]]
+            providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _a || Object, typeof (_b = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _b || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
     var _a, _b;
 }());
-
+exports.TeambuilderComponent = TeambuilderComponent;
 //# sourceMappingURL=teambuilder.component.js.map
 
 /***/ }),
@@ -2333,11 +2245,10 @@ module.exports = "<div class=\"main-content\">\r\n    <div class=\"container-flu
 /***/ }),
 
 /***/ "./src/app/upgrade/upgrade.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpgradeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2347,14 +2258,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var UpgradeComponent = (function () {
     function UpgradeComponent() {
     }
     UpgradeComponent.prototype.ngOnInit = function () {
     };
     UpgradeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-upgrade',
             template: __webpack_require__("./src/app/upgrade/upgrade.component.html"),
             styles: [__webpack_require__("./src/app/upgrade/upgrade.component.css")]
@@ -2363,7 +2275,7 @@ var UpgradeComponent = (function () {
     ], UpgradeComponent);
     return UpgradeComponent;
 }());
-
+exports.UpgradeComponent = UpgradeComponent;
 //# sourceMappingURL=upgrade.component.js.map
 
 /***/ }),
@@ -2383,12 +2295,10 @@ module.exports = "<div>\r\n  <table>\r\n    <thead>\r\n        <tr>\r\n         
 /***/ }),
 
 /***/ "./src/app/view-users/view-users.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUsersComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2398,8 +2308,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var view_user_service_1 = __webpack_require__("./src/app/services/view-user.service.ts");
 var ViewUsersComponent = (function () {
     function ViewUsersComponent(viewUserService) {
         this.viewUserService = viewUserService;
@@ -2412,32 +2323,33 @@ var ViewUsersComponent = (function () {
         });
     };
     ViewUsersComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        core_1.Component({
             selector: 'app-view-users',
             template: __webpack_require__("./src/app/view-users/view-users.component.html"),
             styles: [__webpack_require__("./src/app/view-users/view-users.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]]
+            providers: [view_user_service_1.ViewUserService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof view_user_service_1.ViewUserService !== "undefined" && view_user_service_1.ViewUserService) === "function" && _a || Object])
     ], ViewUsersComponent);
     return ViewUsersComponent;
     var _a;
 }());
-
+exports.ViewUsersComponent = ViewUsersComponent;
 //# sourceMappingURL=view-users.component.js.map
 
 /***/ }),
 
 /***/ "./src/environments/environment.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
-var environment = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.environment = {
     production: false
 };
 //# sourceMappingURL=environment.js.map
@@ -2445,22 +2357,19 @@ var environment = {
 /***/ }),
 
 /***/ "./src/main.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("./src/app/app.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 
-
-
-
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var platform_browser_dynamic_1 = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+var app_module_1 = __webpack_require__("./src/app/app.module.ts");
+var environment_1 = __webpack_require__("./src/environments/environment.ts");
+if (environment_1.environment.production) {
+    core_1.enableProdMode();
 }
-Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 //# sourceMappingURL=main.js.map
 
 /***/ }),
