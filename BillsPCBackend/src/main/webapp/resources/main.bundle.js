@@ -488,8 +488,6 @@ var NavbarComponent = (function () {
             _this.loginService.changeTrainer(null);
         });
     };
-    NavbarComponent.prototype.viewUsers = function () {
-    };
     NavbarComponent = __decorate([
         core_1.Component({
             selector: 'app-navbar',
@@ -2312,7 +2310,7 @@ module.exports = "/* Layout */\r\n.main-content {\r\n    margin-top: 50px;\r\n  
 /***/ "./src/app/view-users/view-users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class = \"card-footer mt-10\">\r\n    <table class = \"table\">\r\n      <thead class=\"text-primary\">\r\n          <tr>\r\n            <th>Username</th>\r\n            <th>Role</th>\r\n          </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor='let user of users; let i = index'>\r\n          <td>{{ user.name }}</td>\r\n          <td>{{ user.role }}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"main-content\">\r\n  <div class = \"card-footer mt-10\">\r\n    <form [formGroup] = \"form\" (ngSubmit) = \"onSubmit\">\r\n      <table class = \"table\">\r\n        <thead class=\"text-primary\">\r\n            <tr>\r\n              <th>Username</th>\r\n              <th>Role</th>\r\n              <th></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor='let user of users; let i = index'>\r\n            <td>{{ user.name }}</td>\r\n            <td>{{ user.role }}</td>\r\n            <td><input type = \"radio\" formControlName = \"promote\" [value] = \"user\" > </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      <p>\r\n          <button type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2333,9 +2331,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var view_user_service_1 = __webpack_require__("./src/app/services/view-user.service.ts");
+var forms_1 = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 var ViewUsersComponent = (function () {
-    function ViewUsersComponent(viewUserService) {
+    function ViewUsersComponent(viewUserService, fb) {
         this.viewUserService = viewUserService;
+        this.fb = fb;
     }
     ViewUsersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2351,10 +2351,10 @@ var ViewUsersComponent = (function () {
             styles: [__webpack_require__("./src/app/view-users/view-users.component.css")],
             providers: [view_user_service_1.ViewUserService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof view_user_service_1.ViewUserService !== "undefined" && view_user_service_1.ViewUserService) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof view_user_service_1.ViewUserService !== "undefined" && view_user_service_1.ViewUserService) === "function" && _a || Object, typeof (_b = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _b || Object])
     ], ViewUsersComponent);
     return ViewUsersComponent;
-    var _a;
+    var _a, _b;
 }());
 exports.ViewUsersComponent = ViewUsersComponent;
 //# sourceMappingURL=view-users.component.js.map

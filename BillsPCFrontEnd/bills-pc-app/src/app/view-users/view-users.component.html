@@ -1,18 +1,25 @@
 <div class="main-content">
   <div class = "card-footer mt-10">
-    <table class = "table">
-      <thead class="text-primary">
-          <tr>
-            <th>Username</th>
-            <th>Role</th>
+    <form [formGroup] = "form" (ngSubmit) = "onSubmit">
+      <table class = "table">
+        <thead class="text-primary">
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let user of users; let i = index'>
+            <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td><input type = "radio" formControlName = "promote" [value] = "user" > </td>
           </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users; let i = index'>
-          <td>{{ user.name }}</td>
-          <td>{{ user.role }}</td>
-        </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+      <p>
+          <button type="submit" [disabled]="!form.valid">Submit</button>
+      </p>
+    </form>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewUserService } from '../services/view-user.service';
 import { Trainer } from '../trainer';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule, FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-view-users',
@@ -9,10 +11,10 @@ import { Trainer } from '../trainer';
   providers: [ViewUserService]
 })
 export class ViewUsersComponent implements OnInit {
-
+  form: FormGroup;
   users: Trainer[];
 
-  constructor(private viewUserService: ViewUserService) { }
+  constructor(private viewUserService: ViewUserService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.viewUserService.viewUsers().subscribe(users => {
