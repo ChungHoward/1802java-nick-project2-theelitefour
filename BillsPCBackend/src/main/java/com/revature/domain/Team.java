@@ -12,8 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -58,6 +57,19 @@ public class Team {
 	@OneToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="SET6")
 	private PokemonSet set6;
+	
+	@OneToOne
+	@JoinColumn(name="TR_ID")
+	private Trainer trainer;
+
+	@JsonIgnore
+	public Trainer getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(Trainer trainer) {
+		this.trainer = trainer;
+	}
 
 	public Team() {
 		super();
@@ -144,7 +156,7 @@ public class Team {
 	@Override
 	public String toString() {
 		return "Team [teamId=" + teamId + ", teamName=" + teamName + ", set1=" + set1 + ", set2=" + set2 + ", set3="
-				+ set3 + ", set4=" + set4 + ", set5=" + set5 + ", set6=" + set6 + "]";
+				+ set3 + ", set4=" + set4 + ", set5=" + set5 + ", set6=" + set6 + ", trainer=" + trainer + "]";
 	}
 
 	@Override
@@ -159,6 +171,7 @@ public class Team {
 		result = prime * result + ((set6 == null) ? 0 : set6.hashCode());
 		result = prime * result + teamId;
 		result = prime * result + ((teamName == null) ? 0 : teamName.hashCode());
+		result = prime * result + ((trainer == null) ? 0 : trainer.hashCode());
 		return result;
 	}
 
@@ -207,6 +220,11 @@ public class Team {
 			if (other.teamName != null)
 				return false;
 		} else if (!teamName.equals(other.teamName))
+			return false;
+		if (trainer == null) {
+			if (other.trainer != null)
+				return false;
+		} else if (!trainer.equals(other.trainer))
 			return false;
 		return true;
 	}

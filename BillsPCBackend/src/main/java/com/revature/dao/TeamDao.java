@@ -11,10 +11,11 @@ public interface TeamDao {
 	
 	public List<Team> retreiveAllTeamsByTrainer(Trainer user);
 	
+	public List<Team> retrieveFeaturedTeams();
+	
 	public int createTeam(Team team);
 	
 	public void updateTeam(Team team);
 	
 	public void deleteTeam(Team team);
-	
 }
