@@ -47,7 +47,8 @@
                   </tr>
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
-                  <tr *ngFor="let pkmn of favTeam; let i = index" dnd-sortable [sortableIndex]="i">
+                  <tr *ngFor="let pkmn of favTeam; let i = index"
+                    dnd-sortable [sortableIndex]="i" (onDropSuccess)="updateTeam(pkmn, i)">
                     <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
@@ -105,8 +106,9 @@
                 </thead>
                 <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="myBox">
                   <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->
-                  <tr *ngFor="let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index" dnd-sortable [sortableIndex]="i">
-                    <td class="ta-center" (click)="selectPokemon(boxpkmn)" role="button">{{ boxpkmn.name }}</td>
+                  <tr *ngFor="let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index"
+                    dnd-sortable [sortableIndex]="i" (onDropSuccess)="updateBox(boxpkmn, i)">
+                    <td class="ta-center" (click)="selectPokemon(boxpkmn)" role="button">{{ boxpkmn.name | titlecase }}</td>
                     <td class="ta-center type-col">
                       <img src="{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}" class="type">
                       <img src="{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}" class="type">

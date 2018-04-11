@@ -23,6 +23,7 @@ import { DefensiveCoverageComponent } from './defensivecoverage/defensivecoverag
 import { OffensiveCoverageComponent } from './offensivecoverage/offensivecoverage.component';
 import { OffenseVsDefenseComponent } from './offensevsdefense/offensevsdefense.component';
 import { FeaturedComponent } from './featured/featured.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 // Services
 import { MoveService } from './services/move.service';
@@ -31,10 +32,11 @@ import { TeamService } from './services/team.service';
 import { TypeService } from './services/type.service';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
+import { ConvertService } from './services/converter.service';
+import { FeatureService } from './services/feature.service';
 
-// Modules
+// Custom Modules
 import { DndModule } from 'ng2-dnd';
-import { ViewUsersComponent } from './view-users/view-users.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     TeamService,
     TypeService,
     LoginService,
-    RegisterService
+    RegisterService,
+    ConvertService,
+    FeatureService
   ],
   bootstrap: [AppComponent]
 })
