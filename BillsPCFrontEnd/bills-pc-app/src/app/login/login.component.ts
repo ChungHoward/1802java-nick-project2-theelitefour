@@ -7,7 +7,7 @@ import { Trainer } from '../trainer';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  providers: [ LoginService ]
 })
 export class LoginComponent implements OnInit {
 
