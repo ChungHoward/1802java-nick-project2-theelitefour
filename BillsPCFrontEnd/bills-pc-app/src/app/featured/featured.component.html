@@ -1,46 +1,50 @@
 <div class="main-content">
-  <div class="container-fluid">
-
-    <div class="card card-plain">
-      <div class="card-header" data-background-color="red">
-        <h4 class="title">Featured Teams by our ace trainers</h4>
-        <p class="category">Ace trainers are carefully chosen by our experts to ensure the highest quality teams</p>
-      </div>
-
-      <div class="card-content">
-        <div class="row" *ngFor="let featTeam of featTeamArray">
-          <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of featTeam; let i = index">
-            <div class="card">
-              <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
-                <img [src]="favTeam[i].sprite" alt="" />
-              </div>
-
-              <div class="card-content ta-center" (click)="selectPokemon(pkmn)" role="button">
-                <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
-                <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
-                <h4 class="title">{{ favTeam[i].name }}</h4>
-              </div>
-
-              <div class="card-footer ta-center">
-                <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
-                  {{ collapse }}
-                </i>
-                <div class="stats" *ngIf="expandOrCollapse">
-                  <ul>
-                    <li *ngFor="let atk of favTeam[i].moveset">
-                      {{ atk }}
-                    </li>
-                  </ul>
+    <div class="container-fluid">
+  
+      <div class="card card-plain">
+        <div class="card-header" data-background-color="red">
+          <h4 class="title">Featured Teams by our ace trainers</h4>
+          <p class="category">Ace trainers are carefully chosen by our experts to ensure the highest quality teams</p>
+        </div>
+  
+        <div class="card-content">
+          <div class="row" *ngFor="let featTeam of featTeamArray">
+            <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of featTeam; let i = index">
+  
+              <div class="card" [style.background-color]="(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'">
+                <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
+                  <img [src]="favTeam[i].sprite" alt="" />
+                </div>
+      
+                <div class="card-content ta-center" (click)="selectTeamPokemon(i, pkmn)" role="button">
+                  <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
+                  <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
+                  <h4 class="title">
+                    {{ favTeam[i].name | titlecase}}
+                  </h4>
+                </div>
+      
+                <div class="card-footer ta-center">
+                  <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
+                    {{ collapse }}
+                  </i>
+                  <div class="stats" *ngIf="expandOrCollapse">
+                    <ul>
+                      <li *ngFor="let atk of favTeam[i].moveset">
+                        {{ atk }}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
+  
+        <div class="card-footer">
+        </div>
       </div>
-
-      <div class="card-footer">
-      </div>
+  
     </div>
-
   </div>
-</div>
