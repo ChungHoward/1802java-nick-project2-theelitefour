@@ -1,8 +1,10 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { TitleCasePipe } from '@angular/common';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
-import { Pokemon, PokeAPI, Stat } from 'app/pokemon';
+import { PokeAPI, Stat } from 'app/pokemon';
+import { Trainer } from '../trainer';
 import { Move } from '../move';
 import { MoveService } from 'app/services/move.service';
 import { PokemonService } from 'app/services/pokemon.service';
@@ -18,14 +20,10 @@ import * as Chartist from 'chartist';
 })
 export class TeambuilderComponent implements OnInit {
   /* These variables are for the Team View at the top of the page, and some other stuff */
-  // The placeholder 6 pokemon on my team
-  favTeam: Array<Pokemon>;
+  // The 6 pokemon on my team
+  favTeam: Array<PokeAPI>;
   // The Team I am editing
   curTeam: Array<PokeAPI>;
-  // This service generates 6 sample pokemon for me
-  teamService: TeamService;
-  // Contains the image for every type and damage class
-  types: TypeService;
   // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
   // The name of the icon that shows or hides your attacks
@@ -33,11 +31,10 @@ export class TeambuilderComponent implements OnInit {
 
   /* These variables are for the selected Pokemon thing */
   selected: number;
-  selectedPkmn: Pokemon;
+  selectedPkmn: PokeAPI;
   selPkmnMoves: Array<Move>;
 
   /* These variables are for the Detailed Pokemon View/Search */
-  questionSprite: string; // image for when no pokemon is selected. no, it's not missingno
   pkmnTableColNames: Array<string>;
   colSortIcons: Array<string>;
   sortBy: string;
@@ -48,16 +45,22 @@ export class TeambuilderComponent implements OnInit {
   pokedex: Array<PokeAPI>;
   movedex: Array<Move>;
 
-  constructor(private pokemonService: PokemonService, private moveService: MoveService) {
-    // Assigns the value of types to their respective image
-    this.types = new TypeService();
-
-    // Assign my favTeam using teamService
-    this.teamService = new TeamService();
-    this.favTeam = this.teamService.favTeam;
+  constructor(private pokemonService: PokemonService, private moveService: MoveService,
+    private teamService: TeamService, private types: TypeService) {
 
     // Make a team full of missingno
     this.curTeam = new Array<PokeAPI>();
+
+    // Assign my favTeam using teamService
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
+
     for (let i = 0; i < 6; i++) {
       this.curTeam.push(new PokeAPI());
     }
@@ -111,35 +114,85 @@ export class TeambuilderComponent implements OnInit {
     this.sortBy = this.pkmnTableColNames[i];
   }
 
-  selectTeamPokemon(i: number, pkmn: Pokemon) {
-    // TODO: Actually modify our pokemon if any changes are made to it
-    this.selected = i;
-    this.selectPokemon(pkmn);
-  }
-
-  selectNewPokemon(pkmn: PokeAPI) {
-
-  }
-
-  selectPokemon(pkmn: Pokemon) {
+  /**
+   * Shows you detailed information about your Pokemon, specifically their attacks.
+   * If a pokemon from the search box is selected, give them 4 empty attacks
+   * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
+   */
+  selectPokemon(pkmn: PokeAPI) {
     this.selectedPkmn = pkmn;
     this.loadStatChart();
     // Assign detailed attack info into selPkmnMoves
-    if (!!this.selectedPkmn.attackIds.length) {
+    if (this.selectedPkmn.attackIds.length) {
       for (let i = 0; i < this.selectedPkmn.attackIds.length; i++) { // attackIds are of unknown length
         // subtract 1 because our json is 1-indexed while arrays are 0-indexed
-        this.selPkmnMoves[i] = this.movedex[this.selectedPkmn.attackIds[i] - 1];
+        this.selPkmnMoves[i] = Object.assign(this.movedex[this.selectedPkmn.attackIds[i] - 1]);
 
-        if (!!this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
           this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
             String(this.selPkmnMoves[i].effectChance)); // with this
         }
       }
     } else {
       for (let i = 0; i < 4; i++) {
-        this.selPkmnMoves[i] = this.movedex[164]; // 164 is my placeholder
+        this.selPkmnMoves[i] = new Move();
       }
     }
+  }
+
+  /**
+   * Selects a pokemon from our team to edit. If already selected, cancel editing
+   * @param i the position of the team your pokemon is in
+   * @param pkmn the pokemon itself
+   */
+  selectTeamPokemon(i: number, pkmn: PokeAPI) {
+    if (this.selected !== i) {
+      this.selected = i;
+    } else {
+      this.selected = -1;
+    }
+    this.selectPokemon(pkmn);
+  }
+  /**
+   * If an event needs to occur when selecting a Pokemon from the Pokemon Search box, do it here
+   * @param pkmn The pokemon selected
+   */
+  selectNewPokemon(pkmn: PokeAPI) {
+    if (this.favTeam.length < 6) {
+      this.selected = this.favTeam.length;
+    }
+    this.selectPokemon(pkmn);
+  }
+
+  /**
+   * Triggers when the save button is pressed
+   */
+  savePokemon() {
+    let myTrainer: Trainer;
+    myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+    // wipe our selected Pokemon's old attacks
+    this.selectedPkmn.attackIds = new Array<number>();
+    this.selectedPkmn.moveset = new Array<string>();
+
+    // If our trainer is logged in, assign trainer ID
+    if (myTrainer) {
+      this.selectedPkmn.trainerId = myTrainer.id;
+    }
+    // Save our Pokemon's attacks
+    for (let i = 0; i < this.selPkmnMoves.length; i++) {
+      this.selectedPkmn.attackIds[i] = this.selPkmnMoves[i].id;
+      this.selectedPkmn.moveset[i] = this.selPkmnMoves[i].name;
+    }
+    // Add the Pokemon to our team
+    if (this.selected >= 0) {
+      this.favTeam[this.selected] = this.selectedPkmn;
+    }
+    // Save to box
+    if (myTrainer) {
+      myTrainer.sets.push(this.selectedPkmn);
+    }
+    // Put our favTeam in local storage so even an unregistered user can use our service
+    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
   }
 
   /**
@@ -174,10 +227,14 @@ export class TeambuilderComponent implements OnInit {
    * @param attackName the attack name
    */
   setSelPkmnMoves(i: number, attackName: string) {
-    alert(i + ' ' + attackName); // TODO:
     for (const move of this.movedex) {
       if (move.name === attackName) {
-        this.selPkmnMoves[i] = move;
+        this.selPkmnMoves[i] = Object.assign(move);
+        if (this.selPkmnMoves[i].effectChance) { // if there is a secondary effect
+          this.selPkmnMoves[i].effect = this.selPkmnMoves[i].effect.replace('$effect_chance', // replace this
+            String(this.selPkmnMoves[i].effectChance)); // with this
+        }
+        break;
       }
     }
   }
@@ -256,9 +313,23 @@ export class TeambuilderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Load 151 Pokemon into this.pokedex
-    this.getPokeAPIjson();
-    this.getMoveAPIjson();
+    // Load 151 Pokemon into pokedex and 164 moves into movedex
+    // this.getPokeAPIjson();
+    // this.getMoveAPIjson();
+    // Using a forkJoin to guarantee both dex being loaded before execution
+    Observable.forkJoin(
+      this.pokemonService.getJson(),
+      this.moveService.getJson()
+    ).subscribe(
+      ([pokeAPIArray, moveArray]) => {
+        this.pokedex = pokeAPIArray;
+        this.movedex = moveArray;
+        // calling these functions here because this is the only location where
+        // we can guarantee our pokedex and movedex have been fully loaded
+        this.selectPokemon(this.favTeam[0]);
+        this.loadStatChart();
+      }
+    );
   }
 
 }

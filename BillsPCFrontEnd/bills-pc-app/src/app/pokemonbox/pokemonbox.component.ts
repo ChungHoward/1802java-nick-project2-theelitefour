@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
-import { Pokemon } from 'app/pokemon';
+import { Pokemon, PokeAPI } from 'app/pokemon';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 
@@ -12,19 +12,17 @@ import { TypeService } from 'app/services/type.service';
 })
 export class PokemonBoxComponent implements OnInit {
   // The Pokemon we just clicked on
-  selectedPkmn: Pokemon;
+  selectedPkmn: PokeAPI;
   // My favorite team - there can only be one
-  favTeam: Array<Pokemon>;
-  // The service where I make 6 sample pokemon for temporary use
-  teamService: TeamService;
+  favTeam: Array<PokeAPI>;
   // Contains the images for every type and damage class
   types: TypeService;
   // The team being built or viewed
-  curTeam: Array<Pokemon>;
+  curTeam: Array<PokeAPI>;
   // Will temporarily contain a list of pokemon in my box
-  myBox: Array<Pokemon>;
+  myBox: Array<PokeAPI>;
   // Will temporarily contain a list of teams, currently can't be named
-  myTeams: Array<Array<Pokemon>>;
+  myTeams: Array<Array<PokeAPI>>;
 
   /* These variables are for the Box View/Search */
   pkmnBoxColNames: Array<string>;
@@ -37,16 +35,22 @@ export class PokemonBoxComponent implements OnInit {
   favoriteIcon: string;
   newTeamName: string;
 
-  constructor() {
+  constructor(private teamService: TeamService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
-    /* Assign my favTeam using teamService */
-    this.teamService = new TeamService();
-    this.favTeam = this.teamService.favTeam;
-    this.curTeam = new Array<Pokemon>();
+    // Assign my favTeam using teamService
+    // this.favTeam = this.teamService.favTeam;
+
+    // Assign my favTeam using localStorage TODO: or from session if one exists
+    this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
+    // if null, get an empty team
+    if (!this.favTeam) {
+      this.favTeam = new Array<PokeAPI>();
+    }
+    this.curTeam = new Array<PokeAPI>();
     this.curTeam = Object.assign([], this.favTeam);
-    this.myBox = new Array<Pokemon>();
+    this.myBox = new Array<PokeAPI>();
     this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
     this.myBox.push(this.teamService.pkmn6);
     this.myBox.push(this.teamService.pkmn2);
@@ -96,7 +100,7 @@ export class PokemonBoxComponent implements OnInit {
   }
 
   newTeam() {
-    this.curTeam = new Array<Pokemon>();
+    this.favTeam = new Array<Pokemon>();
   }
 
   /**

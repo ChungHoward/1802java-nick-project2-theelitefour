@@ -23,7 +23,6 @@ import { DefensiveCoverageComponent } from './defensivecoverage/defensivecoverag
 import { OffensiveCoverageComponent } from './offensivecoverage/offensivecoverage.component';
 import { OffenseVsDefenseComponent } from './offensevsdefense/offensevsdefense.component';
 import { FeaturedComponent } from './featured/featured.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
 
 // Services
 import { MoveService } from './services/move.service';
@@ -50,7 +49,6 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     OffensiveCoverageComponent,
     OffenseVsDefenseComponent,
     FeaturedComponent,
-    UpgradeComponent,
     Filter,
     Sort,
     ViewUsersComponent
@@ -69,7 +67,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     MoveService,
     TeamService,
     TypeService,
-    LoginService
+    LoginService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
