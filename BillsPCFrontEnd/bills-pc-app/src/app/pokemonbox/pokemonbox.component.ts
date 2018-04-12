@@ -135,12 +135,8 @@ export class PokemonBoxComponent implements OnInit {
       }
     } else {
       this.myBox = JSON.parse(localStorage.getItem('myPkmnBox')) as Array<PokeAPI>;
-      this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-      this.myBox.push(this.teamService.pkmn2); // because for some reason
-      this.myBox.push(this.teamService.pkmn3); // ng2-dnd does not work with
-      this.myBox.push(this.teamService.pkmn4); // empty arrays
       this.myBox.push(this.teamService.pkmn5);
-      this.myBox.push(this.teamService.pkmn6);
+      // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
     }
   }
 

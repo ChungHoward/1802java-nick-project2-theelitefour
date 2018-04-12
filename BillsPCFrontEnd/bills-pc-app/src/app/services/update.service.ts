@@ -27,7 +27,7 @@ export class UpdateService {
   }
 
   saveTeam(myTeam: Team) {
-    const body = new HttpParams().set('team', localStorage.getItem('myTeam'));
+    const body = new HttpParams().set('team', JSON.stringify(myTeam));
     return this.http.post('team', body);
   }
 
