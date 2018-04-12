@@ -160,14 +160,8 @@ export class OffensiveCoverageComponent implements OnInit {
     // this.getPokeAPIjson();
     // this.getMoveAPIjson();
 
-    // the above methods are being replaced by the below method which calls both Observables
-    // in parallel and waits for them to finish -- or apparently not
-    // Observable.zip(
-    //   this.pokemonService.getJson(),
-    //   this.moveService.getJson()
-    // ).subscribe(myTuple => {
-    //   this.pokedex = myTuple[0];
-    //   this.movedex = myTuple[1];
+    // the above methods are being replaced by the below method
+    // which calls both Observables and waits for them to finish
     Observable.forkJoin(
       this.pokemonService.getJson(),
       this.moveService.getJson()

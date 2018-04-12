@@ -27,7 +27,11 @@ export class ConvertService {
 
   pokeapiToSet(pkmn: PokeAPI): Set {
     const result = new Set();
-    result.setId = 1;
+    if (pkmn.setId) {
+      result.setId = pkmn.setId;
+    } else {
+      result.setId = -1;
+    }
     result.pokemonId = pkmn.id;
     result.nickname = pkmn.name;
     result.atk1 = pkmn.attackIds[0];
