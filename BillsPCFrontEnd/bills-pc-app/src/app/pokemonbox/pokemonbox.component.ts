@@ -246,9 +246,10 @@ export class PokemonBoxComponent implements OnInit {
         this.pokedex = pokeAPIArray;
         this.movedex = moveArray;
 
+        this.loadTeam();
         this.loadBox();
         // Assign my favTeam using localStorage or from session if one exists
-        this.loadTeam();
+        
       }
     );
     if (this.favTeam === this.favTeam) {
