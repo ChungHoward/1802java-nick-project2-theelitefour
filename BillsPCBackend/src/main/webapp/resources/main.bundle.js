@@ -1608,7 +1608,7 @@ var PokemonBoxComponent = (function () {
             myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.trainerId, this.pokedex, this.movedex);
             }
         }
         else {
@@ -1630,7 +1630,7 @@ var PokemonBoxComponent = (function () {
             // Convert our team into a format our back-end can receive
             for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
                 var set = mySets_1[_i];
-                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.trainerId, this.pokedex, this.movedex));
             }
         }
         else {
@@ -1728,9 +1728,9 @@ var PokemonBoxComponent = (function () {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
             _this.movedex = moveArray;
+            _this.loadTeam();
             _this.loadBox();
             // Assign my favTeam using localStorage or from session if one exists
-            _this.loadTeam();
         });
         if (this.favTeam === this.favTeam) {
             this.favoriteIcon = 'star';
@@ -1969,10 +1969,10 @@ var ConvertService = (function () {
         result.id = set.pokemonId;
         result.moves = pkmn.moves;
         result.moveset = [];
-        result.moveset[0] = movedex[set.atk1].name;
-        result.moveset[1] = movedex[set.atk2].name;
-        result.moveset[2] = movedex[set.atk3].name;
-        result.moveset[3] = movedex[set.atk4].name;
+        result.moveset[0] = movedex[(set.atk1) ? set.atk1 : 164].name;
+        result.moveset[1] = movedex[(set.atk2) ? set.atk2 : 164].name;
+        result.moveset[2] = movedex[(set.atk3) ? set.atk3 : 164].name;
+        result.moveset[3] = movedex[(set.atk4) ? set.atk4 : 164].name;
         result.name = pkmn.name;
         result.sprite = pkmn.sprite;
         result.stats = pkmn.stats;
@@ -2007,10 +2007,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set1.atk3;
         result.attackIds[3] = myTeam.set1.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set1.atk1].name;
-        result.moveset[1] = movedex[myTeam.set1.atk2].name;
-        result.moveset[2] = movedex[myTeam.set1.atk3].name;
-        result.moveset[3] = movedex[myTeam.set1.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set1.atk1) ? myTeam.set1.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set1.atk2) ? myTeam.set1.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set1.atk3) ? myTeam.set1.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set1.atk4) ? myTeam.set1.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 2
         result = Object.assign(pokedex[myTeam.set2.pokemonId - 1]);
@@ -2023,10 +2023,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set2.atk3;
         result.attackIds[3] = myTeam.set2.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set2.atk1].name;
-        result.moveset[1] = movedex[myTeam.set2.atk2].name;
-        result.moveset[2] = movedex[myTeam.set2.atk3].name;
-        result.moveset[3] = movedex[myTeam.set2.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set2.atk1) ? myTeam.set2.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set2.atk2) ? myTeam.set2.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set2.atk3) ? myTeam.set2.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set2.atk4) ? myTeam.set2.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 3
         result = Object.assign(pokedex[myTeam.set3.pokemonId - 1]);
@@ -2039,10 +2039,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set3.atk3;
         result.attackIds[3] = myTeam.set3.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set3.atk1].name;
-        result.moveset[1] = movedex[myTeam.set3.atk2].name;
-        result.moveset[2] = movedex[myTeam.set3.atk3].name;
-        result.moveset[3] = movedex[myTeam.set3.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set3.atk1) ? myTeam.set3.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set3.atk2) ? myTeam.set3.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set3.atk3) ? myTeam.set3.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set3.atk4) ? myTeam.set3.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 4
         result = Object.assign(pokedex[myTeam.set4.pokemonId - 1]);
@@ -2055,10 +2055,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set4.atk3;
         result.attackIds[3] = myTeam.set4.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set4.atk1].name;
-        result.moveset[1] = movedex[myTeam.set4.atk2].name;
-        result.moveset[2] = movedex[myTeam.set4.atk3].name;
-        result.moveset[3] = movedex[myTeam.set4.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set4.atk1) ? myTeam.set3.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set4.atk2) ? myTeam.set3.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set4.atk3) ? myTeam.set3.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set4.atk4) ? myTeam.set3.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 5
         result = Object.assign(pokedex[myTeam.set5.pokemonId - 1]);
@@ -2071,10 +2071,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set5.atk3;
         result.attackIds[3] = myTeam.set5.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set5.atk1].name;
-        result.moveset[1] = movedex[myTeam.set5.atk2].name;
-        result.moveset[2] = movedex[myTeam.set5.atk3].name;
-        result.moveset[3] = movedex[myTeam.set5.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set5.atk1) ? myTeam.set5.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set5.atk2) ? myTeam.set5.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set5.atk3) ? myTeam.set5.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set5.atk4) ? myTeam.set5.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 6
         result = Object.assign(pokedex[myTeam.set6.pokemonId - 1]);
@@ -2087,10 +2087,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set6.atk3;
         result.attackIds[3] = myTeam.set6.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set6.atk1].name;
-        result.moveset[1] = movedex[myTeam.set6.atk2].name;
-        result.moveset[2] = movedex[myTeam.set6.atk3].name;
-        result.moveset[3] = movedex[myTeam.set6.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set6.atk1) ? myTeam.set6.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set6.atk2) ? myTeam.set6.atk3 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set6.atk3) ? myTeam.set6.atk2 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set6.atk4) ? myTeam.set6.atk4 : 164].name;
         resultArray.push(result);
         return resultArray;
     };
@@ -2700,7 +2700,7 @@ var TeambuilderComponent = (function () {
         if (!!this.myTeam && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
             }
             // Load box, if any
             for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
@@ -2825,7 +2825,7 @@ var TeambuilderComponent = (function () {
         this.selectedPkmn.moveset = [null, null, null, null];
         // If our trainer is logged in, assign trainer ID
         if (myTrainer) {
-            this.selectedPkmn.trainerId = myTrainer.id;
+            this.selectedPkmn.trainerId = myTrainer.trainerId;
         }
         // Save our Pokemon's attacks
         for (var i = 0; i < 4; i++) {

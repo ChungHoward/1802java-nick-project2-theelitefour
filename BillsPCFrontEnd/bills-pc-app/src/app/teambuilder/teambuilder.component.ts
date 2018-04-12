@@ -91,7 +91,7 @@ export class TeambuilderComponent implements OnInit {
     if (!!this.myTeam && !!this.trainer) {
       // Load team, if one exists
       if (this.myTeam[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
+        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
       }
       // Load box, if any
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
@@ -217,7 +217,7 @@ export class TeambuilderComponent implements OnInit {
 
     // If our trainer is logged in, assign trainer ID
     if (myTrainer) {
-      this.selectedPkmn.trainerId = myTrainer.id;
+      this.selectedPkmn.trainerId = myTrainer.trainerId;
     }
     // Save our Pokemon's attacks
     for (let i = 0; i < 4; i++) {

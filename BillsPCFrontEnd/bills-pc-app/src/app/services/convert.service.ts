@@ -139,10 +139,10 @@ export class ConvertService {
     result.id = set.pokemonId;
     result.moves = pkmn.moves;
     result.moveset = [];
-    result.moveset[0] = movedex[set.atk1].name;
-    result.moveset[1] = movedex[set.atk2].name;
-    result.moveset[2] = movedex[set.atk3].name;
-    result.moveset[3] = movedex[set.atk4].name;
+    result.moveset[0] = movedex[(set.atk1) ? set.atk1 : 164].name;
+    result.moveset[1] = movedex[(set.atk2) ? set.atk2 : 164].name;
+    result.moveset[2] = movedex[(set.atk3) ? set.atk3 : 164].name;
+    result.moveset[3] = movedex[(set.atk4) ? set.atk4 : 164].name;
     result.name = pkmn.name;
     result.sprite = pkmn.sprite;
     result.stats = pkmn.stats;
@@ -181,10 +181,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set1.atk3;
     result.attackIds[3] = myTeam.set1.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set1.atk1].name;
-    result.moveset[1] = movedex[myTeam.set1.atk2].name;
-    result.moveset[2] = movedex[myTeam.set1.atk3].name;
-    result.moveset[3] = movedex[myTeam.set1.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set1.atk1) ? myTeam.set1.atk1 : 164].name;
+    result.moveset[1] = movedex[(myTeam.set1.atk2) ? myTeam.set1.atk2 : 164].name;
+    result.moveset[2] = movedex[(myTeam.set1.atk3) ? myTeam.set1.atk3 : 164].name;
+    result.moveset[3] = movedex[(myTeam.set1.atk4) ? myTeam.set1.atk4 : 164].name;
     resultArray.push(result);
 
     // Pokemon 2
@@ -198,10 +198,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set2.atk3;
     result.attackIds[3] = myTeam.set2.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set2.atk1].name;
-    result.moveset[1] = movedex[myTeam.set2.atk2].name;
-    result.moveset[2] = movedex[myTeam.set2.atk3].name;
-    result.moveset[3] = movedex[myTeam.set2.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set2.atk1) ? myTeam.set2.atk1 : 164].name;
+    result.moveset[1] = movedex[(myTeam.set2.atk2) ? myTeam.set2.atk2 : 164].name;
+    result.moveset[2] = movedex[(myTeam.set2.atk3) ? myTeam.set2.atk3 : 164].name;
+    result.moveset[3] = movedex[(myTeam.set2.atk4) ? myTeam.set2.atk4 : 164].name;
     resultArray.push(result);
 
     // Pokemon 3
@@ -215,10 +215,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set3.atk3;
     result.attackIds[3] = myTeam.set3.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set3.atk1].name;
-    result.moveset[1] = movedex[myTeam.set3.atk2].name;
-    result.moveset[2] = movedex[myTeam.set3.atk3].name;
-    result.moveset[3] = movedex[myTeam.set3.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set3.atk1) ? myTeam.set3.atk1 : 164].name;
+    result.moveset[1] = movedex[(myTeam.set3.atk2) ? myTeam.set3.atk2 : 164].name;
+    result.moveset[2] = movedex[(myTeam.set3.atk3) ? myTeam.set3.atk3 : 164].name;
+    result.moveset[3] = movedex[(myTeam.set3.atk4) ? myTeam.set3.atk4 : 164].name;
     resultArray.push(result);
 
     // Pokemon 4
@@ -232,10 +232,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set4.atk3;
     result.attackIds[3] = myTeam.set4.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set4.atk1].name;
-    result.moveset[1] = movedex[myTeam.set4.atk2].name;
-    result.moveset[2] = movedex[myTeam.set4.atk3].name;
-    result.moveset[3] = movedex[myTeam.set4.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set4.atk1) ? myTeam.set3.atk1 : 164].name;
+    result.moveset[1] = movedex[(myTeam.set4.atk2) ? myTeam.set3.atk2 : 164].name;
+    result.moveset[2] = movedex[(myTeam.set4.atk3) ? myTeam.set3.atk3 : 164].name;
+    result.moveset[3] = movedex[(myTeam.set4.atk4) ? myTeam.set3.atk4 : 164].name;
     resultArray.push(result);
 
     // Pokemon 5
@@ -249,10 +249,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set5.atk3;
     result.attackIds[3] = myTeam.set5.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set5.atk1].name;
-    result.moveset[1] = movedex[myTeam.set5.atk2].name;
-    result.moveset[2] = movedex[myTeam.set5.atk3].name;
-    result.moveset[3] = movedex[myTeam.set5.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set5.atk1) ? myTeam.set5.atk1 : 164].name;
+    result.moveset[1] = movedex[(myTeam.set5.atk2) ? myTeam.set5.atk2 : 164].name;
+    result.moveset[2] = movedex[(myTeam.set5.atk3) ? myTeam.set5.atk3 : 164].name;
+    result.moveset[3] = movedex[(myTeam.set5.atk4) ? myTeam.set5.atk4 : 164].name;
     resultArray.push(result);
 
     // Pokemon 6
@@ -266,10 +266,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set6.atk3;
     result.attackIds[3] = myTeam.set6.atk4;
     result.moveset = [];
-    result.moveset[0] = movedex[myTeam.set6.atk1].name;
-    result.moveset[1] = movedex[myTeam.set6.atk2].name;
-    result.moveset[2] = movedex[myTeam.set6.atk3].name;
-    result.moveset[3] = movedex[myTeam.set6.atk4].name;
+    result.moveset[0] = movedex[(myTeam.set6.atk1) ? myTeam.set6.atk1 : 164 ].name;
+    result.moveset[1] = movedex[(myTeam.set6.atk2) ? myTeam.set6.atk3 : 164 ].name;
+    result.moveset[2] = movedex[(myTeam.set6.atk3) ? myTeam.set6.atk2 : 164 ].name;
+    result.moveset[3] = movedex[(myTeam.set6.atk4) ? myTeam.set6.atk4 : 164 ].name;
     resultArray.push(result);
 
     return resultArray;
