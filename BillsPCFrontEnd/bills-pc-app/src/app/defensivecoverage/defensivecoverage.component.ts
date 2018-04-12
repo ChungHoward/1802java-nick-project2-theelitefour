@@ -93,19 +93,19 @@ export class DefensiveCoverageComponent implements OnInit {
         if (this.myTable[x][y] === 1.0) {
           sum += 1;
         } else if (this.myTable[x][y] > 1.0) {
-          sum += 1.5;
+          sum += 2;
         } else if (this.myTable[x][y] < 1.0) {
-          sum += 0.5;
+          sum += 0;
         }
       }
-      if (sum === 0) {
-      } else if (sum > 6.5) {
+      sum /= numPkmn;
+      if (sum > 1.2) {
         this.rowColor[y] = 'bg-red';
-      } else if (sum > 6) {
+      } else if (sum > 1) {
         this.rowColor[y] = 'bg-pink';
-      } else if (sum < 5.5) {
+      } else if (sum < 0.8) {
         this.rowColor[y] = 'bg-green';
-      } else if (sum < 6) {
+      } else if (sum < 1) {
         this.rowColor[y] = 'bg-lime';
       }
     }

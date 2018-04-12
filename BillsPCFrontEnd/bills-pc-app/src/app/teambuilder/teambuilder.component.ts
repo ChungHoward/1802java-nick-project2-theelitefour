@@ -6,20 +6,27 @@ import { Sort } from 'app/pipe/sort.pipe';
 import { PokeAPI, Stat } from 'app/pokemon';
 import { Trainer } from '../trainer';
 import { Move } from '../move';
-import { MoveService } from 'app/services/move.service';
-import { PokemonService } from 'app/services/pokemon.service';
 import { Set } from '../set';
 import { Team } from '../team';
+import { LoginService } from '../services/login.service';
+import { MoveService } from 'app/services/move.service';
+import { PokemonService } from 'app/services/pokemon.service';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 import { ConvertService } from 'app/services/convert.service';
+import { UpdateService } from '../services/update.service';
 import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-teambuilder',
   templateUrl: './teambuilder.component.html',
   styleUrls: ['./teambuilder.component.css'],
-  providers: [MoveService, PokemonService, TeamService, TypeService, ConvertService]
+  providers: [
+    MoveService, PokemonService,
+    TeamService, TypeService,
+    ConvertService, LoginService,
+    UpdateService
+  ]
 })
 export class TeambuilderComponent implements OnInit {
   // The trainer thats logged in
@@ -51,8 +58,11 @@ export class TeambuilderComponent implements OnInit {
   pokedex: Array<PokeAPI>;
   movedex: Array<Move>;
 
-  constructor(private convertService: ConvertService, private pokemonService: PokemonService,
-    private moveService: MoveService, private teamService: TeamService, private types: TypeService) {
+  constructor(
+    private updateService: UpdateService, private convertService: ConvertService,
+    private loginService: LoginService, private pokemonService: PokemonService,
+    private moveService: MoveService, private teamService: TeamService,
+    private types: TypeService) {
 
     // Assign my placeholder favTeam using teamService
     // this.favTeam = this.teamService.favTeam;
@@ -77,9 +87,20 @@ export class TeambuilderComponent implements OnInit {
   loadTeam() {
     this.trainer = JSON.parse(localStorage.getItem('trainer'));
     this.myTeam = JSON.parse(localStorage.getItem('teams'));
-    if (this.myTeam && this.trainer) {
-      this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+    if (!this.sets) {
+      this.sets = new Array<Set>();
+    }
+    if (!!this.myTeam && !!this.trainer) {
+      // Load team, if one exists
+      if (this.myTeam[0]) {
+        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+      }
+      // Load box, if any
+      for (const set of JSON.parse(localStorage.getItem('sets'))) {
+        this.sets.push(set);
+      }
     } else {
+      // Load from local storage
       this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
     }
     // if null, get an empty team
@@ -130,7 +151,10 @@ export class TeambuilderComponent implements OnInit {
    * If a pokemon from the search box is selected, give them 4 empty attacks
    * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
    */
-  selectPokemon(pkmn: PokeAPI) {
+  selectPokemon(pkmn: PokeAPI): boolean {
+    if (!pkmn) {
+      return false;
+    }
     this.selectedPkmn = pkmn;
     this.loadStatChart();
     this.selPkmnMoves = new Array<Move>();
@@ -155,6 +179,7 @@ export class TeambuilderComponent implements OnInit {
     while (this.selPkmnMoves.length < 4) {
       this.selPkmnMoves.push(new Move());
     }
+    return true;
   }
 
   /**
@@ -187,8 +212,8 @@ export class TeambuilderComponent implements OnInit {
    */
   savePokemon() {
     let myTrainer: Trainer;
-    myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
-    // wipe our selected Pokemon's old attacks
+    myTrainer = JSON.parse(localStorage.getItem('trainer'));
+    // wipe our selected Pokemon's old attacks so we can add the new ones back in
     this.selectedPkmn.attackIds = [null, null, null, null];
     this.selectedPkmn.moveset = [null, null, null, null];
 
@@ -204,23 +229,29 @@ export class TeambuilderComponent implements OnInit {
         this.selectedPkmn.moveset[i] = this.selPkmnMoves[i].name;
       } else {
         // if not, assign a placeholder
-        console.log(this.selPkmnMoves[i]);
         const m = new Move();
         m.name = '';
         this.selPkmnMoves[i] = m;
       }
     }
-    // Add the Pokemon to our team
+    // Add the Pokemon to our team if they picked a slot to save to
     if (this.selected >= 0) {
       this.favTeam[this.selected] = this.selectedPkmn;
     }
-    // Save to box
-    if (myTrainer) {
-      // TODO:
-      myTrainer.sets.push(this.selectedPkmn);
-    }
+    // Save sets to localstorage
+    const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+    this.sets.push(mySet);
+    this.loginService.changeSets(this.sets);
+
     // Put our favTeam in local storage so even an unregistered user can use our service
     localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+
+    // Send http request to save set and team if the user is logged in
+    if (myTrainer) {
+      this.updateService.saveSet(mySet);
+      const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
+      this.updateService.saveTeam(myTeam);
+    }
   }
 
   /**
@@ -301,7 +332,10 @@ export class TeambuilderComponent implements OnInit {
     seq2 = 0;
   };
 
-  loadStatChart() {
+  loadStatChart(): boolean {
+    if (!this.selectedPkmn) {
+      return false;
+    }
     /* Pokemon Stat Chart initialization  */
     const dataPokemonStatChart = {
       labels: [
@@ -348,6 +382,7 @@ export class TeambuilderComponent implements OnInit {
 
     // start animation for the Emails Subscription Chart
     this.startAnimationForBarChart(pokemonStatChart);
+    return true;
   }
 
   ngOnInit() {
@@ -364,10 +399,11 @@ export class TeambuilderComponent implements OnInit {
         this.movedex = moveArray;
         // calling these functions here because this is the only location where
         // we can guarantee our pokedex and movedex have been fully loaded
-        this.selectPokemon(this.favTeam[0]);
-        this.loadStatChart();
+
         // Assign my favTeam using localStorage or from session if one exists
         this.loadTeam();
+        this.selectPokemon(this.favTeam[0]);
+        this.loadStatChart();
       }
     );
   }

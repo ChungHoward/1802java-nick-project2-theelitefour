@@ -13,8 +13,8 @@ export class Pokemon {
   // A missingno for our placeholder!
   constructor() {
     this.id = 0;
-    this.setId = 0;
-    this.trainerId = 1;
+    this.setId = -1;
+    this.trainerId = -1;
     this.attackIds = [null, null, null, null];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';
@@ -39,8 +39,8 @@ export class PokeAPI {
 
   constructor() {
     this.id = 0;
-    this.setId = 0;
-    this.trainerId = 1;
+    this.setId = -1;
+    this.trainerId = -1;
     this.attackIds = [null, null, null, null];
     this.name = 'missingno';
     this.sprite = 'assets/img/question.png';

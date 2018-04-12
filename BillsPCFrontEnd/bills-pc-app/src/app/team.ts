@@ -10,5 +10,12 @@ export class Team {
     set5: Set;
     set6: Set;
 
-    constructor() {}
+    constructor() {
+        this.set1 = null;
+        this.set2 = null;
+        this.set3 = null;
+        this.set4 = null;
+        this.set5 = null;
+        this.set6 = null;
+    }
 }
