@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { Filter } from 'app/pipe/filter.pipe';
 import { Sort } from 'app/pipe/sort.pipe';
 import { Pokemon, PokeAPI } from 'app/pokemon';
 import { Trainer } from '../trainer';
 import { Set } from '../set';
 import { Team } from '../team';
+import { Move } from '../move';
+import { MoveService } from 'app/services/move.service';
+import { PokemonService } from 'app/services/pokemon.service';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
 import { ConvertService } from '../services/convert.service';
@@ -16,7 +20,10 @@ declare var $: any;
   selector: 'app-pokemonbox',
   templateUrl: './pokemonbox.component.html',
   styleUrls: ['./pokemonbox.component.css'],
-  providers: [ TeamService, TypeService, ConvertService, LoginService, UpdateService ]
+  providers: [
+    MoveService, PokemonService, TeamService, TypeService,
+    ConvertService, LoginService, UpdateService
+  ]
 })
 export class PokemonBoxComponent implements OnInit {
   // The Pokemon we just clicked on
@@ -35,13 +42,17 @@ export class PokemonBoxComponent implements OnInit {
   ascending: boolean;
   searchInput: string;
 
+  pokedex: Array<PokeAPI>;
+  movedex: Array<Move>;
+
   /* These variables are for the pill buttons */
   favoriteIcon: string;
   newTeamName: string;
 
   constructor(
-    private teamService: TeamService, private convertService: ConvertService,
-    private loginService: LoginService, private updateService: UpdateService,
+    private updateService: UpdateService, private convertService: ConvertService,
+    private loginService: LoginService, private pokemonService: PokemonService,
+    private moveService: MoveService, private teamService: TeamService,
     private types: TypeService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
@@ -109,7 +120,7 @@ export class PokemonBoxComponent implements OnInit {
       myTeams = JSON.parse(localStorage.getItem('teams'));
       // Convert our team into a format our back-end can receive
       if (myTeams[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
+        this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
       }
     } else {
       // if no one is logged in
@@ -131,11 +142,14 @@ export class PokemonBoxComponent implements OnInit {
     if (myTrainer && mySets) {
       // Convert our team into a format our back-end can receive
       for (const set of mySets) {
-        this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
+        this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
       }
     } else {
-      this.myBox = JSON.parse(localStorage.getItem('myPkmnBox')) as Array<PokeAPI>;
-      this.myBox.push(this.teamService.pkmn5);
+      if (localStorage.getItem('myPkmnBox')) {
+        this.myBox = JSON.parse(localStorage.getItem('myPkmnBox')) as Array<PokeAPI>;
+      } else {
+        this.myBox.push(this.teamService.pkmn5);
+      }
       // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
     }
   }
@@ -229,6 +243,15 @@ export class PokemonBoxComponent implements OnInit {
 
   // Only works if favorite feature gets implemented
   ngOnInit() {
+    Observable.forkJoin(
+      this.pokemonService.getJson(),
+      this.moveService.getJson()
+    ).subscribe(
+      ([pokeAPIArray, moveArray]) => {
+        this.pokedex = pokeAPIArray;
+        this.movedex = moveArray;
+      }
+    );
     if (this.favTeam === this.favTeam) {
       this.favoriteIcon = 'star';
     } else {
