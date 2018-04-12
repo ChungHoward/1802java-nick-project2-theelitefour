@@ -1,6 +1,6 @@
 webpackJsonp(["main"],{
 
-/***/ "../../../../../src/$$_gendir lazy recursive":
+/***/ "./src/$$_gendir lazy recursive":
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,47 +13,36 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
+webpackEmptyAsyncContext.id = "./src/$$_gendir lazy recursive";
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/*desktop*/\r\n@media only screen and (min-width: 992px) {\r\n  .main-panel {\r\n    width: calc(100% - 220px);\r\n  }\r\n}\r\n.sidebar {\r\n  max-width: 220px;\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/app.component.html":
+/***/ "./src/app/app.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\r\n    <div class=\"sidebar\" data-color='red' data-image=\"\">\r\n        <app-sidebar></app-sidebar>\r\n        <div class=\"sidebar-background\" style=\"background-image: url(assets/img/sidebar-4.jpg)\"></div>\r\n    </div>\r\n    <div class=\"main-panel\">\r\n        <app-navbar></app-navbar>\r\n        <router-outlet></router-outlet>\r\n        <div *ngIf=\"isMaps('maps')\">\r\n            <app-footer></app-footer>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "/*desktop*/\n@media only screen and (min-width: 992px) {\n  .main-panel {\n    width: calc(100% - 220px);\n  }\n}\n.sidebar {\n  max-width: 220px;\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.ts":
+/***/ "./src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper\">\n    <div class=\"sidebar\" data-color='red' data-image=\"\">\n        <app-sidebar></app-sidebar>\n        <div class=\"sidebar-background\" style=\"background-image: url(assets/img/sidebar-4.jpg)\"></div>\n    </div>\n    <div class=\"main-panel\">\n        <app-navbar></app-navbar>\n        <router-outlet></router-outlet>\n        <div *ngIf=\"isMaps('maps')\">\n            <app-footer></app-footer>\n        </div>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/app.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__ = __webpack_require__("./node_modules/rxjs/add/operator/filter.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__ = __webpack_require__("../../../../perfect-scrollbar/dist/perfect-scrollbar.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__ = __webpack_require__("./node_modules/perfect-scrollbar/dist/perfect-scrollbar.esm.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -143,8 +132,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-root',
-            template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+            template: __webpack_require__("./src/app/app.component.html"),
+            styles: [__webpack_require__("./src/app/app.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object])
     ], AppComponent);
@@ -156,46 +145,48 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.module.ts":
+/***/ "./src/app/app.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__("../../../../../src/app/components/components.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__ = __webpack_require__("../../../../../src/app/pipe/filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__ = __webpack_require__("../../../../../src/app/pipe/sort.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__register_register_component__ = __webpack_require__("../../../../../src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__teambuilder_teambuilder_component__ = __webpack_require__("../../../../../src/app/teambuilder/teambuilder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pokemonbox_pokemonbox_component__ = __webpack_require__("../../../../../src/app/pokemonbox/pokemonbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__corecoverage_corecoverage_component__ = __webpack_require__("../../../../../src/app/corecoverage/corecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__defensivecoverage_defensivecoverage_component__ = __webpack_require__("../../../../../src/app/defensivecoverage/defensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__offensivecoverage_offensivecoverage_component__ = __webpack_require__("../../../../../src/app/offensivecoverage/offensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__offensevsdefense_offensevsdefense_component__ = __webpack_require__("../../../../../src/app/offensevsdefense/offensevsdefense.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__ = __webpack_require__("../../../../../src/app/featured/featured.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__view_users_view_users_component__ = __webpack_require__("../../../../../src/app/view-users/view-users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_move_service__ = __webpack_require__("../../../../../src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__ = __webpack_require__("../../../../../src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_register_service__ = __webpack_require__("../../../../../src/app/services/register.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_convert_service__ = __webpack_require__("../../../../../src/app/services/convert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_feature_service__ = __webpack_require__("../../../../../src/app/services/feature.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_ng2_dnd__ = __webpack_require__("../../../../ng2-dnd/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing__ = __webpack_require__("./src/app/app.routing.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__("./src/app/components/components.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipe_filter_pipe__ = __webpack_require__("./src/app/pipe/filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_pipe_sort_pipe__ = __webpack_require__("./src/app/pipe/sort.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__teambuilder_teambuilder_component__ = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pokemonbox_pokemonbox_component__ = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__corecoverage_corecoverage_component__ = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__defensivecoverage_defensivecoverage_component__ = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__offensivecoverage_offensivecoverage_component__ = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_convert_service__ = __webpack_require__("./src/app/services/convert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_feature_service__ = __webpack_require__("./src/app/services/feature.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_ng2_dnd__ = __webpack_require__("./node_modules/ng2-dnd/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -227,6 +218,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Custom Modules
 
 var AppModule = (function () {
@@ -250,13 +242,14 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_19__view_users_view_users_component__["a" /* ViewUsersComponent */]
             ],
             imports: [
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* ComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["d" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_28_ng2_dnd__["a" /* DndModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_29_ng2_dnd__["a" /* DndModule */].forRoot()
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_21__services_pokemon_service__["a" /* PokemonService */],
@@ -266,7 +259,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_25__services_login_service__["a" /* LoginService */],
                 __WEBPACK_IMPORTED_MODULE_24__services_register_service__["a" /* RegisterService */],
                 __WEBPACK_IMPORTED_MODULE_26__services_convert_service__["a" /* ConvertService */],
-                __WEBPACK_IMPORTED_MODULE_27__services_feature_service__["a" /* FeatureService */]
+                __WEBPACK_IMPORTED_MODULE_27__services_feature_service__["a" /* FeatureService */],
+                __WEBPACK_IMPORTED_MODULE_28__services_view_user_service__["a" /* ViewUserService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
         })
@@ -278,25 +272,25 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.routing.ts":
+/***/ "./src/app/app.routing.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register_component__ = __webpack_require__("../../../../../src/app/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__ = __webpack_require__("../../../../../src/app/teambuilder/teambuilder.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pokemonbox_pokemonbox_component__ = __webpack_require__("../../../../../src/app/pokemonbox/pokemonbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__corecoverage_corecoverage_component__ = __webpack_require__("../../../../../src/app/corecoverage/corecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__defensivecoverage_defensivecoverage_component__ = __webpack_require__("../../../../../src/app/defensivecoverage/defensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__offensivecoverage_offensivecoverage_component__ = __webpack_require__("../../../../../src/app/offensivecoverage/offensivecoverage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__offensevsdefense_offensevsdefense_component__ = __webpack_require__("../../../../../src/app/offensevsdefense/offensevsdefense.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__featured_featured_component__ = __webpack_require__("../../../../../src/app/featured/featured.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__view_users_view_users_component__ = __webpack_require__("../../../../../src/app/view-users/view-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__ = __webpack_require__("./src/app/teambuilder/teambuilder.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pokemonbox_pokemonbox_component__ = __webpack_require__("./src/app/pokemonbox/pokemonbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__corecoverage_corecoverage_component__ = __webpack_require__("./src/app/corecoverage/corecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__defensivecoverage_defensivecoverage_component__ = __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__offensivecoverage_offensivecoverage_component__ = __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__offensevsdefense_offensevsdefense_component__ = __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__featured_featured_component__ = __webpack_require__("./src/app/featured/featured.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__view_users_view_users_component__ = __webpack_require__("./src/app/view-users/view-users.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -318,6 +312,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
+    { path: 'view-user', component: __WEBPACK_IMPORTED_MODULE_13__view_users_view_users_component__["a" /* ViewUsersComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */] },
     { path: 'teambuilder', component: __WEBPACK_IMPORTED_MODULE_6__teambuilder_teambuilder_component__["a" /* TeambuilderComponent */] },
@@ -350,17 +345,17 @@ var AppRoutingModule = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/components.module.ts":
+/***/ "./src/app/components/components.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__footer_footer_component__ = __webpack_require__("./src/app/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sidebar_sidebar_component__ = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -401,37 +396,26 @@ var ComponentsModule = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/footer/footer.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/footer/footer.component.html":
+/***/ "./src/app/components/footer/footer.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\r\n  <div class=\"container-fluid\">\r\n    <nav class=\"pull-left\">\r\n      <ul>\r\n        <li>\r\n          <a href=\"mailto:email@example.com\">\r\n            Contact\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.revature.com\">\r\n            Revature\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://github.com/revatureclass/1802java-nick-project2-theelitefour\">\r\n            Github\r\n          </a>\r\n        </li>\r\n        <li>\r\n          <a href=\"https://www.veryobservantindeed.com\">\r\n            Observant, aren't you?\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </nav>\r\n    <p class=\"copyright pull-right\">\r\n      &copy; {{test | date: 'yyyy'}}\r\n      <a href=\"#\">The Elite Four</a>\r\n    </p>\r\n  </div>\r\n</footer>"
+module.exports = ""
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/footer/footer.component.ts":
+/***/ "./src/app/components/footer/footer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<footer>\n  <div class=\"container-fluid\">\n    <nav class=\"pull-left\">\n      <ul>\n        <li>\n          <a href=\"mailto:email@example.com\">\n            Contact\n          </a>\n        </li>\n        <li>\n          <a href=\"https://www.revature.com\">\n            Revature\n          </a>\n        </li>\n        <li>\n          <a href=\"https://github.com/revatureclass/1802java-nick-project2-theelitefour\">\n            Github\n          </a>\n        </li>\n        <li>\n          <a href=\"https://www.veryobservantindeed.com\">\n            Observant, aren't you?\n          </a>\n        </li>\n      </ul>\n    </nav>\n    <p class=\"copyright pull-right\">\n      &copy; {{test | date: 'yyyy'}}\n      <a href=\"#\">The Elite Four</a>\n    </p>\n  </div>\n</footer>"
+
+/***/ }),
+
+/***/ "./src/app/components/footer/footer.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -451,8 +435,8 @@ var FooterComponent = (function () {
     FooterComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-footer',
-            template: __webpack_require__("../../../../../src/app/components/footer/footer.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/footer/footer.component.css")]
+            template: __webpack_require__("./src/app/components/footer/footer.component.html"),
+            styles: [__webpack_require__("./src/app/components/footer/footer.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FooterComponent);
@@ -463,40 +447,29 @@ var FooterComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/navbar/navbar.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/navbar/navbar.component.html":
+/***/ "./src/app/components/navbar/navbar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\r\n      <ng-template #ifLoggedOut>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a routerLink='login'>\r\n              <i class=\"material-icons\">account_circle</i>\r\n              Login\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink='register'>\r\n              <i class=\"material-icons\">person</i>\r\n              Register\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <ng-template #elseLogin>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a>\r\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\r\n              Hello {{trainer.name}}\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a (click)=\"logout()\">\r\n              <i class=\"material-icons\">exit_to_app</i>\r\n              Logout\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = ""
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/navbar/navbar.component.ts":
+/***/ "./src/app/components/navbar/navbar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\n      <ng-template #ifLoggedOut>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a routerLink='login'>\n              <i class=\"material-icons\">account_circle</i>\n              Login\n            </a>\n          </li>\n          <li>\n            <a routerLink='register'>\n              <i class=\"material-icons\">person</i>\n              Register\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <ng-template #elseLogin>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a>\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\n              Hello {{trainer.name}}\n            </a>\n          </li>\n          <li>\n            <a routerLink=\"view-user\">\n              <i class =\"material-icons\">exit_to_app</i>\n              View Users\n            </a>\n          </li>\n          <li>\n            <a (click)=\"logout()\">\n              <i class=\"material-icons\">exit_to_app</i>\n              Logout\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <form class=\"navbar-form navbar-right\" role=\"search\">\n        <div class=\"form-group form-black is-empty\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n          <span class=\"material-input\"></span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n          <i class=\"material-icons\">search</i>\n          <div class=\"ripple-container\"></div>\n        </button>\n      </form>\n    </div>\n  </div>\n</nav>"
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__ = __webpack_require__("./src/app/components/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -579,8 +552,8 @@ var NavbarComponent = (function () {
     NavbarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-navbar',
-            template: __webpack_require__("../../../../../src/app/components/navbar/navbar.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.css")]
+            template: __webpack_require__("./src/app/components/navbar/navbar.component.html"),
+            styles: [__webpack_require__("./src/app/components/navbar/navbar.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */]) === "function" && _c || Object])
     ], NavbarComponent);
@@ -592,38 +565,27 @@ var NavbarComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/sidebar/sidebar.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".logo {\r\n  width: 200px;\r\n}\r\n.sidebar-wrapper {\r\n  width: 222px;\r\n}\r\n.nav-container {\r\n  width: 220px;\r\n}\r\nli {\r\n  width: 210px;\r\n}\r\nli a {\r\n  margin-left: 8px;\r\n  margin-right: 8px;\r\n  width: 200px;\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/sidebar/sidebar.component.html":
+/***/ "./src/app/components/sidebar/sidebar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"logo\">\r\n    <a href=\"#\" class=\"simple-text\">\r\n        <div class=\"logo-img\">\r\n            <img src=\"assets/img/angular2-logo-red.png\"/>\r\n        </div>\r\n        Bill's PC\r\n    </a>\r\n</div>\r\n<div class=\"sidebar-wrapper\">\r\n    \r\n    <form class=\"navbar-form navbar-right\" role=\"search\" *ngIf=\"isMobileMenu()\">\r\n        <div class=\"form-group form-black is-empty\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n            <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n            <i class=\"material-icons\">search</i><div class=\"ripple-container\"></div>\r\n        </button>\r\n    </form>\r\n\r\n    <div class=\"nav-container\">\r\n        <ul class=\"nav\">\r\n            <li routerLinkActive=\"active\" *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}}\">\r\n                <a  [routerLink]=\"[menuItem.path]\">\r\n                    <i class=\"material-icons\">{{menuItem.icon}}</i>\r\n                    <p>{{menuItem.title}}</p>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n"
+module.exports = ".logo {\n  width: 200px;\n}\n.sidebar-wrapper {\n  width: 222px;\n}\n.nav-container {\n  width: 220px;\n}\nli {\n  width: 210px;\n}\nli a {\n  margin-left: 8px;\n  margin-right: 8px;\n  width: 200px;\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/sidebar/sidebar.component.ts":
+/***/ "./src/app/components/sidebar/sidebar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"logo\">\n    <a href=\"#\" class=\"simple-text\">\n        <div class=\"logo-img\">\n            <img src=\"assets/img/angular2-logo-red.png\"/>\n        </div>\n        Bill's PC\n    </a>\n</div>\n<div class=\"sidebar-wrapper\">\n    \n    <form class=\"navbar-form navbar-right\" role=\"search\" *ngIf=\"isMobileMenu()\">\n        <div class=\"form-group form-black is-empty\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n            <span class=\"material-input\"></span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n            <i class=\"material-icons\">search</i><div class=\"ripple-container\"></div>\n        </button>\n    </form>\n\n    <div class=\"nav-container\">\n        <ul class=\"nav\">\n            <li routerLinkActive=\"active\" *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}}\">\n                <a  [routerLink]=\"[menuItem.path]\">\n                    <i class=\"material-icons\">{{menuItem.icon}}</i>\n                    <p>{{menuItem.title}}</p>\n                </a>\n            </li>\n        </ul>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/sidebar/sidebar.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SidebarComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -658,8 +620,8 @@ var SidebarComponent = (function () {
     SidebarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-sidebar',
-            template: __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.css")]
+            template: __webpack_require__("./src/app/components/sidebar/sidebar.component.html"),
+            styles: [__webpack_require__("./src/app/components/sidebar/sidebar.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SidebarComponent);
@@ -670,40 +632,29 @@ var SidebarComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/corecoverage/corecoverage.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width: 100%;\r\n}\r\n/* Card styling */\r\n.card {\r\n  box-shadow: 0px 2px 8px #BBBBBB;\r\n  margin: 18px 0px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n  min-height: 110px;\r\n}\r\n.card-stats {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n  max-height: 230px;\r\n}\r\n.card-footer {\r\n  min-height: 110px;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-left {\r\n  text-align: left;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.ta-right {\r\n  text-align: right;\r\n}\r\n.va-center {\r\n  vertical-align: center;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/corecoverage/corecoverage.component.html":
+/***/ "./src/app/corecoverage/corecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card card-plain\">\r\n      <div class=\"card-header row\" data-background-color=\"red\">\r\n        <div class=\"col-lg-10 col-xs-9\">\r\n          <h4 class=\"title\">Core Coverage shows you which teammates make good partners for your Pokemon</h4>\r\n          <p class=\"category\">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>\r\n        </div>\r\n        <div class=\"col-lg-2 col-xs-3 ta-right\">\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"subThresh()\">\r\n            indeterminate_check_box\r\n          </i>\r\n          <span class=\"h3\">{{ threshold }}</span>\r\n          <i class=\"material-icons\" role=\"button\" (click)=\"addThresh()\">\r\n            add_box\r\n          </i>\r\n        </div>\r\n      </div>\r\n      <br/>\r\n      <div class=\"row\">\r\n        <!-- Loop through and print every Pokemon in favTeam -->\r\n        <div class=\"col-lg-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n          <div class=\"card card-stats\">\r\n            <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n              <img src=\"{{ favTeam[i].sprite }}\" />\r\n            </div>\r\n            <div class=\"card-content ta-center row va-center\">\r\n              <span class=\"badge col-xs-3 col-xl-3\" *ngFor=\"let partner of partners[i]\">\r\n                {{ partner | titlecase }}\r\n              </span>\r\n            </div>\r\n            <div class=\"card-footer ta-left row\">\r\n              <div class=\"col-xl-5 col-xs-5\">\r\n                <h4 class=\"title\">{{ favTeam[i].name | titlecase }}</h4>\r\n                <img class=\"type\" src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" />\r\n                <img class=\"type\" src=\"{{ types.name.indexOf(favTeam[i].types[1]) >= 0 ? types.img[types.name.indexOf(favTeam[i].types[1])] : types.img[15] }}\" />\r\n              </div>\r\n              <div class=\"col-xl-7 col-xs-7\">\r\n                is weak to\r\n                <br/>\r\n                <img *ngFor=\"let typeID of weaknesses[i]\" [src]=\"types.img[typeID]\" class=\"type\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "/* Layout */\n.main-content {\n  margin-top: 50px;\n  padding-right: 0px;\n  padding-bottom: 0px;\n}\n.container-fluid {\n  padding-left: 0px;\n}\n.row {\n  width: 100%;\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.stats {\n  width: 100%;\n}\n/* Card styling */\n.card {\n  -webkit-box-shadow: 0px 2px 8px #BBBBBB;\n          box-shadow: 0px 2px 8px #BBBBBB;\n  margin: 18px 0px;\n}\n.card-content {\n  padding-bottom: 0px;\n  padding-left: 4px;\n  padding-right: 4px;\n  min-height: 110px;\n}\n.card-stats {\n  padding-left: 0px;\n  padding-right: 0px;\n  max-height: 230px;\n}\n.card-footer {\n  min-height: 110px;\n}\n/* Removes bullets and the padding that would normally be for the bullets */\nul {\n  list-style-type: none;\n  padding-left: 0;\n}\n/* Native image sizes */\n.type {\n  width: 48px;\n  height: 16px;\n}\n.sprite {\n  width: 96px;\n  height: 96px;\n  padding: 0px;\n  margin: 0px;\n}\n.badge {\n  margin: 5px;\n  background-color: rgb(255, 70, 60);\n}\n/* Squeeze more space out of our tables */\ntable {\n  font-size: 12px;\n}\ntd input {\n  width: 100px;\n}\n.type-col {\n  width: 70px;\n}\n.stat-col {\n  width: 42px;\n}\n.form-group {\n  margin-top: 0px;\n}\n.material-icons.md-18 {\n  font-size: 18px;\n}\n.ta-left {\n  text-align: left;\n}\n.ta-center {\n  text-align: center;\n}\n.ta-right {\n  text-align: right;\n}\n.va-center {\n  vertical-align: center;\n}\n.no-padding {\n  padding: 0px;\n}\n.no-pad-top {\n  padding-top: 0px!important;\n}\n.mt-10 {\n  margin-top: 10px;\n}\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/corecoverage/corecoverage.component.ts":
+/***/ "./src/app/corecoverage/corecoverage.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"card card-plain\">\n      <div class=\"card-header row\" data-background-color=\"red\">\n        <div class=\"col-lg-10 col-xs-9\">\n          <h4 class=\"title\">Core Coverage shows you which teammates make good partners for your Pokemon</h4>\n          <p class=\"category\">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>\n        </div>\n        <div class=\"col-lg-2 col-xs-3 ta-right\">\n          <i class=\"material-icons\" role=\"button\" (click)=\"subThresh()\">\n            indeterminate_check_box\n          </i>\n          <span class=\"h3\">{{ threshold }}</span>\n          <i class=\"material-icons\" role=\"button\" (click)=\"addThresh()\">\n            add_box\n          </i>\n        </div>\n      </div>\n      <br/>\n      <div class=\"row\">\n        <!-- Loop through and print every Pokemon in favTeam -->\n        <div class=\"col-lg-4 col-xs-6\" *ngFor=\"let pkmn of favTeam; let i = index\">\n          <div class=\"card card-stats\">\n            <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\n              <img src=\"{{ favTeam[i].sprite }}\" />\n            </div>\n            <div class=\"card-content ta-center row va-center\">\n              <span class=\"badge col-xs-3 col-xl-3\" *ngFor=\"let partner of partners[i]\">\n                {{ partner | titlecase }}\n              </span>\n            </div>\n            <div class=\"card-footer ta-left row\">\n              <div class=\"col-xl-5 col-xs-5\">\n                <h4 class=\"title\">{{ favTeam[i].name | titlecase }}</h4>\n                <img class=\"type\" src=\"{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}\" />\n                <img class=\"type\" src=\"{{ types.name.indexOf(favTeam[i].types[1]) >= 0 ? types.img[types.name.indexOf(favTeam[i].types[1])] : types.img[15] }}\" />\n              </div>\n              <div class=\"col-xl-7 col-xs-7\">\n                is weak to\n                <br/>\n                <img *ngFor=\"let typeID of weaknesses[i]\" [src]=\"types.img[typeID]\" class=\"type\" />\n              </div>\n            </div>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/corecoverage/corecoverage.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__ = __webpack_require__("../../../../../src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -833,8 +784,8 @@ var CoreCoverageComponent = (function () {
     CoreCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-corecoverage',
-            template: __webpack_require__("../../../../../src/app/corecoverage/corecoverage.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/corecoverage/corecoverage.component.css")],
+            template: __webpack_require__("./src/app/corecoverage/corecoverage.component.html"),
+            styles: [__webpack_require__("./src/app/corecoverage/corecoverage.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_3_app_services_type_service__["a" /* TypeService */]]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_team_service__["a" /* TeamService */]) === "function" && _b || Object])
@@ -847,39 +798,28 @@ var CoreCoverageComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/defensivecoverage/defensivecoverage.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  margin-bottom: 0px;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 14px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n.pls-land {\r\n  vertical-align: bottom;\r\n}\r\n/* Highlights */\r\n.bg-red {\r\n  background-color: rgb(245, 70, 60);\r\n}\r\n.bg-red:hover {\r\n  background-color: rgb(255, 90, 70);\r\n}\r\n.bg-pink {\r\n  background-color: rgb(240, 100, 90);\r\n}\r\n.bg-pink:hover {\r\n  background-color: rgb(240, 120, 110);\r\n}\r\n.bg-lime {\r\n  background-color: rgb(140, 210, 140);\r\n}\r\n.bg-lime:hover {\r\n  background-color: rgb(150, 220, 150);\r\n}\r\n.bg-green {\r\n  background-color: rgb(90, 190, 90);\r\n}\r\n.bg-green:hover {\r\n  background-color: rgb(110, 200, 110);\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\ntd {\r\n  color: #000000;\r\n  font-weight: bold;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/defensivecoverage/defensivecoverage.component.html":
+/***/ "./src/app/defensivecoverage/defensivecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-12 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Defensive Coverage shows what resistances your team needs</h4>\r\n            <p class=\"category\">As well as the resistances your team has plenty of.</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center pls-land\">\r\n                      <img src=\"{{ types.none }}\" class=\"type\">\r\n                      <br/> Type\r\n                      <br/>\r\n                    </th>\r\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\r\n                      <img src=\"{{ pkmn.sprite }}\" class=\"sprite\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                      <br/>{{ pkmn.name | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\r\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\r\n                    <td class=\"ta-center\">\r\n                      <img src=\"{{ type }}\" class=\"type\">\r\n                    </td>\r\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\r\n                      {{ effective[i] | percent }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "/* Layout */\n.main-content {\n  margin-top: 50px;\n  padding-right: 0px;\n  padding-bottom: 0px;\n}\n.row {\n  width: 100%;\n}\n.card {\n  margin-bottom: 0px;\n}\n/* Native image sizes */\n.type {\n  width: 48px;\n  height: 16px;\n}\n.sprite {\n  width: 96px;\n  height: 96px;\n  padding: 0px;\n  margin: 0px;\n}\n/* Squeeze more space out of our tables */\n.card-header {\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.card-content {\n  padding-top: 4px;\n  padding-bottom: 4px;\n}\n.card-footer {\n  padding-top: 0px;\n  margin-bottom: 0px;\n}\ntable {\n  font-size: 14px;\n}\n.pkmn-table {\n  width: 100%;\n}\n.pls-land {\n  vertical-align: bottom;\n}\n/* Highlights */\n.bg-red {\n  background-color: rgb(245, 70, 60);\n}\n.bg-red:hover {\n  background-color: rgb(255, 90, 70);\n}\n.bg-pink {\n  background-color: rgb(240, 100, 90);\n}\n.bg-pink:hover {\n  background-color: rgb(240, 120, 110);\n}\n.bg-lime {\n  background-color: rgb(140, 210, 140);\n}\n.bg-lime:hover {\n  background-color: rgb(150, 220, 150);\n}\n.bg-green {\n  background-color: rgb(90, 190, 90);\n}\n.bg-green:hover {\n  background-color: rgb(110, 200, 110);\n}\n/* Readability */\nthead {\n  color: #333333;\n}\ntd {\n  color: #000000;\n  font-weight: bold;\n}\n.material-icons.md-18 {\n  font-size: 18px;\n}\n.ta-center {\n  text-align: center;\n}\na i {\n  display: inline;\n}\n.nav-link {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.nav {\n  margin: 0px\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/defensivecoverage/defensivecoverage.component.ts":
+/***/ "./src/app/defensivecoverage/defensivecoverage.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-lg-12 col-md-12\">\n        <div class=\"card\">\n          <div class=\"card-header\" data-background-color=\"red\">\n            <h4 class=\"title\">Defensive Coverage shows what resistances your team needs</h4>\n            <p class=\"category\">As well as the resistances your team has plenty of.</p>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"table-responsive pkmn-table\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-warning\">\n                  <tr>\n                    <th class=\"ta-center pls-land\">\n                      <img src=\"{{ types.none }}\" class=\"type\">\n                      <br/> Type\n                      <br/>\n                    </th>\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\n                      <img src=\"{{ pkmn.sprite }}\" class=\"sprite\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\n                      <br/>{{ pkmn.name | titlecase }}\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\n                    <td class=\"ta-center\">\n                      <img src=\"{{ type }}\" class=\"type\">\n                    </td>\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\n                      {{ effective[i] | percent }}\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n\n          <div class=\"card-footer\">\n\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/defensivecoverage/defensivecoverage.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DefensiveCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -954,24 +894,23 @@ var DefensiveCoverageComponent = (function () {
                     sum += 1;
                 }
                 else if (this.myTable[x][y] > 1.0) {
-                    sum += 1.5;
+                    sum += 2;
                 }
                 else if (this.myTable[x][y] < 1.0) {
-                    sum += 0.5;
+                    sum += 0;
                 }
             }
-            if (sum === 0) {
-            }
-            else if (sum > 6.5) {
+            sum /= numPkmn;
+            if (sum > 1.2) {
                 this.rowColor[y] = 'bg-red';
             }
-            else if (sum > 6) {
+            else if (sum > 1) {
                 this.rowColor[y] = 'bg-pink';
             }
-            else if (sum < 5.5) {
+            else if (sum < 0.8) {
                 this.rowColor[y] = 'bg-green';
             }
-            else if (sum < 6) {
+            else if (sum < 1) {
                 this.rowColor[y] = 'bg-lime';
             }
         }
@@ -982,8 +921,8 @@ var DefensiveCoverageComponent = (function () {
     DefensiveCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-defensivecoverage',
-            template: __webpack_require__("../../../../../src/app/defensivecoverage/defensivecoverage.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/defensivecoverage/defensivecoverage.component.css")]
+            template: __webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.html"),
+            styles: [__webpack_require__("./src/app/defensivecoverage/defensivecoverage.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]) === "function" && _a || Object])
     ], DefensiveCoverageComponent);
@@ -995,38 +934,27 @@ var DefensiveCoverageComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/featured/featured.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/featured/featured.component.html":
+/***/ "./src/app/featured/featured.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"card card-plain\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Featured Teams by our ace trainers</h4>\r\n        <p class=\"category\">Ace trainers are carefully chosen by our experts to ensure the highest quality teams</p>\r\n      </div>\r\n\r\n      <div class=\"card-content\">\r\n        <div class=\"row\" *ngFor=\"let featTeam of featTeamArray\">\r\n          <!-- Somewhere around here is where I would make a button to save the whole team -->\r\n          <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of featTeam; let i = index\">\r\n            <div class=\"card\">\r\n              <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(pkmn)\">\r\n                <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n              </div>\r\n\r\n              <div class=\"card-content ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">\r\n                <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n                <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n                <h4 class=\"title\">{{ favTeam[i].name }}</h4>\r\n              </div>\r\n\r\n              <div class=\"card-footer ta-center\">\r\n                <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n                  {{ collapse }}\r\n                </i>\r\n                <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n                  <ul>\r\n                    <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                      {{ atk }}\r\n                    </li>\r\n                  </ul>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"card-footer\">\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = ""
 
 /***/ }),
 
-/***/ "../../../../../src/app/featured/featured.component.ts":
+/***/ "./src/app/featured/featured.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n    <div class=\"container-fluid\">\n  \n      <div class=\"card card-plain\">\n        <div class=\"card-header\" data-background-color=\"red\">\n          <h4 class=\"title\">Featured Teams by our ace trainers</h4>\n          <p class=\"category\">Ace trainers are carefully chosen by our experts to ensure the highest quality teams</p>\n        </div>\n  \n        <div class=\"card-content\">\n          <div class=\"row\" *ngFor=\"let featTeam of featTeamArray\">\n            <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of featTeam; let i = index\">\n  \n              <div class=\"card\" [style.background-color]=\"(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'\">\n                <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\n                  <img [src]=\"favTeam[i].sprite\" alt=\"\" />\n                </div>\n      \n                <div class=\"card-content ta-center\" (click)=\"selectTeamPokemon(i, pkmn)\" role=\"button\">\n                  <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\n                  <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\n                  <h4 class=\"title\">\n                    {{ favTeam[i].name | titlecase}}\n                  </h4>\n                </div>\n      \n                <div class=\"card-footer ta-center\">\n                  <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\n                    {{ collapse }}\n                  </i>\n                  <div class=\"stats\" *ngIf=\"expandOrCollapse\">\n                    <ul>\n                      <li *ngFor=\"let atk of favTeam[i].moveset\">\n                        {{ atk }}\n                      </li>\n                    </ul>\n                  </div>\n                  \n                </div>\n              </div>\n              \n            </div>\n          </div>\n        </div>\n  \n        <div class=\"card-footer\">\n        </div>\n      </div>\n  \n    </div>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/featured/featured.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeaturedComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_feature_service__ = __webpack_require__("../../../../../src/app/services/feature.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_feature_service__ = __webpack_require__("./src/app/services/feature.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1061,8 +989,8 @@ var FeaturedComponent = (function () {
     FeaturedComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-featured',
-            template: __webpack_require__("../../../../../src/app/featured/featured.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/featured/featured.component.css")]
+            template: __webpack_require__("./src/app/featured/featured.component.html"),
+            styles: [__webpack_require__("./src/app/featured/featured.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_feature_service__["a" /* FeatureService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_feature_service__["a" /* FeatureService */]) === "function" && _a || Object])
     ], FeaturedComponent);
@@ -1074,39 +1002,28 @@ var FeaturedComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/login/login.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".ng-valid[required], .ng-valid.required  {\r\n    border-bottom: 1px solid #42A948; /* green */\r\n}\r\n  \r\n.ng-invalid:not(form)  {\r\n  border-bottom: 1px solid #a94442; /* red */\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/login/login.component.html":
+/***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Login</h4>\r\n            <p class=\"category\">To access your saved pokemon and teams</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-12\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"password\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\">Login</button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted && valid === undefined\">\r\n              <div class=\"h3\">\r\n                Just a moment...\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"submitted && valid === true\">\r\n              <div class=\"h3\">\r\n                You have successfully Logged In!\r\n              </div>\r\n            </div>\r\n            <div *ngIf=\"submitted && valid === false\">\r\n              <div class=\"h3\">\r\n                Invalid login credentials\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-4\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = ".ng-valid[required], .ng-valid.required  {\n    border-bottom: 1px solid #42A948; /* green */\n}\n  \n.ng-invalid:not(form)  {\n  border-bottom: 1px solid #a94442; /* red */\n}\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/login/login.component.ts":
+/***/ "./src/app/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-lg-4\">\n      </div>\n\n      <div class=\"col-lg-4\">\n        <div class=\"card\">\n          <div class=\"card-header\" data-background-color=\"red\">\n            <h4 class=\"title\">Login</h4>\n            <p class=\"category\">To access your saved pokemon and teams</p>\n          </div>\n          <div class=\"card-content\">\n            <!-- Display warning here if username is taken or some other error -->\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\n\n            <div *ngIf=\"!submitted\">\n              <form (ngSubmit)=\"onSubmit()\" #loginForm=\"ngForm\">\n                <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"username\">Username</label>\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"username\">\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"password\">Password</label>\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"password\">\n                    </div>\n                  </div>\n                </div>\n\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!loginForm.form.valid\">Login</button>\n                <div class=\"clearfix\"></div>\n              </form>\n            </div>\n            <!-- Invisible before submit -->\n            <div *ngIf=\"submitted && valid === undefined\">\n              <div class=\"h3\">\n                Just a moment...\n              </div>\n            </div>\n            <div *ngIf=\"submitted && valid === true\">\n              <div class=\"h3\">\n                You have successfully Logged In!\n              </div>\n            </div>\n            <div *ngIf=\"submitted && valid === false\">\n              <div class=\"h3\">\n                Invalid login credentials\n              </div>\n            </div>\n\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-lg-4\">\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1149,8 +1066,8 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-login',
-            template: __webpack_require__("../../../../../src/app/login/login.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/login/login.component.css")],
+            template: __webpack_require__("./src/app/login/login.component.html"),
+            styles: [__webpack_require__("./src/app/login/login.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object])
@@ -1163,7 +1080,7 @@ var LoginComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/move.ts":
+/***/ "./src/app/move.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1188,37 +1105,26 @@ var Move = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/offensevsdefense/offensevsdefense.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/offensevsdefense/offensevsdefense.component.html":
+/***/ "./src/app/offensevsdefense/offensevsdefense.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"card\">\r\n            <div class=\"card-header\" data-background-color=\"red\">\r\n                <h4 class=\"title\">Notifications</h4>\r\n                <p class=\"category\">Handcrafted by our friend <a target=\"_blank\" href=\"https://github.com/mouse0270\">Robert McIntosh</a>. Please checkout the <a href=\"http://bootstrap-notify.remabledesigns.com/\" target=\"_blank\">full documentation.</a></p>\r\n            </div>\r\n            <div class=\"card-content\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-md-6\">\r\n                        <h5>Notifications Style</h5>\r\n                        <div class=\"alert alert-info\">\r\n                            <span>This is a plain notification</span>\r\n                        </div>\r\n                        <div class=\"alert alert-info\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span>This is a notification with close button.</span>\r\n                        </div>\r\n                        <div class=\"alert alert-info alert-with-icon\" data-notify=\"container\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <i data-notify=\"icon\" class=\"material-icons\">add_alert</i>\r\n                            <span data-notify=\"message\">This is a notification with close button and icon.</span>\r\n                        </div>\r\n                        <div class=\"alert alert-info alert-with-icon\" data-notify=\"container\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <i data-notify=\"icon\" class=\"material-icons\">add_alert</i>\r\n                            <span data-notify=\"message\">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <h5>Notification states</h5>\r\n                        <div class=\"alert alert-info\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span><b> Info - </b> This is a regular notification made with \".alert-info\"</span>\r\n                        </div>\r\n                        <div class=\"alert alert-success\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span><b> Success - </b> This is a regular notification made with \".alert-success\"</span>\r\n                        </div>\r\n                        <div class=\"alert alert-warning\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span><b> Warning - </b> This is a regular notification made with \".alert-warning\"</span>\r\n                        </div>\r\n                        <div class=\"alert alert-danger\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span><b> Danger - </b> This is a regular notification made with \".alert-danger\"</span>\r\n                        </div>\r\n                        <div class=\"alert alert-primary\">\r\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\r\n                            <span><b> Primary - </b> This is a regular notification made with \".alert-primary\"</span>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <br>\r\n                <br>\r\n\r\n                <div class=\"places-buttons\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6 col-md-offset-3 text-center\">\r\n                            <h5>Notifications Places\r\n                                <p class=\"category\">Click to view notifications</p>\r\n                            </h5>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-8 col-md-offset-2\">\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','left')\">Top Left</button>\r\n                            </div>\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','center')\">Top Center</button>\r\n                            </div>\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','right')\">Top Right</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-8 col-md-offset-2\">\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','left')\">Bottom Left</button>\r\n                            </div>\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','center')\">Bottom Center</button>\r\n                            </div>\r\n                            <div class=\"col-md-4\">\r\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','right')\">Bottom Right</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = ""
 
 /***/ }),
 
-/***/ "../../../../../src/app/offensevsdefense/offensevsdefense.component.ts":
+/***/ "./src/app/offensevsdefense/offensevsdefense.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"card\">\n            <div class=\"card-header\" data-background-color=\"red\">\n                <h4 class=\"title\">Notifications</h4>\n                <p class=\"category\">Handcrafted by our friend <a target=\"_blank\" href=\"https://github.com/mouse0270\">Robert McIntosh</a>. Please checkout the <a href=\"http://bootstrap-notify.remabledesigns.com/\" target=\"_blank\">full documentation.</a></p>\n            </div>\n            <div class=\"card-content\">\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <h5>Notifications Style</h5>\n                        <div class=\"alert alert-info\">\n                            <span>This is a plain notification</span>\n                        </div>\n                        <div class=\"alert alert-info\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span>This is a notification with close button.</span>\n                        </div>\n                        <div class=\"alert alert-info alert-with-icon\" data-notify=\"container\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <i data-notify=\"icon\" class=\"material-icons\">add_alert</i>\n                            <span data-notify=\"message\">This is a notification with close button and icon.</span>\n                        </div>\n                        <div class=\"alert alert-info alert-with-icon\" data-notify=\"container\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <i data-notify=\"icon\" class=\"material-icons\">add_alert</i>\n                            <span data-notify=\"message\">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>\n                        </div>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <h5>Notification states</h5>\n                        <div class=\"alert alert-info\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span><b> Info - </b> This is a regular notification made with \".alert-info\"</span>\n                        </div>\n                        <div class=\"alert alert-success\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span><b> Success - </b> This is a regular notification made with \".alert-success\"</span>\n                        </div>\n                        <div class=\"alert alert-warning\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span><b> Warning - </b> This is a regular notification made with \".alert-warning\"</span>\n                        </div>\n                        <div class=\"alert alert-danger\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span><b> Danger - </b> This is a regular notification made with \".alert-danger\"</span>\n                        </div>\n                        <div class=\"alert alert-primary\">\n                            <button type=\"button\" aria-hidden=\"true\" class=\"close\">×</button>\n                            <span><b> Primary - </b> This is a regular notification made with \".alert-primary\"</span>\n                        </div>\n                    </div>\n                </div>\n\n                <br>\n                <br>\n\n                <div class=\"places-buttons\">\n                    <div class=\"row\">\n                        <div class=\"col-md-6 col-md-offset-3 text-center\">\n                            <h5>Notifications Places\n                                <p class=\"category\">Click to view notifications</p>\n                            </h5>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-8 col-md-offset-2\">\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','left')\">Top Left</button>\n                            </div>\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','center')\">Top Center</button>\n                            </div>\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('top','right')\">Top Right</button>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-md-8 col-md-offset-2\">\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','left')\">Bottom Left</button>\n                            </div>\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','center')\">Bottom Center</button>\n                            </div>\n                            <div class=\"col-md-4\">\n                                <button class=\"btn btn-danger btn-block\" (click)=\"showNotification('bottom','right')\">Bottom Right</button>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/offensevsdefense/offensevsdefense.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffenseVsDefenseComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1252,8 +1158,8 @@ var OffenseVsDefenseComponent = (function () {
     OffenseVsDefenseComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-offensevsdefense',
-            template: __webpack_require__("../../../../../src/app/offensevsdefense/offensevsdefense.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/offensevsdefense/offensevsdefense.component.css")]
+            template: __webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.html"),
+            styles: [__webpack_require__("./src/app/offensevsdefense/offensevsdefense.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], OffenseVsDefenseComponent);
@@ -1264,43 +1170,32 @@ var OffenseVsDefenseComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/offensivecoverage/offensivecoverage.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/offensivecoverage/offensivecoverage.component.html":
+/***/ "./src/app/offensivecoverage/offensivecoverage.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Missing type coverage</h4>\r\n        <p class=\"category\">Your team <strong>lacks</strong> super-effective attacks against these Type combinations</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uncoveredTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n        <div class=\"ta-center\" *ngIf=\"uncoveredTypes.length === 0\">\r\n          <h3>Congratulations! You have full type coverage!</h3>\r\n        </div>\r\n      </div>\r\n      <div class=\"card-content\"></div>\r\n    </div>\r\n    <div class=\"card\">\r\n\r\n      <div class=\"card-header\" data-background-color=\"red\">\r\n        <h4 class=\"title\">Types covered</h4>\r\n        <p class=\"category\">Your team has super-effective attacks against these Type combinations!</p>\r\n      </div>\r\n\r\n      <div class=\"card-content row\">\r\n        <div *ngFor=\"let type of uniqueTypes\" class=\"col-xs-2 col-xl-2\">\r\n          <div>\r\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "\n/* Native image sizes */\n.type {\n  width: 48px;\n  height: 16px;\n}\n.ta-center {\n  text-align: center;\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/offensivecoverage/offensivecoverage.component.ts":
+/***/ "./src/app/offensivecoverage/offensivecoverage.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"card\">\n      <div class=\"card-header\" data-background-color=\"red\">\n        <h4 class=\"title\">Missing type coverage</h4>\n        <p class=\"category\">Your team <strong>lacks</strong> super-effective attacks against these Type combinations</p>\n      </div>\n\n      <div class=\"card-content row\">\n        <div *ngFor=\"let type of uncoveredTypes\" class=\"col-xs-2 col-xl-2\">\n          <div>\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\n          </div>\n        </div>\n        <div class=\"ta-center\" *ngIf=\"uncoveredTypes.length === 0\">\n          <h3>Congratulations! You have full type coverage!</h3>\n        </div>\n      </div>\n      <div class=\"card-content\"></div>\n    </div>\n    <div class=\"card\">\n\n      <div class=\"card-header\" data-background-color=\"red\">\n        <h4 class=\"title\">Types covered</h4>\n        <p class=\"category\">Your team has super-effective attacks against these Type combinations!</p>\n      </div>\n\n      <div class=\"card-content row\">\n        <div *ngFor=\"let type of coveredTypes\" class=\"col-xs-2 col-xl-2\">\n          <div>\n            <img [src]=\"types.img[types.name.indexOf(type[1])]\" class=\"type\" />\n            <img [src]=\"types.img[types.name.indexOf(type[0])]\" class=\"type\" />\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/offensivecoverage/offensivecoverage.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffensiveCoverageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("../../../../../src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("../../../../../src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1450,14 +1345,8 @@ var OffensiveCoverageComponent = (function () {
         // this.getPokeAPIjson();
         // this.getMoveAPIjson();
         var _this = this;
-        // the above methods are being replaced by the below method which calls both Observables
-        // in parallel and waits for them to finish -- or apparently not
-        // Observable.zip(
-        //   this.pokemonService.getJson(),
-        //   this.moveService.getJson()
-        // ).subscribe(myTuple => {
-        //   this.pokedex = myTuple[0];
-        //   this.movedex = myTuple[1];
+        // the above methods are being replaced by the below method
+        // which calls both Observables and waits for them to finish
         __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
@@ -1472,8 +1361,8 @@ var OffensiveCoverageComponent = (function () {
     OffensiveCoverageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-offensivecoverage',
-            template: __webpack_require__("../../../../../src/app/offensivecoverage/offensivecoverage.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/offensivecoverage/offensivecoverage.component.css")],
+            template: __webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.html"),
+            styles: [__webpack_require__("./src/app/offensivecoverage/offensivecoverage.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]) === "function" && _d || Object])
@@ -1486,12 +1375,12 @@ var OffensiveCoverageComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/pipe/filter.pipe.ts":
+/***/ "./src/app/pipe/filter.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Filter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1530,12 +1419,12 @@ var Filter = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/pipe/sort.pipe.ts":
+/***/ "./src/app/pipe/sort.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sort; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1640,7 +1529,7 @@ var Sort = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/pokemon.ts":
+/***/ "./src/app/pokemon.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1651,8 +1540,8 @@ var Pokemon = (function () {
     // A missingno for our placeholder!
     function Pokemon() {
         this.id = 0;
-        this.setId = 0;
-        this.trainerId = 1;
+        this.setId = -1;
+        this.trainerId = -1;
         this.attackIds = [null, null, null, null];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
@@ -1668,8 +1557,8 @@ var Pokemon = (function () {
 var PokeAPI = (function () {
     function PokeAPI() {
         this.id = 0;
-        this.setId = 0;
-        this.trainerId = 1;
+        this.setId = -1;
+        this.trainerId = -1;
         this.attackIds = [null, null, null, null];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
@@ -1685,41 +1574,31 @@ var PokeAPI = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/pokemonbox/pokemonbox.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 500px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 400px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n  min-height: 80px;\r\n  position: relative;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\nth {\r\n  height: 39px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\n.ta-right { text-align: right; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/pokemonbox/pokemonbox.component.html":
+/***/ "./src/app/pokemonbox/pokemonbox.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <!--\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills ta-center\">\r\n              <li>\r\n                <a role=\"button\" (click)=\"newTeam()\">\r\n                  <i class=\"material-icons\">create_new_folder</i> New Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">save</i> Save Team\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\r\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          -->\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-7 col-xl-7\">\r\n                <h4>My Team</h4>\r\n                <!-- <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\r\n                <span class=\"material-input\"></span> -->\r\n              </div>\r\n              <div class=\"col-sm-4 col-xl-4 ta-right\">\r\n                <button class=\"btn btn-primary btn-sm save-button\" (click)=\"saveTeam()\">\r\n                  <i class=\"material-icons\">save</i>\r\n                  Save Team\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\r\n                  <tr *ngFor=\"let pkmn of favTeam; let i = index\" dnd-sortable [sortableIndex]=\"i\" (onDropSuccess)=\"updateTeam(pkmn, i)\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-6 col-md-12\">\r\n        <div class=\"card\">\r\n          <!--\r\n          <div class=\"card-header\" data-background-color=\"purple\">\r\n            <ul class=\"nav nav-pills\">\r\n              <li class=\"active\">\r\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\r\n                  <i class=\"material-icons\">line_weight</i> Pokemon\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a data-toggle=\"pill\" href=\"#teamBox\">\r\n                  <i class=\"material-icons\">view_module</i> Teams\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          -->\r\n          <div class=\"card-content\">\r\n            <form class=\"row form-group label-floating is-empty poke-search\" role=\"search\">\r\n              <div class=\"col-sm-11 col-xl-11\">\r\n                <label class=\"control-label\" for=\"searchBox\">Search Box</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"searchBox\" name=\"searchBox\" [(ngModel)]=\"searchBox\">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer tab-content\">\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-warning\">\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\r\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\r\n                  <tr *ngFor=\"let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\" dnd-sortable [sortableIndex]=\"i\"\r\n                    (onDropSuccess)=\"updateBox(boxpkmn, i)\">\r\n                    <td class=\"ta-center\" (click)=\"selectPokemon(boxpkmn)\" role=\"button\">{{ boxpkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}\" class=\"type\">\r\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center\" *ngFor=\"let move of boxpkmn.moveset\">{{ move }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "/* Layout */\n.main-content {\n  margin-top: 50px;\n  padding-right: 0px;\n  padding-bottom: 0px;\n}\n.row {\n  width: 100%;\n}\n.card {\n  height: 500px;\n  margin-bottom: 0px;\n}\n.table-responsive {\n  max-height: 400px;\n  overflow-y: scroll;\n}\n/* Native image sizes */\n.type {\n  width: 48px;\n  height: 16px;\n}\n.sprite {\n  width: 96px;\n  height: 96px;\n}\n/* Squeeze more space out of our tables */\n.card-header {\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.card-content {\n  padding-top: 4px;\n  padding-bottom: 4px;\n  min-height: 80px;\n  position: relative;\n}\n.card-footer {\n  padding-top: 0px;\n  margin-left: 10px;\n  margin-right: 0px;\n  margin-bottom: 0px;\n  min-height: 400px;\n}\ntable {\n  font-size: 12px;\n}\ntbody {\n  min-height: 400px;\n}\nth {\n  height: 39px;\n}\ntd input {\n  width: 100px;\n}\n.type-col {\n  width: 70px;\n}\n.form-group {\n  margin-top: 0px;\n}\n.poke-search {\n  margin-top: 0px;\n  margin-left: 0px;\n  position: absolute;\n  bottom: 0;\n}\n.pkmn-table {\n  width: 100%;\n}\n/* Readability */\nthead {\n  color: #333333;\n}\n.material-icons.md-18 { font-size: 18px; }\n.ta-center { text-align: center; }\n.ta-right { text-align: right; }\na i {\n  display: inline;\n}\n.nav-link {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.nav {\n  margin: 0px\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/pokemonbox/pokemonbox.component.ts":
+/***/ "./src/app/pokemonbox/pokemonbox.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-lg-6 col-md-12\">\n        <div class=\"card\">\n          <!--\n          <div class=\"card-header\" data-background-color=\"purple\">\n            <ul class=\"nav nav-pills ta-center\">\n              <li>\n                <a role=\"button\" (click)=\"newTeam()\">\n                  <i class=\"material-icons\">create_new_folder</i> New Team\n                </a>\n              </li>\n              <li>\n                <a role=\"button\" (click)=\"saveTeam(newTeamName)\">\n                  <i class=\"material-icons\">save</i> Save Team\n                </a>\n              </li>\n              <li>\n                <a role=\"button\" (click)=\"setFavoriteTeam(newTeamName)\">\n                  <i class=\"material-icons\">{{ favoriteIcon }}</i> Favorite\n                </a>\n              </li>\n            </ul>\n          </div>\n          -->\n\n          <div class=\"card-content\">\n            <form class=\"row poke-search\" role=\"search\">\n              <div class=\"form-group col-sm-7 col-xl-7\">\n                <h4>My Team</h4>\n                <!-- <input [(ngModel)]=\"newTeamName\" name=\"newTeamName\" type=\"text\" class=\"form-control\" placeholder=\"Team Name\" [(value)]=\"Untitled\">\n                <span class=\"material-input\"></span> -->\n              </div>\n              <div class=\"col-sm-4 col-xl-4 ta-right\">\n                <button class=\"btn btn-primary btn-sm save-button\" (click)=\"saveTeam()\">\n                  <i class=\"material-icons\">save</i>\n                  Save Team\n                </button>\n              </div>\n            </form>\n          </div>\n\n          <div class=\"card-footer\">\n            <div class=\"table-responsive pkmn-table\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-warning\">\n                  <tr>\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\n                      {{ col | titlecase }}\n                    </th>\n                  </tr>\n                </thead>\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"favTeam\">\n                  <tr *ngFor=\"let pkmn of favTeam; let i = index\" dnd-sortable [sortableIndex]=\"i\" (onDropSuccess)=\"updateTeam(pkmn, i)\">\n                    <td class=\"ta-center\" (click)=\"selectPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\n                    <td class=\"ta-center type-col\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\n                    </td>\n                    <td class=\"ta-center\" *ngFor=\"let move of pkmn.moveset\">{{ move }}</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-lg-6 col-md-12\">\n        <div class=\"card\">\n          <!--\n          <div class=\"card-header\" data-background-color=\"purple\">\n            <ul class=\"nav nav-pills\">\n              <li class=\"active\">\n                <a data-toggle=\"pill\" href=\"#pokeBox\">\n                  <i class=\"material-icons\">line_weight</i> Pokemon\n                </a>\n              </li>\n              <li>\n                <a data-toggle=\"pill\" href=\"#teamBox\">\n                  <i class=\"material-icons\">view_module</i> Teams\n                </a>\n              </li>\n            </ul>\n          </div>\n          -->\n          <div class=\"card-content\">\n            <form class=\"row form-group label-floating is-empty poke-search\" role=\"search\">\n              <div class=\"col-sm-11 col-xl-11\">\n                <label class=\"control-label\" for=\"searchBox\">Search Box</label>\n                <input type=\"text\" class=\"form-control\" id=\"searchBox\" name=\"searchBox\" [(ngModel)]=\"searchBox\">\n                <span class=\"material-input\"></span>\n              </div>\n            </form>\n          </div>\n\n          <div class=\"card-footer tab-content\">\n\n            <div class=\"table-responsive pkmn-table tab-pane fade in active\" id=\"pokeBox\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-warning\">\n                  <tr>\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnBoxColNames; let i = index\">\n                      {{ col | titlecase }}\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\n                    </th>\n                  </tr>\n                </thead>\n                <tbody dnd-sortable-container [dropZones]=\"['pkmn-zone']\" [sortableData]=\"myBox\">\n                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->\n                  <tr *ngFor=\"let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index\" dnd-sortable [sortableIndex]=\"i\"\n                    (onDropSuccess)=\"updateBox(boxpkmn, i)\">\n                    <td class=\"ta-center\" (click)=\"selectPokemon(boxpkmn)\" role=\"button\">{{ boxpkmn.name | titlecase }}</td>\n                    <td class=\"ta-center type-col\">\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}\" class=\"type\">\n                      <img src=\"{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}\" class=\"type\">\n                    </td>\n                    <td class=\"ta-center\" *ngFor=\"let move of boxpkmn.moveset\">{{ move }}</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n            <div class=\"table-responsive pkmn-table tab-pane fade\" id=\"teamBox\">\n            </div>\n\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/pokemonbox/pokemonbox.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonBoxComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_convert_service__ = __webpack_require__("../../../../../src/app/services/convert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_convert_service__ = __webpack_require__("./src/app/services/convert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_update_service__ = __webpack_require__("./src/app/services/update.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1734,11 +1613,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PokemonBoxComponent = (function () {
-    function PokemonBoxComponent(teamService, convertService, loginService) {
+    function PokemonBoxComponent(teamService, convertService, loginService, updateService, types) {
         this.teamService = teamService;
         this.convertService = convertService;
         this.loginService = loginService;
+        this.updateService = updateService;
+        this.types = types;
         // Assigns the value of types to their respective image
         this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
         // Assign my favTeam using teamService
@@ -1791,11 +1673,11 @@ var PokemonBoxComponent = (function () {
     PokemonBoxComponent.prototype.loadTeam = function () {
         var myTeams;
         var myTrainer;
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+        myTrainer = JSON.parse(localStorage.getItem('trainer'));
         // if user is logged in
         if (myTrainer) {
             // Get my team
-            myTeams = JSON.parse(sessionStorage.getItem('teams'));
+            myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
                 this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
@@ -1811,30 +1693,22 @@ var PokemonBoxComponent = (function () {
         }
     };
     PokemonBoxComponent.prototype.loadBox = function () {
-        var mySets;
-        var myTrainer;
+        // Get my team
         this.myBox = new Array();
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+        var mySets = JSON.parse(localStorage.getItem('sets'));
+        var myTrainer = JSON.parse(localStorage.getItem('trainer'));
         // if user is logged in
-        if (myTrainer) {
-            // Get my team
-            mySets = JSON.parse(sessionStorage.getItem('sets'));
+        if (myTrainer && mySets) {
             // Convert our team into a format our back-end can receive
-            if (mySets) {
-                for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
-                    var set = mySets_1[_i];
-                    this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
-                }
+            for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
+                var set = mySets_1[_i];
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
             }
         }
         else {
-            mySets = JSON.parse(sessionStorage.getItem('sets'));
-            // this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-            // this.myBox.push(this.teamService.pkmn2);
-            // this.myBox.push(this.teamService.pkmn3);
-            // this.myBox.push(this.teamService.pkmn4);
-            // this.myBox.push(this.teamService.pkmn5);
-            // this.myBox.push(this.teamService.pkmn6);
+            this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
+            this.myBox.push(this.teamService.pkmn5);
+            // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
         }
     };
     /**
@@ -1844,19 +1718,18 @@ var PokemonBoxComponent = (function () {
     PokemonBoxComponent.prototype.saveTeam = function (newTeamName) {
         // if our team isn't over the legal limit
         if (this.favTeam.length <= 6) {
-            var oldTeam = void 0;
             var myTeam = [];
-            var myTrainer = void 0;
-            myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+            var myTrainer = JSON.parse(localStorage.getItem('trainer'));
             // User must be logged in to save team
             if (myTrainer) {
                 // We need the old team ID of the ONLY (SINGULAR) team we are saving
-                oldTeam = JSON.parse(sessionStorage.getItem('teams'));
+                var oldTeam = JSON.parse(localStorage.getItem('teams'));
                 // Convert our team into a format our back-end can receive
                 myTeam[0] = this.convertService.pokeTeamToSetTeam(this.favTeam, newTeamName, oldTeam[0].teamId);
                 // Save our team to localstorage
                 this.loginService.changeTeam(myTeam);
-                // TODO: MAKE PUT REQUEST HERE USING SOME SERVICE
+                // Send http request to save set and team if the user is logged in
+                this.updateService.saveTeam(myTeam[0]);
             }
             // Put our favTeam in local storage so even an unregistered user can use our service
             localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
@@ -1928,51 +1801,41 @@ var PokemonBoxComponent = (function () {
     PokemonBoxComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-pokemonbox',
-            template: __webpack_require__("../../../../../src/app/pokemonbox/pokemonbox.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/pokemonbox/pokemonbox.component.css")]
+            template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
+            styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]) === "function" && _e || Object])
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=pokemonbox.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/register/register.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".ng-valid[required], .ng-valid.required  {\r\n  border-bottom: 1px solid #42A948; /* green */\r\n}\r\n\r\n.ng-invalid:not(form)  {\r\n  border-bottom: 1px solid #a94442; /* red */\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/register/register.component.html":
+/***/ "./src/app/register/register.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-8\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header\" data-background-color=\"red\">\r\n            <h4 class=\"title\">Register</h4>\r\n            <p class=\"category\">To start saving your teams and Pokemon</p>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <!-- Display warning here if username is taken or some other error -->\r\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\r\n\r\n            <div *ngIf=\"!submitted\">\r\n              <form (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"username\">Username</label>\r\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" name=\"username\"\r\n                        [(ngModel)]=\"username\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"email\">Email address</label>\r\n                      <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" name=\"email\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"password\">Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\r\n                      [(ngModel)]=\"password\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-md-6\">\r\n                    <div class=\"form-group form-black label-floating is-empty\">\r\n                      <label class=\"control-label\" for=\"cpassword\">Confirm Password</label>\r\n                      <input required type=\"password\" class=\"form-control\" id=\"cpassword\" name=\"cpassword\"\r\n                      [(ngModel)]=\"cpassword\" (ngModelChange)=\"matchPassword()\">\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!registerForm.form.valid\" \r\n                  [disabled]=\"!passwordMatch\">\r\n                  Register\r\n                </button>\r\n                <div class=\"clearfix\"></div>\r\n              </form>\r\n            </div>\r\n            <!-- Invisible before submit -->\r\n            <div *ngIf=\"submitted\">\r\n              <div *ngIf=\"valid\">\r\n                <div class=\"h3\">\r\n                  You have successfully registered!\r\n                </div>\r\n                <div class=\"h4\">\r\n                  No email confirmation necessary\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"!valid\">\r\n                <div class=\"h3\">\r\n                    Registration Failed\r\n                  </div>\r\n                  <div class=\"h4\">\r\n                    Username is already in use\r\n                  </div>\r\n              </div>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-md-4\">\r\n        <div class=\"card card-profile\">\r\n          <div class=\"card-avatar\">\r\n            <a href=\"#bill\">\r\n              <img class=\"img\" src=\"assets/img/faces/Bill.png\" />\r\n            </a>\r\n          </div>\r\n\r\n          <div class=\"content\">\r\n            <h6 class=\"category text-gray\">Masaki Sonezaki</h6>\r\n            <h4 class=\"card-title\">Bill, Head Engineer</h4>\r\n            <p class=\"card-content\">\r\n              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert\r\n              analytics and statistics are provided by our leading Professors.\r\n            </p>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = ".ng-valid[required], .ng-valid.required  {\n  border-bottom: 1px solid #42A948; /* green */\n}\n\n.ng-invalid:not(form)  {\n  border-bottom: 1px solid #a94442; /* red */\n}\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/register/register.component.ts":
+/***/ "./src/app/register/register.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-8\">\n        <div class=\"card\">\n          <div class=\"card-header\" data-background-color=\"red\">\n            <h4 class=\"title\">Register</h4>\n            <p class=\"category\">To start saving your teams and Pokemon</p>\n          </div>\n          <div class=\"card-content\">\n            <!-- Display warning here if username is taken or some other error -->\n            <div *ngIf=\"false\" id=\"notification\" class=\"alert alert-danger\"></div>\n\n            <div *ngIf=\"!submitted\">\n              <form (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\n                <div class=\"row\">\n                  <div class=\"col-md-6\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"username\">Username</label>\n                      <input required type=\"text\" class=\"form-control\" id=\"username\" name=\"username\"\n                        [(ngModel)]=\"username\">\n                    </div>\n                  </div>\n                  <div class=\"col-md-6\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"email\">Email address</label>\n                      <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" name=\"email\">\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"row\">\n                  <div class=\"col-md-6\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"password\">Password</label>\n                      <input required type=\"password\" class=\"form-control\" id=\"password\" name=\"password\"\n                      [(ngModel)]=\"password\" (ngModelChange)=\"matchPassword()\">\n                    </div>\n                  </div>\n                  <div class=\"col-md-6\">\n                    <div class=\"form-group form-black label-floating is-empty\">\n                      <label class=\"control-label\" for=\"cpassword\">Confirm Password</label>\n                      <input required type=\"password\" class=\"form-control\" id=\"cpassword\" name=\"cpassword\"\n                      [(ngModel)]=\"cpassword\" (ngModelChange)=\"matchPassword()\">\n                    </div>\n                  </div>\n                </div>\n\n                <button type=\"submit\" class=\"btn btn-danger pull-right\" [disabled]=\"!registerForm.form.valid\" \n                  [disabled]=\"!passwordMatch\">\n                  Register\n                </button>\n                <div class=\"clearfix\"></div>\n              </form>\n            </div>\n            <!-- Invisible before submit -->\n            <div *ngIf=\"submitted\">\n              <div *ngIf=\"valid\">\n                <div class=\"h3\">\n                  You have successfully registered!\n                </div>\n                <div class=\"h4\">\n                  No email confirmation necessary\n                </div>\n              </div>\n              <div *ngIf=\"!valid\">\n                <div class=\"h3\">\n                    Registration Failed\n                  </div>\n                  <div class=\"h4\">\n                    Username is already in use\n                  </div>\n              </div>\n            </div>\n\n          </div>\n        </div>\n      </div>\n      <div class=\"col-md-4\">\n        <div class=\"card card-profile\">\n          <div class=\"card-avatar\">\n            <a href=\"#bill\">\n              <img class=\"img\" src=\"assets/img/faces/Bill.png\" />\n            </a>\n          </div>\n\n          <div class=\"content\">\n            <h6 class=\"category text-gray\">Masaki Sonezaki</h6>\n            <h4 class=\"card-title\">Bill, Head Engineer</h4>\n            <p class=\"card-content\">\n              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert\n              analytics and statistics are provided by our leading Professors.\n            </p>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_register_service__ = __webpack_require__("../../../../../src/app/services/register.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_register_service__ = __webpack_require__("./src/app/services/register.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2007,8 +1870,8 @@ var RegisterComponent = (function () {
     RegisterComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-register',
-            template: __webpack_require__("../../../../../src/app/register/register.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/register/register.component.css")]
+            template: __webpack_require__("./src/app/register/register.component.html"),
+            styles: [__webpack_require__("./src/app/register/register.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_register_service__["a" /* RegisterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_register_service__["a" /* RegisterService */]) === "function" && _a || Object])
     ], RegisterComponent);
@@ -2020,19 +1883,19 @@ var RegisterComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/convert.service.ts":
+/***/ "./src/app/services/convert.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConvertService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__set__ = __webpack_require__("../../../../../src/app/set.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pokemon__ = __webpack_require__("../../../../../src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pokemon_service__ = __webpack_require__("../../../../../src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__move_service__ = __webpack_require__("../../../../../src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__team__ = __webpack_require__("../../../../../src/app/team.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__set__ = __webpack_require__("./src/app/set.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pokemon__ = __webpack_require__("./src/app/pokemon.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__team__ = __webpack_require__("./src/app/team.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2062,7 +1925,12 @@ var ConvertService = (function () {
     }
     ConvertService.prototype.pokeapiToSet = function (pkmn) {
         var result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
-        result.setId = 1;
+        if (pkmn.setId) {
+            result.setId = pkmn.setId;
+        }
+        else {
+            result.setId = -1;
+        }
         result.pokemonId = pkmn.id;
         result.nickname = pkmn.name;
         result.atk1 = pkmn.attackIds[0];
@@ -2153,12 +2021,14 @@ var ConvertService = (function () {
     ConvertService.prototype.setToPokeapi = function (set, trainerID) {
         var result = new __WEBPACK_IMPORTED_MODULE_3__pokemon__["a" /* PokeAPI */]();
         var pkmn = this.pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
+        result.attackIds = [];
         result.attackIds[0] = set.atk1;
         result.attackIds[1] = set.atk2;
         result.attackIds[2] = set.atk3;
         result.attackIds[3] = set.atk4;
         result.id = set.pokemonId;
         result.moves = pkmn.moves;
+        result.moveset = [];
         result.moveset[0] = this.movedex[set.atk1].name;
         result.moveset[1] = this.movedex[set.atk2].name;
         result.moveset[2] = this.movedex[set.atk3].name;
@@ -2191,10 +2061,12 @@ var ConvertService = (function () {
         result.id = myTeam.set1.pokemonId;
         result.setId = myTeam.set1.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set1.atk1;
         result.attackIds[1] = myTeam.set1.atk2;
         result.attackIds[2] = myTeam.set1.atk3;
         result.attackIds[3] = myTeam.set1.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set1.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set1.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set1.atk3].name;
@@ -2205,10 +2077,12 @@ var ConvertService = (function () {
         result.id = myTeam.set2.pokemonId;
         result.setId = myTeam.set2.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set2.atk1;
         result.attackIds[1] = myTeam.set2.atk2;
         result.attackIds[2] = myTeam.set2.atk3;
         result.attackIds[3] = myTeam.set2.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set2.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set2.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set2.atk3].name;
@@ -2219,10 +2093,12 @@ var ConvertService = (function () {
         result.id = myTeam.set3.pokemonId;
         result.setId = myTeam.set3.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set3.atk1;
         result.attackIds[1] = myTeam.set3.atk2;
         result.attackIds[2] = myTeam.set3.atk3;
         result.attackIds[3] = myTeam.set3.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set3.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set3.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set3.atk3].name;
@@ -2233,10 +2109,12 @@ var ConvertService = (function () {
         result.id = myTeam.set4.pokemonId;
         result.setId = myTeam.set4.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set4.atk1;
         result.attackIds[1] = myTeam.set4.atk2;
         result.attackIds[2] = myTeam.set4.atk3;
         result.attackIds[3] = myTeam.set4.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set4.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set4.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set4.atk3].name;
@@ -2247,10 +2125,12 @@ var ConvertService = (function () {
         result.id = myTeam.set5.pokemonId;
         result.setId = myTeam.set5.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set5.atk1;
         result.attackIds[1] = myTeam.set5.atk2;
         result.attackIds[2] = myTeam.set5.atk3;
         result.attackIds[3] = myTeam.set5.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set5.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set5.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set5.atk3].name;
@@ -2261,10 +2141,12 @@ var ConvertService = (function () {
         result.id = myTeam.set6.pokemonId;
         result.setId = myTeam.set6.setId;
         result.trainerId = trainerID;
+        result.attackIds = [];
         result.attackIds[0] = myTeam.set6.atk1;
         result.attackIds[1] = myTeam.set6.atk2;
         result.attackIds[2] = myTeam.set6.atk3;
         result.attackIds[3] = myTeam.set6.atk4;
+        result.moveset = [];
         result.moveset[0] = this.movedex[myTeam.set6.atk1].name;
         result.moveset[1] = this.movedex[myTeam.set6.atk2].name;
         result.moveset[2] = this.movedex[myTeam.set6.atk3].name;
@@ -2284,14 +2166,14 @@ var ConvertService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/feature.service.ts":
+/***/ "./src/app/services/feature.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeatureService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2331,14 +2213,14 @@ var FeatureService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/login.service.ts":
+/***/ "./src/app/services/login.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2394,13 +2276,13 @@ var LoginService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/move.service.ts":
+/***/ "./src/app/services/move.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MoveService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2431,13 +2313,13 @@ var MoveService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/pokemon.service.ts":
+/***/ "./src/app/services/pokemon.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2468,13 +2350,13 @@ var PokemonService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/register.service.ts":
+/***/ "./src/app/services/register.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2506,14 +2388,14 @@ var RegisterService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/team.service.ts":
+/***/ "./src/app/services/team.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pokemon__ = __webpack_require__("../../../../../src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pokemon__ = __webpack_require__("./src/app/pokemon.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2600,12 +2482,12 @@ var TeamService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/services/type.service.ts":
+/***/ "./src/app/services/type.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2683,7 +2565,102 @@ var TypeService = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/set.ts":
+/***/ "./src/app/services/update.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpdateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UpdateService = (function () {
+    function UpdateService(http) {
+        this.http = http;
+    }
+    UpdateService.prototype.saveSet = function (mySet) {
+        if (mySet.setId < 0) {
+            this.createSet(mySet);
+        }
+        else {
+            this.updateSet(mySet);
+        }
+    };
+    UpdateService.prototype.createSet = function (mySet) {
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('set', JSON.stringify(mySet));
+        return this.http.post('set', body);
+    };
+    UpdateService.prototype.updateSet = function (mySet) {
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('set', JSON.stringify(mySet));
+        return this.http.put('set', body);
+    };
+    UpdateService.prototype.saveTeam = function (myTeam) {
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('team', JSON.stringify(myTeam));
+        return this.http.post('team', body);
+    };
+    UpdateService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], UpdateService);
+    return UpdateService;
+    var _a;
+}());
+
+//# sourceMappingURL=update.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/view-user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUserService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ViewUserService = (function () {
+    function ViewUserService(http) {
+        this.http = http;
+    }
+    ViewUserService.prototype.viewUsers = function () {
+        return this.http.get('view-user');
+    };
+    ViewUserService.prototype.promoteUser = function (username) {
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username);
+        return this.http.post('view-user', body);
+    };
+    ViewUserService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], ViewUserService);
+    return ViewUserService;
+    var _a;
+}());
+
+//# sourceMappingURL=view-user.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/set.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2698,13 +2675,19 @@ var Set = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/team.ts":
+/***/ "./src/app/team.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Team; });
 var Team = (function () {
     function Team() {
+        this.set1 = null;
+        this.set2 = null;
+        this.set3 = null;
+        this.set4 = null;
+        this.set5 = null;
+        this.set6 = null;
     }
     return Team;
 }());
@@ -2713,48 +2696,39 @@ var Team = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/teambuilder/teambuilder.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.container-fluid {\r\n  padding-left: 0px;\r\n}\r\n.row {\r\n  width:100%;\r\n  margin-left: 0px;\r\n  margin-right: 0px;\r\n}\r\n.stats {\r\n  width:100%;\r\n}\r\n.col-md-12 {\r\n  max-height: 500px;\r\n}\r\n/* Card styling */\r\n.card {\r\n  box-shadow: 0px 2px 8px #DDDDDD;\r\n  margin: 18px 0px;\r\n  max-height: 500px;\r\n}\r\n.card-content {\r\n  padding-bottom: 0px;\r\n  padding-left: 4px;\r\n  padding-right: 4px;\r\n}\r\n.card-stats {\r\n  min-height: 480px;\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  max-height: 520px;\r\n}\r\n.card-footer.ta-center {\r\n  margin-bottom: 0px!important;\r\n}\r\n/* Removes bullets and the padding that would normally be for the bullets */\r\nul {\r\n  list-style-type: none;\r\n  padding-left: 0;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n.badge {\r\n  margin: 5px;\r\n  background-color: rgb(255, 70, 60);\r\n}\r\n/* Squeeze more space out of our tables */\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.stat-col {\r\n  width: 42px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n  min-height: 470px;\r\n  max-height: 470px;\r\n  margin-left: 4px;\r\n}\r\n.move-table {\r\n  width: 100%;\r\n  max-height: 270px;\r\n}\r\n.material-icons.md-18 {\r\n  font-size: 18px;\r\n}\r\n.ta-center {\r\n  text-align: center;\r\n}\r\n.save-button {\r\n  float: right;\r\n  margin-top: 0px;\r\n  margin-bottom: 5px;\r\n}\r\n.no-padding {\r\n  padding: 0px;\r\n}\r\n.no-pad-top {\r\n  padding-top: 0px!important;\r\n}\r\n.mt-10 {\r\n  margin-top: 10px;\r\n}\r\n.bg-select {\r\n  background-color: rgb(255, 200, 200);\r\n}\r\n.bg-default {\r\n  background-color: #DDDDDD;\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/teambuilder/teambuilder.component.html":
+/***/ "./src/app/teambuilder/teambuilder.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\r\n  <div class=\"container-fluid\">\r\n    <!-- <div *ngFor=\"let move of movedex\">\r\n      {{ move.name }}\r\n    </div> -->\r\n    <div class=\"row\">\r\n      <!-- Loop through and print every Pokemon in favTeam -->\r\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\r\n        <div class=\"card\" [style.background-color]=\"(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'\">\r\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\r\n            <img [src]=\"favTeam[i].sprite\" alt=\"\" />\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center\" (click)=\"selectTeamPokemon(i, pkmn)\" role=\"button\">\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\r\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\r\n            <h4 class=\"title\">\r\n              {{ favTeam[i].name | titlecase}}\r\n            </h4>\r\n          </div>\r\n\r\n          <div class=\"card-footer ta-center\">\r\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\r\n              {{ collapse }}\r\n            </i>\r\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\r\n              <ul>\r\n                <li *ngFor=\"let atk of favTeam[i].moveset\">\r\n                  {{ atk }}\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-lg-7 col-md-12\">\r\n        <div class=\"card card-stats container-fluid\">\r\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\r\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\r\n          </div>\r\n\r\n          <div class=\"card-content ta-center row\">\r\n            <img class=\"sprite col-sm-3 col-xl-3\" [src]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \"\r\n              [title]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \" />\r\n            <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->\r\n            <div class=\"no-padding col-sm-3 col-xl-3\">\r\n              <span class=\"badge badge-primary\">\r\n                Critical Rate\r\n                <br/> {{ (selectedPkmn) ? (selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2') : '' }} %\r\n              </span>\r\n              <br/>\r\n              <!--[src]=\"(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]\"-->\r\n              <img class=\"type\"\r\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : '' \" />\r\n              <img class=\"type\"\r\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' \" />\r\n              <br/>\r\n              <small>\r\n                <a [href]=\"(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/selectedPkmn.name' : '' \">Smogon Analysis</a>\r\n              </small>\r\n            </div>\r\n            <form class=\"row poke-search\" role=\"search\">\r\n              <div class=\"form-group col-sm-4 col-xl-4\">\r\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\r\n                  placeholder=\"Search Pokemon\" [(value)]=\"(selectedPkmn) ? selectedPkmn.name : sortBy \">\r\n                <span class=\"material-input\"></span>\r\n              </div>\r\n            </form>\r\n          </div>\r\n\r\n          <div class=\"card-footer mt-10\">\r\n            <div class=\"table-responsive move-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>Name</th>\r\n                    <th>Type</th>\r\n                    <th>Class</th>\r\n                    <th>Pow</th>\r\n                    <th>Acc</th>\r\n                    <th>PP</th>\r\n                    <th>Effect</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"selectedPkmn\">\r\n                  <tr *ngFor=\"let move of selPkmnMoves; let i = index\">\r\n                    <td>\r\n                      <input type=\"text\" [(ngModel)]=\"selPkmnMoves[i].name\" name=\"moveInput{{i}}\" list=\"canLearn\"\r\n                        (change)=\"setSelPkmnMoves(i, selPkmnMoves[i].name)\">\r\n                      <datalist id=\"canLearn\">\r\n                        <option *ngFor=\"let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending\" value=\"{{canlearn.name}}\">\r\n                      </datalist>\r\n                    </td>\r\n                    <td>\r\n                      <img [src]=\"types.img[types.name.indexOf(move.type)]\" class=\"type\">\r\n                    </td>\r\n                    <td>\r\n                      <img class=\"type\" [src]=\"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]\">\r\n                    </td>\r\n                    <td>{{ move.power }}</td>\r\n                    <td>{{ move.accuracy }}</td>\r\n                    <td>{{ move.pp }}</td>\r\n                    <td>{{ move.effect }}</td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n            <button class=\"btn btn-primary btn-sm save-button\" (click)=\"savePokemon()\">\r\n              <i class=\"material-icons\">save</i>\r\n              {{ (selected === -1) ? 'Save to Pokemon Box' : 'Save to Team' }}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-lg-5 col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-content no-pad-top\">\r\n            <div class=\"table-responsive pkmn-table\">\r\n              <table class=\"table table-hover\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\r\n                      {{ col | titlecase }}\r\n                      <br/>\r\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\r\n                    </th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\r\n                  <tr class=\"search-row\" *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\r\n                    <td class=\"ta-center\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\r\n                    <td class=\"ta-center type-col\" (click)=\"selectNewPokemon(pkmn)\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[1])]\" class=\"type\">\r\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[0])]\" class=\"type\">\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.hp }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.atk }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.def }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.satk }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.sdef }}\r\n                    </td>\r\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\r\n                      {{ pkmn.stats.spe }}\r\n                    </td>\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card-footer\">\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "/* Layout */\n.main-content {\n  margin-top: 50px;\n  padding-right: 0px;\n  padding-bottom: 0px;\n}\n.container-fluid {\n  padding-left: 0px;\n}\n.row {\n  width:100%;\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.stats {\n  width:100%;\n}\n.col-md-12 {\n  max-height: 500px;\n}\n/* Card styling */\n.card {\n  -webkit-box-shadow: 0px 2px 8px #DDDDDD;\n          box-shadow: 0px 2px 8px #DDDDDD;\n  margin: 18px 0px;\n  max-height: 500px;\n}\n.card-content {\n  padding-bottom: 0px;\n  padding-left: 4px;\n  padding-right: 4px;\n}\n.card-stats {\n  min-height: 480px;\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.card-footer {\n  padding-top: 0px;\n  max-height: 520px;\n}\n.card-footer.ta-center {\n  margin-bottom: 0px!important;\n}\n/* Removes bullets and the padding that would normally be for the bullets */\nul {\n  list-style-type: none;\n  padding-left: 0;\n}\n/* Native image sizes */\n.type {\n  width: 48px;\n  height: 16px;\n}\n.sprite {\n  width: 96px;\n  height: 96px;\n  padding: 0px;\n  margin: 0px;\n}\n.badge {\n  margin: 5px;\n  background-color: rgb(255, 70, 60);\n}\n/* Squeeze more space out of our tables */\ntable {\n  font-size: 12px;\n}\ntd input {\n  width: 100px;\n}\n.type-col {\n  width: 70px;\n}\n.stat-col {\n  width: 42px;\n}\n.form-group {\n  margin-top: 0px;\n}\n.poke-search {\n  margin-top: 0px;\n  margin-left: 0px;\n}\n.pkmn-table {\n  width: 100%;\n  min-height: 470px;\n  max-height: 470px;\n  margin-left: 4px;\n}\n.move-table {\n  width: 100%;\n  max-height: 270px;\n}\n.material-icons.md-18 {\n  font-size: 18px;\n}\n.ta-center {\n  text-align: center;\n}\n.save-button {\n  float: right;\n  margin-top: 0px;\n  margin-bottom: 5px;\n}\n.no-padding {\n  padding: 0px;\n}\n.no-pad-top {\n  padding-top: 0px!important;\n}\n.mt-10 {\n  margin-top: 10px;\n}\n.bg-select {\n  background-color: rgb(255, 200, 200);\n}\n.bg-default {\n  background-color: #DDDDDD;\n}"
 
 /***/ }),
 
-/***/ "../../../../../src/app/teambuilder/teambuilder.component.ts":
+/***/ "./src/app/teambuilder/teambuilder.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <!-- <div *ngFor=\"let move of movedex\">\n      {{ move.name }}\n    </div> -->\n    <div class=\"row\">\n      <!-- Loop through and print every Pokemon in favTeam -->\n      <div class=\"col-lg-2 col-xs-4\" *ngFor=\"let pkmn of favTeam; let i = index\">\n        <div class=\"card\" [style.background-color]=\"(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'\">\n          <div class=\"card-header btn\" data-background-color=\"orange\" (click)=\"selectTeamPokemon(i, pkmn)\">\n            <img [src]=\"favTeam[i].sprite\" alt=\"\" />\n          </div>\n\n          <div class=\"card-content ta-center\" (click)=\"selectTeamPokemon(i, pkmn)\" role=\"button\">\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[0])]\" class=\"type\" />\n            <img [src]=\"types.img[types.name.indexOf(favTeam[i].types[1])]\" class=\"type\" />\n            <h4 class=\"title\">\n              {{ favTeam[i].name | titlecase}}\n            </h4>\n          </div>\n\n          <div class=\"card-footer ta-center\">\n            <i class=\"material-icons md-18 row\" (click)=\"toggleCollapse()\" role=\"button\">\n              {{ collapse }}\n            </i>\n            <div class=\"stats\" *ngIf=\"expandOrCollapse\">\n              <ul>\n                <li *ngFor=\"let atk of favTeam[i].moveset\">\n                  {{ atk }}\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\">\n\n      <div class=\"col-lg-7 col-md-12\">\n        <div class=\"card card-stats container-fluid\">\n          <div class=\"card-header card-chart\" data-background-color=\"purple\">\n            <div class=\"ct-chart\" id=\"pokemonStatChart\"></div>\n          </div>\n\n          <div class=\"card-content ta-center row\">\n            <img class=\"sprite col-sm-3 col-xl-3\" [src]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \"\n              [title]=\" (selectedPkmn) ? selectedPkmn.sprite : '' \" />\n            <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->\n            <div class=\"no-padding col-sm-3 col-xl-3\">\n              <span class=\"badge badge-primary\">\n                Critical Rate\n                <br/> {{ (selectedPkmn) ? (selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2') : '' }} %\n              </span>\n              <br/>\n              <!--[src]=\"(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]\"-->\n              <img class=\"type\"\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : '' \" />\n              <img class=\"type\"\n              [src]=\" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' \" />\n              <br/>\n              <small>\n                <a [href]=\"(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/selectedPkmn.name' : '' \">Smogon Analysis</a>\n              </small>\n            </div>\n            <form class=\"row poke-search\" role=\"search\">\n              <div class=\"form-group col-sm-4 col-xl-4\">\n                <input [(ngModel)]=\"searchInput\" name=\"searchInput\" type=\"text\" class=\"form-control\"\n                  placeholder=\"Search Pokemon\" [(value)]=\"(selectedPkmn) ? selectedPkmn.name : sortBy \">\n                <span class=\"material-input\"></span>\n              </div>\n            </form>\n          </div>\n\n          <div class=\"card-footer mt-10\">\n            <div class=\"table-responsive move-table\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-primary\">\n                  <tr>\n                    <th>Name</th>\n                    <th>Type</th>\n                    <th>Class</th>\n                    <th>Pow</th>\n                    <th>Acc</th>\n                    <th>PP</th>\n                    <th>Effect</th>\n                  </tr>\n                </thead>\n                <tbody *ngIf=\"selectedPkmn\">\n                  <tr *ngFor=\"let move of selPkmnMoves; let i = index\">\n                    <td>\n                      <input type=\"text\" [(ngModel)]=\"selPkmnMoves[i].name\" name=\"moveInput{{i}}\" list=\"canLearn\"\n                        (change)=\"setSelPkmnMoves(i, selPkmnMoves[i].name)\">\n                      <datalist id=\"canLearn\">\n                        <option *ngFor=\"let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending\" value=\"{{canlearn.name}}\">\n                      </datalist>\n                    </td>\n                    <td>\n                      <img [src]=\"types.img[types.name.indexOf(move.type)]\" class=\"type\">\n                    </td>\n                    <td>\n                      <img class=\"type\" [src]=\"move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]\">\n                    </td>\n                    <td>{{ move.power }}</td>\n                    <td>{{ move.accuracy }}</td>\n                    <td>{{ move.pp }}</td>\n                    <td>{{ move.effect }}</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <button class=\"btn btn-primary btn-sm save-button\" (click)=\"savePokemon()\">\n              <i class=\"material-icons\">save</i>\n              {{ (selected === -1) ? 'Save to Pokemon Box' : 'Save to Team' }}\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-lg-5 col-md-12\">\n        <div class=\"card\">\n          <div class=\"card-content no-pad-top\">\n            <div class=\"table-responsive pkmn-table\">\n              <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th class=\"ta-center\" *ngFor=\"let col of pkmnTableColNames; let i = index\">\n                      {{ col | titlecase }}\n                      <br/>\n                      <i class=\"material-icons md-18\" role=\"button\" (click)=\"toggleSort(i)\">{{ colSortIcons[i] }}</i>\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->\n                  <tr class=\"search-row\" *ngFor=\"let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index\">\n                    <td class=\"ta-center\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">{{ pkmn.name | titlecase }}</td>\n                    <td class=\"ta-center type-col\" (click)=\"selectNewPokemon(pkmn)\">\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[1])]\" class=\"type\">\n                      <img [src]=\"types.img[types.name.indexOf(pkmn.types[0])]\" class=\"type\">\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.hp }}\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.atk }}\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.def }}\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.satk }}\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.sdef }}\n                    </td>\n                    <td class=\"ta-center stat-col\" (click)=\"selectNewPokemon(pkmn)\" role=\"button\">\n                      {{ pkmn.stats.spe }}\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n\n          <div class=\"card-footer\">\n\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/teambuilder/teambuilder.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeambuilderComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pokemon__ = __webpack_require__("../../../../../src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__move__ = __webpack_require__("../../../../../src/app/move.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_move_service__ = __webpack_require__("../../../../../src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_pokemon_service__ = __webpack_require__("../../../../../src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_team_service__ = __webpack_require__("../../../../../src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_type_service__ = __webpack_require__("../../../../../src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_convert_service__ = __webpack_require__("../../../../../src/app/services/convert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_chartist__ = __webpack_require__("../../../../chartist/dist/chartist.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_chartist__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pokemon__ = __webpack_require__("./src/app/pokemon.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__move__ = __webpack_require__("./src/app/move.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__ = __webpack_require__("./src/app/services/convert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_update_service__ = __webpack_require__("./src/app/services/update.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_chartist__ = __webpack_require__("./node_modules/chartist/dist/chartist.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_chartist__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2774,17 +2748,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var TeambuilderComponent = (function () {
-    function TeambuilderComponent(convertService, pokemonService, moveService, teamService, types) {
+    function TeambuilderComponent(updateService, convertService, loginService, pokemonService, moveService, teamService, types) {
         // Assign my placeholder favTeam using teamService
         // this.favTeam = this.teamService.favTeam;
+        // now using loadTeam() instead
+        this.updateService = updateService;
         this.convertService = convertService;
+        this.loginService = loginService;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
         this.teamService = teamService;
         this.types = types;
-        // Assign my favTeam using localStorage or from session if one exists
-        this.loadTeam();
         // My default selected Pokemon's attacks
         this.selPkmnMoves = new Array();
         // by default our attacks are collapsed
@@ -2801,10 +2778,22 @@ var TeambuilderComponent = (function () {
     TeambuilderComponent.prototype.loadTeam = function () {
         this.trainer = JSON.parse(localStorage.getItem('trainer'));
         this.myTeam = JSON.parse(localStorage.getItem('teams'));
-        if (this.myTeam && this.trainer) {
-            this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+        if (!this.sets) {
+            this.sets = new Array();
+        }
+        if (!!this.myTeam && !!this.trainer) {
+            // Load team, if one exists
+            if (this.myTeam[0]) {
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+            }
+            // Load box, if any
+            for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
+                var set = _a[_i];
+                this.sets.push(set);
+            }
         }
         else {
+            // Load from local storage
             this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
         }
         // if null, get an empty team
@@ -2855,6 +2844,9 @@ var TeambuilderComponent = (function () {
      * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
      */
     TeambuilderComponent.prototype.selectPokemon = function (pkmn) {
+        if (!pkmn) {
+            return false;
+        }
         this.selectedPkmn = pkmn;
         this.loadStatChart();
         this.selPkmnMoves = new Array();
@@ -2879,6 +2871,7 @@ var TeambuilderComponent = (function () {
         while (this.selPkmnMoves.length < 4) {
             this.selPkmnMoves.push(new __WEBPACK_IMPORTED_MODULE_3__move__["a" /* Move */]());
         }
+        return true;
     };
     /**
      * Selects a pokemon from our team to edit. If already selected, cancel editing
@@ -2910,8 +2903,8 @@ var TeambuilderComponent = (function () {
      */
     TeambuilderComponent.prototype.savePokemon = function () {
         var myTrainer;
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
-        // wipe our selected Pokemon's old attacks
+        myTrainer = JSON.parse(localStorage.getItem('trainer'));
+        // wipe our selected Pokemon's old attacks so we can add the new ones back in
         this.selectedPkmn.attackIds = [null, null, null, null];
         this.selectedPkmn.moveset = [null, null, null, null];
         // If our trainer is logged in, assign trainer ID
@@ -2927,23 +2920,27 @@ var TeambuilderComponent = (function () {
             }
             else {
                 // if not, assign a placeholder
-                console.log(this.selPkmnMoves[i]);
                 var m = new __WEBPACK_IMPORTED_MODULE_3__move__["a" /* Move */]();
                 m.name = '';
                 this.selPkmnMoves[i] = m;
             }
         }
-        // Add the Pokemon to our team
+        // Add the Pokemon to our team if they picked a slot to save to
         if (this.selected >= 0) {
             this.favTeam[this.selected] = this.selectedPkmn;
         }
-        // Save to box
-        if (myTrainer) {
-            // TODO:
-            myTrainer.sets.push(this.selectedPkmn);
-        }
+        // Save sets to localstorage
+        var mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+        this.sets.push(mySet);
+        this.loginService.changeSets(this.sets);
         // Put our favTeam in local storage so even an unregistered user can use our service
         localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+        // Send http request to save set and team if the user is logged in
+        if (myTrainer) {
+            this.updateService.saveSet(mySet);
+            var myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
+            this.updateService.saveTeam(myTeam);
+        }
     };
     /**
      * Deprecated
@@ -3023,6 +3020,9 @@ var TeambuilderComponent = (function () {
     };
     ;
     TeambuilderComponent.prototype.loadStatChart = function () {
+        if (!this.selectedPkmn) {
+            return false;
+        }
         /* Pokemon Stat Chart initialization  */
         var dataPokemonStatChart = {
             labels: [
@@ -3060,9 +3060,10 @@ var TeambuilderComponent = (function () {
                     }
                 }]
         ];
-        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_9_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
+        var pokemonStatChart = new __WEBPACK_IMPORTED_MODULE_11_chartist__["Bar"]('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
         // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(pokemonStatChart);
+        return true;
     };
     TeambuilderComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -3076,6 +3077,8 @@ var TeambuilderComponent = (function () {
             _this.movedex = moveArray;
             // calling these functions here because this is the only location where
             // we can guarantee our pokedex and movedex have been fully loaded
+            // Assign my favTeam using localStorage or from session if one exists
+            _this.loadTeam();
             _this.selectPokemon(_this.favTeam[0]);
             _this.loadStatChart();
         });
@@ -3083,51 +3086,47 @@ var TeambuilderComponent = (function () {
     TeambuilderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-teambuilder',
-            template: __webpack_require__("../../../../../src/app/teambuilder/teambuilder.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/teambuilder/teambuilder.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_5_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_6_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_7_app_services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_8_app_services_convert_service__["a" /* ConvertService */]]
+            template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
+            styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */],
+                __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */],
+                __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */],
+                __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */]
+            ]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_8_app_services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_services_convert_service__["a" /* ConvertService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_move_service__["a" /* MoveService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_team_service__["a" /* TeamService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_type_service__["a" /* TypeService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */]) === "function" && _g || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=teambuilder.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/view-users/view-users.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/view-users/view-users.component.html":
+/***/ "./src/app/view-users/view-users.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <table>\r\n    <tr>Username</tr>\r\n    <tr>Role</tr>\r\n  </table>\r\n</div>>"
+module.exports = "/* Layout */\n.main-content {\n    margin-top: 50px;\n    padding-right: 0px;\n    padding-bottom: 0px;\n  }\n.container-fluid {\n    padding-left: 0px;\n  }\n.row {\n    width:100%;\n    margin-left: 0px;\n    margin-right: 0px;\n  }\n.stats {\n    width:100%;\n  }\n.col-md-12 {\n    max-height: 470px;\n  }\n/* Card styling */\n.card {\n    -webkit-box-shadow: 0px 2px 8px #BBBBBB;\n            box-shadow: 0px 2px 8px #BBBBBB;\n    margin: 18px 0px;\n    max-height: 450px;\n  }\n.card-content {\n    padding-bottom: 0px;\n    padding-left: 4px;\n    padding-right: 4px;\n  }\n.card-stats {\n    min-height: 450px;\n    padding-left: 0px;\n    padding-right: 0px;\n  }\n.card-footer {\n    padding-top: 0px;\n    max-height: 500px;\n  }\n.card-footer.ta-center {\n    margin-bottom: 0px!important;\n  }\n/* Removes bullets and the padding that would normally be for the bullets */\nul {\n    list-style-type: none;\n    padding-left: 0;\n  }\n/* Native image sizes */\n.type {\n    width: 48px;\n    height: 16px;\n  }\n.sprite {\n    width: 96px;\n    height: 96px;\n    padding: 0px;\n    margin: 0px;\n  }\n.badge {\n    margin: 5px;\n    background-color: rgb(255, 70, 60);\n  }\n/* Squeeze more space out of our tables */\ntable {\n    font-size: 12px;\n  }\ntd input {\n    width: 100px;\n  }\n.type-col {\n    width: 70px;\n  }\n.stat-col {\n    width: 42px;\n  }\n.form-group {\n    margin-top: 0px;\n  }\n.poke-search {\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n.pkmn-table {\n    width: 100%;\n    max-height: 450px;\n    margin-left: 4px;\n  }\n.material-icons.md-18 {\n    font-size: 18px;\n    }\n.ta-center {\n    text-align: center;\n    }\n.no-padding {\n    padding: 0px;\n  }\n.no-pad-top {\n    padding-top: 0px!important;\n  }\n.mt-10 {\n    margin-top: 10px;\n  }"
 
 /***/ }),
 
-/***/ "../../../../../src/app/view-users/view-users.component.ts":
+/***/ "./src/app/view-users/view-users.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"main-content\">\n  <div class = \"card-footer mt-10\">\n    <form [formGroup] = \"form\" (ngSubmit) = \"onSubmit()\">\n      <table class = \"table\">\n        <thead class=\"text-primary\">\n            <tr>\n              <th>Username</th>\n              <th>Role</th>\n              <th></th>\n            </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor='let user of users; let i = index'>\n            <td>{{ user.name }}</td>\n            <td>{{ user.role }}</td>\n            <td><input type = \"radio\" formControlName = \"promote\" [value] = \"user\" > </td>\n          </tr>\n        </tbody>\n      </table>\n      <p>\n          <button type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\n      </p>\n    </form>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/view-users/view-users.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewUsersComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__ = __webpack_require__("./src/app/services/view-user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3138,27 +3137,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ViewUsersComponent = (function () {
-    function ViewUsersComponent() {
+    function ViewUsersComponent(viewUserService, fb) {
+        this.viewUserService = viewUserService;
+        this.fb = fb;
+        this.control = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* Validators */].required);
+        this.form = fb.group({
+            'promote': this.control
+        });
     }
     ViewUsersComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.viewUserService.viewUsers().subscribe(function (users) {
+            alert(JSON.stringify(users));
+            _this.users = users;
+        });
+    };
+    ViewUsersComponent.prototype.onSubmit = function () {
+        var _this = this;
+        console.log('model-based form submitted');
+        console.log(this.form.value.promote.name);
+        this.viewUserService.promoteUser(this.form.value.promote.name).subscribe(function (users) {
+            alert(JSON.stringify(users));
+            _this.users = users;
+        });
     };
     ViewUsersComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-view-users',
-            template: __webpack_require__("../../../../../src/app/view-users/view-users.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/view-users/view-users.component.css")]
+            template: __webpack_require__("./src/app/view-users/view-users.component.html"),
+            styles: [__webpack_require__("./src/app/view-users/view-users.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_view_user_service__["a" /* ViewUserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object])
     ], ViewUsersComponent);
     return ViewUsersComponent;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=view-users.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/environments/environment.ts":
+/***/ "./src/environments/environment.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3174,15 +3197,15 @@ var environment = {
 
 /***/ }),
 
-/***/ "../../../../../src/main.ts":
+/***/ "./src/main.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../src/app/app.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("./src/app/app.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 
 
 
@@ -3198,7 +3221,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("../../../../../src/main.ts");
+module.exports = __webpack_require__("./src/main.ts");
 
 
 /***/ })
