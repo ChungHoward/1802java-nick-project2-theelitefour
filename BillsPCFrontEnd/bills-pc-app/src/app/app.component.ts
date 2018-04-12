@@ -5,13 +5,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { LoginService } from './services/login.service';
 
 declare const $: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [LoginService]
 })
 export class AppComponent implements OnInit {
   private _router: Subscription;
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
 
   @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-  constructor(public location: Location, private router: Router) { }
+  constructor(public location: Location, private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
     $.material.init();

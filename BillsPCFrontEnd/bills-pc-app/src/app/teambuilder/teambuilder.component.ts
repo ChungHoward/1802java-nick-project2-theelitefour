@@ -16,6 +16,7 @@ import { TypeService } from 'app/services/type.service';
 import { ConvertService } from 'app/services/convert.service';
 import { UpdateService } from '../services/update.service';
 import * as Chartist from 'chartist';
+import { subscribeOn } from 'rxjs/operator/subscribeOn';
 
 @Component({
   selector: 'app-teambuilder',
@@ -34,7 +35,7 @@ export class TeambuilderComponent implements OnInit {
   // Our trainer's owned Pokemon from the server, if any
   sets: Array<Set>;
   // The Team from our server, if one exists
-  myTeam: Team;
+  myTeam: Array<Team>;
   // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
   // The name of the icon that shows or hides your attacks
@@ -88,10 +89,10 @@ export class TeambuilderComponent implements OnInit {
     if (!this.sets) {
       this.sets = new Array<Set>();
     }
-    if (!!this.myTeam && !!this.trainer) {
+    if (this.myTeam && this.myTeam.length > 0 && !!this.trainer) {
       // Load team, if one exists
       if (this.myTeam[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
+        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex); 
       }
       // Load box, if any
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
@@ -108,6 +109,7 @@ export class TeambuilderComponent implements OnInit {
         this.favTeam.push(new PokeAPI());
       }
     }
+    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
   }
 
   // toggles the show moves/hide moves button
@@ -236,19 +238,52 @@ export class TeambuilderComponent implements OnInit {
     if (this.selected >= 0) {
       this.favTeam[this.selected] = this.selectedPkmn;
     }
-    // Save sets to localstorage
-    const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
-    this.sets.push(mySet);
-    this.loginService.changeSets(this.sets);
-
-    // Put our favTeam in local storage so even an unregistered user can use our service
-    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
 
     // Send http request to save set and team if the user is logged in
     if (myTrainer) {
-      this.updateService.saveSet(mySet);
-      const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
-      this.updateService.saveTeam(myTeam);
+      // Save sets to localstorage
+      const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+      let saveThis: Team;
+      this.updateService.saveSet(mySet).subscribe(id => {
+        if (mySet.setId === -1) {
+          mySet.setId = id;
+          this.sets.push(mySet);
+        } else {
+          for (let i = 0; i < this.sets.length; i++) {
+            if (this.sets[i].setId === mySet.setId) {
+              this.sets[i] = mySet;
+            }
+          }
+        }
+        this.favTeam[this.selected] = this.convertService.setToPokeapi(mySet, myTrainer.trainerId, this.pokedex, this.movedex);
+        this.loginService.changeSets(this.sets);
+
+        if (this.myTeam.length !== 0) {
+          saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+        } else {
+          saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam);
+        }
+
+        // const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+        this.updateService.saveTeam(saveThis).subscribe(teamId => {
+          if (saveThis.teamId === -1) {
+            saveThis.teamId = teamId;
+          }
+          // Put our favTeam in local storage so even an unregistered user can use our service
+          localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+          this.loginService.changeTeam([saveThis]);
+
+          this.loadTeam();
+        });
+      });
+    } else {
+      // Save sets to localstorage
+      const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+      this.sets.push(mySet);
+      this.loginService.changeSets(this.sets);
+
+      // Put our favTeam in local storage so even an unregistered user can use our service
+      localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
     }
   }
 

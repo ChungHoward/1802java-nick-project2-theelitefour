@@ -24,7 +24,7 @@ export class FeaturedComponent implements OnInit {
   movedex: Array<Move>;
 
   constructor(private featureService: FeatureService, private convertService: ConvertService,
-    private pokemonService: PokemonService, private moveService: MoveService, private typeService: TypeService) {
+    private pokemonService: PokemonService, private moveService: MoveService, private types: TypeService) {
       this.featTeamArray = [];
       this.pokeTeamArray = [];
     }

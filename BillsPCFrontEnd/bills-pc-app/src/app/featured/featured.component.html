@@ -14,17 +14,14 @@
                     <img [src]="types.img[types.name.indexOf(featTeam[i].types[0])]" class="type" />
                     <img [src]="types.img[types.name.indexOf(featTeam[i].types[1])]" class="type" />
                     <h4 class="title">
-                      {{ favTeam[i].name | titlecase}}
+                      {{ featTeam[i].name | titlecase}}
                     </h4>
                   </div>
         
                   <div class="card-footer ta-center">
-                    <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
-                      {{ collapse }}
-                    </i>
-                    <div class="stats" *ngIf="expandOrCollapse">
+                    <div class="stats">
                       <ul>
-                        <li *ngFor="let atk of favTeam[i].moveset">
+                        <li *ngFor="let atk of featTeam[i].moveset">
                           {{ atk }}
                         </li>
                       </ul>

@@ -12,9 +12,9 @@ export class LoginService {
   private trainerSource = new BehaviorSubject<Trainer>(JSON.parse(localStorage.getItem('trainer')));
   currentTrainer = this.trainerSource.asObservable();
   private setSource = new BehaviorSubject<Array<Set>>(JSON.parse(localStorage.getItem('sets')));
-  currentSet = this.trainerSource.asObservable();
+  currentSet = this.setSource.asObservable();
   private teamSource = new BehaviorSubject<Array<Team>>(JSON.parse(localStorage.getItem('teams')));
-  currentTeam = this.trainerSource.asObservable();
+  currentTeam = this.teamSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
