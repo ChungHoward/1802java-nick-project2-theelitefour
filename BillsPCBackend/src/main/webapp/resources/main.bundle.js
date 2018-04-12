@@ -457,7 +457,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\n      <ng-template #ifLoggedOut>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a routerLink='login'>\n              <i class=\"material-icons\">account_circle</i>\n              Login\n            </a>\n          </li>\n          <li>\n            <a routerLink='register'>\n              <i class=\"material-icons\">person</i>\n              Register\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <ng-template #elseLogin>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a>\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\n              Hello {{trainer.name}}\n            </a>\n          </li>\n          <li>\n            <a routerLink=\"view-user\">\n              <i class =\"material-icons\">exit_to_app</i>\n              View Users\n            </a>\n          </li>\n          <li>\n            <a (click)=\"logout()\">\n              <i class=\"material-icons\">exit_to_app</i>\n              Logout\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <form class=\"navbar-form navbar-right\" role=\"search\">\n        <div class=\"form-group form-black is-empty\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n          <span class=\"material-input\"></span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n          <i class=\"material-icons\">search</i>\n          <div class=\"ripple-container\"></div>\n        </button>\n      </form>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\n      <ng-template #ifLoggedOut>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a routerLink='login'>\n              <i class=\"material-icons\">account_circle</i>\n              Login\n            </a>\n          </li>\n          <li>\n            <a routerLink='register'>\n              <i class=\"material-icons\">person</i>\n              Register\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <ng-template #elseLogin>\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a>\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\n              Hello {{trainer.name}}\n            </a>\n          </li>\n          <li>\n            <a routerLink=\"view-user\">\n              <i class =\"material-icons\">exit_to_app</i>\n              View Users\n            </a>\n          </li>\n          <li>\n            <a (click)=\"logout()\">\n              <i class=\"material-icons\">exit_to_app</i>\n              Logout\n            </a>\n          </li>\n        </ul>\n      </ng-template>\n      <!--\n      <form class=\"navbar-form navbar-right\" role=\"search\">\n        <div class=\"form-group form-black is-empty\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n          <span class=\"material-input\"></span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n          <i class=\"material-icons\">search</i>\n          <div class=\"ripple-container\"></div>\n        </button>\n      </form>\n      -->\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -808,7 +808,7 @@ module.exports = "/* Layout */\n.main-content {\n  margin-top: 50px;\n  padding-
 /***/ "./src/app/defensivecoverage/defensivecoverage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-lg-12 col-md-12\">\n        <div class=\"card\">\n          <div class=\"card-header\" data-background-color=\"red\">\n            <h4 class=\"title\">Defensive Coverage shows what resistances your team needs</h4>\n            <p class=\"category\">As well as the resistances your team has plenty of.</p>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"table-responsive pkmn-table\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-warning\">\n                  <tr>\n                    <th class=\"ta-center pls-land\">\n                      <img src=\"{{ types.none }}\" class=\"type\">\n                      <br/> Type\n                      <br/>\n                    </th>\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\n                      <img src=\"{{ pkmn.sprite }}\" class=\"sprite\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\n                      <br/>{{ pkmn.name | titlecase }}\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\n                    <td class=\"ta-center\">\n                      <img src=\"{{ type }}\" class=\"type\">\n                    </td>\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\n                      {{ effective[i] | percent }}\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n\n          <div class=\"card-footer\">\n\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-lg-12 col-md-12\">\n        <div class=\"card\">\n          <div class=\"card-header\" data-background-color=\"red\">\n            <h4 class=\"title\">Defensive Coverage displays the resistances your team has and needs</h4>\n            <p class=\"category\">The higher the type is on the list, the more important it is to cover!</p>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"table-responsive pkmn-table\">\n              <table class=\"table table-hover\">\n                <thead class=\"text-warning\">\n                  <tr>\n                    <th class=\"ta-center pls-land\">\n                      <img src=\"{{ types.none }}\" class=\"type\">\n                      <br/> Type\n                      <br/>\n                    </th>\n                    <th class=\"ta-center\" *ngFor=\"let pkmn of pokemonCol; let i = index\">\n                      <img src=\"{{ pkmn.sprite }}\" class=\"sprite\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[0])] }}\" class=\"type\">\n                      <img src=\"{{ types.img[types.name.indexOf(pkmn.types[1])] }}\" class=\"type\">\n                      <br/>{{ pkmn.name | titlecase }}\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->\n                  <tr *ngFor=\"let type of types.img; let i = index\" class=\"{{ rowColor[i] }}\">\n                    <td class=\"ta-center\">\n                      <img src=\"{{ type }}\" class=\"type\">\n                    </td>\n                    <td *ngFor=\"let effective of myTable\" class=\"ta-center\">\n                      {{ effective[i] | percent }}\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n\n          <div class=\"card-footer\">\n\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -901,7 +901,9 @@ var DefensiveCoverageComponent = (function () {
                 }
             }
             sum /= numPkmn;
-            if (sum > 1.2) {
+            if (sum === 0) {
+            }
+            else if (sum > 1.2) {
                 this.rowColor[y] = 'bg-red';
             }
             else if (sum > 1) {
@@ -1594,11 +1596,15 @@ module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PokemonBoxComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_convert_service__ = __webpack_require__("./src/app/services/convert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_update_service__ = __webpack_require__("./src/app/services/update.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__ = __webpack_require__("./src/app/services/team.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__ = __webpack_require__("./src/app/services/type.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_convert_service__ = __webpack_require__("./src/app/services/convert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_update_service__ = __webpack_require__("./src/app/services/update.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1614,21 +1620,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var PokemonBoxComponent = (function () {
-    function PokemonBoxComponent(teamService, convertService, loginService, updateService, types) {
-        this.teamService = teamService;
+    function PokemonBoxComponent(updateService, convertService, loginService, pokemonService, moveService, teamService, types) {
+        this.updateService = updateService;
         this.convertService = convertService;
         this.loginService = loginService;
-        this.updateService = updateService;
+        this.pokemonService = pokemonService;
+        this.moveService = moveService;
+        this.teamService = teamService;
         this.types = types;
         // Assigns the value of types to their respective image
-        this.types = new __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]();
+        this.types = new __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]();
         // Assign my favTeam using teamService
         // this.favTeam = this.teamService.favTeam;
-        // Assign my favTeam using localStorage or from session if one exists
-        this.loadTeam();
-        // Load Box
-        this.loadBox();
         // Unimplemented
         this.myTeams = new Array();
         this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
@@ -1680,7 +1687,7 @@ var PokemonBoxComponent = (function () {
             myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
+                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
             }
         }
         else {
@@ -1702,12 +1709,16 @@ var PokemonBoxComponent = (function () {
             // Convert our team into a format our back-end can receive
             for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
                 var set = mySets_1[_i];
-                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
             }
         }
         else {
-            this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
-            this.myBox.push(this.teamService.pkmn5);
+            if (localStorage.getItem('myPkmnBox')) {
+                this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
+            }
+            else {
+                this.myBox.push(this.teamService.pkmn5);
+            }
             // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
         }
     };
@@ -1791,6 +1802,15 @@ var PokemonBoxComponent = (function () {
     };
     // Only works if favorite feature gets implemented
     PokemonBoxComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+            var pokeAPIArray = _a[0], moveArray = _a[1];
+            _this.pokedex = pokeAPIArray;
+            _this.movedex = moveArray;
+            _this.loadBox();
+            // Assign my favTeam using localStorage or from session if one exists
+            _this.loadTeam();
+        });
         if (this.favTeam === this.favTeam) {
             this.favoriteIcon = 'star';
         }
@@ -1803,12 +1823,15 @@ var PokemonBoxComponent = (function () {
             selector: 'app-pokemonbox',
             template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
             styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */], __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */]]
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */],
+                __WEBPACK_IMPORTED_MODULE_6__services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_7__services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8__services_update_service__["a" /* UpdateService */]
+            ]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_team_service__["a" /* TeamService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_update_service__["a" /* UpdateService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_type_service__["a" /* TypeService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_8__services_update_service__["a" /* UpdateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_update_service__["a" /* UpdateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_login_service__["a" /* LoginService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_move_service__["a" /* MoveService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_team_service__["a" /* TeamService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_type_service__["a" /* TypeService */]) === "function" && _g || Object])
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=pokemonbox.component.js.map
@@ -1889,13 +1912,11 @@ var RegisterComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConvertService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__set__ = __webpack_require__("./src/app/set.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pokemon__ = __webpack_require__("./src/app/pokemon.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__move_service__ = __webpack_require__("./src/app/services/move.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__team__ = __webpack_require__("./src/app/team.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__set__ = __webpack_require__("./src/app/set.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pokemon__ = __webpack_require__("./src/app/pokemon.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pokemon_service__ = __webpack_require__("./src/app/services/pokemon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__move_service__ = __webpack_require__("./src/app/services/move.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__team__ = __webpack_require__("./src/app/team.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1911,20 +1932,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ConvertService = (function () {
+    // pokedex: Array<PokeAPI>;
+    // movedex: Array<Move>;
     function ConvertService(pokemonService, moveService) {
-        var _this = this;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
-        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
-            var pokeAPIArray = _a[0], moveArray = _a[1];
-            _this.pokedex = pokeAPIArray;
-            _this.movedex = moveArray;
-        });
+        // Observable.forkJoin(
+        //   this.pokemonService.getJson(),
+        //   this.moveService.getJson()
+        // ).subscribe(
+        //   ([pokeAPIArray, moveArray]) => {
+        //     this.pokedex = pokeAPIArray;
+        //     this.movedex = moveArray;
+        //   }
+        // );
     }
     ConvertService.prototype.pokeapiToSet = function (pkmn) {
-        var result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        var result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         if (pkmn.setId) {
             result.setId = pkmn.setId;
         }
@@ -1948,7 +1973,7 @@ var ConvertService = (function () {
      */
     ConvertService.prototype.pokeTeamToSetTeam = function (pkmnArray, teamName, teamID) {
         var result;
-        var myTeam = new __WEBPACK_IMPORTED_MODULE_6__team__["a" /* Team */]();
+        var myTeam = new __WEBPACK_IMPORTED_MODULE_5__team__["a" /* Team */]();
         var resultArray = [];
         if (teamID) {
             myTeam.teamId = teamID;
@@ -1962,7 +1987,7 @@ var ConvertService = (function () {
         else {
             myTeam.teamName = 'Untitled';
         }
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[0].setId;
         result.pokemonId = pkmnArray[0].id;
         result.nickname = pkmnArray[0].name;
@@ -1971,7 +1996,7 @@ var ConvertService = (function () {
         result.atk3 = pkmnArray[0].attackIds[2];
         result.atk4 = pkmnArray[0].attackIds[3];
         myTeam.set1 = result;
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[1].setId;
         result.pokemonId = pkmnArray[1].id;
         result.nickname = pkmnArray[1].name;
@@ -1980,7 +2005,7 @@ var ConvertService = (function () {
         result.atk3 = pkmnArray[1].attackIds[2];
         result.atk4 = pkmnArray[1].attackIds[3];
         myTeam.set2 = result;
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[2].setId;
         result.pokemonId = pkmnArray[2].id;
         result.nickname = pkmnArray[2].name;
@@ -1989,7 +2014,7 @@ var ConvertService = (function () {
         result.atk3 = pkmnArray[2].attackIds[2];
         result.atk4 = pkmnArray[2].attackIds[3];
         myTeam.set3 = result;
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[3].setId;
         result.pokemonId = pkmnArray[3].id;
         result.nickname = pkmnArray[3].name;
@@ -1998,7 +2023,7 @@ var ConvertService = (function () {
         result.atk3 = pkmnArray[3].attackIds[2];
         result.atk4 = pkmnArray[3].attackIds[3];
         myTeam.set4 = result;
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[4].setId;
         result.pokemonId = pkmnArray[4].id;
         result.nickname = pkmnArray[4].name;
@@ -2007,7 +2032,7 @@ var ConvertService = (function () {
         result.atk3 = pkmnArray[4].attackIds[2];
         result.atk4 = pkmnArray[4].attackIds[3];
         myTeam.set5 = result;
-        result = new __WEBPACK_IMPORTED_MODULE_2__set__["a" /* Set */]();
+        result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[5].setId;
         result.pokemonId = pkmnArray[5].id;
         result.nickname = pkmnArray[5].name;
@@ -2018,9 +2043,9 @@ var ConvertService = (function () {
         myTeam.set6 = result;
         return myTeam;
     };
-    ConvertService.prototype.setToPokeapi = function (set, trainerID) {
-        var result = new __WEBPACK_IMPORTED_MODULE_3__pokemon__["a" /* PokeAPI */]();
-        var pkmn = this.pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
+    ConvertService.prototype.setToPokeapi = function (set, trainerID, pokedex, movedex) {
+        var result = new __WEBPACK_IMPORTED_MODULE_2__pokemon__["a" /* PokeAPI */]();
+        var pkmn = pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
         result.attackIds = [];
         result.attackIds[0] = set.atk1;
         result.attackIds[1] = set.atk2;
@@ -2029,10 +2054,10 @@ var ConvertService = (function () {
         result.id = set.pokemonId;
         result.moves = pkmn.moves;
         result.moveset = [];
-        result.moveset[0] = this.movedex[set.atk1].name;
-        result.moveset[1] = this.movedex[set.atk2].name;
-        result.moveset[2] = this.movedex[set.atk3].name;
-        result.moveset[3] = this.movedex[set.atk4].name;
+        result.moveset[0] = movedex[set.atk1].name;
+        result.moveset[1] = movedex[set.atk2].name;
+        result.moveset[2] = movedex[set.atk3].name;
+        result.moveset[3] = movedex[set.atk4].name;
         result.name = pkmn.name;
         result.sprite = pkmn.sprite;
         result.stats = pkmn.stats;
@@ -2046,11 +2071,11 @@ var ConvertService = (function () {
      * @param myTeam The team to convert from
      * @param trainerID The owner of the team
      */
-    ConvertService.prototype.teamToPokeTeam = function (myTeam, trainerID) {
+    ConvertService.prototype.teamToPokeTeam = function (myTeam, trainerID, pokedex, movedex) {
         var result;
         var resultArray = [];
         // Find my pokemon in the pokedex using (id - 1) because we're zero-indexed and the pokedex is not
-        result = Object.assign(this.pokedex[myTeam.set1.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set1.pokemonId - 1]);
         // These fields are being provided by the pokedex and do not need to be set
         // result.moves = pkmn.moves;
         // result.name = pkmn.name;
@@ -2067,13 +2092,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set1.atk3;
         result.attackIds[3] = myTeam.set1.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set1.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set1.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set1.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set1.atk4].name;
+        result.moveset[0] = movedex[myTeam.set1.atk1].name;
+        result.moveset[1] = movedex[myTeam.set1.atk2].name;
+        result.moveset[2] = movedex[myTeam.set1.atk3].name;
+        result.moveset[3] = movedex[myTeam.set1.atk4].name;
         resultArray.push(result);
         // Pokemon 2
-        result = Object.assign(this.pokedex[myTeam.set2.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set2.pokemonId - 1]);
         result.id = myTeam.set2.pokemonId;
         result.setId = myTeam.set2.setId;
         result.trainerId = trainerID;
@@ -2083,13 +2108,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set2.atk3;
         result.attackIds[3] = myTeam.set2.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set2.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set2.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set2.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set2.atk4].name;
+        result.moveset[0] = movedex[myTeam.set2.atk1].name;
+        result.moveset[1] = movedex[myTeam.set2.atk2].name;
+        result.moveset[2] = movedex[myTeam.set2.atk3].name;
+        result.moveset[3] = movedex[myTeam.set2.atk4].name;
         resultArray.push(result);
         // Pokemon 3
-        result = Object.assign(this.pokedex[myTeam.set3.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set3.pokemonId - 1]);
         result.id = myTeam.set3.pokemonId;
         result.setId = myTeam.set3.setId;
         result.trainerId = trainerID;
@@ -2099,13 +2124,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set3.atk3;
         result.attackIds[3] = myTeam.set3.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set3.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set3.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set3.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set3.atk4].name;
+        result.moveset[0] = movedex[myTeam.set3.atk1].name;
+        result.moveset[1] = movedex[myTeam.set3.atk2].name;
+        result.moveset[2] = movedex[myTeam.set3.atk3].name;
+        result.moveset[3] = movedex[myTeam.set3.atk4].name;
         resultArray.push(result);
         // Pokemon 4
-        result = Object.assign(this.pokedex[myTeam.set4.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set4.pokemonId - 1]);
         result.id = myTeam.set4.pokemonId;
         result.setId = myTeam.set4.setId;
         result.trainerId = trainerID;
@@ -2115,13 +2140,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set4.atk3;
         result.attackIds[3] = myTeam.set4.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set4.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set4.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set4.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set4.atk4].name;
+        result.moveset[0] = movedex[myTeam.set4.atk1].name;
+        result.moveset[1] = movedex[myTeam.set4.atk2].name;
+        result.moveset[2] = movedex[myTeam.set4.atk3].name;
+        result.moveset[3] = movedex[myTeam.set4.atk4].name;
         resultArray.push(result);
         // Pokemon 5
-        result = Object.assign(this.pokedex[myTeam.set5.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set5.pokemonId - 1]);
         result.id = myTeam.set5.pokemonId;
         result.setId = myTeam.set5.setId;
         result.trainerId = trainerID;
@@ -2131,13 +2156,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set5.atk3;
         result.attackIds[3] = myTeam.set5.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set5.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set5.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set5.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set5.atk4].name;
+        result.moveset[0] = movedex[myTeam.set5.atk1].name;
+        result.moveset[1] = movedex[myTeam.set5.atk2].name;
+        result.moveset[2] = movedex[myTeam.set5.atk3].name;
+        result.moveset[3] = movedex[myTeam.set5.atk4].name;
         resultArray.push(result);
         // Pokemon 6
-        result = Object.assign(this.pokedex[myTeam.set6.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set6.pokemonId - 1]);
         result.id = myTeam.set6.pokemonId;
         result.setId = myTeam.set6.setId;
         result.trainerId = trainerID;
@@ -2147,16 +2172,16 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set6.atk3;
         result.attackIds[3] = myTeam.set6.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set6.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set6.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set6.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set6.atk4].name;
+        result.moveset[0] = movedex[myTeam.set6.atk1].name;
+        result.moveset[1] = movedex[myTeam.set6.atk2].name;
+        result.moveset[2] = movedex[myTeam.set6.atk3].name;
+        result.moveset[3] = movedex[myTeam.set6.atk4].name;
         resultArray.push(result);
         return resultArray;
     };
     ConvertService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__move_service__["a" /* MoveService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__pokemon_service__["a" /* PokemonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__move_service__["a" /* MoveService */]) === "function" && _b || Object])
     ], ConvertService);
     return ConvertService;
     var _a, _b;
@@ -2784,7 +2809,7 @@ var TeambuilderComponent = (function () {
         if (!!this.myTeam && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
             }
             // Load box, if any
             for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
@@ -3089,10 +3114,8 @@ var TeambuilderComponent = (function () {
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */],
-                __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */],
-                __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */],
-                __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */]
+                __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */], __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */], __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */], __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */],
+                __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */], __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */]
             ]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__services_update_service__["a" /* UpdateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9_app_services_convert_service__["a" /* ConvertService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_login_service__["a" /* LoginService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_pokemon_service__["a" /* PokemonService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_move_service__["a" /* MoveService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_team_service__["a" /* TeamService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_services_type_service__["a" /* TypeService */]) === "function" && _g || Object])

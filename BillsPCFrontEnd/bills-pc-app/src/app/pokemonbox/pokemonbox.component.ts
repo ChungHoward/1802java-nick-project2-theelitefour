@@ -60,8 +60,6 @@ export class PokemonBoxComponent implements OnInit {
     // Assign my favTeam using teamService
     // this.favTeam = this.teamService.favTeam;
 
-    // Assign my favTeam using localStorage or from session if one exists
-    this.loadTeam();
 
     // Unimplemented
     this.myTeams = new Array<Array<PokeAPI>>();
@@ -249,6 +247,8 @@ export class PokemonBoxComponent implements OnInit {
         this.movedex = moveArray;
 
         this.loadBox();
+        // Assign my favTeam using localStorage or from session if one exists
+        this.loadTeam();
       }
     );
     if (this.favTeam === this.favTeam) {
