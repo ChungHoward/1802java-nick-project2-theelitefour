@@ -99,7 +99,8 @@ export class DefensiveCoverageComponent implements OnInit {
         }
       }
       sum /= numPkmn;
-      if (sum > 1.2) {
+      if (sum === 0) {
+      } else if (sum > 1.2) {
         this.rowColor[y] = 'bg-red';
       } else if (sum > 1) {
         this.rowColor[y] = 'bg-pink';
