@@ -105,20 +105,17 @@ export class PokemonBoxComponent implements OnInit {
   }
 
   loadTeam() {
-    let myTeams: Team[];
-    let myTrainer: Trainer;
-    myTrainer = JSON.parse(localStorage.getItem('trainer'));
+    const myTrainer = JSON.parse(localStorage.getItem('trainer')) as Trainer;
+    const myTeams = JSON.parse(localStorage.getItem('teams')) as Team[];
 
-    // if user is logged in
-    if (myTrainer) {
-      // Get my team
-      myTeams = JSON.parse(localStorage.getItem('teams'));
+    // if user is logged in and they have a team
+    if (myTeams.length > 0 && myTrainer) {
       // Convert our team into a format our back-end can receive
       if (myTeams[0]) {
         this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.trainerId, this.pokedex, this.movedex);
       }
     } else {
-      // if no one is logged in
+      // if no one is logged in, their team is in localstorage
       this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
       // if null, get an empty team
       if (!this.favTeam) {

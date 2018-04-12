@@ -17,8 +17,6 @@ export class DefensiveCoverageComponent implements OnInit {
   favTeam: Array<PokeAPI>;
   // Contains the images for every type and damage class
   types: TypeService;
-  // The team being built or viewed
-  curTeam: Array<PokeAPI>;
 
   /* These variables are used for the Table */
   pokemonCol: Array<PokeAPI>;
@@ -41,13 +39,11 @@ export class DefensiveCoverageComponent implements OnInit {
       this.favTeam = new Array<PokeAPI>();
     }
 
-    this.curTeam = new Array<PokeAPI>();
-    this.curTeam = Object.assign([], this.favTeam);
     this.pokemonCol = new Array<PokeAPI>();
 
     // Show sprite, name, and types in table header
-    for (let i = 0; i < this.curTeam.length; i++) {
-      this.pokemonCol[i] = this.curTeam[i];
+    for (let i = 0; i < this.favTeam.length; i++) {
+      this.pokemonCol[i] = this.favTeam[i];
     }
     this.rowColor = new Array<string>();
   }

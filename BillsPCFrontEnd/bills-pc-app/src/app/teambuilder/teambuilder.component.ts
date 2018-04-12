@@ -27,8 +27,6 @@ import * as Chartist from 'chartist';
   ]
 })
 export class TeambuilderComponent implements OnInit {
-  // The trainer thats logged in
-  trainer: Trainer;
   // The 6 pokemon on my team
   favTeam: Array<PokeAPI>;
   // Our trainer's owned Pokemon from the server, if any
@@ -83,15 +81,16 @@ export class TeambuilderComponent implements OnInit {
   }
 
   loadTeam() {
-    this.trainer = JSON.parse(localStorage.getItem('trainer'));
-    this.myTeam = JSON.parse(localStorage.getItem('teams'));
+    const myTrainer = JSON.parse(localStorage.getItem('trainer')) as Trainer;
+    const teams = JSON.parse(localStorage.getItem('teams')) as Team[];
+
     if (!this.sets) {
       this.sets = new Array<Set>();
     }
-    if (!!this.myTeam && !!this.trainer) {
+    if (teams.length > 0 && !!myTrainer) {
       // Load team, if one exists
-      if (this.myTeam[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
+      if (teams[0]) {
+        this.favTeam = this.convertService.teamToPokeTeam(teams[0], myTrainer.trainerId, this.pokedex, this.movedex);
       }
       // Load box, if any
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
@@ -209,8 +208,7 @@ export class TeambuilderComponent implements OnInit {
    * Triggers when the save button is pressed
    */
   savePokemon() {
-    let myTrainer: Trainer;
-    myTrainer = JSON.parse(localStorage.getItem('trainer'));
+    const myTrainer = JSON.parse(localStorage.getItem('trainer'));
     // wipe our selected Pokemon's old attacks so we can add the new ones back in
     this.selectedPkmn.attackIds = [null, null, null, null];
     this.selectedPkmn.moveset = [null, null, null, null];
