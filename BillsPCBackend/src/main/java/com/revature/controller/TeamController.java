@@ -34,10 +34,10 @@ public class TeamController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/resources/team", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createTeam(@RequestBody Team team) {
-		service.createTeam(team);
+	public ResponseEntity<Integer> createTeam(@RequestBody Team team) {
+		int id = service.createTeam(team);
 		
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resources/team", consumes=MediaType.APPLICATION_JSON_VALUE)
