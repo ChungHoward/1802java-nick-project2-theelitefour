@@ -20,17 +20,10 @@ import com.revature.service.TeamService;
 @Scope(value=WebApplicationContext.SCOPE_SESSION)
 public class TeamController {
 	@Autowired
-	private Trainer trainer;
-	
-	@Autowired
 	private TeamService service;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/resources/team/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Team> getTeamById(@PathVariable int id) {
-		if (trainer == null) {
-			return new ResponseEntity<Team>(HttpStatus.UNAUTHORIZED);
-		}
-		
 		Team team = service.retrieveTeamById(id);
 		
 		if (team != null) {

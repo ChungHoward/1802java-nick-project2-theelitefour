@@ -29,8 +29,12 @@ public class SetController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="resources/set", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createSet(@RequestBody PokemonSet set) {
-		int id = this.service.createSet(set);
+		PokemonSet result = this.service.createSet(set);
 		
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		if (result == null) {
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		}
 	}
 }

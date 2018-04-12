@@ -14,7 +14,7 @@ public class SetService {
 		this.dao.updateSet(set);
 	}
 	
-	public int createSet(PokemonSet set) {
+	public PokemonSet createSet(PokemonSet set) {
 		return this.dao.createSet(set);
 	}
 }
