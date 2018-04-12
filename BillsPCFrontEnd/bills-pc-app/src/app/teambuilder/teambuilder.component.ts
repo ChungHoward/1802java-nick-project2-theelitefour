@@ -77,7 +77,7 @@ export class TeambuilderComponent implements OnInit {
   loadTeam() {
     this.trainer = JSON.parse(localStorage.getItem('trainer'));
     this.myTeam = JSON.parse(localStorage.getItem('teams'));
-    if (this.myTeam && this.trainer) {
+    if (this.myTeam && this.myTeam[0] && this.trainer) {
       this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
     } else {
       this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
@@ -364,10 +364,10 @@ export class TeambuilderComponent implements OnInit {
         this.movedex = moveArray;
         // calling these functions here because this is the only location where
         // we can guarantee our pokedex and movedex have been fully loaded
+        this.loadTeam();
         this.selectPokemon(this.favTeam[0]);
         this.loadStatChart();
         // Assign my favTeam using localStorage or from session if one exists
-        this.loadTeam();
       }
     );
   }
