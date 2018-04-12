@@ -42,9 +42,9 @@ public class TeamController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resources/team", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> updateTeam(@RequestBody Team team) {
+	public ResponseEntity<Integer> updateTeam(@RequestBody Team team) {
 		service.updateTeam(team);
 		
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		return new ResponseEntity<Integer>(team.getTeamId(), HttpStatus.ACCEPTED);
 	}
 }
