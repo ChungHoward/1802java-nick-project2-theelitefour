@@ -83,16 +83,13 @@ export class TeambuilderComponent implements OnInit {
   loadTeam() {
     const myTrainer = JSON.parse(localStorage.getItem('trainer')) as Trainer;
     const teams = JSON.parse(localStorage.getItem('teams')) as Team[];
-
-    if (!this.sets) {
-      this.sets = new Array<Set>();
-    }
-    if (teams.length > 0 && !!myTrainer) {
+    if (teams.length > 0 && myTrainer) {
       // Load team, if one exists
       if (teams[0]) {
         this.favTeam = this.convertService.teamToPokeTeam(teams[0], myTrainer.trainerId, this.pokedex, this.movedex);
       }
       // Load box, if any
+      this.sets = new Array<Set>();
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
         this.sets.push(set);
       }
