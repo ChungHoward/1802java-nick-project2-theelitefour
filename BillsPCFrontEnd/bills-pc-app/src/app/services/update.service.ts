@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Set } from '../set';
 import { Team } from '../team';
 
@@ -27,8 +27,13 @@ export class UpdateService {
   }
 
   saveTeam(myTeam: Team) {
-    const body = new HttpParams().set('team', JSON.stringify(myTeam));
-    return this.http.post('team', body);
+    const headers = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+    // const body = new HttpParams().set('team', JSON.stringify(myTeam));
+    if (myTeam.teamId === -1) {
+      return this.http.post('team', JSON.stringify(myTeam), headers);
+    } else {
+      return this.http.put('team', JSON.stringify(myTeam), headers);
+    }
   }
 
 }

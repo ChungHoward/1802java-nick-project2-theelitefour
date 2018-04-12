@@ -1687,7 +1687,7 @@ var PokemonBoxComponent = (function () {
             myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.trainerId, this.pokedex, this.movedex);
             }
         }
         else {
@@ -1709,7 +1709,7 @@ var PokemonBoxComponent = (function () {
             // Convert our team into a format our back-end can receive
             for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
                 var set = mySets_1[_i];
-                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.trainerId, this.pokedex, this.movedex));
             }
         }
         else {
@@ -1740,7 +1740,7 @@ var PokemonBoxComponent = (function () {
                 // Save our team to localstorage
                 this.loginService.changeTeam(myTeam);
                 // Send http request to save set and team if the user is logged in
-                this.updateService.saveTeam(myTeam[0]);
+                this.updateService.saveTeam(myTeam[0]).subscribe();
             }
             // Put our favTeam in local storage so even an unregistered user can use our service
             localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
@@ -1987,6 +1987,7 @@ var ConvertService = (function () {
         else {
             myTeam.teamName = 'Untitled';
         }
+        myTeam.trainer = { 'trainerId': pkmnArray[0].trainerId };
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[0].setId;
         result.pokemonId = pkmnArray[0].id;
@@ -1995,6 +1996,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[0].attackIds[1];
         result.atk3 = pkmnArray[0].attackIds[2];
         result.atk4 = pkmnArray[0].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[0].trainerId };
         myTeam.set1 = result;
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[1].setId;
@@ -2004,6 +2006,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[1].attackIds[1];
         result.atk3 = pkmnArray[1].attackIds[2];
         result.atk4 = pkmnArray[1].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[1].trainerId };
         myTeam.set2 = result;
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[2].setId;
@@ -2013,6 +2016,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[2].attackIds[1];
         result.atk3 = pkmnArray[2].attackIds[2];
         result.atk4 = pkmnArray[2].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[2].trainerId };
         myTeam.set3 = result;
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[3].setId;
@@ -2022,6 +2026,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[3].attackIds[1];
         result.atk3 = pkmnArray[3].attackIds[2];
         result.atk4 = pkmnArray[3].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[3].trainerId };
         myTeam.set4 = result;
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[4].setId;
@@ -2031,6 +2036,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[4].attackIds[1];
         result.atk3 = pkmnArray[4].attackIds[2];
         result.atk4 = pkmnArray[4].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[4].trainerId };
         myTeam.set5 = result;
         result = new __WEBPACK_IMPORTED_MODULE_1__set__["a" /* Set */]();
         result.setId = pkmnArray[5].setId;
@@ -2040,6 +2046,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[5].attackIds[1];
         result.atk3 = pkmnArray[5].attackIds[2];
         result.atk4 = pkmnArray[5].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[5].trainerId };
         myTeam.set6 = result;
         return myTeam;
     };
@@ -2052,6 +2059,7 @@ var ConvertService = (function () {
         result.attackIds[2] = set.atk3;
         result.attackIds[3] = set.atk4;
         result.id = set.pokemonId;
+        result.setId = set.setId;
         result.moves = pkmn.moves;
         result.moveset = [];
         result.moveset[0] = movedex[set.atk1].name;
@@ -2270,7 +2278,7 @@ var LoginService = (function () {
         this.currentTeam = this.trainerSource.asObservable();
     }
     LoginService.prototype.login = function (username, password) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username).set('password', password);
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('username', username).set('password', password);
         return this.http.post('login', body);
     };
     LoginService.prototype.logout = function () {
@@ -2398,7 +2406,7 @@ var RegisterService = (function () {
         this.http = http;
     }
     RegisterService.prototype.register = function (username, password, email) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username).set('password', password).set('email', email);
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('username', username).set('password', password).set('email', email);
         return this.http.post('register', body);
     };
     RegisterService = __decorate([
@@ -2621,16 +2629,22 @@ var UpdateService = (function () {
         }
     };
     UpdateService.prototype.createSet = function (mySet) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('set', JSON.stringify(mySet));
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('set', JSON.stringify(mySet));
         return this.http.post('set', body);
     };
     UpdateService.prototype.updateSet = function (mySet) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('set', JSON.stringify(mySet));
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('set', JSON.stringify(mySet));
         return this.http.put('set', body);
     };
     UpdateService.prototype.saveTeam = function (myTeam) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('team', JSON.stringify(myTeam));
-        return this.http.post('team', body);
+        var headers = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }) };
+        // const body = new HttpParams().set('team', JSON.stringify(myTeam));
+        if (myTeam.teamId === -1) {
+            return this.http.post('team', JSON.stringify(myTeam), headers);
+        }
+        else {
+            return this.http.put('team', JSON.stringify(myTeam), headers);
+        }
     };
     UpdateService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
@@ -2670,7 +2684,7 @@ var ViewUserService = (function () {
         return this.http.get('view-user');
     };
     ViewUserService.prototype.promoteUser = function (username) {
-        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('username', username);
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('username', username);
         return this.http.post('view-user', body);
     };
     ViewUserService = __decorate([
@@ -2809,7 +2823,7 @@ var TeambuilderComponent = (function () {
         if (!!this.myTeam && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
             }
             // Load box, if any
             for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
@@ -2934,7 +2948,7 @@ var TeambuilderComponent = (function () {
         this.selectedPkmn.moveset = [null, null, null, null];
         // If our trainer is logged in, assign trainer ID
         if (myTrainer) {
-            this.selectedPkmn.trainerId = myTrainer.id;
+            this.selectedPkmn.trainerId = myTrainer.trainerId;
         }
         // Save our Pokemon's attacks
         for (var i = 0; i < 4; i++) {
