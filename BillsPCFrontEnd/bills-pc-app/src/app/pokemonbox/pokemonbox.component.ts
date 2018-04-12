@@ -168,7 +168,7 @@ export class PokemonBoxComponent implements OnInit {
         // Save our team to localstorage
         this.loginService.changeTeam(myTeam);
         // Send http request to save set and team if the user is logged in
-        this.updateService.saveTeam(myTeam[0]);
+        this.updateService.saveTeam(myTeam[0]).subscribe();
       }
       // Put our favTeam in local storage so even an unregistered user can use our service
       localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
