@@ -1557,8 +1557,6 @@ var PokemonBoxComponent = (function () {
         this.types = new type_service_1.TypeService();
         // Assign my favTeam using teamService
         // this.favTeam = this.teamService.favTeam;
-        // Assign my favTeam using localStorage or from session if one exists
-        this.loadTeam();
         // Unimplemented
         this.myTeams = new Array();
         this.pkmnBoxColNames = ['name', 'type', 'move 1', 'move 2', 'move 3', 'move 4'];
@@ -1731,6 +1729,8 @@ var PokemonBoxComponent = (function () {
             _this.pokedex = pokeAPIArray;
             _this.movedex = moveArray;
             _this.loadBox();
+            // Assign my favTeam using localStorage or from session if one exists
+            _this.loadTeam();
         });
         if (this.favTeam === this.favTeam) {
             this.favoriteIcon = 'star';
