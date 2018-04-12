@@ -91,7 +91,7 @@ export class TeambuilderComponent implements OnInit {
     if (this.myTeam && this.myTeam.length > 0 && !!this.trainer) {
       // Load team, if one exists
       if (this.myTeam[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
+        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex); 
       }
       // Load box, if any
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
@@ -108,6 +108,7 @@ export class TeambuilderComponent implements OnInit {
         this.favTeam.push(new PokeAPI());
       }
     }
+    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
   }
 
   // toggles the show moves/hide moves button
