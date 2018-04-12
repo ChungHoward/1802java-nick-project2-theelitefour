@@ -82,7 +82,7 @@ public class TeamDaoImp implements TeamDao {
 	public List<Team> retrieveFeaturedTeams() {
 		Session session = HibernateUtil.getSession();
 		
-		String hql = "from Team as team inner join team.trainer as trainer where trainer.role = '2'";
+		String hql = "from Team as team join fetch team.trainer as trainer where trainer.role = '2'";
 		
 		Query query = session.createQuery(hql);
 		List<Team> team = query.list();

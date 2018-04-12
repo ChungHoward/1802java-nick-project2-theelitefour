@@ -1534,17 +1534,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
+var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
+var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
 var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
 var update_service_1 = __webpack_require__("./src/app/services/update.service.ts");
 var PokemonBoxComponent = (function () {
-    function PokemonBoxComponent(teamService, convertService, loginService, updateService, types) {
-        this.teamService = teamService;
+    function PokemonBoxComponent(updateService, convertService, loginService, pokemonService, moveService, teamService, types) {
+        this.updateService = updateService;
         this.convertService = convertService;
         this.loginService = loginService;
-        this.updateService = updateService;
+        this.pokemonService = pokemonService;
+        this.moveService = moveService;
+        this.teamService = teamService;
         this.types = types;
         // Assigns the value of types to their respective image
         this.types = new type_service_1.TypeService();
@@ -1605,7 +1610,7 @@ var PokemonBoxComponent = (function () {
             myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
+                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
             }
         }
         else {
@@ -1627,12 +1632,16 @@ var PokemonBoxComponent = (function () {
             // Convert our team into a format our back-end can receive
             for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
                 var set = mySets_1[_i];
-                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
             }
         }
         else {
-            this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
-            this.myBox.push(this.teamService.pkmn5);
+            if (localStorage.getItem('myPkmnBox')) {
+                this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
+            }
+            else {
+                this.myBox.push(this.teamService.pkmn5);
+            }
             // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
         }
     };
@@ -1716,6 +1725,12 @@ var PokemonBoxComponent = (function () {
     };
     // Only works if favorite feature gets implemented
     PokemonBoxComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
+            var pokeAPIArray = _a[0], moveArray = _a[1];
+            _this.pokedex = pokeAPIArray;
+            _this.movedex = moveArray;
+        });
         if (this.favTeam === this.favTeam) {
             this.favoriteIcon = 'star';
         }
@@ -1728,12 +1743,15 @@ var PokemonBoxComponent = (function () {
             selector: 'app-pokemonbox',
             template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
             styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")],
-            providers: [team_service_1.TeamService, type_service_1.TypeService, convert_service_1.ConvertService, login_service_1.LoginService, update_service_1.UpdateService]
+            providers: [
+                move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService,
+                convert_service_1.ConvertService, login_service_1.LoginService, update_service_1.UpdateService
+            ]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object, typeof (_d = typeof update_service_1.UpdateService !== "undefined" && update_service_1.UpdateService) === "function" && _d || Object, typeof (_e = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof update_service_1.UpdateService !== "undefined" && update_service_1.UpdateService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object, typeof (_d = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _d || Object, typeof (_e = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _e || Object, typeof (_f = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _f || Object, typeof (_g = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _g || Object])
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 exports.PokemonBoxComponent = PokemonBoxComponent;
 //# sourceMappingURL=pokemonbox.component.js.map
@@ -1823,22 +1841,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
 var set_1 = __webpack_require__("./src/app/set.ts");
 var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
 var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
 var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
 var team_1 = __webpack_require__("./src/app/team.ts");
 var ConvertService = (function () {
+    // pokedex: Array<PokeAPI>;
+    // movedex: Array<Move>;
     function ConvertService(pokemonService, moveService) {
-        var _this = this;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
-        Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
-            var pokeAPIArray = _a[0], moveArray = _a[1];
-            _this.pokedex = pokeAPIArray;
-            _this.movedex = moveArray;
-        });
+        // Observable.forkJoin(
+        //   this.pokemonService.getJson(),
+        //   this.moveService.getJson()
+        // ).subscribe(
+        //   ([pokeAPIArray, moveArray]) => {
+        //     this.pokedex = pokeAPIArray;
+        //     this.movedex = moveArray;
+        //   }
+        // );
     }
     ConvertService.prototype.pokeapiToSet = function (pkmn) {
         var result = new set_1.Set();
@@ -1935,9 +1957,9 @@ var ConvertService = (function () {
         myTeam.set6 = result;
         return myTeam;
     };
-    ConvertService.prototype.setToPokeapi = function (set, trainerID) {
+    ConvertService.prototype.setToPokeapi = function (set, trainerID, pokedex, movedex) {
         var result = new pokemon_1.PokeAPI();
-        var pkmn = this.pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
+        var pkmn = pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
         result.attackIds = [];
         result.attackIds[0] = set.atk1;
         result.attackIds[1] = set.atk2;
@@ -1946,10 +1968,10 @@ var ConvertService = (function () {
         result.id = set.pokemonId;
         result.moves = pkmn.moves;
         result.moveset = [];
-        result.moveset[0] = this.movedex[set.atk1].name;
-        result.moveset[1] = this.movedex[set.atk2].name;
-        result.moveset[2] = this.movedex[set.atk3].name;
-        result.moveset[3] = this.movedex[set.atk4].name;
+        result.moveset[0] = movedex[set.atk1].name;
+        result.moveset[1] = movedex[set.atk2].name;
+        result.moveset[2] = movedex[set.atk3].name;
+        result.moveset[3] = movedex[set.atk4].name;
         result.name = pkmn.name;
         result.sprite = pkmn.sprite;
         result.stats = pkmn.stats;
@@ -1963,11 +1985,11 @@ var ConvertService = (function () {
      * @param myTeam The team to convert from
      * @param trainerID The owner of the team
      */
-    ConvertService.prototype.teamToPokeTeam = function (myTeam, trainerID) {
+    ConvertService.prototype.teamToPokeTeam = function (myTeam, trainerID, pokedex, movedex) {
         var result;
         var resultArray = [];
         // Find my pokemon in the pokedex using (id - 1) because we're zero-indexed and the pokedex is not
-        result = Object.assign(this.pokedex[myTeam.set1.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set1.pokemonId - 1]);
         // These fields are being provided by the pokedex and do not need to be set
         // result.moves = pkmn.moves;
         // result.name = pkmn.name;
@@ -1984,13 +2006,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set1.atk3;
         result.attackIds[3] = myTeam.set1.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set1.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set1.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set1.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set1.atk4].name;
+        result.moveset[0] = movedex[myTeam.set1.atk1].name;
+        result.moveset[1] = movedex[myTeam.set1.atk2].name;
+        result.moveset[2] = movedex[myTeam.set1.atk3].name;
+        result.moveset[3] = movedex[myTeam.set1.atk4].name;
         resultArray.push(result);
         // Pokemon 2
-        result = Object.assign(this.pokedex[myTeam.set2.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set2.pokemonId - 1]);
         result.id = myTeam.set2.pokemonId;
         result.setId = myTeam.set2.setId;
         result.trainerId = trainerID;
@@ -2000,13 +2022,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set2.atk3;
         result.attackIds[3] = myTeam.set2.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set2.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set2.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set2.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set2.atk4].name;
+        result.moveset[0] = movedex[myTeam.set2.atk1].name;
+        result.moveset[1] = movedex[myTeam.set2.atk2].name;
+        result.moveset[2] = movedex[myTeam.set2.atk3].name;
+        result.moveset[3] = movedex[myTeam.set2.atk4].name;
         resultArray.push(result);
         // Pokemon 3
-        result = Object.assign(this.pokedex[myTeam.set3.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set3.pokemonId - 1]);
         result.id = myTeam.set3.pokemonId;
         result.setId = myTeam.set3.setId;
         result.trainerId = trainerID;
@@ -2016,13 +2038,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set3.atk3;
         result.attackIds[3] = myTeam.set3.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set3.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set3.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set3.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set3.atk4].name;
+        result.moveset[0] = movedex[myTeam.set3.atk1].name;
+        result.moveset[1] = movedex[myTeam.set3.atk2].name;
+        result.moveset[2] = movedex[myTeam.set3.atk3].name;
+        result.moveset[3] = movedex[myTeam.set3.atk4].name;
         resultArray.push(result);
         // Pokemon 4
-        result = Object.assign(this.pokedex[myTeam.set4.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set4.pokemonId - 1]);
         result.id = myTeam.set4.pokemonId;
         result.setId = myTeam.set4.setId;
         result.trainerId = trainerID;
@@ -2032,13 +2054,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set4.atk3;
         result.attackIds[3] = myTeam.set4.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set4.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set4.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set4.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set4.atk4].name;
+        result.moveset[0] = movedex[myTeam.set4.atk1].name;
+        result.moveset[1] = movedex[myTeam.set4.atk2].name;
+        result.moveset[2] = movedex[myTeam.set4.atk3].name;
+        result.moveset[3] = movedex[myTeam.set4.atk4].name;
         resultArray.push(result);
         // Pokemon 5
-        result = Object.assign(this.pokedex[myTeam.set5.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set5.pokemonId - 1]);
         result.id = myTeam.set5.pokemonId;
         result.setId = myTeam.set5.setId;
         result.trainerId = trainerID;
@@ -2048,13 +2070,13 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set5.atk3;
         result.attackIds[3] = myTeam.set5.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set5.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set5.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set5.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set5.atk4].name;
+        result.moveset[0] = movedex[myTeam.set5.atk1].name;
+        result.moveset[1] = movedex[myTeam.set5.atk2].name;
+        result.moveset[2] = movedex[myTeam.set5.atk3].name;
+        result.moveset[3] = movedex[myTeam.set5.atk4].name;
         resultArray.push(result);
         // Pokemon 6
-        result = Object.assign(this.pokedex[myTeam.set6.pokemonId - 1]);
+        result = Object.assign(pokedex[myTeam.set6.pokemonId - 1]);
         result.id = myTeam.set6.pokemonId;
         result.setId = myTeam.set6.setId;
         result.trainerId = trainerID;
@@ -2064,10 +2086,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set6.atk3;
         result.attackIds[3] = myTeam.set6.atk4;
         result.moveset = [];
-        result.moveset[0] = this.movedex[myTeam.set6.atk1].name;
-        result.moveset[1] = this.movedex[myTeam.set6.atk2].name;
-        result.moveset[2] = this.movedex[myTeam.set6.atk3].name;
-        result.moveset[3] = this.movedex[myTeam.set6.atk4].name;
+        result.moveset[0] = movedex[myTeam.set6.atk1].name;
+        result.moveset[1] = movedex[myTeam.set6.atk2].name;
+        result.moveset[2] = movedex[myTeam.set6.atk3].name;
+        result.moveset[3] = movedex[myTeam.set6.atk4].name;
         resultArray.push(result);
         return resultArray;
     };
@@ -2677,7 +2699,7 @@ var TeambuilderComponent = (function () {
         if (!!this.myTeam && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
             }
             // Load box, if any
             for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
@@ -2982,10 +3004,8 @@ var TeambuilderComponent = (function () {
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
             providers: [
-                move_service_1.MoveService, pokemon_service_1.PokemonService,
-                team_service_1.TeamService, type_service_1.TypeService,
-                convert_service_1.ConvertService, login_service_1.LoginService,
-                update_service_1.UpdateService
+                move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService,
+                convert_service_1.ConvertService, login_service_1.LoginService, update_service_1.UpdateService
             ]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof update_service_1.UpdateService !== "undefined" && update_service_1.UpdateService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object, typeof (_d = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _d || Object, typeof (_e = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _e || Object, typeof (_f = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _f || Object, typeof (_g = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _g || Object])
