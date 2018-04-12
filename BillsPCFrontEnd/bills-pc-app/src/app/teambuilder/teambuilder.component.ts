@@ -34,7 +34,7 @@ export class TeambuilderComponent implements OnInit {
   // Our trainer's owned Pokemon from the server, if any
   sets: Array<Set>;
   // The Team from our server, if one exists
-  myTeam: Team;
+  myTeam: Array<Team>;
   // The current state of whether viewing your team's attacks are being shown or hidden
   expandOrCollapse: boolean;
   // The name of the icon that shows or hides your attacks
@@ -88,7 +88,7 @@ export class TeambuilderComponent implements OnInit {
     if (!this.sets) {
       this.sets = new Array<Set>();
     }
-    if (!!this.myTeam && !!this.trainer) {
+    if (this.myTeam && this.myTeam.length > 0 && !!this.trainer) {
       // Load team, if one exists
       if (this.myTeam[0]) {
         this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
@@ -247,8 +247,16 @@ export class TeambuilderComponent implements OnInit {
     // Send http request to save set and team if the user is logged in
     if (myTrainer) {
       this.updateService.saveSet(mySet);
-      const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
-      this.updateService.saveTeam(myTeam);
+
+      let saveThis: Team;
+      if (this.myTeam.length !== 0) {
+        saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+      } else {
+        saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam);
+      }
+      this.loginService.changeTeam([saveThis]);
+      // const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+      this.updateService.saveTeam(saveThis);
     }
   }
 
