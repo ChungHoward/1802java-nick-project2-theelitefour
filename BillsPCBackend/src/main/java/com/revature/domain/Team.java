@@ -62,7 +62,6 @@ public class Team {
 	@JoinColumn(name="TR_ID")
 	private Trainer trainer;
 
-	@JsonIgnore
 	public Trainer getTrainer() {
 		return trainer;
 	}

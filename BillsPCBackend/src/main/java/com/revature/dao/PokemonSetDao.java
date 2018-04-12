@@ -13,7 +13,7 @@ public interface PokemonSetDao {
 	
 	public List<PokemonSet> retreiveAllSetsByTrainer(Trainer user);
 	
-	public int createSet(PokemonSet set);
+	public PokemonSet createSet(PokemonSet set);
 	
 	public void updateSet(PokemonSet set);
 	

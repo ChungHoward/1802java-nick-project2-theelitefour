@@ -18,7 +18,7 @@ public class PokemonSetDaoImp implements PokemonSetDao {
 		Session sess = HibernateUtil.getSession();
 		PokemonSet ps = (PokemonSet) sess.get(PokemonSet.class, i);
 		sess.close();
-		
+
 		return ps;
 	}
 
@@ -27,42 +27,47 @@ public class PokemonSetDaoImp implements PokemonSetDao {
 		Session sess = HibernateUtil.getSession();
 		Criteria cr = sess.createCriteria(PokemonSet.class);
 		List<PokemonSet> results = cr.list();
-		
+
 		sess.close();
 		return results;
 	}
-	
+
 	@Override
 	public List<PokemonSet> retreiveAllSetsByTrainer(Trainer user) {
 		Session sess = HibernateUtil.getSession();
 		Criteria cr = sess.createCriteria(PokemonSet.class);
 		cr.add(Restrictions.eq("trainer", user));
 		List<PokemonSet> results = cr.list();
-		
+
 		sess.close();
 		return results;
 	}
 
 
 	@Override
-	public int createSet(PokemonSet set) {
+	public PokemonSet createSet(PokemonSet set) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
 		Trainer trainer = (Trainer) sess.get(Trainer.class, set.getTrainer().getTrainerId());
 		set.setTrainer(trainer);
 		int i = (int) sess.save(set);
 		t.commit();
+
+		PokemonSet savedSet = (PokemonSet) sess.get(PokemonSet.class, i);
 		sess.close();
-		
-		return i;
+
+		return savedSet;
 	}
 
 	@Override
 	public void updateSet(PokemonSet set) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
-		Trainer trainer = (Trainer) sess.get(Trainer.class, set.getTrainer().getTrainerId());
-		set.setTrainer(trainer);
+		Trainer trainer = null;
+		if (set != null) {
+			trainer = (Trainer) sess.get(Trainer.class, set.getTrainer().getTrainerId());
+			set.setTrainer(trainer);
+		}
 		sess.update(set);
 		t.commit();
 		sess.close();
@@ -78,7 +83,7 @@ public class PokemonSetDaoImp implements PokemonSetDao {
 			sess.delete(toDel);
 		}
 		t.commit();
-		
+
 		sess.close();
 	}
 
