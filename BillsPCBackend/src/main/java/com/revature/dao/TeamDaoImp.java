@@ -39,7 +39,12 @@ public class TeamDaoImp implements TeamDao {
 	public int createTeam(Team team) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
+		
+		Trainer trainer = (Trainer) sess.get(Trainer.class, team.getTrainer().getTrainerId());
+		team.setTrainer(trainer);
+		
 		int i = (int) sess.save(team);
+		
 		t.commit();
 		sess.close();
 		
@@ -50,6 +55,10 @@ public class TeamDaoImp implements TeamDao {
 	public void updateTeam(Team team) {
 		Session sess = HibernateUtil.getSession();
 		Transaction t = sess.beginTransaction();
+		
+		Trainer trainer = (Trainer) sess.get(Trainer.class, team.getTrainer().getTrainerId());
+		team.setTrainer(trainer);
+		
 		sess.update(team);
 		t.commit();
 		sess.close();
