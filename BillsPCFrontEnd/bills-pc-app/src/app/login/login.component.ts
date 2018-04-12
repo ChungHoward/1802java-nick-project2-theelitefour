@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       const trainer = result[0];
       const sets = result[1];
       const teams = result[2];
-      alert(JSON.stringify(trainer));
       this.valid = trainer !== null;
 
       if (trainer !== null) {

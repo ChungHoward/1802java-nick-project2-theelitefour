@@ -2712,6 +2712,7 @@ var TeambuilderComponent = (function () {
                 this.favTeam.push(new __WEBPACK_IMPORTED_MODULE_2_app_pokemon__["a" /* PokeAPI */]());
             }
         }
+        localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
     };
     // toggles the show moves/hide moves button
     TeambuilderComponent.prototype.toggleCollapse = function () {
