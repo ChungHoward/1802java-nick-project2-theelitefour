@@ -9,10 +9,12 @@ export class UpdateService {
   constructor(private http: HttpClient) { }
 
   saveSet(mySet: Set) {
+    const headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    const body = JSON.stringify(mySet);
     if (mySet.setId < 0) {
-      this.createSet(mySet);
+      return this.http.post('set', body);
     } else {
-      this.updateSet(mySet);
+      return this.http.put('set', body);
     }
   }
 
@@ -27,7 +29,7 @@ export class UpdateService {
   }
 
   saveTeam(myTeam: Team) {
-    const headers = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+    const headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     // const body = new HttpParams().set('team', JSON.stringify(myTeam));
     if (myTeam.teamId === -1) {
       return this.http.post('team', JSON.stringify(myTeam), headers);

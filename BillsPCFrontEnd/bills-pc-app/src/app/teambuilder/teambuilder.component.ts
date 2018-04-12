@@ -248,7 +248,8 @@ export class TeambuilderComponent implements OnInit {
     if (myTrainer) {
       this.updateService.saveSet(mySet);
       const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
-      this.updateService.saveTeam(myTeam);
+      this.loginService.changeTeam([myTeam]);
+      this.updateService.saveTeam(myTeam).subscribe();
     }
   }
 
