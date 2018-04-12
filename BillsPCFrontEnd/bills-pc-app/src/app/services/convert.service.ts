@@ -10,19 +10,19 @@ import { Team } from '../team';
 @Injectable()
 export class ConvertService {
 
-  pokedex: Array<PokeAPI>;
-  movedex: Array<Move>;
+  // pokedex: Array<PokeAPI>;
+  // movedex: Array<Move>;
 
   constructor(private pokemonService: PokemonService, private moveService: MoveService) {
-    Observable.forkJoin(
-      this.pokemonService.getJson(),
-      this.moveService.getJson()
-    ).subscribe(
-      ([pokeAPIArray, moveArray]) => {
-        this.pokedex = pokeAPIArray;
-        this.movedex = moveArray;
-      }
-    );
+    // Observable.forkJoin(
+    //   this.pokemonService.getJson(),
+    //   this.moveService.getJson()
+    // ).subscribe(
+    //   ([pokeAPIArray, moveArray]) => {
+    //     this.pokedex = pokeAPIArray;
+    //     this.movedex = moveArray;
+    //   }
+    // );
   }
 
   pokeapiToSet(pkmn: PokeAPI): Set {
@@ -127,9 +127,9 @@ export class ConvertService {
     return myTeam;
   }
 
-  setToPokeapi(set: Set, trainerID: number): PokeAPI {
+  setToPokeapi(set: Set, trainerID: number, pokedex: Array<PokeAPI>, movedex: Array<Move>): PokeAPI {
     const result = new PokeAPI();
-    const pkmn = this.pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
+    const pkmn = pokedex[set.pokemonId - 1]; // Minus 1 because we're zero-indexed and the pokedex is not
 
     result.attackIds = [];
     result.attackIds[0] = set.atk1;
@@ -139,10 +139,10 @@ export class ConvertService {
     result.id = set.pokemonId;
     result.moves = pkmn.moves;
     result.moveset = [];
-    result.moveset[0] = this.movedex[set.atk1].name;
-    result.moveset[1] = this.movedex[set.atk2].name;
-    result.moveset[2] = this.movedex[set.atk3].name;
-    result.moveset[3] = this.movedex[set.atk4].name;
+    result.moveset[0] = movedex[set.atk1].name;
+    result.moveset[1] = movedex[set.atk2].name;
+    result.moveset[2] = movedex[set.atk3].name;
+    result.moveset[3] = movedex[set.atk4].name;
     result.name = pkmn.name;
     result.sprite = pkmn.sprite;
     result.stats = pkmn.stats;
@@ -158,12 +158,12 @@ export class ConvertService {
    * @param myTeam The team to convert from
    * @param trainerID The owner of the team
    */
-  teamToPokeTeam(myTeam: Team, trainerID: number): PokeAPI[] {
+  teamToPokeTeam(myTeam: Team, trainerID: number, pokedex: Array<PokeAPI>, movedex: Array<Move>): PokeAPI[] {
     let result: PokeAPI;
     const resultArray = [];
 
     // Find my pokemon in the pokedex using (id - 1) because we're zero-indexed and the pokedex is not
-    result = Object.assign(this.pokedex[myTeam.set1.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set1.pokemonId - 1]);
 
     // These fields are being provided by the pokedex and do not need to be set
     // result.moves = pkmn.moves;
@@ -181,14 +181,14 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set1.atk3;
     result.attackIds[3] = myTeam.set1.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set1.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set1.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set1.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set1.atk4].name;
+    result.moveset[0] = movedex[myTeam.set1.atk1].name;
+    result.moveset[1] = movedex[myTeam.set1.atk2].name;
+    result.moveset[2] = movedex[myTeam.set1.atk3].name;
+    result.moveset[3] = movedex[myTeam.set1.atk4].name;
     resultArray.push(result);
 
     // Pokemon 2
-    result = Object.assign(this.pokedex[myTeam.set2.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set2.pokemonId - 1]);
     result.id = myTeam.set2.pokemonId;
     result.setId = myTeam.set2.setId;
     result.trainerId = trainerID;
@@ -198,14 +198,14 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set2.atk3;
     result.attackIds[3] = myTeam.set2.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set2.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set2.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set2.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set2.atk4].name;
+    result.moveset[0] = movedex[myTeam.set2.atk1].name;
+    result.moveset[1] = movedex[myTeam.set2.atk2].name;
+    result.moveset[2] = movedex[myTeam.set2.atk3].name;
+    result.moveset[3] = movedex[myTeam.set2.atk4].name;
     resultArray.push(result);
 
     // Pokemon 3
-    result = Object.assign(this.pokedex[myTeam.set3.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set3.pokemonId - 1]);
     result.id = myTeam.set3.pokemonId;
     result.setId = myTeam.set3.setId;
     result.trainerId = trainerID;
@@ -215,14 +215,14 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set3.atk3;
     result.attackIds[3] = myTeam.set3.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set3.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set3.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set3.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set3.atk4].name;
+    result.moveset[0] = movedex[myTeam.set3.atk1].name;
+    result.moveset[1] = movedex[myTeam.set3.atk2].name;
+    result.moveset[2] = movedex[myTeam.set3.atk3].name;
+    result.moveset[3] = movedex[myTeam.set3.atk4].name;
     resultArray.push(result);
 
     // Pokemon 4
-    result = Object.assign(this.pokedex[myTeam.set4.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set4.pokemonId - 1]);
     result.id = myTeam.set4.pokemonId;
     result.setId = myTeam.set4.setId;
     result.trainerId = trainerID;
@@ -232,14 +232,14 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set4.atk3;
     result.attackIds[3] = myTeam.set4.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set4.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set4.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set4.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set4.atk4].name;
+    result.moveset[0] = movedex[myTeam.set4.atk1].name;
+    result.moveset[1] = movedex[myTeam.set4.atk2].name;
+    result.moveset[2] = movedex[myTeam.set4.atk3].name;
+    result.moveset[3] = movedex[myTeam.set4.atk4].name;
     resultArray.push(result);
 
     // Pokemon 5
-    result = Object.assign(this.pokedex[myTeam.set5.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set5.pokemonId - 1]);
     result.id = myTeam.set5.pokemonId;
     result.setId = myTeam.set5.setId;
     result.trainerId = trainerID;
@@ -249,14 +249,14 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set5.atk3;
     result.attackIds[3] = myTeam.set5.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set5.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set5.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set5.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set5.atk4].name;
+    result.moveset[0] = movedex[myTeam.set5.atk1].name;
+    result.moveset[1] = movedex[myTeam.set5.atk2].name;
+    result.moveset[2] = movedex[myTeam.set5.atk3].name;
+    result.moveset[3] = movedex[myTeam.set5.atk4].name;
     resultArray.push(result);
 
     // Pokemon 6
-    result = Object.assign(this.pokedex[myTeam.set6.pokemonId - 1]);
+    result = Object.assign(pokedex[myTeam.set6.pokemonId - 1]);
     result.id = myTeam.set6.pokemonId;
     result.setId = myTeam.set6.setId;
     result.trainerId = trainerID;
@@ -266,10 +266,10 @@ export class ConvertService {
     result.attackIds[2] = myTeam.set6.atk3;
     result.attackIds[3] = myTeam.set6.atk4;
     result.moveset = [];
-    result.moveset[0] = this.movedex[myTeam.set6.atk1].name;
-    result.moveset[1] = this.movedex[myTeam.set6.atk2].name;
-    result.moveset[2] = this.movedex[myTeam.set6.atk3].name;
-    result.moveset[3] = this.movedex[myTeam.set6.atk4].name;
+    result.moveset[0] = movedex[myTeam.set6.atk1].name;
+    result.moveset[1] = movedex[myTeam.set6.atk2].name;
+    result.moveset[2] = movedex[myTeam.set6.atk3].name;
+    result.moveset[3] = movedex[myTeam.set6.atk4].name;
     resultArray.push(result);
 
     return resultArray;
