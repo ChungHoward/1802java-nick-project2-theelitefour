@@ -1,7 +1,7 @@
 import { PokeAPI } from './pokemon';
 
 export interface Trainer {
-    id: number;
+    trainerId: number;
     name: string;
     password: string;
     role: number;

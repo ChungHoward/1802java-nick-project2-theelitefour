@@ -64,6 +64,9 @@ export class ConvertService {
     } else {
       myTeam.teamName = 'Untitled';
     }
+
+    myTeam.trainer = {'trainerId': pkmnArray[0].trainerId};
+
     result = new Set();
     result.setId = pkmnArray[0].setId;
     result.pokemonId = pkmnArray[0].id;
@@ -72,6 +75,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[0].attackIds[1];
     result.atk3 = pkmnArray[0].attackIds[2];
     result.atk4 = pkmnArray[0].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[0].trainerId};
     myTeam.set1 = result;
 
     result = new Set();
@@ -82,6 +86,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[1].attackIds[1];
     result.atk3 = pkmnArray[1].attackIds[2];
     result.atk4 = pkmnArray[1].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[1].trainerId};
     myTeam.set2 = result;
 
     result = new Set();
@@ -92,6 +97,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[2].attackIds[1];
     result.atk3 = pkmnArray[2].attackIds[2];
     result.atk4 = pkmnArray[2].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[2].trainerId};
     myTeam.set3 = result;
 
     result = new Set();
@@ -102,6 +108,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[3].attackIds[1];
     result.atk3 = pkmnArray[3].attackIds[2];
     result.atk4 = pkmnArray[3].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[3].trainerId};
     myTeam.set4 = result;
 
     result = new Set();
@@ -112,6 +119,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[4].attackIds[1];
     result.atk3 = pkmnArray[4].attackIds[2];
     result.atk4 = pkmnArray[4].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[4].trainerId};
     myTeam.set5 = result;
 
     result = new Set();
@@ -122,6 +130,7 @@ export class ConvertService {
     result.atk2 = pkmnArray[5].attackIds[1];
     result.atk3 = pkmnArray[5].attackIds[2];
     result.atk4 = pkmnArray[5].attackIds[3];
+    result.trainer = {'trainerId': pkmnArray[5].trainerId};
     myTeam.set6 = result;
 
     return myTeam;
@@ -137,6 +146,7 @@ export class ConvertService {
     result.attackIds[2] = set.atk3;
     result.attackIds[3] = set.atk4;
     result.id = set.pokemonId;
+    result.setId = set.setId;
     result.moves = pkmn.moves;
     result.moveset = [];
     result.moveset[0] = movedex[set.atk1].name;

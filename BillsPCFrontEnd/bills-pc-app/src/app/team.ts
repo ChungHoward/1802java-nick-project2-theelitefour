@@ -9,6 +9,7 @@ export class Team {
     set4: Set;
     set5: Set;
     set6: Set;
+    trainer: Object;
 
     constructor() {
         this.set1 = null;
