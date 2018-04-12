@@ -404,7 +404,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\r\n      <ng-template #ifLoggedOut>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a routerLink='login'>\r\n              <i class=\"material-icons\">account_circle</i>\r\n              Login\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink='register'>\r\n              <i class=\"material-icons\">person</i>\r\n              Register\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <ng-template #elseLogin>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a>\r\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\r\n              Hello {{trainer.name}}\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink=\"view-user\">\r\n              <i class =\"material-icons\">exit_to_app</i>\r\n              View Users\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a (click)=\"logout()\">\r\n              <i class=\"material-icons\">exit_to_app</i>\r\n              Logout\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <!--\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n      -->\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-transparent navbar-absolute\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" (click)=\"sidebarToggle()\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\" href=\"#\">{{getTitle()}}</a>\r\n    </div>\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul *ngIf=\"trainer == null; then ifLoggedOut; else elseLogin\" class=\"nav navbar-nav navbar-right\"></ul>\r\n      <ng-template #ifLoggedOut>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a routerLink='login'>\r\n              <i class=\"material-icons\">account_circle</i>\r\n              Login\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLink='register'>\r\n              <i class=\"material-icons\">person</i>\r\n              Register\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <ng-template #elseLogin>\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n          <li>\r\n            <a>\r\n              <!-- Profile icon changes depending on role: trainer, pro, admin -->\r\n              <!-- <i class=\"material-icons\" *ngIf=\"\">face</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">whatshot</i>\r\n              <i class=\"material-icons\" *ngIf=\"\">supervisor_account</i> -->\r\n              Hello {{trainer.name}}\r\n            </a>\r\n          </li>\r\n          <li *ngIf=\"trainer.role === '3'\">\r\n            <a routerLink=\"view-user\">\r\n              <i class =\"material-icons\">exit_to_app</i>\r\n              View Users\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a (click)=\"logout()\">\r\n              <i class=\"material-icons\">exit_to_app</i>\r\n              Logout\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </ng-template>\r\n      <!--\r\n      <form class=\"navbar-form navbar-right\" role=\"search\">\r\n        <div class=\"form-group form-black is-empty\">\r\n          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n          <span class=\"material-input\"></span>\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n          <i class=\"material-icons\">search</i>\r\n          <div class=\"ripple-container\"></div>\r\n        </button>\r\n      </form>\r\n      -->\r\n    </div>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1624,7 +1624,7 @@ var PokemonBoxComponent = (function () {
             myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.trainerId, this.pokedex, this.movedex);
             }
         }
         else {
@@ -1646,7 +1646,7 @@ var PokemonBoxComponent = (function () {
             // Convert our team into a format our back-end can receive
             for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
                 var set = mySets_1[_i];
-                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id, this.pokedex, this.movedex));
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.trainerId, this.pokedex, this.movedex));
             }
         }
         else {
@@ -1677,7 +1677,7 @@ var PokemonBoxComponent = (function () {
                 // Save our team to localstorage
                 this.loginService.changeTeam(myTeam);
                 // Send http request to save set and team if the user is logged in
-                this.updateService.saveTeam(myTeam[0]);
+                this.updateService.saveTeam(myTeam[0]).subscribe();
             }
             // Put our favTeam in local storage so even an unregistered user can use our service
             localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
@@ -1744,9 +1744,9 @@ var PokemonBoxComponent = (function () {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
             _this.movedex = moveArray;
+            _this.loadTeam();
             _this.loadBox();
             // Assign my favTeam using localStorage or from session if one exists
-            _this.loadTeam();
         });
         if (this.favTeam === this.favTeam) {
             this.favoriteIcon = 'star';
@@ -1918,6 +1918,7 @@ var ConvertService = (function () {
         else {
             myTeam.teamName = 'Untitled';
         }
+        myTeam.trainer = { 'trainerId': pkmnArray[0].trainerId };
         result = new set_1.Set();
         result.setId = pkmnArray[0].setId;
         result.pokemonId = pkmnArray[0].id;
@@ -1926,6 +1927,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[0].attackIds[1];
         result.atk3 = pkmnArray[0].attackIds[2];
         result.atk4 = pkmnArray[0].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[0].trainerId };
         myTeam.set1 = result;
         result = new set_1.Set();
         result.setId = pkmnArray[1].setId;
@@ -1935,6 +1937,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[1].attackIds[1];
         result.atk3 = pkmnArray[1].attackIds[2];
         result.atk4 = pkmnArray[1].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[1].trainerId };
         myTeam.set2 = result;
         result = new set_1.Set();
         result.setId = pkmnArray[2].setId;
@@ -1944,6 +1947,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[2].attackIds[1];
         result.atk3 = pkmnArray[2].attackIds[2];
         result.atk4 = pkmnArray[2].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[2].trainerId };
         myTeam.set3 = result;
         result = new set_1.Set();
         result.setId = pkmnArray[3].setId;
@@ -1953,6 +1957,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[3].attackIds[1];
         result.atk3 = pkmnArray[3].attackIds[2];
         result.atk4 = pkmnArray[3].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[3].trainerId };
         myTeam.set4 = result;
         result = new set_1.Set();
         result.setId = pkmnArray[4].setId;
@@ -1962,6 +1967,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[4].attackIds[1];
         result.atk3 = pkmnArray[4].attackIds[2];
         result.atk4 = pkmnArray[4].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[4].trainerId };
         myTeam.set5 = result;
         result = new set_1.Set();
         result.setId = pkmnArray[5].setId;
@@ -1971,6 +1977,7 @@ var ConvertService = (function () {
         result.atk2 = pkmnArray[5].attackIds[1];
         result.atk3 = pkmnArray[5].attackIds[2];
         result.atk4 = pkmnArray[5].attackIds[3];
+        result.trainer = { 'trainerId': pkmnArray[5].trainerId };
         myTeam.set6 = result;
         return myTeam;
     };
@@ -1983,12 +1990,13 @@ var ConvertService = (function () {
         result.attackIds[2] = set.atk3;
         result.attackIds[3] = set.atk4;
         result.id = set.pokemonId;
+        result.setId = set.setId;
         result.moves = pkmn.moves;
         result.moveset = [];
-        result.moveset[0] = movedex[set.atk1].name;
-        result.moveset[1] = movedex[set.atk2].name;
-        result.moveset[2] = movedex[set.atk3].name;
-        result.moveset[3] = movedex[set.atk4].name;
+        result.moveset[0] = movedex[(set.atk1) ? set.atk1 : 164].name;
+        result.moveset[1] = movedex[(set.atk2) ? set.atk2 : 164].name;
+        result.moveset[2] = movedex[(set.atk3) ? set.atk3 : 164].name;
+        result.moveset[3] = movedex[(set.atk4) ? set.atk4 : 164].name;
         result.name = pkmn.name;
         result.sprite = pkmn.sprite;
         result.stats = pkmn.stats;
@@ -2023,10 +2031,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set1.atk3;
         result.attackIds[3] = myTeam.set1.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set1.atk1].name;
-        result.moveset[1] = movedex[myTeam.set1.atk2].name;
-        result.moveset[2] = movedex[myTeam.set1.atk3].name;
-        result.moveset[3] = movedex[myTeam.set1.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set1.atk1) ? myTeam.set1.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set1.atk2) ? myTeam.set1.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set1.atk3) ? myTeam.set1.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set1.atk4) ? myTeam.set1.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 2
         result = Object.assign(pokedex[myTeam.set2.pokemonId - 1]);
@@ -2039,10 +2047,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set2.atk3;
         result.attackIds[3] = myTeam.set2.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set2.atk1].name;
-        result.moveset[1] = movedex[myTeam.set2.atk2].name;
-        result.moveset[2] = movedex[myTeam.set2.atk3].name;
-        result.moveset[3] = movedex[myTeam.set2.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set2.atk1) ? myTeam.set2.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set2.atk2) ? myTeam.set2.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set2.atk3) ? myTeam.set2.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set2.atk4) ? myTeam.set2.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 3
         result = Object.assign(pokedex[myTeam.set3.pokemonId - 1]);
@@ -2055,10 +2063,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set3.atk3;
         result.attackIds[3] = myTeam.set3.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set3.atk1].name;
-        result.moveset[1] = movedex[myTeam.set3.atk2].name;
-        result.moveset[2] = movedex[myTeam.set3.atk3].name;
-        result.moveset[3] = movedex[myTeam.set3.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set3.atk1) ? myTeam.set3.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set3.atk2) ? myTeam.set3.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set3.atk3) ? myTeam.set3.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set3.atk4) ? myTeam.set3.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 4
         result = Object.assign(pokedex[myTeam.set4.pokemonId - 1]);
@@ -2071,10 +2079,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set4.atk3;
         result.attackIds[3] = myTeam.set4.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set4.atk1].name;
-        result.moveset[1] = movedex[myTeam.set4.atk2].name;
-        result.moveset[2] = movedex[myTeam.set4.atk3].name;
-        result.moveset[3] = movedex[myTeam.set4.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set4.atk1) ? myTeam.set3.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set4.atk2) ? myTeam.set3.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set4.atk3) ? myTeam.set3.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set4.atk4) ? myTeam.set3.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 5
         result = Object.assign(pokedex[myTeam.set5.pokemonId - 1]);
@@ -2087,10 +2095,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set5.atk3;
         result.attackIds[3] = myTeam.set5.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set5.atk1].name;
-        result.moveset[1] = movedex[myTeam.set5.atk2].name;
-        result.moveset[2] = movedex[myTeam.set5.atk3].name;
-        result.moveset[3] = movedex[myTeam.set5.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set5.atk1) ? myTeam.set5.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set5.atk2) ? myTeam.set5.atk2 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set5.atk3) ? myTeam.set5.atk3 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set5.atk4) ? myTeam.set5.atk4 : 164].name;
         resultArray.push(result);
         // Pokemon 6
         result = Object.assign(pokedex[myTeam.set6.pokemonId - 1]);
@@ -2103,10 +2111,10 @@ var ConvertService = (function () {
         result.attackIds[2] = myTeam.set6.atk3;
         result.attackIds[3] = myTeam.set6.atk4;
         result.moveset = [];
-        result.moveset[0] = movedex[myTeam.set6.atk1].name;
-        result.moveset[1] = movedex[myTeam.set6.atk2].name;
-        result.moveset[2] = movedex[myTeam.set6.atk3].name;
-        result.moveset[3] = movedex[myTeam.set6.atk4].name;
+        result.moveset[0] = movedex[(myTeam.set6.atk1) ? myTeam.set6.atk1 : 164].name;
+        result.moveset[1] = movedex[(myTeam.set6.atk2) ? myTeam.set6.atk3 : 164].name;
+        result.moveset[2] = movedex[(myTeam.set6.atk3) ? myTeam.set6.atk2 : 164].name;
+        result.moveset[3] = movedex[(myTeam.set6.atk4) ? myTeam.set6.atk4 : 164].name;
         resultArray.push(result);
         return resultArray;
     };
@@ -2548,8 +2556,14 @@ var UpdateService = (function () {
         return this.http.put('set', body);
     };
     UpdateService.prototype.saveTeam = function (myTeam) {
-        var body = new http_1.HttpParams().set('team', JSON.stringify(myTeam));
-        return this.http.post('team', body);
+        var headers = { headers: new http_1.HttpHeaders({ 'Content-Type': 'application/json' }) };
+        // const body = new HttpParams().set('team', JSON.stringify(myTeam));
+        if (myTeam.teamId === -1) {
+            return this.http.post('team', JSON.stringify(myTeam), headers);
+        }
+        else {
+            return this.http.put('team', JSON.stringify(myTeam), headers);
+        }
     };
     UpdateService = __decorate([
         core_1.Injectable(),
@@ -2716,7 +2730,7 @@ var TeambuilderComponent = (function () {
         if (!!this.myTeam && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
-                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
             }
             // Load box, if any
             for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
@@ -2841,7 +2855,7 @@ var TeambuilderComponent = (function () {
         this.selectedPkmn.moveset = [null, null, null, null];
         // If our trainer is logged in, assign trainer ID
         if (myTrainer) {
-            this.selectedPkmn.trainerId = myTrainer.id;
+            this.selectedPkmn.trainerId = myTrainer.trainerId;
         }
         // Save our Pokemon's attacks
         for (var i = 0; i < 4; i++) {
