@@ -237,27 +237,52 @@ export class TeambuilderComponent implements OnInit {
     if (this.selected >= 0) {
       this.favTeam[this.selected] = this.selectedPkmn;
     }
-    // Save sets to localstorage
-    const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
-    this.sets.push(mySet);
-    this.loginService.changeSets(this.sets);
-
-    // Put our favTeam in local storage so even an unregistered user can use our service
-    localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
 
     // Send http request to save set and team if the user is logged in
     if (myTrainer) {
-      this.updateService.saveSet(mySet);
-
+      // Save sets to localstorage
+      const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
       let saveThis: Team;
-      if (this.myTeam.length !== 0) {
-        saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
-      } else {
-        saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam);
-      }
-      this.loginService.changeTeam([saveThis]);
-      // const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
-      this.updateService.saveTeam(saveThis).subscribe();
+      this.updateService.saveSet(mySet).subscribe(id => {
+        if (mySet.setId === -1) {
+          mySet.setId = id;
+          this.sets.push(mySet);
+        } else {
+          for (let i = 0; i < this.sets.length; i++) {
+            if (this.sets[i].setId === mySet.setId) {
+              this.sets[i] = mySet;
+            }
+          }
+        }
+        this.favTeam[this.selected] = this.convertService.setToPokeapi(mySet, myTrainer.trainerId, this.pokedex, this.movedex);
+        this.loginService.changeSets(this.sets);
+
+        if (this.myTeam.length !== 0) {
+          saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+        } else {
+          saveThis = this.convertService.pokeTeamToSetTeam(this.favTeam);
+        }
+
+        // const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+        this.updateService.saveTeam(saveThis).subscribe(teamId => {
+          if (saveThis.teamId === -1) {
+            saveThis.teamId = teamId;
+          }
+          // Put our favTeam in local storage so even an unregistered user can use our service
+          localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+          this.loginService.changeTeam([saveThis]);
+
+          this.loadTeam();
+        });
+      });
+    } else {
+      // Save sets to localstorage
+      const mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+      this.sets.push(mySet);
+      this.loginService.changeSets(this.sets);
+
+      // Put our favTeam in local storage so even an unregistered user can use our service
+      localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
     }
   }
 

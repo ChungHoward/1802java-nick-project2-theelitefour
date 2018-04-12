@@ -21,10 +21,10 @@ public class SetController {
 	private SetService service;
 	
 	@RequestMapping(method=RequestMethod.PUT, value="resources/set", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> updateSet(@RequestBody PokemonSet set) { 
+	public ResponseEntity<Integer> updateSet(@RequestBody PokemonSet set) { 
 		this.service.updateSet(set);
 		
-		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		return new ResponseEntity<Integer>(set.getSetId(), HttpStatus.ACCEPTED);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="resources/set", consumes=MediaType.APPLICATION_JSON_VALUE)

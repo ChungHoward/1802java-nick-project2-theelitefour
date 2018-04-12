@@ -43,6 +43,7 @@ module.exports = "<div class=\"wrapper\">\n    <div class=\"sidebar\" data-color
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_perfect_scrollbar__ = __webpack_require__("./node_modules/perfect-scrollbar/dist/perfect-scrollbar.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_login_service__ = __webpack_require__("./src/app/services/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,10 +59,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = (function () {
-    function AppComponent(location, router) {
+    function AppComponent(location, router, loginService) {
         this.location = location;
         this.router = router;
+        this.loginService = loginService;
         this.yScrollStack = [];
     }
     AppComponent.prototype.ngOnInit = function () {
@@ -133,12 +136,13 @@ var AppComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
-            styles: [__webpack_require__("./src/app/app.component.css")]
+            styles: [__webpack_require__("./src/app/app.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_6__services_login_service__["a" /* LoginService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common__["f" /* Location */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__services_login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_login_service__["a" /* LoginService */]) === "function" && _d || Object])
     ], AppComponent);
     return AppComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=app.component.js.map
@@ -2137,9 +2141,9 @@ var LoginService = (function () {
         this.trainerSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](JSON.parse(localStorage.getItem('trainer')));
         this.currentTrainer = this.trainerSource.asObservable();
         this.setSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](JSON.parse(localStorage.getItem('sets')));
-        this.currentSet = this.trainerSource.asObservable();
+        this.currentSet = this.setSource.asObservable();
         this.teamSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](JSON.parse(localStorage.getItem('teams')));
-        this.currentTeam = this.trainerSource.asObservable();
+        this.currentTeam = this.teamSource.asObservable();
     }
     LoginService.prototype.login = function (username, password) {
         var body = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpParams */]().set('username', username).set('password', password);
@@ -2485,11 +2489,13 @@ var UpdateService = (function () {
         this.http = http;
     }
     UpdateService.prototype.saveSet = function (mySet) {
+        var headers = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }) };
+        var body = JSON.stringify(mySet);
         if (mySet.setId < 0) {
-            this.createSet(mySet);
+            return this.http.post('set', body, headers);
         }
         else {
-            this.updateSet(mySet);
+            return this.http.put('set', body, headers);
         }
     };
     UpdateService.prototype.createSet = function (mySet) {
@@ -2684,7 +2690,7 @@ var TeambuilderComponent = (function () {
         if (!this.sets) {
             this.sets = new Array();
         }
-        if (!!this.myTeam && !!this.trainer) {
+        if (this.myTeam && this.myTeam.length > 0 && !!this.trainer) {
             // Load team, if one exists
             if (this.myTeam[0]) {
                 this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.trainerId, this.pokedex, this.movedex);
@@ -2805,6 +2811,7 @@ var TeambuilderComponent = (function () {
      * Triggers when the save button is pressed
      */
     TeambuilderComponent.prototype.savePokemon = function () {
+        var _this = this;
         var myTrainer;
         myTrainer = JSON.parse(localStorage.getItem('trainer'));
         // wipe our selected Pokemon's old attacks so we can add the new ones back in
@@ -2832,18 +2839,50 @@ var TeambuilderComponent = (function () {
         if (this.selected >= 0) {
             this.favTeam[this.selected] = this.selectedPkmn;
         }
-        // Save sets to localstorage
-        var mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
-        this.sets.push(mySet);
-        this.loginService.changeSets(this.sets);
-        // Put our favTeam in local storage so even an unregistered user can use our service
-        localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
         // Send http request to save set and team if the user is logged in
         if (myTrainer) {
-            this.updateService.saveSet(mySet);
-            var myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
-            this.loginService.changeTeam([myTeam]);
-            this.updateService.saveTeam(myTeam).subscribe();
+            // Save sets to localstorage
+            var mySet_1 = this.convertService.pokeapiToSet(this.selectedPkmn);
+            var saveThis_1;
+            this.updateService.saveSet(mySet_1).subscribe(function (id) {
+                if (mySet_1.setId === -1) {
+                    mySet_1.setId = id;
+                    _this.sets.push(mySet_1);
+                }
+                else {
+                    for (var i = 0; i < _this.sets.length; i++) {
+                        if (_this.sets[i].setId === mySet_1.setId) {
+                            _this.sets[i] = mySet_1;
+                        }
+                    }
+                }
+                _this.favTeam[_this.selected] = _this.convertService.setToPokeapi(mySet_1, myTrainer.trainerId, _this.pokedex, _this.movedex);
+                _this.loginService.changeSets(_this.sets);
+                if (_this.myTeam.length !== 0) {
+                    saveThis_1 = _this.convertService.pokeTeamToSetTeam(_this.favTeam, _this.myTeam[0].teamName, _this.myTeam[0].teamId);
+                }
+                else {
+                    saveThis_1 = _this.convertService.pokeTeamToSetTeam(_this.favTeam);
+                }
+                // const myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam[0].teamName, this.myTeam[0].teamId);
+                _this.updateService.saveTeam(saveThis_1).subscribe(function (teamId) {
+                    if (saveThis_1.teamId === -1) {
+                        saveThis_1.teamId = teamId;
+                    }
+                    // Put our favTeam in local storage so even an unregistered user can use our service
+                    localStorage.setItem('favTeam', JSON.stringify(_this.favTeam));
+                    _this.loginService.changeTeam([saveThis_1]);
+                    _this.loadTeam();
+                });
+            });
+        }
+        else {
+            // Save sets to localstorage
+            var mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+            this.sets.push(mySet);
+            this.loginService.changeSets(this.sets);
+            // Put our favTeam in local storage so even an unregistered user can use our service
+            localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
         }
     };
     /**
