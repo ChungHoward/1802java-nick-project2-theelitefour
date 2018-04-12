@@ -22,10 +22,8 @@ import * as Chartist from 'chartist';
   templateUrl: './teambuilder.component.html',
   styleUrls: ['./teambuilder.component.css'],
   providers: [
-    MoveService, PokemonService,
-    TeamService, TypeService,
-    ConvertService, LoginService,
-    UpdateService
+    MoveService, PokemonService, TeamService, TypeService,
+    ConvertService, LoginService, UpdateService
   ]
 })
 export class TeambuilderComponent implements OnInit {
@@ -93,7 +91,7 @@ export class TeambuilderComponent implements OnInit {
     if (!!this.myTeam && !!this.trainer) {
       // Load team, if one exists
       if (this.myTeam[0]) {
-        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+        this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id, this.pokedex, this.movedex);
       }
       // Load box, if any
       for (const set of JSON.parse(localStorage.getItem('sets'))) {
