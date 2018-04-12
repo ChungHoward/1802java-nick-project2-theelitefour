@@ -83,3 +83,5 @@ hibernate.cfg.xml
 **/node_modules
 BillsPCBackend/src/main/webapp/resources/polyfills.bundle.js.map
 BillsPCBackend/src/main/webapp/resources/main.bundle.js.map
+
+**/webapp/resources
