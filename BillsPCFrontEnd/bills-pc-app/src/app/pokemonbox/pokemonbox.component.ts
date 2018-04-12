@@ -7,23 +7,22 @@ import { Set } from '../set';
 import { Team } from '../team';
 import { TeamService } from 'app/services/team.service';
 import { TypeService } from 'app/services/type.service';
-import { StringifyOptions } from 'querystring';
 import { ConvertService } from '../services/convert.service';
 import { LoginService } from '../services/login.service';
+import { UpdateService } from '../services/update.service';
 declare var $: any;
 
 @Component({
   selector: 'app-pokemonbox',
   templateUrl: './pokemonbox.component.html',
-  styleUrls: ['./pokemonbox.component.css']
+  styleUrls: ['./pokemonbox.component.css'],
+  providers: [ TeamService, TypeService, ConvertService, LoginService, UpdateService ]
 })
 export class PokemonBoxComponent implements OnInit {
   // The Pokemon we just clicked on
   selectedPkmn: PokeAPI;
   // My favorite team - there can only be one
   favTeam: Array<PokeAPI>;
-  // Contains the images for every type and damage class
-  types: TypeService;
   // Will temporarily contain a list of pokemon in my box
   myBox: Array<PokeAPI>;
   // Will temporarily contain a list of teams, currently can't be named
@@ -40,8 +39,10 @@ export class PokemonBoxComponent implements OnInit {
   favoriteIcon: string;
   newTeamName: string;
 
-  constructor(private teamService: TeamService, private convertService: ConvertService,
-    private loginService: LoginService) {
+  constructor(
+    private teamService: TeamService, private convertService: ConvertService,
+    private loginService: LoginService, private updateService: UpdateService,
+    private types: TypeService) {
     // Assigns the value of types to their respective image
     this.types = new TypeService();
 
@@ -100,12 +101,12 @@ export class PokemonBoxComponent implements OnInit {
   loadTeam() {
     let myTeams: Team[];
     let myTrainer: Trainer;
-    myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+    myTrainer = JSON.parse(localStorage.getItem('trainer'));
 
     // if user is logged in
     if (myTrainer) {
       // Get my team
-      myTeams = JSON.parse(sessionStorage.getItem('teams'));
+      myTeams = JSON.parse(localStorage.getItem('teams'));
       // Convert our team into a format our back-end can receive
       if (myTeams[0]) {
         this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
@@ -121,29 +122,21 @@ export class PokemonBoxComponent implements OnInit {
   }
 
   loadBox() {
-    let mySets: Set[];
-    let myTrainer: Trainer;
+    // Get my team
     this.myBox = new Array<PokeAPI>();
-    myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+    const mySets = JSON.parse(localStorage.getItem('sets')) as Array<Set>;
+    const myTrainer = JSON.parse(localStorage.getItem('trainer')) as Trainer;
 
     // if user is logged in
-    if (myTrainer) {
-      // Get my team
-      mySets = JSON.parse(sessionStorage.getItem('sets'));
+    if (myTrainer && mySets) {
       // Convert our team into a format our back-end can receive
-      if (mySets) {
-        for (const set of mySets) {
-          this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
-        }
+      for (const set of mySets) {
+        this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
       }
     } else {
-      mySets = JSON.parse(sessionStorage.getItem('sets'));
-      // this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-      // this.myBox.push(this.teamService.pkmn2);
-      // this.myBox.push(this.teamService.pkmn3);
-      // this.myBox.push(this.teamService.pkmn4);
-      // this.myBox.push(this.teamService.pkmn5);
-      // this.myBox.push(this.teamService.pkmn6);
+      this.myBox = JSON.parse(localStorage.getItem('myPkmnBox')) as Array<PokeAPI>;
+      this.myBox.push(this.teamService.pkmn5);
+      // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
     }
   }
 
@@ -154,20 +147,19 @@ export class PokemonBoxComponent implements OnInit {
   saveTeam(newTeamName: string): boolean {
     // if our team isn't over the legal limit
     if (this.favTeam.length <= 6) {
-      let oldTeam: Team[];
       const myTeam = [];
-      let myTrainer: Trainer;
-      myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+      const myTrainer = JSON.parse(localStorage.getItem('trainer')) as Trainer;
 
       // User must be logged in to save team
       if (myTrainer) {
         // We need the old team ID of the ONLY (SINGULAR) team we are saving
-        oldTeam = JSON.parse(sessionStorage.getItem('teams'));
+        const oldTeam = JSON.parse(localStorage.getItem('teams')) as Team[];
         // Convert our team into a format our back-end can receive
         myTeam[0] = this.convertService.pokeTeamToSetTeam(this.favTeam, newTeamName, oldTeam[0].teamId);
         // Save our team to localstorage
         this.loginService.changeTeam(myTeam);
-        // TODO: MAKE PUT REQUEST HERE USING SOME SERVICE
+        // Send http request to save set and team if the user is logged in
+        this.updateService.saveTeam(myTeam[0]);
       }
       // Put our favTeam in local storage so even an unregistered user can use our service
       localStorage.setItem('favTeam', JSON.stringify(this.favTeam));

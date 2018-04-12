@@ -832,24 +832,23 @@ var DefensiveCoverageComponent = (function () {
                     sum += 1;
                 }
                 else if (this.myTable[x][y] > 1.0) {
-                    sum += 1.5;
+                    sum += 2;
                 }
                 else if (this.myTable[x][y] < 1.0) {
-                    sum += 0.5;
+                    sum += 0;
                 }
             }
-            if (sum === 0) {
-            }
-            else if (sum > 6.5) {
+            sum /= numPkmn;
+            if (sum > 1.2) {
                 this.rowColor[y] = 'bg-red';
             }
-            else if (sum > 6) {
+            else if (sum > 1) {
                 this.rowColor[y] = 'bg-pink';
             }
-            else if (sum < 5.5) {
+            else if (sum < 0.8) {
                 this.rowColor[y] = 'bg-green';
             }
-            else if (sum < 6) {
+            else if (sum < 1) {
                 this.rowColor[y] = 'bg-lime';
             }
         }
@@ -1276,14 +1275,8 @@ var OffensiveCoverageComponent = (function () {
         // this.getPokeAPIjson();
         // this.getMoveAPIjson();
         var _this = this;
-        // the above methods are being replaced by the below method which calls both Observables
-        // in parallel and waits for them to finish -- or apparently not
-        // Observable.zip(
-        //   this.pokemonService.getJson(),
-        //   this.moveService.getJson()
-        // ).subscribe(myTuple => {
-        //   this.pokedex = myTuple[0];
-        //   this.movedex = myTuple[1];
+        // the above methods are being replaced by the below method
+        // which calls both Observables and waits for them to finish
         Rx_1.Observable.forkJoin(this.pokemonService.getJson(), this.moveService.getJson()).subscribe(function (_a) {
             var pokeAPIArray = _a[0], moveArray = _a[1];
             _this.pokedex = pokeAPIArray;
@@ -1477,8 +1470,8 @@ var Pokemon = (function () {
     // A missingno for our placeholder!
     function Pokemon() {
         this.id = 0;
-        this.setId = 0;
-        this.trainerId = 1;
+        this.setId = -1;
+        this.trainerId = -1;
         this.attackIds = [null, null, null, null];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
@@ -1494,8 +1487,8 @@ exports.Pokemon = Pokemon;
 var PokeAPI = (function () {
     function PokeAPI() {
         this.id = 0;
-        this.setId = 0;
-        this.trainerId = 1;
+        this.setId = -1;
+        this.trainerId = -1;
         this.attackIds = [null, null, null, null];
         this.name = 'missingno';
         this.sprite = 'assets/img/question.png';
@@ -1514,7 +1507,7 @@ exports.PokeAPI = PokeAPI;
 /***/ "./src/app/pokemonbox/pokemonbox.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 500px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 400px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n  min-height: 80px;\r\n  position: relative;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\nth {\r\n  height: 39px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\n.ta-right { text-align: right; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
+module.exports = "/* Layout */\r\n.main-content {\r\n  margin-top: 50px;\r\n  padding-right: 0px;\r\n  padding-bottom: 0px;\r\n}\r\n.row {\r\n  width: 100%;\r\n}\r\n.card {\r\n  height: 500px;\r\n  margin-bottom: 0px;\r\n}\r\n.table-responsive {\r\n  max-height: 400px;\r\n  overflow-y: scroll;\r\n}\r\n/* Native image sizes */\r\n.type {\r\n  width: 48px;\r\n  height: 16px;\r\n}\r\n.sprite {\r\n  width: 96px;\r\n  height: 96px;\r\n}\r\n/* Squeeze more space out of our tables */\r\n.card-header {\r\n  padding-top: 10px;\r\n  padding-bottom: 10px;\r\n}\r\n.card-content {\r\n  padding-top: 4px;\r\n  padding-bottom: 4px;\r\n  min-height: 80px;\r\n  position: relative;\r\n}\r\n.card-footer {\r\n  padding-top: 0px;\r\n  margin-left: 10px;\r\n  margin-right: 0px;\r\n  margin-bottom: 0px;\r\n  min-height: 400px;\r\n}\r\ntable {\r\n  font-size: 12px;\r\n}\r\ntbody {\r\n  min-height: 400px;\r\n}\r\nth {\r\n  height: 39px;\r\n}\r\ntd input {\r\n  width: 100px;\r\n}\r\n.type-col {\r\n  width: 70px;\r\n}\r\n.form-group {\r\n  margin-top: 0px;\r\n}\r\n.poke-search {\r\n  margin-top: 0px;\r\n  margin-left: 0px;\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n.pkmn-table {\r\n  width: 100%;\r\n}\r\n/* Readability */\r\nthead {\r\n  color: #333333;\r\n}\r\n.material-icons.md-18 { font-size: 18px; }\r\n.ta-center { text-align: center; }\r\n.ta-right { text-align: right; }\r\na i {\r\n  display: inline;\r\n}\r\n.nav-link {\r\n  padding-left: 0px;\r\n  padding-right: 0px;\r\n}\r\n.nav {\r\n  margin: 0px\r\n}"
 
 /***/ }),
 
@@ -1545,11 +1538,14 @@ var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
 var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
+var update_service_1 = __webpack_require__("./src/app/services/update.service.ts");
 var PokemonBoxComponent = (function () {
-    function PokemonBoxComponent(teamService, convertService, loginService) {
+    function PokemonBoxComponent(teamService, convertService, loginService, updateService, types) {
         this.teamService = teamService;
         this.convertService = convertService;
         this.loginService = loginService;
+        this.updateService = updateService;
+        this.types = types;
         // Assigns the value of types to their respective image
         this.types = new type_service_1.TypeService();
         // Assign my favTeam using teamService
@@ -1602,11 +1598,11 @@ var PokemonBoxComponent = (function () {
     PokemonBoxComponent.prototype.loadTeam = function () {
         var myTeams;
         var myTrainer;
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+        myTrainer = JSON.parse(localStorage.getItem('trainer'));
         // if user is logged in
         if (myTrainer) {
             // Get my team
-            myTeams = JSON.parse(sessionStorage.getItem('teams'));
+            myTeams = JSON.parse(localStorage.getItem('teams'));
             // Convert our team into a format our back-end can receive
             if (myTeams[0]) {
                 this.favTeam = this.convertService.teamToPokeTeam(myTeams[0], myTrainer.id);
@@ -1622,30 +1618,22 @@ var PokemonBoxComponent = (function () {
         }
     };
     PokemonBoxComponent.prototype.loadBox = function () {
-        var mySets;
-        var myTrainer;
+        // Get my team
         this.myBox = new Array();
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+        var mySets = JSON.parse(localStorage.getItem('sets'));
+        var myTrainer = JSON.parse(localStorage.getItem('trainer'));
         // if user is logged in
-        if (myTrainer) {
-            // Get my team
-            mySets = JSON.parse(sessionStorage.getItem('sets'));
+        if (myTrainer && mySets) {
             // Convert our team into a format our back-end can receive
-            if (mySets) {
-                for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
-                    var set = mySets_1[_i];
-                    this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
-                }
+            for (var _i = 0, mySets_1 = mySets; _i < mySets_1.length; _i++) {
+                var set = mySets_1[_i];
+                this.myBox.push(this.convertService.setToPokeapi(set, myTrainer.id));
             }
         }
         else {
-            mySets = JSON.parse(sessionStorage.getItem('sets'));
-            // this.myBox.push(this.teamService.pkmn1); // give myself some pokemon
-            // this.myBox.push(this.teamService.pkmn2);
-            // this.myBox.push(this.teamService.pkmn3);
-            // this.myBox.push(this.teamService.pkmn4);
-            // this.myBox.push(this.teamService.pkmn5);
-            // this.myBox.push(this.teamService.pkmn6);
+            this.myBox = JSON.parse(localStorage.getItem('myPkmnBox'));
+            this.myBox.push(this.teamService.pkmn5);
+            // give myself a pokemon because for some reason ng2-dnd does not work with empty arrays
         }
     };
     /**
@@ -1655,19 +1643,18 @@ var PokemonBoxComponent = (function () {
     PokemonBoxComponent.prototype.saveTeam = function (newTeamName) {
         // if our team isn't over the legal limit
         if (this.favTeam.length <= 6) {
-            var oldTeam = void 0;
             var myTeam = [];
-            var myTrainer = void 0;
-            myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
+            var myTrainer = JSON.parse(localStorage.getItem('trainer'));
             // User must be logged in to save team
             if (myTrainer) {
                 // We need the old team ID of the ONLY (SINGULAR) team we are saving
-                oldTeam = JSON.parse(sessionStorage.getItem('teams'));
+                var oldTeam = JSON.parse(localStorage.getItem('teams'));
                 // Convert our team into a format our back-end can receive
                 myTeam[0] = this.convertService.pokeTeamToSetTeam(this.favTeam, newTeamName, oldTeam[0].teamId);
                 // Save our team to localstorage
                 this.loginService.changeTeam(myTeam);
-                // TODO: MAKE PUT REQUEST HERE USING SOME SERVICE
+                // Send http request to save set and team if the user is logged in
+                this.updateService.saveTeam(myTeam[0]);
             }
             // Put our favTeam in local storage so even an unregistered user can use our service
             localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
@@ -1740,12 +1727,13 @@ var PokemonBoxComponent = (function () {
         core_1.Component({
             selector: 'app-pokemonbox',
             template: __webpack_require__("./src/app/pokemonbox/pokemonbox.component.html"),
-            styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")]
+            styles: [__webpack_require__("./src/app/pokemonbox/pokemonbox.component.css")],
+            providers: [team_service_1.TeamService, type_service_1.TypeService, convert_service_1.ConvertService, login_service_1.LoginService, update_service_1.UpdateService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object, typeof (_d = typeof update_service_1.UpdateService !== "undefined" && update_service_1.UpdateService) === "function" && _d || Object, typeof (_e = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _e || Object])
     ], PokemonBoxComponent);
     return PokemonBoxComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
 }());
 exports.PokemonBoxComponent = PokemonBoxComponent;
 //# sourceMappingURL=pokemonbox.component.js.map
@@ -1854,7 +1842,12 @@ var ConvertService = (function () {
     }
     ConvertService.prototype.pokeapiToSet = function (pkmn) {
         var result = new set_1.Set();
-        result.setId = 1;
+        if (pkmn.setId) {
+            result.setId = pkmn.setId;
+        }
+        else {
+            result.setId = -1;
+        }
         result.pokemonId = pkmn.id;
         result.nickname = pkmn.name;
         result.atk1 = pkmn.attackIds[0];
@@ -2478,6 +2471,59 @@ exports.TypeService = TypeService;
 
 /***/ }),
 
+/***/ "./src/app/services/update.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var UpdateService = (function () {
+    function UpdateService(http) {
+        this.http = http;
+    }
+    UpdateService.prototype.saveSet = function (mySet) {
+        if (mySet.setId < 0) {
+            this.createSet(mySet);
+        }
+        else {
+            this.updateSet(mySet);
+        }
+    };
+    UpdateService.prototype.createSet = function (mySet) {
+        var body = new http_1.HttpParams().set('set', JSON.stringify(mySet));
+        return this.http.post('set', body);
+    };
+    UpdateService.prototype.updateSet = function (mySet) {
+        var body = new http_1.HttpParams().set('set', JSON.stringify(mySet));
+        return this.http.put('set', body);
+    };
+    UpdateService.prototype.saveTeam = function (myTeam) {
+        var body = new http_1.HttpParams().set('team', JSON.stringify(myTeam));
+        return this.http.post('team', body);
+    };
+    UpdateService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [typeof (_a = typeof http_1.HttpClient !== "undefined" && http_1.HttpClient) === "function" && _a || Object])
+    ], UpdateService);
+    return UpdateService;
+    var _a;
+}());
+exports.UpdateService = UpdateService;
+//# sourceMappingURL=update.service.js.map
+
+/***/ }),
+
 /***/ "./src/app/services/view-user.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2589,18 +2635,22 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
 var pokemon_1 = __webpack_require__("./src/app/pokemon.ts");
 var move_1 = __webpack_require__("./src/app/move.ts");
+var login_service_1 = __webpack_require__("./src/app/services/login.service.ts");
 var move_service_1 = __webpack_require__("./src/app/services/move.service.ts");
 var pokemon_service_1 = __webpack_require__("./src/app/services/pokemon.service.ts");
 var team_service_1 = __webpack_require__("./src/app/services/team.service.ts");
 var type_service_1 = __webpack_require__("./src/app/services/type.service.ts");
 var convert_service_1 = __webpack_require__("./src/app/services/convert.service.ts");
+var update_service_1 = __webpack_require__("./src/app/services/update.service.ts");
 var Chartist = __webpack_require__("./node_modules/chartist/dist/chartist.js");
 var TeambuilderComponent = (function () {
-    function TeambuilderComponent(convertService, pokemonService, moveService, teamService, types) {
+    function TeambuilderComponent(updateService, convertService, loginService, pokemonService, moveService, teamService, types) {
         // Assign my placeholder favTeam using teamService
         // this.favTeam = this.teamService.favTeam;
         // now using loadTeam() instead
+        this.updateService = updateService;
         this.convertService = convertService;
+        this.loginService = loginService;
         this.pokemonService = pokemonService;
         this.moveService = moveService;
         this.teamService = teamService;
@@ -2621,10 +2671,22 @@ var TeambuilderComponent = (function () {
     TeambuilderComponent.prototype.loadTeam = function () {
         this.trainer = JSON.parse(localStorage.getItem('trainer'));
         this.myTeam = JSON.parse(localStorage.getItem('teams'));
-        if (this.myTeam && this.myTeam[0] && this.trainer) {
-            this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+        if (!this.sets) {
+            this.sets = new Array();
+        }
+        if (!!this.myTeam && !!this.trainer) {
+            // Load team, if one exists
+            if (this.myTeam[0]) {
+                this.favTeam = this.convertService.teamToPokeTeam(this.myTeam[0], this.trainer.id);
+            }
+            // Load box, if any
+            for (var _i = 0, _a = JSON.parse(localStorage.getItem('sets')); _i < _a.length; _i++) {
+                var set = _a[_i];
+                this.sets.push(set);
+            }
         }
         else {
+            // Load from local storage
             this.favTeam = JSON.parse(localStorage.getItem('favTeam'));
         }
         // if null, get an empty team
@@ -2675,6 +2737,9 @@ var TeambuilderComponent = (function () {
      * @param pkmn The Pokemon you wish to select, whether it be from your team or a new one
      */
     TeambuilderComponent.prototype.selectPokemon = function (pkmn) {
+        if (!pkmn) {
+            return false;
+        }
         this.selectedPkmn = pkmn;
         this.loadStatChart();
         this.selPkmnMoves = new Array();
@@ -2699,6 +2764,7 @@ var TeambuilderComponent = (function () {
         while (this.selPkmnMoves.length < 4) {
             this.selPkmnMoves.push(new move_1.Move());
         }
+        return true;
     };
     /**
      * Selects a pokemon from our team to edit. If already selected, cancel editing
@@ -2730,8 +2796,8 @@ var TeambuilderComponent = (function () {
      */
     TeambuilderComponent.prototype.savePokemon = function () {
         var myTrainer;
-        myTrainer = JSON.parse(sessionStorage.getItem('trainer'));
-        // wipe our selected Pokemon's old attacks
+        myTrainer = JSON.parse(localStorage.getItem('trainer'));
+        // wipe our selected Pokemon's old attacks so we can add the new ones back in
         this.selectedPkmn.attackIds = [null, null, null, null];
         this.selectedPkmn.moveset = [null, null, null, null];
         // If our trainer is logged in, assign trainer ID
@@ -2747,23 +2813,27 @@ var TeambuilderComponent = (function () {
             }
             else {
                 // if not, assign a placeholder
-                console.log(this.selPkmnMoves[i]);
                 var m = new move_1.Move();
                 m.name = '';
                 this.selPkmnMoves[i] = m;
             }
         }
-        // Add the Pokemon to our team
+        // Add the Pokemon to our team if they picked a slot to save to
         if (this.selected >= 0) {
             this.favTeam[this.selected] = this.selectedPkmn;
         }
-        // Save to box
-        if (myTrainer) {
-            // TODO:
-            myTrainer.sets.push(this.selectedPkmn);
-        }
+        // Save sets to localstorage
+        var mySet = this.convertService.pokeapiToSet(this.selectedPkmn);
+        this.sets.push(mySet);
+        this.loginService.changeSets(this.sets);
         // Put our favTeam in local storage so even an unregistered user can use our service
         localStorage.setItem('favTeam', JSON.stringify(this.favTeam));
+        // Send http request to save set and team if the user is logged in
+        if (myTrainer) {
+            this.updateService.saveSet(mySet);
+            var myTeam = this.convertService.pokeTeamToSetTeam(this.favTeam, this.myTeam.teamName, this.myTeam.teamId);
+            this.updateService.saveTeam(myTeam);
+        }
     };
     /**
      * Deprecated
@@ -2843,6 +2913,9 @@ var TeambuilderComponent = (function () {
     };
     ;
     TeambuilderComponent.prototype.loadStatChart = function () {
+        if (!this.selectedPkmn) {
+            return false;
+        }
         /* Pokemon Stat Chart initialization  */
         var dataPokemonStatChart = {
             labels: [
@@ -2883,6 +2956,7 @@ var TeambuilderComponent = (function () {
         var pokemonStatChart = new Chartist.Bar('#pokemonStatChart', dataPokemonStatChart, optionsPokemonStatChart, responsiveOptions);
         // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(pokemonStatChart);
+        return true;
     };
     TeambuilderComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2896,10 +2970,10 @@ var TeambuilderComponent = (function () {
             _this.movedex = moveArray;
             // calling these functions here because this is the only location where
             // we can guarantee our pokedex and movedex have been fully loaded
+            // Assign my favTeam using localStorage or from session if one exists
             _this.loadTeam();
             _this.selectPokemon(_this.favTeam[0]);
             _this.loadStatChart();
-            // Assign my favTeam using localStorage or from session if one exists
         });
     };
     TeambuilderComponent = __decorate([
@@ -2907,12 +2981,17 @@ var TeambuilderComponent = (function () {
             selector: 'app-teambuilder',
             template: __webpack_require__("./src/app/teambuilder/teambuilder.component.html"),
             styles: [__webpack_require__("./src/app/teambuilder/teambuilder.component.css")],
-            providers: [move_service_1.MoveService, pokemon_service_1.PokemonService, team_service_1.TeamService, type_service_1.TypeService, convert_service_1.ConvertService]
+            providers: [
+                move_service_1.MoveService, pokemon_service_1.PokemonService,
+                team_service_1.TeamService, type_service_1.TypeService,
+                convert_service_1.ConvertService, login_service_1.LoginService,
+                update_service_1.UpdateService
+            ]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _a || Object, typeof (_b = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _b || Object, typeof (_c = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _c || Object, typeof (_d = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _d || Object, typeof (_e = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof update_service_1.UpdateService !== "undefined" && update_service_1.UpdateService) === "function" && _a || Object, typeof (_b = typeof convert_service_1.ConvertService !== "undefined" && convert_service_1.ConvertService) === "function" && _b || Object, typeof (_c = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" && _c || Object, typeof (_d = typeof pokemon_service_1.PokemonService !== "undefined" && pokemon_service_1.PokemonService) === "function" && _d || Object, typeof (_e = typeof move_service_1.MoveService !== "undefined" && move_service_1.MoveService) === "function" && _e || Object, typeof (_f = typeof team_service_1.TeamService !== "undefined" && team_service_1.TeamService) === "function" && _f || Object, typeof (_g = typeof type_service_1.TypeService !== "undefined" && type_service_1.TypeService) === "function" && _g || Object])
     ], TeambuilderComponent);
     return TeambuilderComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 exports.TeambuilderComponent = TeambuilderComponent;
 //# sourceMappingURL=teambuilder.component.js.map
