@@ -64,14 +64,15 @@
   /* Squeeze more space out of our tables */
   table {
     font-size: 12px;
+    max-height: 600px;
+    overflow-y: hidden;
   }
   td input {
     width: 100px;
   }
   .type-col {
     width: 70px;
-  }
-  .stat-col {
+  }  .stat-col {
     width: 42px;
   }
   .form-group {
