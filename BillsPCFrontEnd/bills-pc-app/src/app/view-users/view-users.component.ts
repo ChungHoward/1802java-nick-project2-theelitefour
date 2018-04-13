@@ -23,7 +23,6 @@ export class ViewUsersComponent implements OnInit {
 
   ngOnInit() {
     this.viewUserService.viewUsers().subscribe(users => {
-      alert(JSON.stringify(users));
       this.users = users;
     });
   }
@@ -32,7 +31,7 @@ export class ViewUsersComponent implements OnInit {
     console.log('model-based form submitted');
     console.log(this.form.value.promote.name);
     this.viewUserService.promoteUser(this.form.value.promote.name).subscribe(users => {
-      alert(JSON.stringify(users));
+
       this.users = users;
     });
   }

@@ -2996,7 +2996,6 @@ var ViewUsersComponent = (function () {
     ViewUsersComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.viewUserService.viewUsers().subscribe(function (users) {
-            alert(JSON.stringify(users));
             _this.users = users;
         });
     };
@@ -3005,7 +3004,6 @@ var ViewUsersComponent = (function () {
         console.log('model-based form submitted');
         console.log(this.form.value.promote.name);
         this.viewUserService.promoteUser(this.form.value.promote.name).subscribe(function (users) {
-            alert(JSON.stringify(users));
             _this.users = users;
         });
     };
