@@ -1,0 +1,9 @@
+
+/* Native image sizes */
+.type {
+  width: 48px;
+  height: 16px;
+}
+.ta-center {
+  text-align: center;
+}

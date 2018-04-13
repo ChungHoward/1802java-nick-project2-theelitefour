@@ -1,0 +1,52 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Defensive Coverage displays the resistances your team has and needs</h4>
+            <p class="category">The higher the type is on the list, the more important it is to cover!</p>
+          </div>
+          <div class="card-content">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center pls-land">
+                      <img src="{{ types.none }}" class="type">
+                      <br/> Type
+                      <br/>
+                    </th>
+                    <th class="ta-center" *ngFor="let pkmn of pokemonCol; let i = index">
+                      <img src="{{ pkmn.sprite }}" class="sprite">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
+                      <br/>{{ pkmn.name | titlecase }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in favTeam.sort(sortBy, ascending)) } -->
+                  <tr *ngFor="let type of types.img; let i = index" class="{{ rowColor[i] }}">
+                    <td class="ta-center">
+                      <img src="{{ type }}" class="type">
+                    </td>
+                    <td *ngFor="let effective of myTable" class="ta-center">
+                      {{ effective[i] | percent }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-footer">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

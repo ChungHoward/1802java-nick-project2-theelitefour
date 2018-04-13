@@ -1,0 +1,51 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card card-plain">
+      <div class="card-header row" data-background-color="red">
+        <div class="col-lg-10 col-xs-9">
+          <h4 class="title">Core Coverage shows you which teammates make good partners for your Pokemon</h4>
+          <p class="category">Adjust the number of resistances you prefer on an ideal partner using the controls on the right.</p>
+        </div>
+        <div class="col-lg-2 col-xs-3 ta-right">
+          <i class="material-icons" role="button" (click)="subThresh()">
+            indeterminate_check_box
+          </i>
+          <span class="h3">{{ threshold }}</span>
+          <i class="material-icons" role="button" (click)="addThresh()">
+            add_box
+          </i>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <!-- Loop through and print every Pokemon in favTeam -->
+        <div class="col-lg-4 col-xs-6" *ngFor="let pkmn of favTeam; let i = index">
+          <div class="card card-stats">
+            <div class="card-header btn" data-background-color="orange" (click)="selectPokemon(pkmn)" role="button">
+              <img src="{{ favTeam[i].sprite }}" />
+            </div>
+            <div class="card-content ta-center row va-center">
+              <span class="badge col-xs-3 col-xl-3" *ngFor="let partner of partners[i]">
+                {{ partner | titlecase }}
+              </span>
+            </div>
+            <div class="card-footer ta-left row">
+              <div class="col-xl-5 col-xs-5">
+                <h4 class="title">{{ favTeam[i].name | titlecase }}</h4>
+                <img class="type" src="{{ types.img[types.name.indexOf(favTeam[i].types[0])] }}" />
+                <img class="type" src="{{ types.name.indexOf(favTeam[i].types[1]) >= 0 ? types.img[types.name.indexOf(favTeam[i].types[1])] : types.img[15] }}" />
+              </div>
+              <div class="col-xl-7 col-xs-7">
+                is weak to
+                <br/>
+                <img *ngFor="let typeID of weaknesses[i]" [src]="types.img[typeID]" class="type" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

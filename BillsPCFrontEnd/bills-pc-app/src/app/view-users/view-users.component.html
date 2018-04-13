@@ -1,0 +1,30 @@
+<div class="main-content">
+  <div class="card">
+    <div class="card-content no-pad-top">
+      <div class="table-responsive pkmn-table">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <table class="table table-hover">
+            <thead class="text-primary">
+              <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let user of users; let i = index'>
+                <td>{{ user.name }}</td>
+                <td>{{ user.role }}</td>
+                <td>
+                  <input type="radio" formControlName="promote" [value]="user"> </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <button type="submit" [disabled]="!form.valid">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

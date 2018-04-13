@@ -1,0 +1,88 @@
+/* Layout */
+.main-content {
+  margin-top: 50px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+.row {
+  width: 100%;
+}
+.card {
+  height: 500px;
+  margin-bottom: 0px;
+}
+.table-responsive {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+/* Native image sizes */
+.type {
+  width: 48px;
+  height: 16px;
+}
+.sprite {
+  width: 96px;
+  height: 96px;
+}
+/* Squeeze more space out of our tables */
+.card-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.card-content {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  min-height: 80px;
+  position: relative;
+}
+.card-footer {
+  padding-top: 0px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  min-height: 400px;
+}
+table {
+  font-size: 12px;
+}
+tbody {
+  min-height: 400px;
+}
+th {
+  height: 39px;
+}
+td input {
+  width: 100px;
+}
+.type-col {
+  width: 70px;
+}
+.form-group {
+  margin-top: 0px;
+}
+.poke-search {
+  margin-top: 0px;
+  margin-left: 0px;
+  position: absolute;
+  bottom: 0;
+}
+.pkmn-table {
+  width: 100%;
+}
+/* Readability */
+thead {
+  color: #333333;
+}
+.material-icons.md-18 { font-size: 18px; }
+.ta-center { text-align: center; }
+.ta-right { text-align: right; }
+a i {
+  display: inline;
+}
+.nav-link {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.nav {
+  margin: 0px
+}

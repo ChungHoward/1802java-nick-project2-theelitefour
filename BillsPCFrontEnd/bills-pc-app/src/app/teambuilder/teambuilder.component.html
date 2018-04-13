@@ -1,0 +1,174 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <!-- <div *ngFor="let move of movedex">
+      {{ move.name }}
+    </div> -->
+    <div class="row">
+      <!-- Loop through and print every Pokemon in favTeam -->
+      <div class="col-lg-2 col-xs-4" *ngFor="let pkmn of favTeam; let i = index">
+        <div class="card" [style.background-color]="(selected === i) ? 'rgb(255, 200, 200)' : 'rgb(255, 255, 255)'">
+          <div class="card-header btn" data-background-color="orange" (click)="selectTeamPokemon(i, pkmn)">
+            <img [src]="favTeam[i].sprite" alt="" />
+          </div>
+
+          <div class="card-content ta-center" (click)="selectTeamPokemon(i, pkmn)" role="button">
+            <img [src]="types.img[types.name.indexOf(favTeam[i].types[0])]" class="type" />
+            <img [src]="types.img[types.name.indexOf(favTeam[i].types[1])]" class="type" />
+            <h4 class="title">
+              {{ favTeam[i].name | titlecase}}
+            </h4>
+          </div>
+
+          <div class="card-footer ta-center">
+            <i class="material-icons md-18 row" (click)="toggleCollapse()" role="button">
+              {{ collapse }}
+            </i>
+            <div class="stats" *ngIf="expandOrCollapse">
+              <ul>
+                <li *ngFor="let atk of favTeam[i].moveset">
+                  {{ atk }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-7 col-md-12">
+        <div class="card card-stats container-fluid">
+          <div class="card-header card-chart" data-background-color="purple">
+            <div class="ct-chart" id="pokemonStatChart"></div>
+          </div>
+
+          <div class="card-content ta-center row">
+            <img class="sprite col-sm-3 col-xl-3" [src]=" (selectedPkmn) ? selectedPkmn.sprite : '' "
+              [title]=" (selectedPkmn) ? selectedPkmn.sprite : '' " />
+            <!-- The errors in the console can be prevented by doing something similar to the above line for every variable -->
+            <div class="no-padding col-sm-3 col-xl-3">
+              <span class="badge badge-primary">
+                Critical Rate
+                <br/> {{ (selectedPkmn) ? (selectedPkmn.stats.spe * 100 / 512 | number:'2.1-2') : '' }} %
+              </span>
+              <br/>
+              <!--[src]="(selectedPkmn.types[1] === void(0)) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : types.img[15]"-->
+              <img class="type"
+              [src]=" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[1])] : '' " />
+              <img class="type"
+              [src]=" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' " />
+              <br/>
+              <small>
+                <a href="{{(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/' + selectedPkmn.name : '' }}">Smogon Analysis</a>
+              </small>
+            </div>
+            <form class="row poke-search" role="search">
+              <div class="form-group col-sm-4 col-xl-4">
+                <input [(ngModel)]="searchInput" name="searchInput" type="text" class="form-control"
+                  placeholder="Search Pokemon" [(value)]="(selectedPkmn) ? selectedPkmn.name : sortBy ">
+                <span class="material-input"></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer mt-10">
+            <div class="table-responsive move-table">
+              <table class="table table-hover">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Class</th>
+                    <th>Pow</th>
+                    <th>Acc</th>
+                    <th>PP</th>
+                    <th>Effect</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="selectedPkmn">
+                  <tr *ngFor="let move of selPkmnMoves; let i = index">
+                    <td>
+                      <input type="text" [(ngModel)]="selPkmnMoves[i].name" name="moveInput{{i}}" list="canLearn"
+                        (change)="setSelPkmnMoves(i, selPkmnMoves[i].name)">
+                      <datalist id="canLearn">
+                        <option *ngFor="let canlearn of selectedPkmn.moves | pkmnSort: 'name':ascending" value="{{canlearn.name}}">
+                      </datalist>
+                    </td>
+                    <td>
+                      <img [src]="types.img[types.name.indexOf(move.type)]" class="type">
+                    </td>
+                    <td>
+                      <img class="type" [src]="move.damageClass !== 'status' ? types.classImg[types.oldClass[types.name.indexOf(move.type)]] : types.classImg[2]">
+                    </td>
+                    <td>{{ move.power }}</td>
+                    <td>{{ move.accuracy }}</td>
+                    <td>{{ move.pp }}</td>
+                    <td>{{ move.effect }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn-primary btn-sm save-button" (click)="savePokemon()">
+              <i class="material-icons">save</i>
+              {{ (selected === -1) ? 'Save to Pokemon Box' : 'Save to Team' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-12">
+        <div class="card">
+          <div class="card-content no-pad-top">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnTableColNames; let i = index">
+                      {{ col | titlecase }}
+                      <br/>
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- translation: foreach (Pokemon in Pokedex.sort(sortBy, ascending)) { filterBy(searchInput) } -->
+                  <tr class="search-row" *ngFor="let pkmn of ((pokedex | pkmnSort: sortBy:ascending) | pkmnFilter: searchInput); let i = index">
+                    <td class="ta-center" (click)="selectNewPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
+                    <td class="ta-center type-col" (click)="selectNewPokemon(pkmn)">
+                      <img [src]="types.img[types.name.indexOf(pkmn.types[1])]" class="type">
+                      <img [src]="types.img[types.name.indexOf(pkmn.types[0])]" class="type">
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.hp }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.atk }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.def }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.satk }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.sdef }}
+                    </td>
+                    <td class="ta-center stat-col" (click)="selectNewPokemon(pkmn)" role="button">
+                      {{ pkmn.stats.spe }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-footer">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <!--
+          <div class="card-header" data-background-color="purple">
+            <ul class="nav nav-pills ta-center">
+              <li>
+                <a role="button" (click)="newTeam()">
+                  <i class="material-icons">create_new_folder</i> New Team
+                </a>
+              </li>
+              <li>
+                <a role="button" (click)="saveTeam(newTeamName)">
+                  <i class="material-icons">save</i> Save Team
+                </a>
+              </li>
+              <li>
+                <a role="button" (click)="setFavoriteTeam(newTeamName)">
+                  <i class="material-icons">{{ favoriteIcon }}</i> Favorite
+                </a>
+              </li>
+            </ul>
+          </div>
+          -->
+
+          <div class="card-content">
+            <form class="row poke-search" role="search">
+              <div class="form-group col-sm-7 col-xl-7">
+                <h4>My Team</h4>
+                <!-- <input [(ngModel)]="newTeamName" name="newTeamName" type="text" class="form-control" placeholder="Team Name" [(value)]="Untitled">
+                <span class="material-input"></span> -->
+              </div>
+              <div class="col-sm-4 col-xl-4 ta-right">
+                <button class="btn btn-primary btn-sm save-button" (click)="saveTeam()">
+                  <i class="material-icons">save</i>
+                  Save Team
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer">
+            <div class="table-responsive pkmn-table">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnBoxColNames; let i = index">
+                      {{ col | titlecase }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="favTeam">
+                  <tr *ngFor="let pkmn of favTeam; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="updateTeam(pkmn, i)">
+                    <td class="ta-center" (click)="selectPokemon(pkmn)" role="button">{{ pkmn.name | titlecase }}</td>
+                    <td class="ta-center type-col">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[0])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(pkmn.types[1])] }}" class="type">
+                    </td>
+                    <td class="ta-center" *ngFor="let move of pkmn.moveset">{{ move }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <!--
+          <div class="card-header" data-background-color="purple">
+            <ul class="nav nav-pills">
+              <li class="active">
+                <a data-toggle="pill" href="#pokeBox">
+                  <i class="material-icons">line_weight</i> Pokemon
+                </a>
+              </li>
+              <li>
+                <a data-toggle="pill" href="#teamBox">
+                  <i class="material-icons">view_module</i> Teams
+                </a>
+              </li>
+            </ul>
+          </div>
+          -->
+          <div class="card-content">
+            <form class="row form-group label-floating is-empty poke-search" role="search">
+              <div class="col-sm-11 col-xl-11">
+                <label class="control-label" for="searchBox">Search Box</label>
+                <input type="text" class="form-control" id="searchBox" name="searchBox" [(ngModel)]="searchBox">
+                <span class="material-input"></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer tab-content">
+
+            <div class="table-responsive pkmn-table tab-pane fade in active" id="pokeBox">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <tr>
+                    <th class="ta-center" *ngFor="let col of pkmnBoxColNames; let i = index">
+                      {{ col | titlecase }}
+                      <i class="material-icons md-18" role="button" (click)="toggleSort(i)">{{ colSortIcons[i] }}</i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody dnd-sortable-container [dropZones]="['pkmn-zone']" [sortableData]="myBox">
+                  <!-- translation: foreach (Pokemon in myBox.sort(sortBy, ascending)) { filterBy(searchBox) } -->
+                  <tr *ngFor="let boxpkmn of ((myBox | pkmnSort: sortBy:ascending) | pkmnFilter: searchBox); let i = index" dnd-sortable [sortableIndex]="i"
+                    (onDropSuccess)="updateBox(boxpkmn, i)">
+                    <td class="ta-center" (click)="selectPokemon(boxpkmn)" role="button">{{ boxpkmn.name | titlecase }}</td>
+                    <td class="ta-center type-col">
+                      <img src="{{ types.img[types.name.indexOf(boxpkmn.types[0])] }}" class="type">
+                      <img src="{{ types.img[types.name.indexOf(boxpkmn.types[1])] }}" class="type">
+                    </td>
+                    <td class="ta-center" *ngFor="let move of boxpkmn.moveset">{{ move }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-responsive pkmn-table tab-pane fade" id="teamBox">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

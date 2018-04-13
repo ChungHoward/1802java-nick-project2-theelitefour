@@ -1,0 +1,100 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Register</h4>
+            <p class="category">To start saving your teams and Pokemon</p>
+          </div>
+          <div class="card-content">
+            <!-- Display warning here if username is taken or some other error -->
+            <div *ngIf="false" id="notification" class="alert alert-danger"></div>
+
+            <div *ngIf="!submitted">
+              <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label" for="username">Username</label>
+                      <input required type="text" class="form-control" id="username" name="username"
+                        [(ngModel)]="username">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label" for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label" for="password">Password</label>
+                      <input required type="password" class="form-control" id="password" name="password"
+                      [(ngModel)]="password" (ngModelChange)="matchPassword()">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label" for="cpassword">Confirm Password</label>
+                      <input required type="password" class="form-control" id="cpassword" name="cpassword"
+                      [(ngModel)]="cpassword" (ngModelChange)="matchPassword()">
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-danger pull-right" [disabled]="!registerForm.form.valid" 
+                  [disabled]="!passwordMatch">
+                  Register
+                </button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+            <!-- Invisible before submit -->
+            <div *ngIf="submitted">
+              <div *ngIf="valid">
+                <div class="h3">
+                  You have successfully registered!
+                </div>
+                <div class="h4">
+                  No email confirmation necessary
+                </div>
+              </div>
+              <div *ngIf="!valid">
+                <div class="h3">
+                    Registration Failed
+                  </div>
+                  <div class="h4">
+                    Username is already in use
+                  </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="#bill">
+              <img class="img" src="assets/img/faces/Bill.png" />
+            </a>
+          </div>
+
+          <div class="content">
+            <h6 class="category text-gray">Masaki Sonezaki</h6>
+            <h4 class="card-title">Bill, Head Engineer</h4>
+            <p class="card-content">
+              The father of the modern Pokemon storage system. Bill's PC provides instant access to your Pokemon from any device. Expert
+              analytics and statistics are provided by our leading Professors.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
