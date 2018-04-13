@@ -60,7 +60,7 @@
               [src]=" (selectedPkmn) ? types.img[types.name.indexOf(selectedPkmn.types[0])] : '' " />
               <br/>
               <small>
-                <a [href]="(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/selectedPkmn.name' : '' ">Smogon Analysis</a>
+                <a href="{{(selectedPkmn) ? 'https://www.smogon.com/dex/rb/pokemon/' + selectedPkmn.name : '' }}">Smogon Analysis</a>
               </small>
             </div>
             <form class="row poke-search" role="search">
