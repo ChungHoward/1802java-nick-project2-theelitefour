@@ -7,10 +7,10 @@ public class RegisterService
 {
 	private static TrainerDaoImp dao = new TrainerDaoImp();
 	
-    public static boolean register(String username, String password, String email)
+    public static boolean register(String username, String password, String email, String role)
     {
     	if(dao.retrieveTrainerByName(username)==null) {
-    		RegisterDAO.register(username, password, email);
+    		RegisterDAO.register(username, password, email, role);
     		return true;
     	}
     	

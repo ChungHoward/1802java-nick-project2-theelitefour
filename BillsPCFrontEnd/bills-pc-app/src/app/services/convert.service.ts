@@ -172,6 +172,14 @@ export class ConvertService {
     let result: PokeAPI;
     const resultArray = [];
 
+    console.log("--- starting teamToPokeTeam --- ");
+    console.log("p1 ID - " + myTeam.set1.pokemonId);
+    console.log("p2 ID - " + myTeam.set2.pokemonId);
+    console.log("p3 ID - " + myTeam.set3.pokemonId);
+    console.log("p4 ID - " + myTeam.set4.pokemonId);
+    console.log("p5 ID - " + myTeam.set5.pokemonId);
+    console.log("p6 ID - " + myTeam.set6.pokemonId);
+
     // Find my pokemon in the pokedex using (id - 1) because we're zero-indexed and the pokedex is not
     result = Object.assign(pokedex[myTeam.set1.pokemonId - 1]);
 
