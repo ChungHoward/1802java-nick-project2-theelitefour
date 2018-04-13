@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
   cpassword: string;
+  role: string;
 
   submitted: boolean;
   passwordMatch: boolean;
@@ -20,11 +21,12 @@ export class RegisterComponent implements OnInit {
   constructor(private registerService: RegisterService) {
     this.submitted = false;
     this.passwordMatch = false;
+    this.role = '1';
   }
 
   onSubmit() {
     this.submitted = true;
-    this.registerService.register(this.username, this.password, this.email).subscribe(
+    this.registerService.register(this.username, this.password, this.email, this.role).subscribe(
       successful => {this.valid = successful; }, error => console.error(error)
     );
   }

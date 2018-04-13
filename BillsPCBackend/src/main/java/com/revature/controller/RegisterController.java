@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegisterController
 {
     @RequestMapping(method = RequestMethod.POST, value = "resources/register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> hello(@RequestParam String username, String password, String email)
+    public ResponseEntity<Boolean> hello(@RequestParam String username, String password, String email, String role)
     {
     	System.out.println("hello called from RegisterController " + username + " " + password + " " + email);
-        boolean toReturn = RegisterService.register(username, password, email);
+        boolean toReturn = RegisterService.register(username, password, email, role);
 
         return new ResponseEntity<Boolean>(toReturn, HttpStatus.OK);
         

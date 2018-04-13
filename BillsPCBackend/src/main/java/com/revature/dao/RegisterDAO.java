@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 public class RegisterDAO
 {
-    public static void register(String username, String password, String email)
+    public static void register(String username, String password, String email, String role)
     {
         Session session = HibernateUtil.getSession();
 
@@ -15,6 +15,7 @@ public class RegisterDAO
 
         newTrainer.setName(username);
         newTrainer.setPassword(password);
+        newTrainer.setRole(role);
 
         try
         {
