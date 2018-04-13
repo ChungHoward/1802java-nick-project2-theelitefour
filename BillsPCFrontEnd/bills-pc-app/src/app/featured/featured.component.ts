@@ -9,6 +9,7 @@ import { PokeAPI } from '../pokemon';
 import { ConvertService } from '../services/convert.service';
 import { PokemonService } from '../services/pokemon.service';
 import { MoveService } from '../services/move.service';
+import { TypeService } from '../services/type.service';
 
 @Component({
   selector: 'app-featured',
@@ -24,9 +25,11 @@ export class FeaturedComponent implements OnInit {
   pokedex: Array<PokeAPI>;
   movedex: Array<Move>;
 
-  constructor(
-    private featureService: FeatureService, private convertService: ConvertService,
-    private pokemonService: PokemonService, private moveService: MoveService) {}
+  constructor(private featureService: FeatureService, private convertService: ConvertService,
+    private pokemonService: PokemonService, private moveService: MoveService, private types: TypeService) {
+      this.featTeamArray = [];
+      this.pokeTeamArray = [];
+    }
 
   selectTeamPokemon(i: number, pkmn: PokeAPI) {
     // TODO: Save this pokemon to your box
